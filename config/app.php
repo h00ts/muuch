@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'MUUCH',
+    'name' => 'MUUCH Iluméxico',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Custom Packages
+         */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        'GrahamCampbell\Markdown\MarkdownServiceProvider',
+
     ],
 
     /*
@@ -225,6 +231,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Custom
+         */
+        'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
 
     ],
 
