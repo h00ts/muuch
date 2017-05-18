@@ -21,7 +21,7 @@ env_variables:
   DB_DATABASE: muuch
   DB_USERNAME: root
   DB_PASSWORD: prometeo
-  DB_SOCKET: '/cloudsql/heroic-dynamo-168015:us-central1:muuch'
+  DB_SOCKET: "/cloudsql/heroic-dynamo-168015:us-central1:muuch"
 
 beta_settings:
     # for Cloud SQL, set this value to the Cloud SQL connection name,
