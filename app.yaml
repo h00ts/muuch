@@ -14,7 +14,14 @@ env_variables:
   # in ".env" instead if you prefer.
   APP_LOG: errorlog
   STORAGE_DIR: /tmp
-  DB_SOCKET: /cloudsql/heroic-dynamo-168015:us-central1:muuch
+  CACHE_DRIVER: database
+  SESSION_DRIVER: database
+  ## Set these environment variables according to your CloudSQL configuration.
+  DB_HOST: localhost
+  DB_DATABASE: muuch
+  DB_USERNAME: root
+  DB_PASSWORD: prometeo
+  DB_SOCKET: '/cloudsql/heroic-dynamo-168015:us-central1:muuch'
 
 beta_settings:
     # for Cloud SQL, set this value to the Cloud SQL connection name,
