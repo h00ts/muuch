@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row">
+        <div class="col-md-12">
+        <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
+            </div>
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
                 <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / Niveles</h3>
@@ -11,20 +14,15 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         @if(count($levels))
-                        <table class="table table-striped">
-                            <thead>
-                            <td>Nivel</td>
-                            <td>Modulos</td>
-                            <td></td>
-                            </thead>
+                        <div class="row">
                             @foreach($levels as $level)
-                                <tr>
-                                    <td># {!! ($level->first()->level > 9) ? $level->first()->level : '0'.$level->first()->level !!}</td>
-                                    <td>{!! $level->count() !!}</td>
-                                    <td><a href="/admin/niveles/{!! $level->first()->level !!}/edit"><i class="glyphicon glyphicon-pencil"></i> Editar</a></td>
-                                </tr>
+                                <div class="col-md-6 col-lg-4">
+                                 <a href="/admin/niveles/{!! $level->first()->level !!}/edit" class="h1 text-center" style="display:block; border:1px solid #ddd; margin:.4em .25em; padding:.7em; border-radius:6px;">
+                                 Nivel {!! ($level->first()->level > 9) ? $level->first()->level : '0'.$level->first()->level !!}
+                                 </a>
+                                </div>
                             @endforeach
-                        </table>
+                        </div>
                         @else
                         No hay niveles.
                         @endif

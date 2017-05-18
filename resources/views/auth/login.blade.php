@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Identificate para ingresar a MUUCH</div>
+                <div class="panel-heading">¡Bienvenido a MUUCH!</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/ingresar') }}">
                         {{ csrf_field() }}
@@ -35,16 +35,6 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Estoy usando un aparato personal
-                                    </label>
-                                </div>
                             </div>
                         </div>
 

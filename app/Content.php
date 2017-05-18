@@ -13,7 +13,7 @@ class Content extends Model
      * @var array
      */
     protected $fillable = [
-    	'name', 'html', 'css', 'js', 'markdown',
+    	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file',
     ];
 
     public function module()
@@ -23,11 +23,16 @@ class Content extends Model
 
     public function users()
     {
-    	return $this->belongsToMany('App\User');
+    	return $this->belongsToMany('App\User')->withTimestamps();;
     }
 
     public function getMarkupAttribute()
     {
         return Markdown::convertToHtml($this->markdown);
+    }
+
+    public function isCompletedBy($user_id)
+    {
+        return $this->where('content_user.content_id', $this->id)->get();
     }
 }

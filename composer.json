@@ -10,6 +10,7 @@
         "graham-campbell/markdown": "^7.1",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "laravelista/sherlock": "^0.5.3",
         "tymon/jwt-auth": "0.5.*",
         "zizaco/entrust": "5.2.x-dev"
     },
@@ -45,6 +46,9 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "post-deploy-cmd": [
+            "chmod -R 755 bootstrap\/cache"
         ]
     },
     "config": {

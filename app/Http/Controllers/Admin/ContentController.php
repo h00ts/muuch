@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Module;
 use App\Content;
+use Laravelista\Sherlock\Sherlock;
 
 class ContentController extends Controller
 {
@@ -43,6 +44,8 @@ class ContentController extends Controller
         $content = $module->contents()->create([
             'name' => $request->input('name'),
             'html' => $request->input('html'),
+            'cover' => $request->input('cover'),
+            'file' => $request->input('file'),
         ]);
 
         return back()->withSuccess('Contenido '.$content->name.' creado para el modulo '.$module->name);
@@ -57,8 +60,15 @@ class ContentController extends Controller
     public function show($id)
     {
         $content = Content::find($id);
+        $sherlock = new Sherlock;
+        $toc = $sherlock->deduct($content->markdown)->getToc();
+        $helper = $sherlock->deduct($content->markdown)->getLibrary();
+        //$helper = array_multisort($price, SORT_DESC, $helper);
+        /*usort($helper, function ($a, $b) {
+            return $a['level'] <=> $b['level'];
+        });*/   
 
-        return view('content')->withContent($content);
+        return view('content')->withContent($content)->withToc($toc)->withHelper($helper);
     }
 
     /**

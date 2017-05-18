@@ -28,21 +28,30 @@ Route::get('registro/nuevo', function(){
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/inicio', 'HomeController@index');
+    Route::get('/', function () {
+        return redirect('/muuch');
+    });
+    Route::get('/muuch', 'HomeController@index');
     Route::get('/capacitacion', 'LevelController@index');
     Route::get('/capacitacion/inscribir', 'LevelController@signUp');
     Route::get('/capacitacion/ver/{id}', 'Admin\\ContentController@show');
+    Route::post('/capacitacion/completar/{id}', 'LevelController@completeContent');
+    Route::get('/consulta', 'PageController@index');
+    Route::get('/examen', 'ExamController@index');
 });
 
 Route::group([
     'namespace' => 'Admin',
-    'prefix' => 'admin',
+    'prefix' => 'config',
     'middleware' => 'auth'
 ], function () {
     Route::resource('/', 'AdminController');
     Route::resource('niveles', 'LevelController');
     Route::resource('modulos', 'ModuleController');
     Route::resource('usuarios', 'UserController');
+    Route::resource('examen', 'ExamController');
+    Route::resource('pregunta', 'QuestionController');
+    Route::resource('respuesta', 'AnswerController');
     Route::resource('contenido', 'ContentController', ['except' => ['show', 'index']]);
     Route::get('contenido/create/{module_id}', 'ContentController@create');
 });

@@ -12,7 +12,7 @@ class Exam extends Model
      * @var array
      */
     protected $fillable = [
-    	'min_score',
+    	'min_score', 'name'
     ];
 
     public function module()

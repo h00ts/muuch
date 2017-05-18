@@ -18,7 +18,7 @@ class CreateModulesTable extends Migration
             $table->integer('level');
             $table->integer('module');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

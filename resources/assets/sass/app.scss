@@ -1,15 +1,21 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,700');
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-material-design/sass/bootstrap-material-design.scss";
+
 
 body {
   padding-bottom: 70px;
+  background: none;
+  background-attachment: fixed;
+  height:100%;
+  background:#eee;
 }
 
 h3.visuallyhidden {
@@ -27,19 +33,162 @@ h3.visuallyhidden {
 	height:auto;
 }
 
-.link--dashboard, .link--dashboard:link, .link--dashboard:active, .link--dashboard:visited {
-	transition: color .5s;
-	color:#fd822b;
-	text-decoration:none;
+.btn--dashboard, .btn--dashboard:link, .btn--dashboard:active, .btn--dashboard:visited {
+	width:100%;
+  display:block;
+  color:#53504A;
+  text-decoration: none;
+  border: 1px solid $brand-primary;
+  background:rgba(255,255,255,.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
 }
 
-.link--dashboard:hover {
-	color:#ffa12d;
-	text-decoration:none;
+.btn--dashboard:hover {
+  background:rgba(255,255,255,.5);
+}
+
+.btn--dashboard h3 {
+  line-height:3;
+  font-size:3rem;
+  font-weight:bold;
+  margin: 0 0 .4em;
+  color:$brand-primary;
+  text-transform: uppercase;
+}
+
+.bg--gradient {
+  background: linear-gradient(145deg, #efa853, #ca5675);
+  background-size: 400% 400%;
+  -webkit-animation: BGGradient 30s ease infinite;
+  -moz-animation: BGGradient 30s ease infinite;
+  animation: BGGradient 30s ease infinite;
+  color:#FFF;
+}
+
+@-webkit-keyframes BGGradient {
+      0%{background-position:5% 0%}
+      50%{background-position:96% 100%}
+      100%{background-position:5% 0%}
+  }
+@-moz-keyframes BGGradient {
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+@keyframes BGGradient { 
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+
+@media screen and (min-width:540px){
+  .btn-dashboard h3 {
+    font-size:4rem;
+    line-height:275px;
+  }
+}
+
+@media screen and (min-width:720px){
+  .btn-dashboard h3 {
+    font-size:6rem;
+    line-height:375px;
+  }
 }
 
 .text--yellow {
 	color: #fed1a6;
+}
+
+.text--page-title {
+  margin-bottom:2em;
+  color:#FFF;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.text--page-label, .text--page-label:hover {
+  color:#FFF;
+}
+
+.display--content {
+  line-height: 1.4;
+}
+
+.display--content h1, .display--content h2, .display--content h3, .display--content h4 {
+  line-height: 1.2;
+  margin: 30px 0 20px 0;
+}
+
+.display--content p {
+  line-height: 1.4;
+  font-size:1.6rem;
+  text-align: justify;
+}
+
+.display--content blockquote {
+  font-size:1.4rem;
+  background: #FCFCFC;
+}
+
+.display--content strong {
+  font-size:1.8rem;
+  display:block;
+  padding:25px 0 10px;
+}
+
+.display--content li {
+  line-height: 1.4;
+  padding: 0 0 10px 0;
+  font-size:1.6rem;
+}
+
+.display--content ol {
+  //
+}
+
+.sherlock-toc, .sherlock-toc ul, .sherlock-toc li {
+  list-style:none;
+  padding-left:0;
+  line-height:1.5;
+  font-size:1.4rem;
+}
+
+.sherlock-toc li a {
+  background: #EEE;
+  display:block;
+  padding:10px 0 10px 15px;
+  color:#333;
+}
+
+.sherlock-toc li li a {
+  background: #DDD;
+  padding:10px 0 10px 25px;
+}
+
+.sherlock-toc li li li a {
+  background: #CCC;
+  padding:10px 0 10px 35px;
+}
+
+.btn--top {
+  display: none;
+  position: fixed;
+  bottom: 60px; /* Place the button at the bottom of the page */
+  left: 30px; /* Place the button 30px from the right */
+  z-index: 99;
+  font-size: 1.5rem;
+  background: rgba(0,0,0,.5);
+  border-radius:8px;
+  padding:1em;
+  color:#FFF;
+}
+
+.module__container {
+
+}
+
+.module__img {
+  height:150px;
 }
 
 

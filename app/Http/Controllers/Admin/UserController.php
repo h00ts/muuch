@@ -37,7 +37,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        return redirect()->back();
     }
 
     /**
@@ -59,7 +60,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.users.edit')->withUser($user);
     }
 
     /**

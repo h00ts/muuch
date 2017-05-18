@@ -182,6 +182,7 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         'GrahamCampbell\Markdown\MarkdownServiceProvider',
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
     ],
 
@@ -236,6 +237,7 @@ return [
          * Custom
          */
         'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 

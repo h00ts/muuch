@@ -8,6 +8,7 @@
                 <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / Usuarios</h3>
             </div>
             <div class="col-lg-12">
+            
                 <div class="panel panel-default">
                     <div class="panel-body">
                             <table class="table table-striped">
@@ -24,15 +25,15 @@
                                         <td>{!! $user->id !!}</td>
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
-                                        <td>Rol</td>
-                                        <td>Opciones</td>
+                                        <td>Administrador</td>
+                                        <td><a href="/admin/usuarios/{!! $user->id !!}/edit">Editar</a> | <a href="#">Desactivar</a></td>
                                         <td></td>
                                     </tr>
                                 @endforeach
                             </table>
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-link" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> NUEVO NIVEL</button>
+                        <button class="btn btn-link" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> NUEVO USUARIO</button>
                     </div>
                 </div>
             </div>

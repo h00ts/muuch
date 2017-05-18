@@ -40,14 +40,14 @@ class LevelController extends Controller
     {
         $level = Module::all()->max('level');
         if($level === null){
-            $level = 0;
+            $level = 1;
         } else {
             ++$level;
         }
 
         Module::create([
             'level' => $level,
-            'module' => 1,
+            'module' => 0,
             'name' => ' ',
             'description' => ' ',
         ]);

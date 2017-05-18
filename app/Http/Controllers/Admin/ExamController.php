@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Module;
+use App\Exam;
 
 class ExamController extends Controller
 {
@@ -22,9 +24,11 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($module_id = null)
     {
-        //
+        $modules = Module::all()->sortBy('level');
+
+        return view('admin.exams.create')->withModules($modules)->withModuleId($module_id);
     }
 
     /**
@@ -35,7 +39,13 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $module = Module::findOrFail($request->input('module_id'));
+        $exam = $module->exams()->create([
+            'name' => $request->input('name'),
+            'min_score' => $request->input('min_score'),
+        ]);
+
+        return back()->withSuccess('Examen '.$exam->name.' creado para el modulo '.$module->name);
     }
 
     /**
@@ -57,7 +67,13 @@ class ExamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+
+        if($exam){
+            return view('admin.exams.edit')->withExam($exam);
+        }
+
+        return redirect('/admin')->withErrors('No se encontro el nivel que buscas.');
     }
 
     /**

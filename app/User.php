@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use EntrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -29,12 +31,17 @@ class User extends Authenticatable
 
     public function modules()
     {
-        return $this->belongsToMany('App\Module');
+        return $this->belongsToMany('App\Module')->withTimestamps();;
     }
 
     public function answers()
     {
-        return $this->belongsToMany('App\Answer');
+        return $this->belongsToMany('App\Answer')->withTimestamps();;
+    }
+
+    public function content()
+    {
+        return $this->belongsToMany('App\Content')->withTimestamps();;
     }
 
     public function scores()

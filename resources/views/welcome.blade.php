@@ -68,7 +68,10 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    {{ config('app.name') }}
+                     <a href="{{ url('/inicio') }}" class="navbar-brand">
+                    <img src="/img/logo.png" alt="Iluméxico" class="img--logo">
+                        <h3 class="visuallyhidden">{{ config('app.name', 'MUUCH') }}</h3>
+                    </a>
                 </div>
 
                 <div class="links">

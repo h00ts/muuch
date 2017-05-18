@@ -27,12 +27,17 @@ class Module extends Model
 
     public function users()
     {
-    	return $this->belongsToMany('App\User');
+    	return $this->belongsToMany('App\User')->withTimestamps();
     }
 
     public function scores()
     {
     	return $this->hasManyThrough('App\Score', 'App\Exam');
+    }
+
+    public function getCountContentsAttribute()
+    {
+        return $this->contents()->count();
     }
 }
  

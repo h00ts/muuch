@@ -3,46 +3,60 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
+            </div>
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
                 <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / <a href="/admin/niveles">Niveles</a> / Nivel {!! $modules->first()->level !!}</h3>
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-body">
-                        <table class="table table-striped">
+                    <div class="panel-body table-responsive">
+                        <table class="table table-striped table">
                             <thead>
-                            <td>Modulo</td>
-                            <td>Titulo</td>
-                            <td>Contenido</td>
-                            <td>Examenes</td>
+                                <tr>
+                                    <th> </th>
+                                    <th>Contenido <a href="{!! route('contenido.create') !!}" class="btn btn-link"><i class="glyphicon glyphicon-plus"></i></a> </th>
+                                    <th>Evaluación <a href="{!! route('examen.create') !!}" class="btn btn-link"><i class="glyphicon glyphicon-plus"></i></a> </th>
+                                </tr>
                             </thead>
                             @foreach($modules as $module)
                                 <tr>
-                                    <td><p># {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</p></td>
-                                    <td>{!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!} <a href="#" data-toggle="modal"
-                                                                                                       data-id="{!! $module->id !!}"
-                                                                                                       data-num="{!! ($module->module > 9) ? $module->module : '0'.$module->module !!}"
-                                                                                                       data-title="{!! $module->name !!}"
-                                                                                                       data-description="{!! $module->description !!}"
-                                                                                                       data-target="#moduleModal" class="pull-right"><i class="glyphicon glyphicon-pencil"></i></a> </td>
+                                    <td>
+                                    <p><span class="lead">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}:</span> {!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!} <a class="btn btn-link btn-sm" href="#" 
+                                                               data-toggle="modal"
+                                                               data-id="{!! $module->id !!}"
+                                                               data-num="{!! ($module->module > 9) ? $module->module : '0'.$module->module !!}"
+                                                               data-title="{!! $module->name !!}"
+                                                               data-description="{!! $module->description !!}"
+                                                               data-target="#moduleModal"><i class="glyphicon glyphicon-pencil"></i></a></p> 
+                                    </td>
                                     <td>
                                         @if(count($module->contents))
+                                        <div class="list-group">
                                             @foreach($module->contents as $content)
-                                                <a href="{!! route('contenido.edit', $content->id) !!}">{!! $content->name !!}</a>{!! (count($module->contents) > 1 && $module->contents->last()->id != $content->id) ? ', ' : '' !!}
+                                                <a href="{!! route('contenido.edit', $content->id) !!}" class="list-group-item">{!! $content->name !!}</a>
                                             @endforeach
-                                        @else
-                                            No hay contenido
+                                        </div>
                                         @endif
-                                        <a href="{!! route('contenido.create').'/'.$module->id !!}" class="pull-right"><i class="glyphicon glyphicon-plus"></i></a>
+        
                                     </td>
-                                    <td>{!! count($module->exams) ? $module->exams : 'No hay examenes' !!} <a href="#" class="pull-right"><i class="glyphicon glyphicon-plus"></i></a></td>
+                                    <td>
+                                        @if(count($module->exams))
+                                        <div class="list-group">
+                                            @foreach($module->exams as $exam)
+                                                <a href="{!! route('examen.edit', $exam->id) !!}" class="list-group-item">{!! $exam->name !!}</a>
+                                            @endforeach
+                                        </div>  
+                                        @endif
+                                     </td>
                                 </tr>
                             @endforeach
                         </table>
                     </div>
                     <div class="panel-footer">
-                        <a href="#" class="btn btn-link" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> NUEVO MODULO</a>
+                        <a href="#" class="btn btn-link" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> MODULO</a>
                         <div id="box--confirm" class="hidden">
                             Confirma crear un nuevo modulo: <button id="button--dismiss" class="btn btn-default">No, regresar</button> | <button id="button--confirm" class="btn btn-primary">Si, crear</button>
                         </div>

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Registra tus datos para ingresar a MUUCH</div>
+                <div class="panel-heading">REGISTRA TUS DATOS PARA INGRESAR</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/registrar') }}">
                         {{ csrf_field() }}

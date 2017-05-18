@@ -3,8 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
+            </div>
             <div class="col-lg-12">
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / Crear contenido</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / <a href="/admin/niveles">Niveles</a> / <a href="/admin/niveles/{!! $content->module->level !!}/edit">Nivel {!! $content->module->level.'</a> &rarr; Modulo '.$content->module->module !!}</h3>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
@@ -14,16 +17,39 @@
                         <input type="hidden" name="_method" value="PUT">
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="module">Modulo</label>
+                            <label for="module">CONTENIDO</label>
                         </div>
                         <div class="form-group">
                             <label for="name">Titulo</label>
                             <input type="text" name="name" class="form-control input-lg" value="{!! $content->name !!}">
                         </div>
+                        <div class="form-group">
+                            <strong>Mostrar a </strong>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default active">
+                                    <input type="checkbox" autocomplete="off" checked> Ingenieros Comunitarios
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="checkbox" autocomplete="off"> Coordinadores Regionales
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="checkbox" autocomplete="off"> Administradores
+                                </label>
+                            </div>
+                        </div>
                        <div class="form-group">
                            <label for="markdown">Markdown</label>
                            <textarea name="markdown" class="form-control" id="markdown" cols="30" rows="20">{!! $content->markdown !!}</textarea>
                        </div>
+                        <div class="form-group">
+                            <label for="file">Descargable</label>
+                            <input type="text" name="file" class="form-control input-lg" value="{!! $content->file !!}">
+                        </div>
+                        <div class="form-group">
+                            <label for="cover">Caratula</label>
+                            <input type="text" name="cover" class="form-control input-lg" value="{!! $content->cover !!}">
+                        </div>
+
                     </div>
                     <div class="panel-footer">
                         <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>

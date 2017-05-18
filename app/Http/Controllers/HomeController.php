@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Module;
+use App\Content;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $modules = Module::where('level', $user->level)->get();
+        $content_count = 0;
+        foreach($modules as $module){
+            $content_count += count($module->contents);
+        }
+        return view('home')
+            ->withUser($user)
+            ->withModules($modules)
+            ->withContentCount($content_count);
     }
 }
