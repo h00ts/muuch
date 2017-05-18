@@ -12,6 +12,7 @@ env_variables:
   # The values here will override those in ".env". This is useful for
   # production-specific configuration. However, feel free to set these values
   # in ".env" instead if you prefer.
+  # create a migration for the session table
   APP_LOG: errorlog
   STORAGE_DIR: /tmp
   CACHE_DRIVER: database
