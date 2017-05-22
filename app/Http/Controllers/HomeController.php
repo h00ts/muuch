@@ -32,6 +32,8 @@ class HomeController extends Controller
         foreach($modules as $module){
             $content_count += count($module->contents);
         }
+        ($content_count == 0) ? $content_count = 1 : $content_count;
+
         return view('home')
             ->withUser($user)
             ->withModules($modules)

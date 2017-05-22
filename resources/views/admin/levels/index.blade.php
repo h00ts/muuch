@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / Niveles</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> <a href="{!! route('index') !!}">Configuración</a> / Niveles</h3>
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -17,7 +17,7 @@
                         <div class="row">
                             @foreach($levels as $level)
                                 <div class="col-md-6 col-lg-4">
-                                 <a href="/admin/niveles/{!! $level->first()->level !!}/edit" class="h1 text-center" style="display:block; border:1px solid #ddd; margin:.4em .25em; padding:.7em; border-radius:6px;">
+                                 <a href="{!! route('niveles.edit', $level->first()->level) !!}" class="h1 text-center" style="display:block; border:1px solid #ddd; margin:.4em .25em; padding:.7em; border-radius:6px;">
                                  Nivel {!! ($level->first()->level > 9) ? $level->first()->level : '0'.$level->first()->level !!}
                                  </a>
                                 </div>
