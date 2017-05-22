@@ -15,7 +15,12 @@ body {
   background: none;
   background-attachment: fixed;
   height:100%;
-  background:#eee;
+  background:$body-bg;
+  color:#FFF;
+}
+
+.panel {
+  color:#636b6f;
 }
 
 h3.visuallyhidden {

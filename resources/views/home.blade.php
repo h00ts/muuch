@@ -11,7 +11,7 @@
             </h2>
         </div>
         <div class="col-md-8">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading"><h3 class="panel-title">Accesos rapidos</h3></div>
                 <div class="panel-body">
                     <div class="row">
@@ -48,9 +48,9 @@
             </div>
         </div>
         <div class="col-md-4">
-                <div class="panel panel-success">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"> <i class="material-icons">face</i> {!! $user->name !!}</h3>
+                       <h3 class="panel-title"> <i class="material-icons small">face</i> {!! $user->name !!}</h3>
                     </div>
                     <div class="panel-body">
                         <p><span class="lead"><strong>Nivel {!! $user->level !!}</strong> | Ingeniero comunitario </span></p>
@@ -74,7 +74,7 @@
                             @if(count($user->content) == $content_count)
                                 <h2 class="text-success"><i class="glyphicon glyphicon-ok"></i> ¡Buen trabajo!</h2>
                             <p>Terminaste de estudiar los modulos, puedes tomar el examen.</p>
-                                <a href="#" class="btn btn-success btn-block btn-lg"><i class="glyphicon glyphicon-edit"></i> EXAMEN</a>
+                                <a href="#" class="btn btn-primary btn-block btn-lg"><i class="glyphicon glyphicon-edit"></i> EXAMEN</a>
                             @endif
                         @endif
                     </div>

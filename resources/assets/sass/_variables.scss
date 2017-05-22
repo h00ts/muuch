@@ -1,6 +1,6 @@
 
 // Body
-$body-bg: #ccc;
+$body-bg: #fa8851;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -10,11 +10,12 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: #009788;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
+$brand-primary: #fa8851;
+$brand-info: #f88a48;
+$brand-success: #179C55;
+$brand-warning: #fcdb48;
+$brand-danger: #F54C54;
+$mdb-brand-inverse: #FFF;
 
 // Typography
 $font-family-sans-serif: "Open Sans", "Helvetica Neue", "Helvetica", sans-serif;
