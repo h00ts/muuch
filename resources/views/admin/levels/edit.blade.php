@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / <a href="/admin/niveles">Niveles</a> / Nivel {!! $modules->first()->level !!}</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Administración</a> / <a href="/config/niveles">Niveles</a> / Nivel {!! $modules->first()->level !!}</h3>
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -122,7 +122,7 @@
                 $("#module-id").val($(e.relatedTarget).data('id'));
                 $("#module-name").val($(e.relatedTarget).data('title'));
                 $("#module-description").val($(e.relatedTarget).data('description'));
-                $("#module-form").attr('action', '/admin/modulos/'+ $(e.relatedTarget).data('id'));
+                $("#module-form").attr('action', '/config/modulos/'+ $(e.relatedTarget).data('id'));
             });
 
             /* New module */
