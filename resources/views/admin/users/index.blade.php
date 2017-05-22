@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / Usuarios</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / Usuarios</h3>
             </div>
             <div class="col-lg-12">
             
@@ -26,7 +26,7 @@
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
                                         <td>Administrador</td>
-                                        <td><a href="/admin/usuarios/{!! $user->id !!}/edit">Editar</a> | <a href="#">Desactivar</a></td>
+                                        <td><a href="/config/usuarios/{!! $user->id !!}/edit">Editar</a> | <a href="#">Desactivar</a></td>
                                         <td></td>
                                     </tr>
                                 @endforeach

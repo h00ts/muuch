@@ -7,7 +7,7 @@
                 <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
             </div>
             <div class="col-lg-12">
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / <a href="/admin/niveles">Niveles</a> / <a href="/admin/niveles/{!! $exam->module->level !!}/edit">Nivel {!! $exam->module->level.'</a> &rarr; Examen '.$exam->name !!}</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / <a href="/config/niveles">Niveles</a> / <a href="/config/niveles/{!! $exam->module->level !!}/edit">Nivel {!! $exam->module->level.'</a> &rarr; Examen '.$exam->name !!}</h3>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
@@ -56,7 +56,7 @@
                 
                         </form>
     
-                        <form action="/admin/answers/{!! $answer->id !!}" method="POST" style="position:absolute; right:15px; top: 0">
+                        <form action="/config/answers/{!! $answer->id !!}" method="POST" style="position:absolute; right:15px; top: 0">
                         {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-link text-danger"><i class="glyphicon glyphicon-trash text-danger"></i></button> 
@@ -69,7 +69,7 @@
                 </div>
                 <div class="panel-footer">
                     <a href="#" class="btn" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="glyphicon glyphicon-plus"></i> Crear Respuesta</a>
-                        <form action="/admin/questions/{!! $question->id !!}" method="POST" class="pull-right">
+                        <form action="/config/questions/{!! $question->id !!}" method="POST" class="pull-right">
                             {!! csrf_field() !!}
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-link text-danger"><i class="glyphicon glyphicon-close"></i> Borrar pregunta</button> 

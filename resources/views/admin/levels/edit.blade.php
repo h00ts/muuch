@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Administración</a> / <a href="/config/niveles">Niveles</a> / Nivel {!! $modules->first()->level !!}</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / <a href="/config/niveles">Niveles</a> / Nivel {!! $modules->first()->level !!}</h3>
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">

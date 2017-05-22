@@ -7,7 +7,7 @@
                 <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
             </div>
             <div class="col-lg-12">
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/admin">Administración</a> / <a href="/admin/niveles">Niveles</a> / <a href="/admin/niveles/{!! $content->module->level !!}/edit">Nivel {!! $content->module->level.'</a> &rarr; Modulo '.$content->module->module !!}</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / <a href="/config/niveles">Niveles</a> / <a href="/config/niveles/{!! $content->module->level !!}/edit">Nivel {!! $content->module->level.'</a> &rarr; Modulo '.$content->module->module !!}</h3>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">

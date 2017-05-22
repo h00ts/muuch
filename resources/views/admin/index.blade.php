@@ -15,7 +15,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <a href="/admin/consulta" class="link--dashboard">
+                        <a href="/config/consulta" class="link--dashboard">
                             <h3 class="text-center">Consulta</h3>
                         </a>
                         <h1 class="text-center text--yellow"><i class="glyphicon glyphicon-book"></i></h1>
@@ -26,7 +26,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <a href="/admin/niveles" class="link--dashboard">
+                        <a href="/config/niveles" class="link--dashboard">
                             <h3 class="text-center">Capacitación</h3>
                         </a>
                         <h1 class="text-center text--yellow"><i class="glyphicon glyphicon-education"></i></h1>
@@ -37,7 +37,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <a href="/admin/usuarios" class="link--dashboard">
+                        <a href="/config/usuarios" class="link--dashboard">
                             <h3 class="text-center">Usuarios</h3>
                         </a>
                         <h1 class="text-center text--yellow"><i class="glyphicon glyphicon-user"></i></h1>
