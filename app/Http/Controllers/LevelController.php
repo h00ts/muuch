@@ -32,6 +32,7 @@ class LevelController extends Controller
         foreach($modules as $module){
             $content_count += count($module->contents);
         }
+        ($content_count == 0) ? $content_count = 1 : $content_count;
 
         /*
         $modules = Module::whereDoesntHave('users', function ($q) use ($user) {
