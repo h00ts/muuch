@@ -1,12 +1,5 @@
 <?php
 
-$url = parse_url(getenv("JAWSDB_MARIA_URL"));
-
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-
 return [
 
     /*
@@ -48,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', $host),
+            'host' => env('DB_HOST', 'r4919aobtbi97j46.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', $database),
-            'username' => env('DB_USERNAME', $username),
-            'password' => env('DB_PASSWORD', $password),
+            'database' => env('DB_DATABASE', 'vn8kcq0h2dvaye4c'),
+            'username' => env('DB_USERNAME', 'xcyagowrbp0u9g63'),
+            'password' => env('DB_PASSWORD', 'kcqja9r5olrly57l'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
