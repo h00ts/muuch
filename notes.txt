@@ -1,0 +1,11 @@
+# notes
+
+1. assign pages to roles/permissions
+2. parse correct vs incorrect answers
+3. 
+
+
+USERS
+
+1. logic to activate accts
+2. 

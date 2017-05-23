@@ -1,18 +1,49 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-
     <div class="row">
          <div class="col-md-12">
             <h2><strong>MUUCH</strong>
-                <a href="/consulta" class="btn btn-primary">
-                    <i class="material-icons">folder</i> Todo el material
+                <a href="/consulta" class="btn btn-inverse">
+                    <i class="material-icons">folder</i> ENTRAR A MUUCH
                 </a> 
             </h2>
         </div>
+        <div class="col-md-4">
+                <div class="panel panel-default">
+       
+                    <div class="panel-body">
+                        <p><span class="lead"><strong>Nivel {!! $user->level !!}</strong> | Ingeniero comunitario {!! $user->name !!}</span></p>
+                        @if($user->level === null)
+                            <p>Bienvenido a la plataforma de capacitación MUUCH.</p>
+                            <p>Inscribete haciendo clic en el boton inferior para comenzar tu proceso de capacitacion.</p>
+                            <a href="/capacitacion/inscribir" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
+                            @else
+                            <strong>Completado: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</strong>
+
+                            <div class="progress">
+                              <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
+                                {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
+                              </div>
+                            </div>
+
+                            <a href="/capacitacion" class="btn btn-primary btn-block">
+                            <i class="material-icons">school</i> Entrar a Capacitación
+                        </a>
+
+                            @if(count($user->content) == $content_count)
+                                <h2 class="text-success"><i class="glyphicon glyphicon-ok"></i> ¡Buen trabajo!</h2>
+                            <p>Terminaste de estudiar los modulos, puedes tomar el examen.</p>
+                                <a href="#" class="btn btn-inverse btn-raised btn-block"><i class="glyphicon glyphicon-edit"></i> TOMAR EXAMEN</a>
+                            @endif
+                        @endif
+                    </div>
+
+                </div>
+
+        </div>
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading"><h3 class="panel-title">Accesos rapidos</h3></div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-4">
@@ -27,9 +58,9 @@
                             <div id="myTabContent" class="tab-content">
                                 <hr>
                               <div class="tab-pane fade active in" id="consulta">
-                                <a href="#" class="btn btn-default btn-sm">Manuales, guias y guiones</a>
-                                <a href="#" class="btn btn-default btn-sm">Videos</a>
-                                <a href="#" class="btn btn-default btn-sm">Herramientas</a>
+                                <a href="#" class="btn btn-default btn-sm"><i class="material-icons">find_in_page</i> Manuales, guias y guiones</a>
+                                <a href="#" class="btn btn-default btn-sm"><i class="material-icons">video_library</i> Videos</a>
+                                <a href="#" class="btn btn-default btn-sm"><i class="material-icons">build</i> Herramientas</a>
                               </div>
                               <div class="tab-pane fade" id="formatos">
                                 
@@ -47,41 +78,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                       <h3 class="panel-title"> <i class="material-icons small">face</i> {!! $user->name !!}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p><span class="lead"><strong>Nivel {!! $user->level !!}</strong> | Ingeniero comunitario </span></p>
-                        @if($user->level === null)
-                            <p>Bienvenido a la plataforma de capacitación MUUCH.</p>
-                            <p>Inscribete haciendo clic en el boton inferior para comenzar tu proceso de capacitacion.</p>
-                            <a href="/capacitacion/inscribir" class="btn btn-success">Inscribirme</a>
-                            @else
-                            <strong>Completado: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</strong>
-
-                            <div class="progress">
-                              <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-success' : '' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
-                                {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
-                              </div>
-                            </div>
-
-                            <a href="/capacitacion" class="btn btn-primary btn-block">
-                            <i class="material-icons">school</i> Mi Capacitación
-                        </a>
-
-                            @if(count($user->content) == $content_count)
-                                <h2 class="text-success"><i class="glyphicon glyphicon-ok"></i> ¡Buen trabajo!</h2>
-                            <p>Terminaste de estudiar los modulos, puedes tomar el examen.</p>
-                                <a href="#" class="btn btn-primary btn-block btn-lg"><i class="glyphicon glyphicon-edit"></i> EXAMEN</a>
-                            @endif
-                        @endif
-                    </div>
-
-                </div>
-
-        </div>
+        
         <div class="col-lg-12 text-center">
             <h2><i class="material-icons">accessibility</i></h2>
             <h4>La palabra MUUCH proviene del maya y significa "juntos". </h4>
@@ -90,8 +87,4 @@ Esta plataforma fué creada con la intención de acercarnos y ayudarnos a constr
         </div>
     </div>
 </div>
-@endsection
-
-@section('scripts')
-
 @endsection

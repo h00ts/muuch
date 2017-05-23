@@ -4,81 +4,86 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="text--page-title text-center">
-                    <h2><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
-                </div>
+                    <h2><i class="glyphicon glyphicon-education"></i> <strong>CAPACITACIÓN</strong></h2>
             </div>
             <div class="col-md-4">
-                @if($user->level)
-                    <h2 class="text--page-label">Nivel {!! $user->level !!}</h2>
-                @endif
                 <div class="panel panel-default">
+       
                     <div class="panel-body">
-                        <h3><i class="glyphicon glyphicon-user"></i> {!! $user->name !!}</h3>
-                        <p><i class="glyphicon glyphicon-star"></i> Administrador</p>
-                        <p><i class="glyphicon glyphicon-envelope"></i> {!! $user->email !!}</p>
+                        <p><span class="lead"><strong>Nivel {!! $user->level !!}</strong> | Ingeniero comunitario {!! $user->name !!}</span></p>
                         @if($user->level === null)
                             <p>Bienvenido a la plataforma de capacitación MUUCH.</p>
                             <p>Inscribete haciendo clic en el boton inferior para comenzar tu proceso de capacitacion.</p>
-                            <a href="/capacitacion/inscribir" class="btn btn-success">Inscribirme</a>
+                            <a href="/capacitacion/inscribir" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                             @else
-                            <strong>Has completado este nivel al</strong>
+                            <strong>Completado: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</strong>
 
                             <div class="progress">
-                              <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-success' : '' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
+                              <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
                                 {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                               </div>
                             </div>
 
                             @if(count($user->content) == $content_count)
                                 <h2 class="text-success"><i class="glyphicon glyphicon-ok"></i> ¡Buen trabajo!</h2>
-                            <p>Terminaste de estudiar los modulos, ahora toma el examen para pasar al siguiente nivel.</p>
-                                <a href="#" class="btn btn-success btn-block btn-lg"><i class="glyphicon glyphicon-edit"></i> EXAMEN</a>
+                            <p>Terminaste de estudiar los modulos, puedes tomar el examen.</p>
+                                <a href="#" class="btn btn-inverse btn-raised btn-block"><i class="glyphicon glyphicon-edit"></i> TOMAR EXAMEN</a>
                             @endif
                         @endif
                     </div>
+
                 </div>
             </div>
             <div class="col-md-8">
                 @include('admin.partials.alerts')
                 @foreach($modules as $module)
-                    <h3 class="text--page-label">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
+                        </div>
+                        <div class="panel-body">
+                            
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
-                <div class="row">
+                <div class="list-group">
                 @foreach($module->contents as $content)
-                    <div class="col-lg-12">
-                        <div class="module__container">
-                            <img src="{!! $content->cover !!}" alt="{!! $content->name !!}" class="img-responsive module__img">
-                                <h1 class="panel-title"><a href="/capacitacion/ver/{!! $content->id !!}" class="btn btn-link btn-block"><i class="glyphicon glyphicon-book"></i>  <span class="h4">{!! $content->name !!}</span></a></h1>
-
-                                @if(! $content->users->contains($user->id))
-                                <div class="panel-body text-center">
-                                    <a href="/capacitacion/ver/{!! $content->id !!}">
-                                        <img src="{!! $content->cover !!}" alt="{!! $content->name !!}" class="img-responsive">
-                                    </a>
-                                </div>
-                                @endif
-
-                            <div class="panel-footer">
-                                <div class="row">
+                        <div class="list-group-item">
                                 @if($content->users->contains($user->id))
-                                    <div class="col-md-12 text-center text-success bg-success">
-                                        <i class="glyphicon glyphicon-ok"></i> COMPLETADO
+                                    <div class="row-action-primary">
+                                        <i class="material-icons" style="background:green">check</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="action-secondary">
+                                            <a href="/capacitacion/ver/{!! $content->id !!}"><i class="material-icons">arrow_right</i></a>
+                                        </div>
+                                        <h4 class="list-group-item-heading">
+                                                <s>{!! $content->name !!}</s>
+                                        </h4>
+                                        <p class="list-group-item-text">
+                                            Completado. 
+                                            {!! $content->description !!}  
+                                        </p>
                                     </div>
                                 @else
-                                    <div class="col-md-6 text-center">
-                                        <button class="btn btn-link" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')"><i class="glyphicon glyphicon-unchecked"></i> Marcar completado</button>
+                                    <div class="row-picture">
+                                        <a href="/capacitacion/ver/{!! $content->id !!}">
+                                            <img src="{!! $content->cover !!}" alt="{!! $content->name !!}" class="circle">
+                                        </a>
                                     </div>
-                                    <div class="col-md-6 text-center">
-                                        <a href="{!! $content->file !!}" target="_blank" class="btn btn-link"><i class="glyphicon glyphicon-download"></i> Descargar</a>
-                                    </div>
-                                @endif  
-                                </div>
+                                    <div class="row-content">
+                                        <div class="action-secondary" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')"><i class="material-icons" >radio_button_unchecked</i></div>
+                                        <h4 class="list-group-item-heading">
+                                    <a href="/capacitacion/ver/{!! $content->id !!}">
+                                        {!! $content->name !!}</a>
+                                </h4>
+                                <p class="list-group-item-text"> {!! $content->description !!}  <a href="{!! $content->file !!}" target="_blank"><i class="glyphicon glyphicon-download"></i> Descargar</a></p>
                             </div>
+                                @endif
                         </div>
-                    </div>
+                        <div class="list-group-separator"></div>
                     @endforeach
                 </div>
+            </div>
+        </div>
                 @endforeach
                 <h1 class="text-center text-muted"><i class="glyphicon glyphicon-education"></i></h1>
             </div>

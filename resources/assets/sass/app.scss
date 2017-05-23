@@ -9,13 +9,16 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/bootstrap-material-design/sass/bootstrap-material-design.scss";
 
+html {
+  background:linear-gradient(320deg, #a1def3, #68d582);
+  background-attachment: fixed;
+}
 
 body {
   padding-bottom: 70px;
-  background: none;
   background-attachment: fixed;
   height:100%;
-  background:$body-bg;
+  background:none;
   color:#FFF;
 }
 

@@ -1,15 +1,15 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="row">
                 <div class="col-md-12">
-                    <div class="jumbotron text-center bg--gradient">
-                        <h2><i class="glyphicon glyphicon-book"></i> Consulta</h2>
-                    </div>
+                    <h2><strong>MUUCH</strong>
+                    <a href="/muuch" class="btn btn-inverse">
+                        <i class="material-icons">arrow_left</i> Regresar
+                    </a> 
+                    </h2>
                 </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
@@ -81,46 +81,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4 bg-primary">
-                                <h4>FORO</h4>
-                            </div>
-                            <div class="col-md-8">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Publicación</th>
-                                        <th>Nombre</th>
-                                        <th>Ult. Act.</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="#">Publicacion de prueba</a></td>
-                                        <td>Juan Perez</td>
-                                        <td>02/05/17</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">Publicacion de prueba</a></td>
-                                        <td>Juan Perez</td>
-                                        <td>02/05/17</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">Publicacion de prueba</a></td>
-                                        <td>Juan Perez</td>
-                                        <td>02/05/17</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 @endsection

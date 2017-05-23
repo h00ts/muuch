@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -67,7 +67,7 @@
         @yield('content')
 
         @if(Auth::user())
-            <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin-navbar-collapse">
                         <span class="sr-only">Navegación</span>
