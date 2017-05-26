@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.config')
 
 @section('content')
     <div class="container">
@@ -33,7 +33,7 @@
                             </table>
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-link" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> NUEVO USUARIO</button>
+                        <button class="btn btn-primary" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> NUEVO USUARIO</button>
                     </div>
                 </div>
             </div>

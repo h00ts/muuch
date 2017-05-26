@@ -32,12 +32,12 @@ Route::group(['middleware' => 'auth'], function () {
         return redirect('/muuch');
     });
     Route::get('/muuch', 'HomeController@index');
-    Route::get('/capacitacion', 'LevelController@index');
-    Route::get('/capacitacion/inscribir', 'LevelController@signUp');
+    Route::get('/capacitacion', 'LevelsController@index');
+    Route::get('/capacitacion/inscribir', 'LevelsController@signUp');
     Route::get('/capacitacion/ver/{id}', 'Admin\\ContentController@show');
-    Route::post('/capacitacion/completar/{id}', 'LevelController@completeContent');
-    Route::get('/consulta', 'PageController@index');
-    Route::get('/examen', 'ExamController@index');
+    Route::post('/capacitacion/completar/{id}', 'LevelsController@completeContent');
+    Route::get('/consulta', 'PagesController@index');
+    Route::get('/examen', 'ExamsController@index');
 });
 
 Route::group([
@@ -54,4 +54,5 @@ Route::group([
     Route::resource('respuesta', 'AnswerController');
     Route::resource('contenido', 'ContentController', ['except' => ['show', 'index']]);
     Route::get('contenido/create/{module_id}', 'ContentController@create');
+    Route::resource('pagina', 'PageController');
 });

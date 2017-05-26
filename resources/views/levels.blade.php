@@ -3,31 +3,40 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                    <h2><i class="glyphicon glyphicon-education"></i> <strong>CAPACITACIÓN</strong></h2>
-            </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-       
                     <div class="panel-body">
-                        <p><span class="lead"><strong>Nivel {!! $user->level !!}</strong> | Ingeniero comunitario {!! $user->name !!}</span></p>
+                      @if($user->level === null)
+                        <p class="lead">Bienvenid@ a nuestra comunidad.</p>
+                        @endif
+                        <div class="list-group">
+                          <div class="list-group-item">
+                            <div class="row-picture">
+                              <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                            </div>
+                            <div class="row-content">
+                              <h4 class="list-group-item-heading">{!! $user->name !!}</h4>
+
+                              <p class="list-group-item-text"><strong>Nivel {!! ($user->level) ? $user->level : '0' !!}</strong> | Ingeniero comunitario</p>
+                            </div>
+                          </div>
+                        </div>
                         @if($user->level === null)
-                            <p>Bienvenido a la plataforma de capacitación MUUCH.</p>
-                            <p>Inscribete haciendo clic en el boton inferior para comenzar tu proceso de capacitacion.</p>
+                            <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                             <a href="/capacitacion/inscribir" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                             @else
-                            <strong>Completado: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</strong>
+                            <strong>Experiencia {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</strong>
 
-                            <div class="progress">
+                            <div class="progress progress-striped active">
                               <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
                                 {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                               </div>
                             </div>
-
                             @if(count($user->content) == $content_count)
-                                <h2 class="text-success"><i class="glyphicon glyphicon-ok"></i> ¡Buen trabajo!</h2>
-                            <p>Terminaste de estudiar los modulos, puedes tomar el examen.</p>
-                                <a href="#" class="btn btn-inverse btn-raised btn-block"><i class="glyphicon glyphicon-edit"></i> TOMAR EXAMEN</a>
+                                <h2 class="text-success">¡Buen trabajo! <i class="material-icons">thumb_up</i></h2>
+                                <p class="lead">Terminaste de estudiar los modulos.</p>
+                                <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
+                                <p>Toma el examen y averigua si aplicas para pasar al siguiente nivel.</p>
                             @endif
                         @endif
                     </div>
@@ -35,6 +44,7 @@
                 </div>
             </div>
             <div class="col-md-8">
+                <h2><i class="glyphicon glyphicon-education"></i> <strong>CAPACITACIÓN</strong></h2>
                 @include('admin.partials.alerts')
                 @foreach($modules as $module)
                     <div class="panel panel-default">
@@ -42,7 +52,6 @@
                             <h3 class="panel-title">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
                         </div>
                         <div class="panel-body">
-                            
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
                 <div class="list-group">
                 @foreach($module->contents as $content)

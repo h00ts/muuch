@@ -1,14 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.config')
 
 @section('content')
     <div class="container">
         <div class="row">
-        <div class="col-md-12">
-        <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
-            </div>
             <div class="col-lg-12">
+                <h2>Niveles</h2>
+                 <ul class="breadcrumb">
+                  <li><a href="/config">Configuración</a></li>
+                  <li class="active">Capacitación</li>
+                </ul>
                 @include('admin.partials.alerts')
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="{!! route('index') !!}">Configuración</a> / Niveles</h3>
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">

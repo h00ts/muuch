@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">¡Bienvenido a MUUCH!</div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">¡Bienvenid@ a MUUCH!</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/ingresar') }}">
                         {{ csrf_field() }}
@@ -40,11 +40,11 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-lg">
                                     Ingresar
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/recuperar/correo') }}">
+                                <a class="btn btn-link btn-sm" href="{{ url('/recuperar/correo') }}">
                                     Olvide mi contraseña
                                 </a>
                             </div>

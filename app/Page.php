@@ -12,6 +12,6 @@ class Page extends Model
      * @var array
      */
     protected $fillable = [
-        'level', 'module', 'name', 'description',
+        'name', 'markdown', 'icon', 'image',
     ];
 }

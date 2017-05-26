@@ -1,36 +1,41 @@
-@extends('layouts.app')
+@extends('layouts.config')
 
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
-            </div>
-            <div class="col-lg-12">
+             <div class="col-lg-12">
+                <h2>Nivel {!! $level !!}</h2>
+                 <ul class="breadcrumb">
+                  <li><a href="/config">Configuración</a></li>
+                  <li><a href="/config/niveles">Capacitación</a></li>
+                  <li class="active">Nivel {!! $level !!}</li>
+                </ul>
                 @include('admin.partials.alerts')
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / <a href="/config/niveles">Niveles</a> / Nivel {!! $modules->first()->level !!}</h3>
             </div>
             <div class="col-lg-12">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-body table-responsive">
                         <table class="table table-striped table">
                             <thead>
                                 <tr>
                                     <th> </th>
-                                    <th>Contenido <a href="{!! route('contenido.create') !!}" class="btn btn-link"><i class="glyphicon glyphicon-plus"></i></a> </th>
-                                    <th>Evaluación <a href="{!! route('examen.create') !!}" class="btn btn-link"><i class="glyphicon glyphicon-plus"></i></a> </th>
+                                    <th>Contenido</th>
+                                    <th>Evaluaciónes</th>
                                 </tr>
                             </thead>
                             @foreach($modules as $module)
                                 <tr>
                                     <td>
-                                    <p><span class="lead">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}:</span> {!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!} <a class="btn btn-link btn-sm" href="#" 
-                                                               data-toggle="modal"
-                                                               data-id="{!! $module->id !!}"
-                                                               data-num="{!! ($module->module > 9) ? $module->module : '0'.$module->module !!}"
-                                                               data-title="{!! $module->name !!}"
-                                                               data-description="{!! $module->description !!}"
-                                                               data-target="#moduleModal"><i class="glyphicon glyphicon-pencil"></i></a></p> 
+                                    <p class="lead">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!} <br>
+                                        <small>{!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!} <small>{!! $module->description !!}</small></small>
+                                     <a class="btn btn-link btn-sm" href="#" 
+                                       data-toggle="modal"
+                                       data-id="{!! $module->id !!}"
+                                       data-num="{!! ($module->module > 9) ? $module->module : '0'.$module->module !!}"
+                                       data-title="{!! $module->name !!}"
+                                       data-description="{!! $module->description !!}"
+                                       data-target="#moduleModal"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        </p>
                                     </td>
                                     <td>
                                         @if(count($module->contents))
@@ -55,14 +60,17 @@
                             @endforeach
                         </table>
                     </div>
-                    <div class="panel-footer">
-                        <a href="#" class="btn btn-link" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> MODULO</a>
-                        <div id="box--confirm" class="hidden">
-                            Confirma crear un nuevo modulo: <button id="button--dismiss" class="btn btn-default">No, regresar</button> | <button id="button--confirm" class="btn btn-primary">Si, crear</button>
-                        </div>
+                    <div id="box--confirm" class="panel-footer hidden">
+                            Crear un nuevo modulo? <button id="button--confirm" class="btn btn-primary">Si, crear</button> <button id="button--dismiss" class="btn btn-default">Cancelar</button>
                         <div class="hidden" id="state--loading"><i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Creando...</div>
                     </div>
                 </div>
+               
+                <a href="#" class="btn btn-inverse btn-raised" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> MODULO</a>
+                 @if(count($modules))
+                 <a href="{!! route('contenido.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Contenido</a>
+                 <a href="{!! route('examen.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Examen</a>
+                 @endif
             </div>
         </div>
     </div>

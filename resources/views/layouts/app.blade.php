@@ -39,7 +39,7 @@
 
                     <!-- Branding Image -->
                     <a href="{{ url('/muuch') }}" class="navbar-brand">
-                    <img src="/img/logo.png" alt="Iluméxico" class="img--logo">
+                    <img src="/img/logo.png" alt="Iluméxico" style="height:40px;">
                         <h3 class="visuallyhidden">{{ config('app.name', 'MUUCH') }}</h3>
                     </a>
                 </div>
@@ -53,11 +53,14 @@
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
                             <li><a href="{{ url('/registrar') }}">Registrate</a></li>
                         @else
-                            <li><a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Cerrar sesión
-                                        </a></li>
+                        <li>
+                            <a href="{{ url('/logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                <i class="material-icons">exit_to_app</i>
+                            </a>
+                            <form id="logout-form" action="/salir" method="POST">{{ csrf_field() }}</form>
+                        </li>
                         @endif
                     </ul>
                 </div>
@@ -66,29 +69,6 @@
 
         @yield('content')
 
-        @if(Auth::user())
-            <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid">
-                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin-navbar-collapse">
-                        <span class="sr-only">Navegación</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="admin-navbar-collapse">                
-                    <ul class="nav navbar-nav navbar-left">
-                    <li><a href="/config"><i class="glyphicon glyphicon-cog"></i> Configuración</a></li>
-                    </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/config/pages"><i class="glyphicon glyphicon-book"></i> Paginas</a></li>
-                    <li><a href="/config/niveles"><i class="glyphicon glyphicon-education"></i> Capacitación</a></li>
-                    <li><a href="/config/usuarios"><i class="glyphicon glyphicon-user"></i> Usuarios</a></li>
-                    <li><a href="/config/comunicado/create"><i class="glyphicon glyphicon-plus"></i> Nuevo comunicado</a></li>
-                </ul>
-                </div>
-            </div>
-        </nav>
-        @endif
 
     </div>
 

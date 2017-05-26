@@ -1,16 +1,18 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "vendor/creativetimofficial/material-kit/assets/sass/material-kit.scss";
 @import "node_modules/bootstrap-material-design/sass/bootstrap-material-design.scss";
+//@import "vendor/creativetimofficial/paper-kit/assets/sass/ct-paper.scss";
 
 html {
-  background:linear-gradient(320deg, #a1def3, #68d582);
+  background:#f9a367 ; //linear-gradient(320deg, #FF5F00, #fef8cc); //$body-bg;
   background-attachment: fixed;
 }
 
@@ -19,11 +21,7 @@ body {
   background-attachment: fixed;
   height:100%;
   background:none;
-  color:#FFF;
-}
-
-.panel {
-  color:#636b6f;
+  -webkit-font-smoothing: antialiased;
 }
 
 h3.visuallyhidden {
@@ -39,6 +37,16 @@ h3.visuallyhidden {
  
 .img--logo {
 	height:auto;
+}
+
+.link {
+  display:block;
+  padding:.8em 0;
+}
+
+.link:hover {
+  color:#FFF;
+  text-decoration:none;
 }
 
 .btn--dashboard, .btn--dashboard:link, .btn--dashboard:active, .btn--dashboard:visited {

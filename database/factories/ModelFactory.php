@@ -22,3 +22,29 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Thread::class, function (Faker\Generator $faker) {
+    return [
+    	'user_id' => function(){
+    		return factory('App\User')->create()->id;
+    	},
+    	'category_id' => 1,
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph,
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Reply::class, function (Faker\Generator $faker) {
+    return [
+    	'user_id' => function(){
+    		return factory('App\User')->create()->id;
+    	},
+    	'thread_id' => function(){
+    		return factory('App\Thread')->create()->id;
+    	},
+        'body' => $faker->paragraph,
+    ];
+});

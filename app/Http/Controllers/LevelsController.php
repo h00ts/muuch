@@ -7,7 +7,7 @@ use App\Module;
 use App\Content;
 use Illuminate\Support\Facades\Auth;
 
-class LevelController extends Controller
+class LevelsController extends Controller
 {
     /**
      * Create a new controller instance.

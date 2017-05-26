@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Page;
 use Illuminate\Support\Facades\Auth;
 
-class PageController extends Controller
+class PagesController extends Controller
 {
     /**
      * Create a new controller instance.

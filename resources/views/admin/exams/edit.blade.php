@@ -1,41 +1,45 @@
-@extends('layouts.app')
-
+@extends('layouts.config')
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
-            </div>
             <div class="col-lg-12">
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / <a href="/config/niveles">Niveles</a> / <a href="/config/niveles/{!! $exam->module->level !!}/edit">Nivel {!! $exam->module->level.'</a> &rarr; Examen '.$exam->name !!}</h3>
+                <h2>Editor de Examenes</h2>
+                 <ul class="breadcrumb">
+                  <li><a href="/config">Configuración</a></li>
+                  <li><a href="/config/niveles">Capacitación</a></li>
+                  <li><a href="/config/niveles/">Niveles</a></li>
+                  <li><a href="/config/niveles/{!! $exam->module->level !!}/edit">Nivel {!! $exam->module->level !!}</a></li>
+                  <li class="active">Modulo {!! $exam->module->module !!}</li>
+                </ul>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
 
         <div class="panel panel-default">
-                    <div class="panel-body">
+                    <div class="panel-body row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Examen</label>
+                                <input type="text" value="{!! $exam->name !!}" class="form-control">
+                            </div>
+                        </div>
                       <div class="col-md-12">   
-                            @foreach($exam->questions as $question)
+                    @foreach($exam->questions as $question)
                       <div class="panel panel-default">  
                       <div class="panel-body">     
-                      <div class="row">
-                         <form action="{!! route('pregunta.update', $question->id) !!}" method="POST">
-                        {!! csrf_field() !!}
-                        <input type="hidden" name="_method" value="PUT">
-                        <div class="col-xs-12">
-                        <div class="input-group">
-                            <input type="text" name="question-{!! $question->id !!}" value="{!! $question->question !!}" class="form-control" style="font-weight:bold">
-                            <span class="input-group-btn">
-                                <a href="#" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="material-icons">add_circle</i></a>
-                                <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons">check_circle</i></button>
-         
-                            <button type="button" class="btn btn-raised btn-sm btn-danger"><i class="material-icons">delete_forever</i></button> 
-                            </span>
-                        </div>
-                        </div>
-                        </form>
-                        <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}"><i class="material-icons">visibility</i> Respuestas</a>
-                     </div>
+                        Pregunta ID {!! $question->id !!}
+                             <form action="{!! route('pregunta.update', $question->id) !!}" method="POST">                                
+                              {!! csrf_field() !!}
+                                <input type="hidden" name="_method" value="PUT">
+                                <input type="text" name="question-{!! $question->id !!}" value="{!! $question->question !!}" class="form-control" style="font-weight:bold">
+                            
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}"><i class="material-icons">visibility</i> Respuestas</button>
+                                <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="material-icons">add_circle</i></button>
+                                <button type="submit" class="btn btn-success btn-sm btn-raised pull-right"><i class="material-icons">check_circle</i></button>
+                                <button type="button" class="btn btn-raised btn-sm btn-danger pull-right"><i class="material-icons">delete_forever</i></button> 
+                                        
+                            </form>
+
                 <div class="row panel-collapse collapse" id="answers-{!! $question->id !!}">
                 @foreach($question->answers as $answer) 
                 <div class="col-xs-12">
@@ -45,12 +49,12 @@
                         <input type="hidden" name="_method" value="PUT">
                   
                         <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-md-12 form-group">
                                 <div class="input-group">
-                                        <div class="input-group-btn">
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-success">
-                                                    <input type="radio" name="correct" value="1" {!! ($answer->correct) ? 'active' : '' !!}> <i class="material-icons">star_border</i> 
+                                        <div class="input-group-addon">
+                                            <div class="togglebutton">
+                                                <label>
+                                                    <input type="checkbox" name="correct" value="1"{!! ($answer->correct) ? ' checked' : ' ' !!}> 
                                                 </label>
                                             </div>
                                         </div>
@@ -59,7 +63,7 @@
                             </div>
                             <div class="col-md-3">
                                     <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons">check</i></button>
-                                    <a href="#" class="btn btn-danger btn-sm btn-raised"><i class="material-icons">delete_forever</i></a>
+                                    <button type="button" data-toggle="modal" data-target="#modal-answer-delete" class="btn btn-danger btn-sm btn-raised" onclick="set_delete_answer_modal({!! $answer->id !!}, '{!! $answer->answer !!}')"><i class="material-icons">delete_forever</i></button>
                             </div>
                         </div>
     
@@ -205,17 +209,17 @@
                     <h4 id="question_answer"></h4>
                 </div>
                     <div class="col-lg-12">
-                        <p>Confirma que deseas borrar </p>
+                        <p>Confirma que deseas borrar: <span id="answer_name"></span></p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-8">
-                        <form action="{!! route('respuesta.destroy', 0) !!}" method="POST">
+                        <form action="{!! route('respuesta.destroy', 0) !!}" method="POST" id="delete_answer">
                         {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-link text-danger"><i class="glyphicon glyphicon-trash text-danger"></i></button> 
+                        <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash text-danger"></i> CONFIRMAR</button> 
                         </form>
                     </div>
                 </div>
@@ -227,11 +231,16 @@
 @endsection
 
 @section('scripts')
-        <script>
-             function set_question(id, question) {
+<script type="text/javascript">
+                function set_question(id, question) {
                 $("#question_answer").html(question);
                 $("#question_id").attr("value", id);
-            }
-        </script>
+                }
+
+                function set_delete_answer_modal(id, name) {
+                    $("#delete_answer").attr("action", "/config/respuesta/"+id);
+                    $("#answer_name").html(name);
+                }
+</script>
 @endsection
 

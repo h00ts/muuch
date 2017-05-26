@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.config')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
+                <ul class="breadcrumb">
+                  <li><a href="javascript:void(0)">Configuraión</a></li>
+                  <li class="active">Capacitación</li>
+                </ul>
             </div>
             <div class="col-lg-12">
                 <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / <a href="/config/niveles">Niveles</a> / <a href="/config/niveles/{!! $content->module->level !!}/edit">Nivel {!! $content->module->level.'</a> &rarr; Modulo '.$content->module->module !!}</h3>

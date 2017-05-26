@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Question;
+use App\Answer;
 
 class AnswerController extends Controller
 {
@@ -74,7 +75,15 @@ class AnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->input();
+        $answer = Answer::findOrFail($id);
+        $answer->answer = $data['answer-'.$id];
+        if(array_key_exists('correct', $data)){
+            $answer->correct = 1;
+        }
+        $answer->save();
+
+        return back()->withSuccess('Actualizaste la respuesta: '.$answer->answer);
     }
 
     /**
@@ -85,6 +94,8 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Answer::destroy($id);
+
+        return back()->withSuccess('Eliminaste una respuesta.');
     }
 }
