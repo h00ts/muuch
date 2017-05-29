@@ -12,6 +12,11 @@ class Page extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'markdown', 'icon', 'image',
+        'category_id', 'name', 'markdown', 'icon', 'image',
     ];
+
+    public function category()
+    {
+    	return $this->belongsTo('App\Category');
+    }
 }

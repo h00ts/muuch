@@ -29,15 +29,16 @@ Route::get('registro/nuevo', function(){
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
-        return redirect('/muuch');
+        return redirect('/inicio');
     });
-    Route::get('/muuch', 'HomeController@index');
+    Route::get('/inicio', 'HomeController@index');
     Route::get('/capacitacion', 'LevelsController@index');
     Route::get('/capacitacion/inscribir', 'LevelsController@signUp');
     Route::get('/capacitacion/ver/{id}', 'Admin\\ContentController@show');
     Route::post('/capacitacion/completar/{id}', 'LevelsController@completeContent');
-    Route::get('/consulta', 'PagesController@index');
+    //Route::get('/muuch/paginas', 'PagesController@index');
     Route::get('/examen', 'ExamsController@index');
+    Route::resource('/muuch', 'PagesController');
 });
 
 Route::group([
@@ -54,5 +55,6 @@ Route::group([
     Route::resource('respuesta', 'AnswerController');
     Route::resource('contenido', 'ContentController', ['except' => ['show', 'index']]);
     Route::get('contenido/create/{module_id}', 'ContentController@create');
-    Route::resource('pagina', 'PageController');
+    Route::resource('muuch', 'PageController');
+    Route::resource('category', 'CategoryController');
 });

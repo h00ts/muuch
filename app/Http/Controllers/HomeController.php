@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Module;
 use App\Content;
 use App\Thread;
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -35,11 +36,13 @@ class HomeController extends Controller
         }
         ($content_count == 0) ? $content_count = 1 : $content_count;
         $threads = Thread::paginate(5);
+        $categories = Category::all();
 
         return view('home')
             ->withUser($user)
             ->withModules($modules)
             ->withThreads($threads)
+            ->withCategories($categories)
             ->withContentCount($content_count);
     }
 }

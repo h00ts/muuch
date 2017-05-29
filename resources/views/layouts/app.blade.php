@@ -38,8 +38,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a href="{{ url('/muuch') }}" class="navbar-brand">
-                    <img src="/img/logo.png" alt="Iluméxico" style="height:40px;">
+                    <a href="{{ url('/') }}" class="navbar-brand">
+                    <img src="/img/logo_h.png" alt="Iluméxico" style="height:40px;">
                         <h3 class="visuallyhidden">{{ config('app.name', 'MUUCH') }}</h3>
                     </a>
                 </div>
@@ -53,14 +53,17 @@
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
                             <li><a href="{{ url('/registrar') }}">Registrate</a></li>
                         @else
-                        <li>
-                            <a href="{{ url('/logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                <i class="material-icons">exit_to_app</i>
-                            </a>
-                            <form id="logout-form" action="/salir" method="POST">{{ csrf_field() }}</form>
-                        </li>
+                            <li><a href="{{ url('/ingresar') }}"><strong>MUUCH</strong></a></li>
+                            <li><a href="{{ url('/registrar') }}">Capacitación</a></li>
+                            <li><a href="{{ url('/registrar') }}">Foro</a></li>
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Salir <i class="material-icons">exit_to_app</i>
+                                </a>
+                                <form id="logout-form" action="/salir" method="POST">{{ csrf_field() }}</form>
+                            </li>
                         @endif
                     </ul>
                 </div>

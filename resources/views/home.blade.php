@@ -5,17 +5,16 @@
         <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                      @if($user->level === null)
-                        <p class="lead">¡Bienvenid@ a la comunidad MUUCH!</p>
-                        @endif
                         <div class="list-group">
                           <div class="list-group-item">
                             <div class="row-picture">
-                              <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                              <img class="circle" src="/img/default_avatar.png" alt="icon">
                             </div>
                             <div class="row-content">
-                              <h4 class="list-group-item-heading">{!! $user->name !!}</h4>
-
+                              <h4 class="list-group-item-heading"><small>
+                                @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "привет!", "Konnichiwa",  "Hallo!", "Ciao!"]))
+                                {!! $hola->random() !!}
+                              </small><br>{!! $user->name !!}</h4>
                               <p class="list-group-item-text"><strong>Ingeniero comunitario</strong></p>
                               <p>{!! $user->email !!}</p>
                             </div>
@@ -41,16 +40,14 @@
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                                 <p>Toma el examen y averigua si aplicas para pasar al siguiente nivel.</p>
                             @endif
-                    
                         @endif
                     </div>
-
                 </div>
         </div>
         <div class="col-md-8">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><a href="/consulta" class="link"><i class="material-icons">accessibility</i> <strong>MUUCH</strong> <i class="material-icons pull-right">arrow_right</i> </a></h3>
+                <h3 class="panel-title"><a href="/muuch" class="link"><i class="material-icons">accessibility</i> <strong>MUUCH</strong> <i class="material-icons pull-right">arrow_right</i> </a></h3>
               </div>
                 <div class="panel-body">
                     <div class="row">
@@ -58,29 +55,21 @@
                             <div class="nav-tabs-navigation">
                               <div class="nav-tabs-wrapper">
                                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                                  <li class="active"><a href="#consulta" data-toggle="tab">CONSULTA</a></li>
-                                  <li><a href="#formatos" data-toggle="tab">FORMATOS</a></li>
-                                  <li><a href="#cultura" data-toggle="tab">CULTURA</a></li>
-                                  <li><a href="#equipo" data-toggle="tab">EQUIPO</a></li>
+                                  @foreach($categories->where('parent_id', 0) as $category)
+                                    <li><a href="#{!! $category->name !!}" data-toggle="tab">{!! $category->name !!}</a></li>
+                                  @endforeach
                                 </ul>
                               </div>
                             </div>
                      
                             <div id="muuch" class="tab-content">
-                              <div class="tab-pane active" id="consulta">
-                                <a href="#" class="btn btn-simple btn-danger"><i class="material-icons">find_in_page</i> Manuales, guias y guiones</a>
-                                <a href="#" class="btn btn-simple btn-danger"><i class="material-icons">video_library</i> Videos</a>
-                                <a href="#" class="btn btn-simple btn-danger"><i class="material-icons">build</i> Herramientas</a>
-                              </div>
-                              <div class="tab-pane fade" id="formatos">
-                                
-                              </div>
-                              <div class="tab-pane fade" id="cultura">
-                               
-                              </div>
-                              <div class="tab-pane fade" id="equipo">
-                                
-                              </div>
+                              @foreach($categories->where('parent_id', 0) as $category)
+                                <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->name !!}">
+                                  @foreach($categories->where('parent_id', $category->id) as $subcategory)
+                                    <a href="/muuch/{!! $subcategory->id !!}" class="btn">{!! $subcategory->name !!}</a>
+                                  @endforeach
+                                </div>
+                              @endforeach
                             </div>
                         </div>
                     </div>
@@ -88,7 +77,7 @@
                 </div>
             </div>
             
-            <div class="panel panel-info">
+            <div class="panel panel-warning">
               <div class="panel-heading">
                 <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discución</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
               </div>

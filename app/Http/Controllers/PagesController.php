@@ -20,6 +20,13 @@ class PagesController extends Controller
 
     public function index()
     {
-        return view('pages');
+        return view('pages.index');
     }
+
+    public function show($id)
+    {
+        $page = Page::findOrFail($id);
+        return view('pages.show')->withPage($page);
+    }
+
 }
