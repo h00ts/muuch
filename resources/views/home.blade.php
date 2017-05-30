@@ -62,12 +62,27 @@
                               </div>
                             </div>
                      
-                            <div id="muuch" class="tab-content">
+                            <div id="subcategorias" class="tab-content">
                               @foreach($categories->where('parent_id', 0) as $category)
-                                <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->name !!}">
+                                <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->name !!}" data-tabs="tabs">
                                   @foreach($categories->where('parent_id', $category->id) as $subcategory)
-                                    <a href="/muuch/{!! $subcategory->id !!}" class="btn">{!! $subcategory->name !!}</a>
+                                    <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab">{!! $subcategory->name !!}</a>
                                   @endforeach
+                                </div>
+                              @endforeach
+                            </div>
+
+                            <hr>
+
+                            <div id="muuch" class="tab-content">
+                              @foreach($categories->where('parent_id', '>', 0) as $subcategory)
+                                <div class="tab-pane fade in" id="{!! str_slug($subcategory->name) !!}">
+                                  <ul class="nav nav-pill">
+                                    @foreach($subcategory->pages as $page)
+                                    <li><a href="/muuch/{!! $page->id !!}">{!! $page->name !!}</a></li>
+                                    @endforeach
+                                    <li><a href="/muuch/{!! $page->id !!}">Todos los {!! $subcategory->name !!}...</a></li>
+                                  </ul>
                                 </div>
                               @endforeach
                             </div>

@@ -6,26 +6,26 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                      @if($user->level === null)
-                        <p class="lead">Bienvenid@ a nuestra comunidad.</p>
-                        @endif
                         <div class="list-group">
                           <div class="list-group-item">
                             <div class="row-picture">
-                              <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                              <img class="circle" src="/img/default_avatar.png" alt="icon">
                             </div>
                             <div class="row-content">
-                              <h4 class="list-group-item-heading">{!! $user->name !!}</h4>
-
-                              <p class="list-group-item-text"><strong>Nivel {!! ($user->level) ? $user->level : '0' !!}</strong> | Ingeniero comunitario</p>
+                              <h4 class="list-group-item-heading"><small>
+                                @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "привет!", "Konnichiwa",  "Hallo!", "Ciao!"]))
+                                {!! $hola->random() !!}
+                              </small><br>{!! $user->name !!}</h4>
+                              <p class="list-group-item-text"><strong>Ingeniero comunitario</strong></p>
+                              <p>{!! $user->email !!}</p>
                             </div>
                           </div>
                         </div>
                         @if($user->level === null)
                             <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
-                            <a href="/capacitacion/inscribir" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
+                            <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                             @else
-                            <strong>Experiencia {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</strong>
+                            <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</span></h4>
 
                             <div class="progress progress-striped active">
                               <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
@@ -40,7 +40,6 @@
                             @endif
                         @endif
                     </div>
-
                 </div>
             </div>
             <div class="col-md-8">
@@ -74,16 +73,16 @@
                                     </div>
                                 @else
                                     <div class="row-picture">
-                                        <a href="/capacitacion/ver/{!! $content->id !!}">
+                                        <a href="{{ ($content->markdown != null) ? '/capacitacion/ver/'.$content->id : $content->file }}" {{ ($content->markdown == null) ? 'target="_blank"' : '' }}>
                                             <img src="{!! $content->cover !!}" alt="{!! $content->name !!}" class="circle">
                                         </a>
                                     </div>
                                     <div class="row-content">
-                                        <div class="action-secondary" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')"><i class="material-icons" >radio_button_unchecked</i></div>
+                                        <div class="action-secondary" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')"><i class="material-icons">radio_button_unchecked</i></div>
                                         <h4 class="list-group-item-heading">
-                                    <a href="/capacitacion/ver/{!! $content->id !!}">
-                                        {!! $content->name !!}</a>
-                                </h4>
+                                            <a href="{{ ($content->markdown != null) ? '/capacitacion/ver/'.$content->id : $content->file }}" {{ ($content->markdown == null) ? 'target="_blank"' : '' }}>
+                                                {!! $content->name !!}</a>
+                                        </h4>
                                 <p class="list-group-item-text"> {!! $content->description !!}  <a href="{!! $content->file !!}" target="_blank"><i class="glyphicon glyphicon-download"></i> Descargar</a></p>
                             </div>
                                 @endif
@@ -108,16 +107,16 @@
                 <button type="button" class="close" data-dismiss="modal">
                     &times;
                 </button>
-                <h4 class="modal-title">Confirma que has completado:</h4>
+                <h4 class="modal-title">Estas completando:</h4>
             </div>
             <div class="modal-body">
-                <h4 class="text-center" id="content_name"></h4>
+                <p class="text-center h3" id="content_name"></p>
+                <p>Asegurate de haber leido y entendido el contenido dentro de este bloque antes de completarlo.</p>
             </div>
             <div class="modal-footer">
                     <form action="/capacitacion/completar/" method="POST" id="complete_content">
                     {!! csrf_field() !!}
-                    <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-check"></i> Confirmar y completar</button>
-                   <button type="button" data-dismiss="modal" class="btn btn-default">Cancelar</button>
+                    <button type="submit" class="btn btn-success btn-raised"><i class="glyphicon glyphicon-check"></i> He leído y comprendido este bloque</button>
                     </form>
             </div>
         </div>

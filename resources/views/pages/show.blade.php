@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2><strong>MUUCH</strong> {!! $page->name !!}
+            <h2><strong>MUUCH</strong> {!! $name !!}
             <a href="/muuch" class="btn btn-default pull-right">
                 <i class="material-icons">arrow_left</i> Regresar
             </a> 
@@ -14,7 +14,23 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-10 col-sm-offset-1" id="page-display">
-                            {!! $page->markdown !!}
+                            {{ $markdown }}
+                            <h3>{{ count($page->contents) ? 'Recursos' : '' }}</h3>  
+                            <div class="list-group">
+                            @foreach($page->contents as $content)
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                      <i class="material-icons">insert_drive_file</i>
+                                    </div>
+                                    <div class="row-content">
+                                      <div class="action-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Modificado el {{ $content->updated_at->format('d/m/Y') }} {{ ($content->module_id) ? '| Modulo '.$content->module->module : '' }}"><i class="material-icons">info</i></div>
+                                      <h4 class="list-group-item-heading"><a href="{{ $content->file }}">{{ $content->name }}</a></h4>
+                                      <p class="list-group-item-text">{{ $content->description }}</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                            @endforeach
+                            </div>  
                         </div>
                     </div>
                 </div>

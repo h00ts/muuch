@@ -23,10 +23,9 @@ class PagesController extends Controller
         return view('pages.index');
     }
 
-    public function show($id)
+    public function show(Page $page)
     {
-        $page = Page::findOrFail($id);
-        return view('pages.show')->withPage($page);
+        return view('pages.show', $page)->withPage($page);
     }
 
 }

@@ -19,4 +19,9 @@ class Page extends Model
     {
     	return $this->belongsTo('App\Category');
     }
+
+    public function contents()
+    {
+        return $this->hasMany('App\Content');
+    }
 }

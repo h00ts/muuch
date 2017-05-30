@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Module;
 use App\Content;
+use App\Page;
 use Laravelista\Sherlock\Sherlock;
 
 class ContentController extends Controller
@@ -40,15 +41,15 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        $module = Module::findOrFail($request->input('module_id'));
-        $content = $module->contents()->create([
-            'name' => $request->input('name'),
-            'html' => $request->input('html'),
-            'cover' => $request->input('cover'),
-            'file' => $request->input('file'),
-        ]);
+        if($request->input('module_id')){
+            $module = Module::find($request->input('module_id'));
+            $content = $module->contents()->create($request->all());
+        } else if($request->input('page_id')) {
+            $page = Page::find($request->input('page_id'));
+            $page->contents()->create($request->all());
+        }
 
-        return back()->withSuccess('Contenido '.$content->name.' creado para el modulo '.$module->name);
+        return redirect()->back()->withSuccess('Contenido creado con exito.');
     }
 
     /**

@@ -36,11 +36,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = Category::create(
-            ['name' => $request->name, 'description' => ' ']
-        );
+        $category = Category::create($request->all());
 
-        return redirect()->route('category.edit', $category)->withSuccess('Creaste la categoria '.$category->name);
+        return redirect()->route('categoria.edit', $category)->withSuccess('Creaste la categoria '.$category->name);
     }
 
     /**
@@ -62,7 +60,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.edit')->withCategory($category);
+        $parents = Category::where('parent_id', null)->get();
+
+        return view('admin.category.edit', $category->toArray())->withParents($parents);
     }
 
     /**
@@ -72,9 +72,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Category $category, Request $request)
     {
-        //
+        $category->update($request->all());
+
+        return back()->withSuccess('Categoria actualizada.');
     }
 
     /**
@@ -85,6 +87,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return true;
     }
 }

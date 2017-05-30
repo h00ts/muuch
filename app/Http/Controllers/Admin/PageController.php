@@ -19,6 +19,19 @@ class PageController extends Controller
         	->withPages($pages);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Page $page)
+    {
+        $contents = Page::find($page->id);
+
+        return view('admin.pages.edit', $page->toArray())->withPage($contents);
+    }
+
     public function store(Request $request)
     {
         $data = $request->input();

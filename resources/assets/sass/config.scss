@@ -5,6 +5,11 @@
 // Variables
 @import "variables";
 
+@font-face {
+    font-family: 'themify';
+    src: url('vendor/creativetimofficial/paper-dashboard/assets/fonts/themify.woff');
+}
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "vendor/creativetimofficial/paper-dashboard/assets/sass/paper-dashboard.scss";
@@ -18,7 +23,7 @@ body {
   padding-bottom: 70px;
   background-attachment: fixed;
   height:100%;
-  background:none;
+  background:$body-bg;
 }
 
 h3.visuallyhidden {
@@ -30,6 +35,32 @@ h3.visuallyhidden {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.checkbox input[type="checkbox"], .radio input[type="radio"] {
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+    width: 19px;
+    height: 19px;
+    top: -2px;
+}
+
+.form-horizontal .checkbox:first-child, .form-horizontal .checkbox.checkbox-inline, .form-horizontal .checkbox.radio-inline, .form-horizontal .radio:first-child, .form-horizontal .radio.checkbox-inline, .form-horizontal .radio.radio-inline {
+    margin-top: 13px;
+}
+.checkbox.checkbox-inline {
+    margin-top: 0;
+}
+.form-horizontal .checkbox, .form-horizontal .radio {
+    padding-top: 0;
+}
+
+.checkbox label {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding-left: 10px;
 }
  
 .img--logo {

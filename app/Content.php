@@ -13,12 +13,17 @@ class Content extends Model
      * @var array
      */
     protected $fillable = [
-    	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file',
+    	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file', 'page_id'
     ];
 
     public function module()
     {
     	return $this->belongsTo('App\Module');
+    }
+
+    public function page()
+    {
+        return $this->belongsTo('App\Page');
     }
 
     public function users()

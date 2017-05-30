@@ -3,11 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center"><i class="glyphicon glyphicon-education"></i> Capacitación</h2>
-            </div>
             <div class="col-lg-12">
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / Crear contenido</h3>
+                <h3><i class="glyphicon glyphicon-cog"></i> Crear contenido</h3>
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">

@@ -71,6 +71,7 @@
                  <a href="{!! route('contenido.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Contenido</a>
                  <a href="{!! route('examen.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Examen</a>
                  @endif
+                 <hr>
             </div>
         </div>
     </div>

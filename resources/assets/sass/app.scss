@@ -9,10 +9,11 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 //@import "vendor/creativetimofficial/material-kit/assets/sass/material-kit.scss";
 @import "node_modules/bootstrap-material-design/sass/bootstrap-material-design.scss";
+@import "node_modules/bootstrap-material-design/sass/ripples.scss";
 //@import "vendor/creativetimofficial/paper-kit/assets/sass/ct-paper.scss";
 
 html {
-  background:#f4f3ef ; //linear-gradient(320deg, #FF5F00, #fef8cc); //$body-bg;
+  background:$body-bg; //linear-gradient(320deg, #FF5F00, #fef8cc); //$body-bg;
   background-attachment: fixed;
 }
 
@@ -20,8 +21,31 @@ body {
   padding-bottom: 70px;
   background-attachment: fixed;
   height:100%;
-  background:none;
+  background:$body-bg;
   -webkit-font-smoothing: antialiased;
+}
+
+.panel, .panel-body, .tab-content, .tab-pane {
+  height:auto;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+.tab-pane {
+  transform:scaleY(0);
+}
+
+.tab-pane.active {
+  transform:scaleY(1);
+}
+
+.action-secondary {
+  padding-top:.5em;
+  transition: all 0.2s ease;
+}
+
+.action-secondary:hover {
+  transform:scale(2);
 }
 
 h3.visuallyhidden {

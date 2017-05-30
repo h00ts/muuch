@@ -56,5 +56,5 @@ Route::group([
     Route::resource('contenido', 'ContentController', ['except' => ['show', 'index']]);
     Route::get('contenido/create/{module_id}', 'ContentController@create');
     Route::resource('muuch', 'PageController');
-    Route::resource('category', 'CategoryController');
+    Route::resource('categoria', 'CategoryController');
 });

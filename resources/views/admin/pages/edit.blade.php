@@ -2,60 +2,63 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <ul class="breadcrumb">
-                  <li><a href="javascript:void(0)">Configuraión</a></li>
-                  <li class="active">Capacitación</li>
-                </ul>
-            </div>
             <div class="col-lg-12">
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / <a href="/config/niveles">Niveles</a> / <a href="/config/niveles/{!! $content->module->level !!}/edit">Nivel {!! $content->module->level.'</a> &rarr; Modulo '.$content->module->module !!}</h3>
+                <h3>Editar Página</h3>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <form action="{!! route('contenido.update', $content->id) !!}" method="POST">
+                    <form action="{!! route('muuch.update', $id) !!}" method="POST">
                     {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="PUT">
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="module">CONTENIDO</label>
-                        </div>
-                        <div class="form-group">
                             <label for="name">Titulo</label>
-                            <input type="text" name="name" class="form-control input-lg" value="{!! $content->name !!}">
-                        </div>
-                        <div class="form-group">
-                            <strong>Mostrar a </strong>
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default active">
-                                    <input type="checkbox" autocomplete="off" checked> Ingenieros Comunitarios
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="checkbox" autocomplete="off"> Coordinadores Regionales
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="checkbox" autocomplete="off"> Administradores
-                                </label>
-                            </div>
+                            <input type="text" name="name" class="form-control border-input input-lg" value="{!! $name !!}">
                         </div>
                        <div class="form-group">
-                           <label for="markdown">Markdown</label>
-                           <textarea name="markdown" class="form-control" id="markdown" cols="30" rows="20">{!! $content->markdown !!}</textarea>
+                          <table class="table table-responsive">
+                              <tr>
+                                  <th>Contenido</th>
+                              </tr>
+                              @foreach($page->contents as $content)
+                                <tr>
+                                    <td>{{ $content->name }}</td>
+                                </tr>
+                                @endforeach
+                                <tr>
+                                    <td><a href="#" data-toggle="modal" data-target="#newContentModal">Crear contenido</a> | <a href="#" data-toggle="modal" data-target="#contentModal">Asignar contenido</a></td>
+                                </tr>
+                          </table>
                        </div>
                         <div class="form-group">
-                            <label for="file">Descargable</label>
-                            <input type="text" name="file" class="form-control input-lg" value="{!! $content->file !!}">
+                            <label for="file">Icono</label>
+                            <input type="text" name="file" class="form-control border-input input-lg" value="{!! $icon !!}">
                         </div>
                         <div class="form-group">
                             <label for="cover">Caratula</label>
-                            <input type="text" name="cover" class="form-control input-lg" value="{!! $content->cover !!}">
+                            <input type="text" name="cover" class="form-control border-input input-lg" value="{!! $image !!}">
                         </div>
-
+                         <div class="form-group form-horizontal">
+                            <strong>Mostrar a </strong>
+                            <div class="form-group">
+                                <div class="checkbox checkbox-inline">
+                                    <input type="checkbox"> 
+                                    <label>
+                                        Ingenieros Comunitarios
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-inline">
+                                    <input type="checkbox"> 
+                                    <label>
+                                        Ingenieros Comunitarios
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-footer">
                         <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
-                        <a href="#" class="btn btn-link"><i class="glyphicon glyphicon-eye-open"></i> Vista previa</a>
                     </div>
                     </form>
                 </div>
@@ -63,6 +66,93 @@
         </div>
     </div>
 @endsection
+
+@section('modals')
+<div class="modal fade" id="newContentModal"
+     tabindex="-1" role="dialog"
+     aria-labelledby="newContentModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{!! route('contenido.store') !!}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="page_id" value="{{ $id }}">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Crear contenido</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Titulo</label>
+                    <input type="text" name="name" id="content-name" class="form-control border-input input-lg" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="file">Archivo</label>
+                    <input type="text" name="file" id="content-file" class="form-control border-input input-md" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="cover">Carátula</label>
+                    <input type="text" name="cover" id="content-file" class="form-control border-input input-md" value="/img/content_default.png" required="required">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal">Cancelar</button>
+      <button type="submit" class="btn btn-primary">
+        Guardar
+      </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="contentModal"
+     tabindex="-1" role="dialog"
+     aria-labelledby="contentModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{!! route('contenido.store') !!}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="page_id">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Crear contenido</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Titulo</label>
+                    <input type="text" name="name" id="content-name" class="form-control border-input input-lg" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="file">Archivo</label>
+                    <input type="text" name="file" id="content-file" class="form-control border-input input-md" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="cover">Carátula</label>
+                    <input type="text" name="cover" id="content-file" class="form-control border-input input-md" value="/img/content_default.png" required="required">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal">Cancelar</button>
+      <button type="submit" class="btn btn-primary">
+        Guardar
+      </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
 @section('scripts')
     <script type="text/javascript">
         $(function(){
