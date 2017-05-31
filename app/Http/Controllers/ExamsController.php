@@ -35,4 +35,5 @@ class ExamsController extends Controller
 
 		return view('exam')->withExams($exams)->withLevel($level);
 	}
+
 }

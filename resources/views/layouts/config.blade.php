@@ -29,7 +29,7 @@
         @if(Auth::user())
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="{{ url('/muuch') }}">
+                <a href="{{ url('/config') }}">
                 <img src="/img/logo_h.png" alt="Iluméxico" class="img-responsive">
                     <h3 class="visuallyhidden">{{ config('app.name', 'MUUCH') }}</h3>
                 </a>
@@ -72,7 +72,8 @@
     </div>
 
        <div class="main-panel">
-                    <nav class="navbar navbar-default">
+
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
@@ -88,29 +89,25 @@
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-bell"></i>
-                                    <p class="notification">5</p>
-                                    <p>Acceso rapido</p>
+                                    <p class="notification"></p>
+                                    <p></p>
                                     <b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
+                                <li><a href="#">Salir</a></li>
                               </ul>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="ti-settings"></i>
-                                <p>Settings</p>
+                                <p></p>
                             </a>
                         </li>
                     </ul>
 
                 </div>
             </div>
-        </nav>
+        </nav> 
 
 
             @yield('content')
@@ -133,7 +130,7 @@
                     </ul>
                 </nav>
                 <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, hecho con <i class="material-icons">favorite</i> por <a href="mailto:ruslan@ilumexico.mx">Ruslan</a> con <a href="http://laravel.com">Laravel</a>, <a href="https://github.com/FezVrasta/bootstrap-material-design">Material Design</a> y <a href="https://www.creative-tim.com/product/paper-dashboard">Paper Dashboard</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, hecho con <3 por <a href="mailto:ruslan@ilumexico.mx">Ruslan</a> usando <a href="http://laravel.com">Laravel</a> & <a href="https://material.io">Material Design</a>
                 </div>
             </div>
         </footer>

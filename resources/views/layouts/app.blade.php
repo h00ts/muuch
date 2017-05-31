@@ -53,9 +53,9 @@
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
                             <li><a href="{{ url('/registrar') }}">Registrate</a></li>
                         @else
-                            <li><a href="{{ url('/ingresar') }}"><strong>MUUCH</strong></a></li>
-                            <li><a href="{{ url('/registrar') }}">Capacitación</a></li>
-                            <li><a href="{{ url('/registrar') }}">Foro</a></li>
+                            <li><a href="{{ url('/muuch') }}"><strong>MUUCH</strong></a></li>
+                            <li><a href="{{ url('/capacitacion') }}">Capacitación</a></li>
+                            <li><a href="{{ url('/foro') }}">Foro</a></li>
                             <li>
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
@@ -80,7 +80,9 @@
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script type="text/javascript">
-        $.material.init();
+        $(function () {
+            $.material.init();
+        });
     </script>
 
     @yield('scripts')

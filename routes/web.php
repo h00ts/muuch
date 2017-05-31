@@ -38,7 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/capacitacion/completar/{id}', 'LevelsController@completeContent');
     //Route::get('/muuch/paginas', 'PagesController@index');
     Route::get('/examen', 'ExamsController@index');
+    Route::post('/examen/entrega', 'ScoreController@store');
     Route::resource('/muuch', 'PagesController');
+    Route::get('/muuch/cat/{id}', 'PagesController@getCat');
 });
 
 Route::group([

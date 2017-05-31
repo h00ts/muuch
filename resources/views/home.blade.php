@@ -12,7 +12,7 @@
                             </div>
                             <div class="row-content">
                               <h4 class="list-group-item-heading"><small>
-                                @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "привет!", "Konnichiwa",  "Hallo!", "Ciao!"]))
+                                @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "Pribet!", "Konnichiwa",  "Hallo!", "Ciao!"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
                               <p class="list-group-item-text"><strong>Ingeniero comunitario</strong></p>
@@ -28,7 +28,6 @@
                             Mi Capacitación
                             </a>
                             <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</span></h4>
-
                             <div class="progress progress-striped active">
                               <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
                                 {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
@@ -72,16 +71,17 @@
                               @endforeach
                             </div>
 
-                            <hr>
+                            
 
                             <div id="muuch" class="tab-content">
                               @foreach($categories->where('parent_id', '>', 0) as $subcategory)
-                                <div class="tab-pane fade in" id="{!! str_slug($subcategory->name) !!}">
+                                <div class="tab-pane fade in" id="{!! str_slug($subcategory->name) !!}" data-tabs="tabs">
+                                  <hr>
                                   <ul class="nav nav-pill">
                                     @foreach($subcategory->pages as $page)
                                     <li><a href="/muuch/{!! $page->id !!}">{!! $page->name !!}</a></li>
                                     @endforeach
-                                    <li><a href="/muuch/{!! $page->id !!}">Todos los {!! $subcategory->name !!}...</a></li>
+                                    <li><a href="/muuch/cat/{!! $subcategory->id !!}">Todos los {!! $subcategory->name !!}...</a></li>
                                   </ul>
                                 </div>
                               @endforeach

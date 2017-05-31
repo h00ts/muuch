@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Page;
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
@@ -20,12 +21,21 @@ class PagesController extends Controller
 
     public function index()
     {
-        return view('pages.index');
+        $categories = Category::all();
+        return view('pages.index')->withCategories($categories);
     }
 
     public function show(Page $page)
     {
-        return view('pages.show', $page)->withPage($page);
+        $categories = Category::all();
+        return view('pages.show', $page)->withPage($page)->withCategories($categories);
+    }
+
+    public function getCat($id)
+    {
+        $categories = Category::all();
+        $cat = Category::find($id);
+        return view('pages.cat', $cat->toArray())->withCat($cat)->withCategories($categories);
     }
 
 }

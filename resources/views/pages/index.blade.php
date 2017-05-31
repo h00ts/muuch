@@ -3,29 +3,32 @@
     <div class="container">
         <div class="row">
                 <div class="col-md-12">
-                    <h2><strong>MUUCH</strong>
-                    <a href="/muuch" class="btn btn-inverse">
+                     <a href="/muuch" class="btn btn-default pull-right">
                         <i class="material-icons">arrow_left</i> Regresar
                     </a> 
-                    </h2>
+                    <h2><strong>MUUCH</strong></h2>
                 </div>
+
+            @foreach($categories->where('parent_id', null) as $category)
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-4 bg-primary">
-                                <h4>CAPACITACION</h4>
+                                <h4>{{ $category->name }}</h4>
                             </div>
                             <div class="col-md-8">
-                                <a href="#" class="btn btn-default btn-block">Manuales, guias y guiones</a>
-                                <a href="#" class="btn btn-default btn-block">Videos</a>
-                                <a href="#" class="btn btn-default btn-block">Herramientas</a>
-                                <a href="#" class="btn btn-default btn-block">Manuales de encuentros</a>
+                                @foreach($categories->where('parent_id', $category->id) as $subcategory)
+                                    <a href="/muuch/cat/{{ $subcategory->id }}" class="btn btn-default btn-block">{{ $subcategory->name }}</a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
+
+            <!--
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -81,6 +84,7 @@
                     </div>
                 </div>
             </div>
+        -->
     </div>
 
 @endsection

@@ -7,43 +7,46 @@
             <h1 class="text-center">Evaluación de acreditación al nivel {!! $level+1 !!}</h1>
         </div>
 
+        <form action="/examen/entrega" method="POST">
+            {{ csrf_field() }}
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                     @foreach($exams as $exam)
                         <div class="panel-body">
-                                @foreach($exam->questions as $question)
-                                Pregunta {!! count($exam->questions) - count(Auth::user()->answers) !!} de {!! count($exam->questions) !!}
+                            @foreach($exam->questions as $question)
+                            Pregunta {!! count($exam->questions) - count(Auth::user()->answers) !!} de {!! count($exam->questions) !!}
+                                <h3 class="control-label">{!! $question->question !!}</h3>
+                                @if($question->answers->sum('correct') > 1)
                                 <div class="form-group">
-                                    <h3 class="control-label">{!! $question->question !!}</h3>
-                                    @if($question->answers->sum('correct') > 1)
-                                        <p class="lead">Selecciona una o más respuestas.</p>
-                                        @foreach($question->answers as $answer)
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="answer-{!! $question->id !!}" value="{!! $answer->id !!}"> {!! $answer->answer !!}
+                                    <p>Selecciona una o más respuestas.</p>
+                                    @foreach($question->answers as $answer)
+                                     <div class="checkbox">
+                                        <label for="q-{{ $question->id }}-a-{{ $answer->id }}">
+                                            <input type="checkbox" name="q-{{ $question->id }}-a-{!! $answer->id !!}" id="q-{{ $question->id }}-a-{{ $answer->id }}" value="{!! $answer->id !!}"> {!! $answer->answer !!}
+                                        </label> 
+                                       </div>
+                                     @endforeach
+                                      
+                                    </div>
+                                @else
+                                <div class="form-group">
+                                    <p>Selecciona una sola respuesta.</p>
+                                    @foreach($question->answers as $answer)
+                                        <div class="radio">
+                                            <label for="q-{!! $question->id !!}">
+                                                <input type="radio" name="q-{!! $question->id !!}" value="{!! $answer->id !!}" required="required"> {!! $answer->answer !!}
                                             </label>
                                         </div>
                                          @endforeach
-                                    @else
-                                        <p>Selecciona una sola respuesta.</p>
-                                        @foreach($question->answers as $answer)
-                                            <div class="radio">
-                                                <label class="lead">
-                                                    <input type="radio" name="answer-{!! $question->id !!}" value="{!! $answer->id !!}"> {!! $answer->answer !!}
-                                                </label>
-                                            </div>
-                                             @endforeach
-                                        @endif
+                                    @endif
                                 </div>
-                            @endforeach
-                            
+                        @endforeach    
                         </div>
                     @endforeach
-                
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-            <button type="button" class="btn btn-inverse btn-raised pull-right"><span class="text-success">Siguiente <i class="material-icons">arrow_right</i></span></button>
+            <button type="submit" class="btn btn-inverse btn-raised pull-right"><span class="text-success">Siguiente <i class="material-icons">arrow_right</i></span></button>
             <div class="list-group">
               <div class="list-group-item">
                 <div class="row-picture">
@@ -56,6 +59,7 @@
               </div>
             </div>
         </div>
+    </form>
     </div>
 </div>
 @endsection
@@ -65,5 +69,7 @@
 @endsection
 
 @section('scripts')
-
+<script>
+$.material.checkbox();
+</script>
 @endsection
