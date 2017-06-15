@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/examen/entrega', 'ScoreController@store');
     Route::resource('/muuch', 'PagesController');
     Route::get('/muuch/cat/{id}', 'PagesController@getCat');
+    Route::resource('/foro', 'ThreadsController');
 });
 
 Route::group([
