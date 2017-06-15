@@ -31,17 +31,17 @@ class User extends Authenticatable
 
     public function modules()
     {
-        return $this->belongsToMany('App\Module')->withTimestamps();;
+        return $this->belongsToMany('App\Module')->withTimestamps();
     }
 
     public function answers()
     {
-        return $this->belongsToMany('App\Answer')->withTimestamps();;
+        return $this->belongsToMany('App\Answer')->withTimestamps();
     }
 
     public function content()
     {
-        return $this->belongsToMany('App\Content')->withTimestamps();;
+        return $this->belongsToMany('App\Content')->withTimestamps();
     }
 
     public function scores()

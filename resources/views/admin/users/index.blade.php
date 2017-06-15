@@ -5,11 +5,14 @@
         <div class="row">
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
-                <h3><i class="glyphicon glyphicon-cog"></i> <a href="/config">Configuración</a> / Usuarios</h3>
+                <h3><i class="material-icons">group</i> Usuarios</h3>
             </div>
             <div class="col-lg-12">
             
                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Todos los Usuarios</h3>
+                    </div>
                     <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
@@ -37,11 +40,30 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Roles</h3>
+                    </div>
+                    <div class="panel-body"></div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Permisos</h3>
+                    </div>
+                    <div class="panel-body"></div>
+                </div>
+            </div>
+
             @if(count($users->where('active', null)))
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Usuarios inactivos</h3>
+                            <h3 class="panel-title">Nuevos Registros de Usuarios</h3>
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -58,8 +80,18 @@
                                         <td>{!! $user->id !!}</td>
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
-                                        <td>Rol</td>
-                                        <td>Opciones</td>
+                                        <td><select name="roles" id="roles">
+                                            @foreach($roles as $role)
+                                            <option value="{{ $role->name }}">{{ $role->display_name }}</option>
+                                            @endforeach
+                                        </select></td>
+                                        <td>
+                                            <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="_method" value="PUT">
+                                                <button class="btn btn-success btn-sm">Activar</button>
+                                            </form>
+                                        </td>
                                         <td></td>
                                     </tr>
                                 @endforeach
@@ -68,6 +100,7 @@
                     </div>
                 </div>
             @endif
+            
         </div>
     </div>
 @endsection

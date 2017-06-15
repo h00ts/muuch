@@ -63,6 +63,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
+                    <img src="http://muuch.dev/img/logo_h.png" alt="">
                     Te registraste a {{ config('app.name') }}
                     <img src="data:image/svg+xml;utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M0%2011c2.76.575%206.312%201.688%209%203.438C12.157%2010.208%2017.828%206.25%2024%203c-5.86%205.775-10.71%2012.328-14%2018.917C7.35%2018.15%204.453%2014.647%200%2011z%22%2F%3E%3C%2Fsvg%3E" alt="swish  ">
                 </div>

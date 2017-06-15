@@ -14,15 +14,7 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "vendor/creativetimofficial/paper-dashboard/assets/sass/paper-dashboard.scss";
 
-html {
-  background:$body-bg;
-  background-attachment: fixed;
-}
-
 body {
-  padding-bottom: 70px;
-  background-attachment: fixed;
-  height:100%;
   background:$body-bg;
 }
 

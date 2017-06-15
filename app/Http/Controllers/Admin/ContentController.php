@@ -81,8 +81,10 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = Content::find($id);
+        $pages = Page::all();
+        $modules = Module::all();
 
-        return view('admin.contenido.edit')->withContent($content);
+        return view('admin.contenido.edit')->withContent($content)->withPages($pages)->withModules($modules);
     }
 
     /**
@@ -96,9 +98,7 @@ class ContentController extends Controller
     {
         $content = Content::findOrFail($id);
         $data = $request->all();
-
-        $content->name = $data['name'];
-        $content->markdown = $data['markdown'];
+        $content->update($data);
         $content->save();
 
         return redirect()->route('contenido.edit', $content->id)->withSuccess('Guardado.');
@@ -112,6 +112,7 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Content::destroy($id);
+        return redirect()->route('muuch.index')->withSuccess('Eliminado.');
     }
 }

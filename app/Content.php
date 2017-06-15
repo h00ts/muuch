@@ -13,7 +13,7 @@ class Content extends Model
      * @var array
      */
     protected $fillable = [
-    	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file', 'page_id'
+    	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file', 'page_id', 'module_id'
     ];
 
     public function module()

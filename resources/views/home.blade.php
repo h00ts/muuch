@@ -15,7 +15,7 @@
                                 @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "Pribet!", "Konnichiwa",  "Hallo!", "Ciao!"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
-                              <p class="list-group-item-text"><strong>Ingeniero comunitario</strong></p>
+                              <p class="list-group-item-text"><strong>Administrador</strong></p>
                               <p>{!! $user->email !!}</p>
                             </div>
                           </div>
@@ -88,10 +88,8 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-            
             <div class="panel panel-warning">
               <div class="panel-heading">
                 <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discución</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
@@ -99,23 +97,21 @@
               <div class="panel-body">
                 <table class="table table-hover">
                     <tr>
-                    <th>Discusión</th>
-                    <th>Autor</th>
-                    <th>Re:</th>
-                    <th>Visto</th>
-                    <th>Reciente</th>
+                      <th>Discusión</th>
+                      <th>Respuestas</th>
+                      <th>Vistas</th>
                   </tr>
                   @foreach($threads as $thread)
                   <tr>
                     <td><a href="/foro/{!! $thread->id !!}" style="font-size:16px"><strong>{!! $thread->title !!}</strong></a></td>
-                    <td><p class="small"><a href="{!! $thread->user->id !!}">{!! $thread->user->name !!}</a><br><small>{!! $thread->created_at->format('d M') !!}</small></p></td>
-                    <td>{!! $thread->replies->count() !!}</td>
-                    <td>47</td>
-                    <td><p class="small"><a href="{!! $thread->replies->last()->user->id !!}">{!! $thread->replies->last()->user->name !!}</a><br><small>{!! $thread->replies->last()->created_at->format('d M') !!}</small></p></td>
+                    <td>{!! isset($thread->replies) ? $thread->replies->count() : '0' !!}</td>
+                    <td>0</td>
                   </tr>
                   @endforeach
                 </table>
-                <a href="#" class="btn btn-default">Nueva Discusión</a>
+                <div class="text-right">
+                  <a href="#" class="btn btn-default btn-raised btn-sm">Nueva Discusión</a>
+                </div>
               </div>
             </div>
         </div>

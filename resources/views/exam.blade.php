@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1 class="text-center">Evaluación de acreditación al nivel {!! $level+1 !!}</h1>
+            <h1 class="text-center">Evaluación Nivel {!! $level !!}</h1>
         </div>
 
         <form action="/examen/entrega" method="POST">
@@ -14,10 +14,10 @@
                     @foreach($exams as $exam)
                         <div class="panel-body">
                             @foreach($exam->questions as $question)
-                            Pregunta {!! count($exam->questions) - count(Auth::user()->answers) !!} de {!! count($exam->questions) !!}
-                                <h3 class="control-label">{!! $question->question !!}</h3>
+                            <div class="form-group">
+                                <h4 class="control-label" style="line-height:1.5">{!! $question->question !!}</h4>
                                 @if($question->answers->sum('correct') > 1)
-                                <div class="form-group">
+                                
                                     <p>Selecciona una o más respuestas.</p>
                                     @foreach($question->answers as $answer)
                                      <div class="checkbox">
@@ -27,9 +27,8 @@
                                        </div>
                                      @endforeach
                                       
-                                    </div>
+                                    
                                 @else
-                                <div class="form-group">
                                     <p>Selecciona una sola respuesta.</p>
                                     @foreach($question->answers as $answer)
                                         <div class="radio">
@@ -39,9 +38,10 @@
                                         </div>
                                          @endforeach
                                     @endif
-                                </div>
+                                    </div>
                         @endforeach    
-                        </div>
+                        
+                    </div>
                     @endforeach
             </div>
         </div>

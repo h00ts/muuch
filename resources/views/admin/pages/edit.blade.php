@@ -20,14 +20,17 @@
                           <table class="table table-responsive">
                               <tr>
                                   <th>Contenido</th>
+                                  <th></th>
                               </tr>
                               @foreach($page->contents as $content)
                                 <tr>
-                                    <td>{{ $content->name }}</td>
+                                    <td><a href="/config/contenido/{{ $content->id }}/edit">{{ $content->name }}</a></td>
+                                    <td>Desasociar</td>
                                 </tr>
                                 @endforeach
                                 <tr>
                                     <td><a href="#" data-toggle="modal" data-target="#newContentModal">Crear contenido</a> | <a href="#" data-toggle="modal" data-target="#contentModal">Asignar contenido</a></td>
+                                    <td></td>
                                 </tr>
                           </table>
                        </div>

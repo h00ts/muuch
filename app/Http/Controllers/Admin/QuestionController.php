@@ -75,7 +75,12 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->input();
+        $question = Question::findOrFail($id);
+        $question->question = $data['question-'.$id];
+        $question->save();
+
+        return back()->withSuccess('Actualizaste la pregunta: '.$question->question);
     }
 
     /**
