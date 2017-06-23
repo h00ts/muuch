@@ -1,9 +1,9 @@
 @extends('layouts.config')
+@section('title', 'Editar Página de MUUCH')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h3>Editar Página</h3>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
@@ -16,48 +16,42 @@
                             <label for="name">Titulo</label>
                             <input type="text" name="name" class="form-control border-input input-lg" value="{!! $name !!}">
                         </div>
+                        <div class="form-group form-horizontal">
+                            <strong>Mostrar a </strong>
+                            <div class="form-group">
+                                @foreach($roles as $role)
+                                    <div class="checkbox checkbox-inline">
+                                    <input type="checkbox"> 
+                                    <label>
+                                        {{ $role->display_name }}
+                                    </label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                        <div class="form-group">
                           <table class="table table-responsive">
                               <tr>
                                   <th>Contenido</th>
-                                  <th></th>
+                                  <th><a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newContentModal">Crear contenido</a> <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#contentModal">Asignar contenido</a></th>
                               </tr>
                               @foreach($page->contents as $content)
                                 <tr>
                                     <td><a href="/config/contenido/{{ $content->id }}/edit">{{ $content->name }}</a></td>
-                                    <td>Desasociar</td>
+                                    <td><a href="#" class="btn btn-danger btn-sm">Desasociar</a></td>
                                 </tr>
                                 @endforeach
-                                <tr>
-                                    <td><a href="#" data-toggle="modal" data-target="#newContentModal">Crear contenido</a> | <a href="#" data-toggle="modal" data-target="#contentModal">Asignar contenido</a></td>
-                                    <td></td>
-                                </tr>
                           </table>
                        </div>
-                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
                             <label for="file">Icono</label>
-                            <input type="text" name="file" class="form-control border-input input-lg" value="{!! $icon !!}">
+                            <input type="text" name="file" class="form-control border-input input-sm" value="{!! $icon !!}">
                         </div>
-                        <div class="form-group">
+                        <div class="col-lg-6 form-group">
                             <label for="cover">Caratula</label>
-                            <input type="text" name="cover" class="form-control border-input input-lg" value="{!! $image !!}">
+                            <input type="text" name="cover" class="form-control border-input input-sm" value="{!! $image !!}">
                         </div>
-                         <div class="form-group form-horizontal">
-                            <strong>Mostrar a </strong>
-                            <div class="form-group">
-                                <div class="checkbox checkbox-inline">
-                                    <input type="checkbox"> 
-                                    <label>
-                                        Ingenieros Comunitarios
-                                    </label>
-                                </div>
-                                <div class="checkbox checkbox-inline">
-                                    <input type="checkbox"> 
-                                    <label>
-                                        Ingenieros Comunitarios
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="panel-footer">

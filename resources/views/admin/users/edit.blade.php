@@ -14,8 +14,9 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                       @if($user->active)
-                           <form action="/">
+                           <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
                                {!! csrf_field() !!}
+                               <input type="hidden" name="_method" value="PATCH">
                                <div class="form-group">
                                     <label for="name">Nombre</label>
                                    <input type="text" class="form-control" name="name" value="{!! $user->name !!}">
@@ -26,12 +27,14 @@
                                </div>
                                <div class="form-group">
                                     <label for="role">Rol</label>
-                                   <select name="role" id="role" class="form-control">
-                                        <option value="ic">Ingeniero Comunitario</option>
-                                        <option value="admin">Administrador</option>
-                                   </select>
+                                      <select name="user_role" id="role" class="form-control" required="required">
+                                          @foreach($roles as $role)
+                                            <option value="{{ $role->id }}" {{ ($role->id == $user->roles->first()->id) ? 'selected' : '' }}>{{ $role->display_name }}</option>
+                                          @endforeach
+                                      </select>
                                </div>
-                               <button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Guardar</button>
+                               <hr>
+                               <button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Guardar usuario</button>
                            </form>
                       @else
                           <form action="">

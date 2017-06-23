@@ -21,8 +21,8 @@ Route::post('salir', 'Auth\LoginController@logout');
 Route::post('recuperar/enviar', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 Route::get('recuperar/correo', 'Auth\ForgotPasswordController@showLinkRequestForm');
 Route::get('password/reset/{token}', 'Auth\ForgotPasswordController@showResetForm');
-Route::get('registrar', 'Auth\RegisterController@showRegistrationForm');
-Route::post('registrar', 'Auth\RegisterController@register');
+Route::get('registro', 'Auth\RegisterController@showRegistrationForm');
+Route::post('registro', 'Auth\RegisterController@register');
 Route::get('registro/nuevo', function(){
 	return view('new_registration');
 });

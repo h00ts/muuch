@@ -183,6 +183,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         'GrahamCampbell\Markdown\MarkdownServiceProvider',
         Zizaco\Entrust\EntrustServiceProvider::class,
+        MadeITBelgium\EmailDomainValidation\EmailDomainServiceProvider::class,
 
     ],
 
@@ -238,6 +239,7 @@ return [
          */
         'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'EmailDomainValidation' => TPWeb\EmailDomainValidation\EmailDomainFacade::class,
 
     ],
 

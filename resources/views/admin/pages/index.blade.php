@@ -1,41 +1,45 @@
 @extends('layouts.config')
+@section('title', 'Muuch')
+@section('icon', 'accessibility')
 @section('content')
-<div class="content">
     <div class="container-fluid">
         <div class="row">
              <div class="col-lg-12">
+                <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#categoryModal">
+                    <i class="glyphicon glyphicon-plus"></i> Categoría
+                </a>
+                <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#subcategoryModal">
+                    <i class="glyphicon glyphicon-plus"></i> Subcategoría
+                </a>
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pageModal"><i class="glyphicon glyphicon-plus"></i> Página</a>
+                <hr>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Categorías</h3>
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Categorías</h4>
                     </div>
-                    <div class="panel-body table-responsive">
+                    <div class="content table-responsive">
                         @foreach($categories->where('parent_id', 0) as $category)
                             <h5><a href="/config/categoria/{!! $category->id !!}/edit">{!! $category->name !!}</a></h5>
                             <ul>
-                            @foreach($categories->where('parent_id', $category->id) as $subcategory)
-                            <li><a href="/config/categoria/{!! $subcategory->id !!}/edit" class="">{!! $subcategory->name !!}</a></li>
-                            @endforeach
+                                @foreach($categories->where('parent_id', $category->id) as $subcategory)
+                                    <li><a href="/config/categoria/{!! $subcategory->id !!}/edit" class="">{!! $subcategory->name !!}</a></li>
+                                @endforeach
                             </ul>
                             <hr>
                         @endforeach
                     </div>
                 </div>
-                <a href="#" class="btn btn-inverse"  data-toggle="modal" data-target="#categoryModal">
-                    <i class="glyphicon glyphicon-plus"></i> Categoría
-                </a>
-                <a href="#" class="btn btn-inverse"  data-toggle="modal" data-target="#subcategoryModal">
-                    <i class="glyphicon glyphicon-plus"></i> Subcategoría
-                </a>
+                
             </div>
             <div class="col-md-8">
-                <div class="panel panel-primary">
-                     <div class="panel-heading">
-                        <h3 class="panel-title">Páginas</h3>
+                <div class="card">
+                     <div class="header">
+                        <h4 class="title">Páginas</h4>
                     </div>
-                    <div class="panel-body table-responsive">
+                    <div class="content">
                             <table class="table table-responsive">
                                 <tr>
                                     <th>Página</th>
@@ -50,7 +54,6 @@
                             </table>
                     </div>
                 </div>
-                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#pageModal"><i class="glyphicon glyphicon-plus"></i> Página</a>
             </div>
         </div>
     </div>
@@ -172,7 +175,6 @@
             </form>
         </div>
     </div>
-</div>
 @endsection
 @section('scripts')
     <script type="text/javascript">

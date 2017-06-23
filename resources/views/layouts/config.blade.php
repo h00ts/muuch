@@ -8,15 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'MUUCH') }}</title>
+    <title>Iluméxico : {{ config('app.name', 'MUUCH') }}</title>
 
-    <!-- Styles -->
     <link href="/css/config.css" rel="stylesheet">
-      <!-- Material Design fonts -->
-      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
-    <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -24,13 +21,13 @@
     </script>
 </head>
 <body>
-    <div id="wrapper">
+    @ability('admin', '')
+    <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
-        @if(Auth::user())
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="{{ url('/config') }}">
-                <img src="/img/logo_h.png" alt="Iluméxico" class="img-responsive">
+                <img src="/img/logo_h.png" alt="Iluméxico" class="img-responsive" style="padding:5px; height: 39px; margin:0 auto">
                     <h3 class="visuallyhidden">{{ config('app.name', 'MUUCH') }}</h3>
                 </a>
             </div>
@@ -39,7 +36,7 @@
                 <li class="active">
                     <a href="/config">
                         <i class="ti-panel"></i>
-                        <p>Configuracion</p>
+                        <p>Configuración</p>
                     </a>
                 </li>
                 <li>
@@ -68,7 +65,6 @@
                 </li>
             </ul>
         </div>
-        @endif
     </div>
 
        <div class="main-panel">
@@ -82,10 +78,15 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">MUUCH</a>
+                    <a class="navbar-brand" href="#"> <i class="material-icons">@yield('icon')</i> @yield('title') </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <i class="ti-settings"></i>
+                            </a>
+                        </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-bell"></i>
@@ -110,7 +111,9 @@
         </nav> 
 
 
-            @yield('content')
+            <div class="content">
+                @yield('content')
+            </div>
 
 
         <footer class="footer">
@@ -130,22 +133,20 @@
                     </ul>
                 </nav>
                 <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, hecho con <3 por <a href="mailto:ruslan@ilumexico.mx">Ruslan</a> usando <a href="http://laravel.com">Laravel</a> & <a href="https://material.io">Material Design</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, hecho por <a href="mailto:ruslan@ilumexico.mx">Ruslan</a> con <a href="http://laravel.com">Laravel</a> & <a href="https://material.io">Material Design</a>
                 </div>
             </div>
         </footer>
        </div>
-
     </div>
 
     @yield('modals')
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script type="text/javascript">
-        $.material.init();
-    </script>
 
     @yield('scripts')
+
+   @endability
 </body>
 </html>

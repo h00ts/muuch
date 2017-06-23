@@ -43,7 +43,6 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <h2><i class="glyphicon glyphicon-education"></i> <strong>CAPACITACIÓN</strong></h2>
                 @include('admin.partials.alerts')
                 @foreach($modules as $module)
                     <div class="panel panel-default">
@@ -77,13 +76,15 @@
                                         </a>
                                     </div>
                                     <div class="row-content">
-                                        <div class="action-secondary" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')"><i class="material-icons">radio_button_unchecked</i></div>
+                                        <div class="action-secondary" data-toggle="tooltip" data-placement="left" title="Completar">
+                                            <i class="material-icons" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')">radio_button_unchecked</i>
+                                        </div>
                                         <h4 class="list-group-item-heading">
                                             <a href="{{ ($content->markdown != null) ? '/capacitacion/ver/'.$content->id : $content->file }}" {{ ($content->markdown == null) ? 'target="_blank"' : '' }}>
                                                 {!! $content->name !!}</a>
                                         </h4>
-                                <p class="list-group-item-text"> {!! $content->description !!}  <a href="{!! $content->file !!}" target="_blank"><i class="glyphicon glyphicon-download"></i> Descargar</a></p>
-                            </div>
+                                        <p class="list-group-item-text"> {!! $content->description !!}  <a href="{!! $content->file !!}" target="_blank"><i class="glyphicon glyphicon-download"></i> Descargar</a></p>
+                                    </div>
                                 @endif
                         </div>
                         <div class="list-group-separator"></div>
@@ -129,5 +130,8 @@
         $("#complete_content").attr("action", "/capacitacion/completar/"+id);
         $("#content_name").html(name);
     }
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endsection

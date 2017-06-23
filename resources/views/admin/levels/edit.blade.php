@@ -1,24 +1,21 @@
 @extends('layouts.config')
-
+@section('title', 'Editar Nivel de Capacitación')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
              <div class="col-lg-12">
-                <h2>Nivel {!! $level !!}</h2>
-                 <ul class="breadcrumb">
-                  <li><a href="/config">Configuración</a></li>
-                  <li><a href="/config/niveles">Capacitación</a></li>
-                  <li class="active">Nivel {!! $level !!}</li>
-                </ul>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
-                <div class="panel panel-primary">
-                    <div class="panel-body table-responsive">
-                        <table class="table table-striped table">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Nivel {{ $level }}</h4>
+                    </div>
+                    <div class="content">
+                        <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th> </th>
+                                    <th>Modulo</th>
                                     <th>Contenido</th>
                                     <th>Evaluaciónes</th>
                                 </tr>
@@ -60,11 +57,12 @@
                             @endforeach
                         </table>
                     </div>
-                    <div id="box--confirm" class="panel-footer hidden">
+                </div>
+
+                    <div id="box--confirm" class="hidden">
                             Crear un nuevo modulo? <button id="button--confirm" class="btn btn-primary">Si, crear</button> <button id="button--dismiss" class="btn btn-default">Cancelar</button>
                         <div class="hidden" id="state--loading"><i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Creando...</div>
                     </div>
-                </div>
                
                 <a href="#" class="btn btn-inverse btn-raised" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> MODULO</a>
                  @if(count($modules))

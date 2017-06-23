@@ -13,7 +13,8 @@
         "laravel/tinker": "~1.0",
         "laravelista/sherlock": "^0.5.3",
         "tymon/jwt-auth": "0.5.*",
-        "zizaco/entrust": "1.9.0-beta1"
+        "zizaco/entrust": "1.9.0-beta1",
+        "madeitbelgium/laravel-email-domain-validation": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

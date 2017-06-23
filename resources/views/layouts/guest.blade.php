@@ -5,14 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'MUUCH') }}</title>
 
+    <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+      <!-- Material Design fonts -->
       <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
       <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
+    <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -25,6 +29,7 @@
             <div class="container">
                 <div class="navbar-header">
 
+                    <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Navegación</span>
                         <span class="icon-bar"></span>
@@ -46,7 +51,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
-                            <li><a href="{{ url('/registrar') }}">Registrate</a></li>
+                            <li><a href="{{ url('/registro') }}">Registrate</a></li>
                         @else
                             <li><a href="{{ url('/muuch') }}"><strong>MUUCH</strong></a></li>
                             <li><a href="{{ url('/capacitacion') }}">Capacitación</a></li>
@@ -65,11 +70,8 @@
             </div>
         </nav>
 
-        @ability('admin,oficina,cooreg,ingcom', '')
+        @yield('content')
 
-            @yield('content')
-
-        @endability
 
     </div>
 

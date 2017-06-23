@@ -1,19 +1,21 @@
 @extends('layouts.config')
-
+@section('title', 'Niveles')
+@section('icon', 'school')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Niveles</h2>
-                 <ul class="breadcrumb">
-                  <li><a href="/config">Configuración</a></li>
-                  <li class="active">Capacitación</li>
-                </ul>
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <button class="btn btn-primary" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> Crear Nivel</button>
+                        <div id="box--confirm" class="hidden">
+                            Confirma crear un nuevo nivel: <button id="button--dismiss" class="btn btn-default"> No, regresar</button> | <button id="button--confirm" class="btn btn-primary" data-content="{!! $levels->max('level'); !!}">Si, crear</button>
+                        </div>
+                        <div class="hidden" id="state--loading"><i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Creando...</div>
+                        <hr>
+                <div class="card">
+                    <div class="content">
                         @if(count($levels))
                         <div class="row">
                             @foreach($levels as $level)
@@ -27,15 +29,7 @@
                         @else
                         No hay niveles.
                         @endif
-                    </div>
-                    <div class="panel-footer">
-                        <button class="btn btn-link" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> NUEVO NIVEL</button>
-                        <div id="box--confirm" class="hidden">
-                            Confirma crear un nuevo nivel: <button id="button--dismiss" class="btn btn-default"> No, regresar</button> | <button id="button--confirm" class="btn btn-primary" data-content="{!! $levels->max('level'); !!}">Si, crear</button>
-                        </div>
-                        <div class="hidden" id="state--loading"><i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Creando...</div>
-                    </div>
-                </div>
+                   </div></div>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Page;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Role;
 
 class PageController extends Controller
 {
@@ -44,11 +45,12 @@ class PageController extends Controller
     public function edit(Page $page)
     {
         $contents = Page::find($page->id);
+        $roles = Role::all();
 
-        return view('admin.pages.edit', $page->toArray())->withPage($contents);
+        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles);
     }
 
-        /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
