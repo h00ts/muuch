@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Thread;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ThreadsController extends Controller
 {
+       /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +36,8 @@ class ThreadsController extends Controller
      */
     public function create()
     {
-        return view('threads.create');
+        $cats = Category::where('parent_id', null)->get();
+        return view('threads.create')->withCats($cats);
     }
 
     /**
@@ -35,7 +48,10 @@ class ThreadsController extends Controller
      */
     public function store(Request $request)
     {
-        $thread =  Thread::create($request);
+        $user = Auth::user();
+        $thread =  $user->threads()->create($request->all());
+
+        return view('threads.show', $thread)->withThread($thread)->withUser($user);
     }
 
     /**
@@ -46,7 +62,9 @@ class ThreadsController extends Controller
      */
     public function show(Thread $thread)
     {
-        return view('thread.show');
+        $user = Auth::user();
+
+        return view('threads.show', $thread)->withThread($thread)->withUser($user);
     }
 
     /**

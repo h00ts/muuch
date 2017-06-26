@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough('App\Exam', 'App\Score');
     }
+
+    public function threads()
+    {
+        return $this->hasMany('App\Thread');
+    }
 }

@@ -16,7 +16,7 @@
                                 @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "привет!", "Konnichiwa",  "Hallo!", "Ciao!"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
-                              <p class="list-group-item-text"><strong>Ingeniero comunitario</strong></p>
+                              <p class="list-group-item-text"><strong>{{ $user->roles->first()->display_name }}</strong></p>
                               <p>{!! $user->email !!}</p>
                             </div>
                           </div>
@@ -24,19 +24,22 @@
                         @if($user->level === null)
                             <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                             <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
-                            @else
+                        @else
+                            <a href="/capacitacion" class="btn btn-danger btn-lg btn-block">
+                            Mi Capacitación
+                            </a>
                             <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</span></h4>
-
                             <div class="progress progress-striped active">
                               <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
                                 {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                               </div>
                             </div>
                             @if(count($user->content) == $content_count)
-                                <h2 class="text-success">¡Buen trabajo! <i class="material-icons">thumb_up</i></h2>
-                                <p class="lead">Terminaste de estudiar los modulos.</p>
+                                <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
-                                <p>Toma el examen y averigua si aplicas para pasar al siguiente nivel.</p>
+                                <p>Toma el examen para pasar al siguiente nivel.</p>
+                            @elseif(\Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
+                                 <h4 class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente.</h4>
                             @endif
                         @endif
                     </div>

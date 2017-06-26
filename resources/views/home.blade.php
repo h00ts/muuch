@@ -23,7 +23,7 @@
                         @if($user->level === null)
                             <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                             <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
-                            @else
+                        @else
                             <a href="/capacitacion" class="btn btn-danger btn-lg btn-block">
                             Mi Capacitación
                             </a>
@@ -33,11 +33,16 @@
                                 {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                               </div>
                             </div>
-                            @if(count($user->content) == $content_count)
-                                <h2 class="text-success">¡Buen trabajo! <i class="material-icons">thumb_up</i></h2>
-                                <p class="lead">Terminaste de estudiar los modulos.</p>
+                            @if(count($user->content) == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
+                                <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
-                                <p>Toma el examen y averigua si aplicas para pasar al siguiente nivel.</p>
+                                <p>Toma el examen para pasar al siguiente nivel.</p>
+                            @elseif(count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
+                                 <h4 class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente. Aprovecha para repasar el contenido de tu capacitación.</h4>
+                            @elseif(count($user->content) == $content_count && !count($user->scores))
+                                  <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
+                                <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
+                                <p>Toma el examen para pasar al siguiente nivel.</p>
                             @endif
                         @endif
                     </div>
@@ -90,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-warning">
+            <div class="panel panel-primary">
               <div class="panel-heading">
                 <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discución</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
               </div>
@@ -103,14 +108,14 @@
                   </tr>
                   @foreach($threads as $thread)
                   <tr>
-                    <td><a href="/foro/{!! $thread->id !!}" style="font-size:16px"><strong>{!! $thread->title !!}</strong></a></td>
+                    <td><a href="{{ route('foro.show', $thread) }}" style="font-size:16px"><strong>{!! $thread->title !!}</strong></a></td>
                     <td>{!! isset($thread->replies) ? $thread->replies->count() : '0' !!}</td>
                     <td>0</td>
                   </tr>
                   @endforeach
                 </table>
                 <div class="text-right">
-                  <a href="#" class="btn btn-default btn-raised btn-sm">Nueva Discusión</a>
+                  <a href="/foro/create" class="btn btn-default btn-raised btn-sm">Nueva Discusión</a>
                 </div>
               </div>
             </div>

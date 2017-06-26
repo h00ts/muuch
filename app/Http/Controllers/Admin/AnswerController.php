@@ -80,6 +80,8 @@ class AnswerController extends Controller
         $answer->answer = $data['answer-'.$id];
         if(array_key_exists('correct', $data)){
             $answer->correct = 1;
+        } else {
+            $answer->correct = 0;
         }
         $answer->save();
 

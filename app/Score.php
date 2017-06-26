@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
+	protected $fillable = ['score', 'level', 'exam_id', 'user_id'];
+
     public function exam()
     {
     	return $this->belongsTo('App\Exam');
@@ -14,5 +16,10 @@ class Score extends Model
     public function user()
     {
     	return $this->belongsTo('App\User');
+    }
+
+    public function answers()
+    {
+    	return $this->hasManyThrough('App\Answers', 'App\Exam');
     }
 }

@@ -41,7 +41,7 @@
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked">
                         @foreach($categories->where('parent_id', null) as $category)
-                            <li><a href="{{ $category->name }}">{{ $category->name }}</a></li>
+                            <li><a href="/muuch/cat/{{ $category->id }}">{{ $category->name }}</a></li>
                         @endforeach
                         </ul>
                 </div>
