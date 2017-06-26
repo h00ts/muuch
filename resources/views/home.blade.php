@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <strong>Accesos rápidos:</strong> <a href="http://mail.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">mail_outline</i> Correo</a> <a href="http://sf.ilumexico.mx" class="btn btn-defult btn-sm btn-primary" style="margin:0"><i class="material-icons">backup</i> Salesforce</a> <a href="http://vbx.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0" title="vbx@ilumexico.mx - prometeo1" data-toggle="tooltip" data-placement="bottom"><i class="material-icons">phone_android</i> SMS</a> 
+      <hr>
+    </div>
+  </div>
     <div class="row">
         <div class="col-md-4">
                 <div class="panel panel-default">
@@ -103,14 +109,16 @@
                 <table class="table table-hover">
                     <tr>
                       <th>Discusión</th>
-                      <th>Respuestas</th>
-                      <th>Vistas</th>
+                      <th><i class="material-icons" style="font-size:18px" title="Vistas" data-toggle="tooltip" data-placement="left">remove_red_eye</i></th>
+                      <th><i class="material-icons" style="font-size:18px" title="Respuestas" data-toggle="tooltip" data-placement="left">comment</i></th>
+                      <th><i class="material-icons" style="font-size:18px" title="Respuesta más reciente" data-toggle="tooltip" data-placement="left">access_time</i></th>
                   </tr>
                   @foreach($threads as $thread)
                   <tr>
-                    <td><a href="{{ route('foro.show', $thread) }}" style="font-size:16px"><strong>{!! $thread->title !!}</strong></a></td>
-                    <td>{!! isset($thread->replies) ? $thread->replies->count() : '0' !!}</td>
-                    <td>0</td>
+                    <td><a href="{{ route('foro.show', $thread) }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }}</small></td>
+                    <td><span class="label">{!! count($thread->replies) ? $thread->replies->count() : '0' !!}</span></td>
+                    <td><span class="label">0</span></td>
+                    <td>{!! count($thread->replies) ? $thread->replies->last()->user->name : '-' !!}</td>
                   </tr>
                   @endforeach
                 </table>
@@ -129,4 +137,11 @@ Esta plataforma fué creada con la intención de acercarnos y ayudarnos a constr
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 @endsection

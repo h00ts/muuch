@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('MAILGUN_DOMAIN', 'mg.ilumexico.mx'),
+        'secret' => env('MAILGUN_SECRET', 'key-cf6deca0275f0ddb1f817a808cc1f59e'),
     ],
 
     'ses' => [

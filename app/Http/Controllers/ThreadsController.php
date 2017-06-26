@@ -9,15 +9,6 @@ use Illuminate\Http\Request;
 
 class ThreadsController extends Controller
 {
-       /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     
     /**
      * Display a listing of the resource.
@@ -63,8 +54,7 @@ class ThreadsController extends Controller
     public function show(Thread $thread)
     {
         $user = Auth::user();
-
-        return view('threads.show', $thread)->withThread($thread)->withUser($user);
+        return view('threads.show', compact('thread'))->withUser($user);
     }
 
     /**
