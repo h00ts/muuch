@@ -184,6 +184,7 @@ return [
         'GrahamCampbell\Markdown\MarkdownServiceProvider',
         Zizaco\Entrust\EntrustServiceProvider::class,
         MadeITBelgium\EmailDomainValidation\EmailDomainServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
     ],
 

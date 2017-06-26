@@ -6,15 +6,17 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "algolia/algoliasearch-client-php": "^1.18",
         "barryvdh/laravel-ide-helper": "^2.3",
         "doctrine/dbal": "^2.5",
         "graham-campbell/markdown": "^7.1",
         "laravel/framework": "5.4.*",
+        "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelista/sherlock": "^0.5.3",
+        "madeitbelgium/laravel-email-domain-validation": "1.*",
         "tymon/jwt-auth": "0.5.*",
-        "zizaco/entrust": "1.9.0-beta1",
-        "madeitbelgium/laravel-email-domain-validation": "1.*"
+        "zizaco/entrust": "1.9.0-beta1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

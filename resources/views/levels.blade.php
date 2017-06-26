@@ -34,7 +34,11 @@
                                 {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                               </div>
                             </div>
-                            @if(count($user->content) == $content_count)
+                            @if(count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at && count($user->content) == $content_count)
+                                <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
+                                <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
+                                <p>Toma el examen para pasar al siguiente nivel.</p>
+                            @elseif(!count($user->scores) && count($user->content) == $content_count)
                                 <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                                 <p>Toma el examen para pasar al siguiente nivel.</p>
