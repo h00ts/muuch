@@ -8,7 +8,7 @@ use Laravel\Scout\Searchable;
 class Page extends Model
 {
     use Searchable;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +17,16 @@ class Page extends Model
     protected $fillable = [
         'category_id', 'name', 'markdown', 'icon', 'image',
     ];
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'pages_index';
+    }
 
     public function category()
     {

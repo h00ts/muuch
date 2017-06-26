@@ -3,10 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Thread extends Model
 {
+    use Searchable;
+
 	protected $fillable = ['title', 'body', 'user_id', 'category_id'];
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'threads_index';
+    }
 
     public function user()
     {

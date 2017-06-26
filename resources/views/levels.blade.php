@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -42,7 +41,7 @@
                                 <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                                 <p>Toma el examen para pasar al siguiente nivel.</p>
-                            @elseif(\Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
+                            @elseif(count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
                                  <h4 class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente.</h4>
                             @endif
                         @endif
