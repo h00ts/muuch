@@ -41,7 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/examen/entrega', 'ScoresController@store');
     Route::resource('/muuch', 'PagesController');
     Route::get('/muuch/cat/{id}', 'PagesController@getCat');
-    Route::resource('/foro', 'ThreadsController');
+    Route::resource('/foro', 'ThreadsController', ['except' => 'show']);
+    Route::get('/foro/{thread}', 'ThreadsController@show');
+    Route::get('/foro/responder/{id}', 'RepliesController@create');
+    Route::post('/foro/responder/{id}', 'RepliesController@store');
 });
 
 Route::group([

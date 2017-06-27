@@ -17,7 +17,11 @@ class ThreadsController extends Controller
      */
     public function index()
     {
-        return view('threads.index');
+        $threads = Thread::paginate(5);
+        $user = Auth::user();
+
+        return view('threads.index')
+        ->withThreads($threads)->withUser($user);
     }
 
     /**
@@ -27,8 +31,9 @@ class ThreadsController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $cats = Category::where('parent_id', null)->get();
-        return view('threads.create')->withCats($cats);
+        return view('threads.create')->withCats($cats)->withUser($user);
     }
 
     /**

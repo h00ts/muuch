@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <strong>Accesos rápidos:</strong> <a href="http://mail.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">mail_outline</i> Correo</a> <a href="http://sf.ilumexico.mx" class="btn btn-defult btn-sm btn-primary" style="margin:0"><i class="material-icons">backup</i> Salesforce</a> <a href="http://vbx.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0" title="vbx@ilumexico.mx - prometeo1" data-toggle="tooltip" data-placement="bottom"><i class="material-icons">phone_android</i> SMS</a> 
+      <strong>Accesos rápidos:</strong> <a href="http://mail.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">mail_outline</i> Correo</a> <a href="http://sf.ilumexico.mx" class="btn btn-defult btn-sm btn-primary" style="margin:0"><i class="material-icons">backup</i> Salesforce</a> <a href="http://tinyurl.com/TWAPK440" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">phone_android</i> Descarga TARO</a> <a href="http://vbx.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0" title="vbx@ilumexico.mx - prometeo1" data-toggle="tooltip" data-placement="bottom"><i class="material-icons">sms</i> SMS</a>
       <hr>
     </div>
   </div>
@@ -30,9 +30,6 @@
                             <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                             <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                         @else
-                            <a href="/capacitacion" class="btn btn-danger btn-lg btn-block">
-                            Mi Capacitación
-                            </a>
                             <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</span></h4>
                             <div class="progress progress-striped active">
                               <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
@@ -53,6 +50,9 @@
                         @endif
                     </div>
                 </div>
+                <a href="/capacitacion" class="btn btn-primary btn-raised btn-lg btn-block">
+                            <i class="material-icons">school</i> Mi Capacitación
+                            </a>
         </div>
         <div class="col-md-8">
             <div class="panel panel-primary">
@@ -103,7 +103,7 @@
             </div>
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discución</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
+                <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discuciónes</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
               </div>
               <div class="panel-body">
                 <table class="table table-hover">
@@ -115,7 +115,7 @@
                   </tr>
                   @foreach($threads as $thread)
                   <tr>
-                    <td><a href="{{ route('foro.show', $thread) }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }}</small></td>
+                    <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }}</small></td>
                     <td><span class="label">{!! count($thread->replies) ? $thread->replies->count() : '0' !!}</span></td>
                     <td><span class="label">0</span></td>
                     <td>{!! count($thread->replies) ? $thread->replies->last()->user->name : '-' !!}</td>
@@ -123,7 +123,7 @@
                   @endforeach
                 </table>
                 <div class="text-right">
-                  <a href="/foro/create" class="btn btn-default btn-raised btn-sm">Nueva Discusión</a>
+                  <a href="/foro/create" class="btn btn-primary btn-raised btn-sm"><i class="material-icons">chat</i> Nueva Discusión</a>
                 </div>
               </div>
             </div>
