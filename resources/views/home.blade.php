@@ -18,7 +18,7 @@
                             </div>
                             <div class="row-content">
                               <h4 class="list-group-item-heading"><small>
-                                @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "Pribet!", "Konnichiwa",  "Hallo!", "Ciao!"]))
+                                @php($hola = collect(["¡Hola!", "¡Pekarij abi!", "¡Ma'alob K'iin!", "¡Kwali Tlanextili!", "¡Sak Osil!", "¡A Va'a ntuu ni!", "¡Ketémáúbo'Kích'ahrín!",  "¡Najneajay larraw!", "¡Cualtsin Tlanextilistli!", "¡Guun Xta'a Güii!"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
                               <p class="list-group-item-text"><strong>Administrador</strong></p>

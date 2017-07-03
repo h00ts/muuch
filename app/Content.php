@@ -8,6 +8,8 @@ use Laravel\Scout\Searchable;
 
 class Content extends Model
 {
+    use Searchable;
+
 	 /**
      * The attributes that are mass assignable.
      *
@@ -16,16 +18,6 @@ class Content extends Model
     protected $fillable = [
     	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file', 'page_id', 'module_id'
     ];
-
-    /**
-     * Get the index name for the model.
-     *
-     * @return string
-     */
-    public function searchableAs()
-    {
-        return 'contents_index';
-    }
 
     public function module()
     {

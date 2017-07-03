@@ -11,14 +11,16 @@ class UserActivated extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $activation;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Activation $activation)
     {
-        //
+        $this->activation = $activation;
     }
 
     /**
@@ -28,6 +30,10 @@ class UserActivated extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.activated');
+        return $this->view('mail.activated')
+                    ->with([
+                        'url' => 'http://muuch.ilumexico.mx/activar/'.$this->activation->token,
+                        'userName' => $this->activation->user->name,
+                    ]);
     }
 }

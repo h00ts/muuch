@@ -18,16 +18,6 @@ class Page extends Model
         'category_id', 'name', 'markdown', 'icon', 'image',
     ];
 
-    /**
-     * Get the index name for the model.
-     *
-     * @return string
-     */
-    public function searchableAs()
-    {
-        return 'pages_index';
-    }
-
     public function category()
     {
     	return $this->belongsTo('App\Category');

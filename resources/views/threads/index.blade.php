@@ -29,7 +29,7 @@
             </div>
         </div>
         <a href="/foro/create" class="btn btn-primary btn-raised btn-block"><i class="material-icons">chat</i> Nueva Discusión</a>
-        <a href="/foro/create" class="btn btn-primary btn-raised btn-block"><i class="material-icons">chat</i> Nueva Pregunta</a>
+        <a href="#" class="btn btn-primary btn-raised btn-block"><i class="material-icons">chat</i> Nueva Pregunta</a>
     </div>
 		<div class="col-md-8">
 			<div class="panel panel-primary">
