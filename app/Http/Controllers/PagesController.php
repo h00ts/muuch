@@ -38,4 +38,11 @@ class PagesController extends Controller
         return view('pages.cat', $cat->toArray())->withCat($cat)->withCategories($categories);
     }
 
+    public function search(Request $request)
+    {
+        $pages = App\Page::search($request->input('query'))->get();
+
+        return view('pages.search')->withPages($pages);
+    }
+
 }
