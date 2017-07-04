@@ -61,7 +61,7 @@
                                         <td>{!! $user->id !!}</td>
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
-                                        <td>{{ $user->ilucentro->name }}</td>
+                                        <td>{{ ($user->ilucentro->name) ? $user->ilucentro->name : '-' }}</td>
                                         <td>
                                             <form action="{{ route('usuarios.update', $user->id) }}" method="POST" class="form-inline">
                                             <input type="hidden" name="_method" value="PATCH">
