@@ -30,8 +30,8 @@
                                         <td>{!! $user->id !!}</td>
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
-                                        <td>{{ ($user->roles) ? $user->roles->first()->display_name : 'ERROR' }}</td>
-                                        <td>{{ ($user->roles) ? $user->ilucentro->short_name : '-' }}</td>
+                                        <td>{{ (count($user->roles)) ? $user->roles->first()->display_name : 'ERROR' }}</td>
+                                        <td>{{ ($user->ilucentro) ? $user->ilucentro->short_name : '-' }}</td>
                                         <td><a href="/config/usuarios/{!! $user->id !!}/edit">Editar</a> | <a href="#">Desactivar</a></td>
                                         <td></td>
                                     </tr>
