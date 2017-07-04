@@ -59,10 +59,10 @@ class PageController extends Controller
      */
     public function update(Page $page, Request $request)
     {
-        $page->update($request->only(['name', 'image', 'markdown']));
+        $page->update($request->only(['name', 'image', 'markdown', 'category_id']));
         $contents = Page::find($page->id);
         $roles = Role::all();
 
-        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles);
+        return redirect()->back()->withSuccess('Pagina guardada.');
     }
 }

@@ -76,12 +76,16 @@
                               @foreach($categories->where('parent_id', 0) as $category)
                                 <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->name !!}" data-tabs="tabs">
                                   @foreach($categories->where('parent_id', $category->id) as $subcategory)
-                                    <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab">{!! $subcategory->name !!}</a>
+                                    <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab"><i class="material-icons" style="font-size:18px">folder_open</i> {!! $subcategory->name !!}</a>
                                   @endforeach
+                                  <ul class="nav nav-pill">
+                                  @foreach($category->pages as $page)
+                                    <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i>  {!! $page->name !!}</a></li>
+                                  @endforeach
+                                   </ul>
                                 </div>
                               @endforeach
                             </div>
-
                             
 
                             <div id="muuch" class="tab-content">
@@ -90,9 +94,8 @@
                                   <hr>
                                   <ul class="nav nav-pill">
                                     @foreach($subcategory->pages as $page)
-                                    <li><a href="/muuch/{!! $page->id !!}">{!! $page->name !!}</a></li>
+                                    <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i> {!! $page->name !!}</a></li>
                                     @endforeach
-                                    <li><a href="/muuch/cat/{!! $subcategory->id !!}">Todos los {!! $subcategory->name !!}...</a></li>
                                   </ul>
                                 </div>
                               @endforeach
