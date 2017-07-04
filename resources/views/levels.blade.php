@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+              <div class="row">
+    <div class="col-lg-12">
+      <a href="/" class="btn btn-default pull-right">
+                        <i class="material-icons">arrow_left</i> Regresar
+                    </a> 
+      <h2><a href="/capacitacion"><i class="material-icons">school</i> Capacitación</a></h2>
+      <hr>
+    </div>
+  </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -12,7 +21,7 @@
                             </div>
                             <div class="row-content">
                               <h4 class="list-group-item-heading"><small>
-                                @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "привет!", "Konnichiwa",  "Hallo!", "Ciao!"]))
+                                @php($hola = collect(["¡Hola!", "¡Pekarij abi!", "¡Ma'alob K'iin!", "¡Kwali Tlanextili!", "¡Sak Osil!", "¡A Va'a ntuu ni!", "¡Ketémáúbo'Kích'ahrín!",  "¡Najneajay larraw!", "¡Cualtsin Tlanextilistli!", "¡Guun Xta'a Güii!"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
                               <p class="list-group-item-text"><strong>{{ $user->roles->first()->display_name }}</strong></p>
@@ -51,7 +60,7 @@
             <div class="col-md-8">
                 @include('admin.partials.alerts')
                 @foreach($modules as $module)
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
                         </div>

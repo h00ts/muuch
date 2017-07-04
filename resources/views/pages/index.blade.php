@@ -3,10 +3,11 @@
     <div class="container">
         <div class="row">
                 <div class="col-md-12">
-                     <a href="/muuch" class="btn btn-default pull-right">
+                     <a href="/" class="btn btn-default pull-right">
                         <i class="material-icons">arrow_left</i> Regresar
                     </a> 
-                    <h2><strong>MUUCH</strong></h2>
+                    <h2><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a></h2>
+                    <hr>
                 </div>
 
             @foreach($categories->where('parent_id', null) as $category)

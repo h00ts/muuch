@@ -121,7 +121,7 @@
                     <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }}</small></td>
                     <td><span class="label">{!! count($thread->replies) ? $thread->replies->count() : '0' !!}</span></td>
                     <td><span class="label">0</span></td>
-                    <td>{!! count($thread->replies) ? $thread->replies->last()->user->name : '-' !!}</td>
+                    <td>{{ \Carbon\Carbon::parse($thread->updated_at)->diffForHumans(\Carbon\Carbon::today()) }}</td>
                   </tr>
                   @endforeach
                 </table>

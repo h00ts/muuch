@@ -31,7 +31,7 @@
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
                                         <td>{{ (count($user->roles)) ? $user->roles->first()->display_name : 'ERROR' }}</td>
-                                        <td>{{ ($user->ilucentro) ? $user->ilucentro->short_name : '-' }}</td>
+                                        <td>{{ (count($user->ilucentro)) ? $user->ilucentro->short_name : '-' }}</td>
                                         <td><a href="/config/usuarios/{!! $user->id !!}/edit">Editar</a> | <a href="#">Desactivar</a></td>
                                         <td></td>
                                     </tr>
@@ -61,7 +61,7 @@
                                         <td>{!! $user->id !!}</td>
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
-                                        <td>{{ ($user->ilucentro->name) ? $user->ilucentro->name : '-' }}</td>
+                                        <td>{{ (count($user->ilucentro)) ? $user->ilucentro->name : '-' }}</td>
                                         <td>
                                             <form action="{{ route('usuarios.update', $user->id) }}" method="POST" class="form-inline">
                                             <input type="hidden" name="_method" value="PATCH">
