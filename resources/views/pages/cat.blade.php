@@ -12,7 +12,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         @if(!count($cat->pages))
-                        <p><strong>OOPS!</strong> Todavia no hay nada aquí. Echame una mano y escribeme a <a href="mailto:ruslan@ilumexico.mx">ruslan@ilumexico.mx</a> con los datos que crees que faltan aquí.</p>
+                        <p><strong>OOPS!</strong> Todavia no hay nada aquí.</p>
                         @elseif($cat->parent_id)
                             @foreach($cat->pages as $page)
                             <a href="/muuch/{{ $page->id }}" class="btn btn-lg btn-block">{{ $page->name }}</a>

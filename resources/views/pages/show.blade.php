@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2><strong>MUUCH</strong> {{ $page->category->name }}
+            <h2><strong>MUUCH</strong> {{ $name }}
             <a href="/muuch" class="btn btn-default pull-right">
                 <i class="material-icons">arrow_left</i> Regresar
             </a> 
@@ -12,7 +12,7 @@
         <div class="col-lg-8">
             <div class="panel panel-default display--page">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ $name }}</h3>
+                    <h3 class="panel-title"><a href="/muuch/cat/{{ $page->category->id }}">{{ $page->category->name }}</a></h3>
                 </div>
                 <div class="panel-body">
                     {{ $markdown }}
@@ -20,9 +20,15 @@
                     <div class="list-group">
                     @foreach($page->contents as $content)
                         <div class="list-group-item">
-                            <div class="row-action-primary">
-                              <i class="material-icons">insert_drive_file</i>
-                            </div>
+                                @if($content->cover != '/img/content_default.png')
+                                <div class="row-picture">
+                                    <img src="{{ $content->cover }}" alt="icono" class="circle">
+                                </div>
+                                @else
+                                <div class="row-action-primary">
+                                    <i class="material-icons">insert_drive_file</i>
+                                </div>
+                                @endif
                             <div class="row-content">
                               <div class="action-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Modificado el {{ $content->updated_at->format('d/m/Y') }} {{ ($content->module_id) ? '| Modulo '.$content->module->module : '' }}"><i class="material-icons">info</i></div>
                               <h4 class="list-group-item-heading"><a href="{{ $content->file }}">{{ $content->name }}</a></h4>

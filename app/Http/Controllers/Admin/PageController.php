@@ -58,8 +58,10 @@ class PageController extends Controller
      */
     public function update(Page $page, Request $request)
     {
-        $page->update($request->only(['name', 'image', 'markup']));
+        $page->update($request->only(['name', 'image', 'markdown']));
+        $contents = Page::find($page->id);
+        $roles = Role::all();
 
-        return view('admin.pages.edit', $page->toArray())->withPage($contents);
+        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles);
     }
 }

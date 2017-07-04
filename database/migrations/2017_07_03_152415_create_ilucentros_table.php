@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivationsTable extends Migration
+class CreateIlucentrosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateActivationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('activations', function (Blueprint $table) {
+        Schema::create('ilucentros', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->string('token');
-            $table->boolean('completed');
+            $table->string('name');
+            $table->string('coordinates');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateActivationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activations');
+        Schema::dropIfExists('ilucentros');
     }
 }

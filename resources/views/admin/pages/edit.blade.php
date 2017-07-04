@@ -50,8 +50,16 @@
                         </div>
                         <div class="col-lg-6 form-group">
                             <label for="cover">Caratula</label>
-                            <input type="text" name="cover" class="form-control border-input input-sm" value="{!! $image !!}">
+                            <input type="text" name="image" class="form-control border-input input-sm" value="{!! $image !!}">
                         </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="contents">Descripción</label>
+                                <textarea name="contents" id="contents" cols="30" rows="10" class="form-control">
+                                    
+                                </textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="panel-footer">

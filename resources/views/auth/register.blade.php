@@ -36,6 +36,16 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="ilucentro" class="col-md-4 control-label">ILUCentro</label>
+
+                            <div class="col-md-6">
+                                <select name="ilucentro" id="ilucentro">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Contraseña</label>
 
