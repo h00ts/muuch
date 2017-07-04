@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Ilucentro;
+
+class IlucentroController extends Controller
+{
+	public function index()
+	{
+		$centros = Ilucentro::all();
+
+		return view('admin.ilucentros.index')->withIlucentros($centros);
+	}
+
+	public function create()
+	{
+		return view('admin.ilucentros.create');
+	}
+
+    public function store(Request $request)
+    {
+    	$data = $request->all();
+    	$ilucentro = Ilucentro::create($data);
+
+    	return redirect()->back()->withSuccess('ILUCentro '.$ilucentro->name.' creado.');
+    }
+}

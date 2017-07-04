@@ -41,7 +41,7 @@
                             <label for="ilucentro" class="col-md-4 control-label">ILUCentro</label>
 
                             <div class="col-md-6">
-                                <select name="ilucentro" id="ilucentro">
+                                <select name="ilucentro" id="ilucentro" class="form-control">
                                     <option value=""></option>
                                 </select>
                             </div>

@@ -63,4 +63,5 @@ Route::group([
     Route::get('contenido/create/{module_id}', 'ContentController@create');
     Route::resource('muuch', 'PageController');
     Route::resource('categoria', 'CategoryController');
+    Route::resource('ilucentros', 'IlucentroController');
 });
