@@ -3,8 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <h2 class="text-center">¡Bienvenid@ al MUUCH!</h2>
             <div class="panel panel-primary">
-                <div class="panel-heading">¡Bienvenid@ a MUUCH!</div>
+                <div class="panel-heading">Ingresa</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/ingresar') }}">
                         {{ csrf_field() }}
@@ -39,7 +40,7 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary btn-lg">
+                                <button type="submit" class="btn btn-primary btn-raised">
                                     Ingresar
                                 </button>
 
@@ -51,6 +52,12 @@
                     </form>
                 </div>
             </div>
+        </div>
+                <div class="col-lg-12 text-center">
+            <h2><i class="material-icons">accessibility</i></h2>
+            <h4>La palabra MUUCH proviene del maya y significa "juntos". </h4>
+            <p>
+Esta plataforma fué creada con la intención de acercarnos y ayudarnos a construir un mejor ILUMÉXICO JUNTOS.<br> Te invitamos a explorar la plataforma, así como a enviarnos todos tus comentarios para enriquecerla.</p>
         </div>
     </div>
 </div>
