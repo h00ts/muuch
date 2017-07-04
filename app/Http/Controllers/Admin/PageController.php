@@ -46,8 +46,9 @@ class PageController extends Controller
     {
         $contents = Page::find($page->id);
         $roles = Role::all();
+        $cat = Category::all();
 
-        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles);
+        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles)->withCat($cat);
     }
 
     /**

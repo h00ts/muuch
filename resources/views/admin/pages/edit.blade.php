@@ -13,6 +13,14 @@
                         <input type="hidden" name="_method" value="PUT">
                     <div class="panel-body">
                         <div class="form-group">
+                            <label for="cat">Categoría</label>
+                            <select name="cat" id="cat" class="form-control">
+                                @foreach($cat as $category)
+                                    <option value="{{ $category->id }}">{{ ($category->parent_id) ? $cat->where('id', $category->parent_id)->first()->name.' > '.$category->name : $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="name">Titulo</label>
                             <input type="text" name="name" class="form-control border-input input-lg" value="{!! $name !!}">
                         </div>
