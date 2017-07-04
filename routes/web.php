@@ -26,6 +26,7 @@ Route::post('registro', 'Auth\RegisterController@register');
 Route::get('registro/nuevo', function(){
 	return view('new_registration');
 });
+Route::get('activar/{token}', 'Auth\LoginController@activateUser')->name('user.activate');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {

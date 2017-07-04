@@ -26,7 +26,7 @@
         <div class="sidebar" data-background-color="white" data-active-color="danger">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="{{ url('/config') }}">
+                <a href="{{ url('/') }}">
                 <img src="/img/logo_h.png" alt="Iluméxico" class="img-responsive" style="padding:5px; height: 39px; margin:0 auto">
                     <h3 class="visuallyhidden">{{ config('app.name', 'MUUCH') }}</h3>
                 </a>
@@ -58,9 +58,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="/config/ilucentros">
                         <i class="ti-pencil-alt2"></i>
-                        <p>Foro</p>
+                        <p>Ilucentros</p>
                     </a>
                 </li>
             </ul>

@@ -20,8 +20,10 @@
 
     {{-- Footer --}}
     @slot('footer')
-        @component('mail::footer')
-            &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
+        @component('mail::footer')      
+            Cualquier duda, queja o sugerencia que tengas puedes comunicarla con tu coordinador regional o enviando un correo a ruslan@ilumexico.mx
+            
+            &copy; {{ date('Y') }} Iluméxico
         @endcomponent
     @endslot
 @endcomponent

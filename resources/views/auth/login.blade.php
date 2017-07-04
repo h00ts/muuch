@@ -3,6 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+                @include('admin.partials.alerts')
+            </div>
+        <div class="col-md-8 col-md-offset-2">
             <h2 class="text-center">¡Bienvenid@ al MUUCH!</h2>
             <div class="panel panel-primary">
                 <div class="panel-heading">Ingresa</div>

@@ -41,8 +41,11 @@
                             <label for="ilucentro" class="col-md-4 control-label">ILUCentro</label>
 
                             <div class="col-md-6">
-                                <select name="ilucentro" id="ilucentro" class="form-control">
-                                    <option value=""></option>
+                                <select name="ilucentro_id" id="ilucentro" class="form-control">
+                                    <option value="" disabled selected>Seleccióna tu ILUCentro</option>
+                                    @foreach($ilucentros as $ilucentro)
+                                    <option value="{{ $ilucentro->id }}">{{ $ilucentro->name.' ('.$ilucentro->short_name.')' }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -62,7 +65,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Repetir Contraseña</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Confirma la Contraseña</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>

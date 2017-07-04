@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'ilucentro_id'
     ];
 
     /**
@@ -57,5 +57,15 @@ class User extends Authenticatable
     public function threads()
     {
         return $this->hasMany('App\Thread');
+    }
+
+    public function ilucentro()
+    {
+        return $this->belongsTo('App\Ilucentro');
+    }
+
+    public function activation()
+    {
+        return $this->hasOne('App\Activation');
     }
 }

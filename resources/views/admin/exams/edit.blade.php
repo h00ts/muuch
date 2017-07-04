@@ -32,7 +32,6 @@
                               {!! csrf_field() !!}
                                 <input type="hidden" name="_method" value="PUT">
                                 <input type="text" name="question-{!! $question->id !!}" value="{!! $question->question !!}" class="form-control" style="font-weight:bold">
-                            
                                 <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}"><i class="material-icons">visibility</i> Respuestas</button>
                                 <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="material-icons">add_circle</i></button>
                                 <button type="submit" class="btn btn-success btn-sm btn-raised pull-right"><i class="material-icons">check_circle</i></button>

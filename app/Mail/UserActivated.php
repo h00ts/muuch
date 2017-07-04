@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Activation;
+use App\User;
 
 class UserActivated extends Mailable
 {
@@ -18,9 +20,10 @@ class UserActivated extends Mailable
      *
      * @return void
      */
-    public function __construct(Activation $activation)
+    public function __construct(Activation $activation, User $user)
     {
         $this->activation = $activation;
+        $this->user = $user;
     }
 
     /**
@@ -30,10 +33,11 @@ class UserActivated extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.activated')
+        return $this->subject('Activa tu cuenta de MUUCH.')->markdown('emails.activation')
                     ->with([
                         'url' => 'http://muuch.ilumexico.mx/activar/'.$this->activation->token,
-                        'userName' => $this->activation->user->name,
+                        'userName' => $this->user->name,
+                        'userEmail' => $this->user->email
                     ]);
     }
 }

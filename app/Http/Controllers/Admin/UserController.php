@@ -7,7 +7,10 @@ use App\Http\Requests\UserActivateRequest;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Activation;
 use App\Permission;
+use App\Mail\UserActivated;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -87,7 +90,13 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->active = 1;
             $user->attachRole($request->input('user_role'));
+            $activation = $user->activation()->create([
+                'token' => hash_hmac('sha256', str_random(40), config('app.key')),
+                'completed' => 0
+            ]);
             $user->save();
+
+            Mail::to($user->email)->send(new UserActivated($activation, $user));
 
             return redirect()->back()->withSuccess('Has activado a '.$user->email);
         }

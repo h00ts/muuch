@@ -21,6 +21,7 @@
                                 <td>Nombre</td>
                                 <td>Correo</td>
                                 <td>Rol</td>
+                                <td>ILUCentro</td>
                                 <td>Opciones</td>
                                 <td></td>
                                 </thead>
@@ -30,6 +31,7 @@
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
                                         <td>{{ $user->roles->first()->display_name }}</td>
+                                        <td>{{ $user->ilucentro->short_name }}</td>
                                         <td><a href="/config/usuarios/{!! $user->id !!}/edit">Editar</a> | <a href="#">Desactivar</a></td>
                                         <td></td>
                                     </tr>
@@ -51,25 +53,27 @@
                                 <td>ID</td>
                                 <td>Nombre</td>
                                 <td>Correo</td>
-                                <td>Rol</td>
+                                <td>ILUCentro</td>
+                                <td>Asigna su rol</td>
                                 </thead>
                                 @foreach($users->where('active', null) as $user)
                                     <tr>
                                         <td>{!! $user->id !!}</td>
                                         <td>{!! $user->name !!}</td>
                                         <td>{!! $user->email !!}</td>
-                                        <td class="form-group">
+                                        <td>{{ $user->ilucentro->name }}</td>
+                                        <td>
                                             <form action="{{ route('usuarios.update', $user->id) }}" method="POST" class="form-inline">
                                             <input type="hidden" name="_method" value="PATCH">
                                             {{ csrf_field() }}
                                             <select name="user_role" id="role" class="form-control" required="required">
-                                                <option value="" disabled selected>Selecciona un rol</option>
+                                                <option value="" disabled selected>---</option>
                                                 @foreach($roles as $role)
                                                   <option value="{{ $role->id }}" required>{{ $role->display_name }}</option>
                                                 @endforeach
                                             </select>
                                             <input type="hidden" name="activate" value="TRUE">
-                                              <button type="submit" class="btn btn-success pull-right">Activar</button>
+                                              <button type="submit" class="btn btn-success">Activar</button>
                                             </form>
                                         </td>
 

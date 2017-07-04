@@ -40,7 +40,6 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -48,9 +47,13 @@
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
                             <li><a href="{{ url('/registrar') }}">Registrate</a></li>
                         @else
+
                             <li><a href="{{ url('/muuch') }}"><strong>MUUCH</strong></a></li>
                             <li><a href="{{ url('/capacitacion') }}">Capacitación</a></li>
                             <li><a href="{{ url('/foro') }}">Foro</a></li>
+                            @ability('admin', '')
+                            <li><a href="/config"><i class="material-icons">settings</i> </a></li>
+                            @endability
                             <li>
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();

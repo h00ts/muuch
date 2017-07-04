@@ -104,7 +104,7 @@
 
                 <div class="box">
                    <div class="box-body" style="max-width:600px; margin: 0 auto">
-                       <p>Porfavor espera a que tu cuenta sea aprobada. <br> <strong>Te lo notificaremos a tu correo de Iluméxico.</strong></p>
+                       <p>Porfavor espera a que tu cuenta sea aprobada. <br> <strong>Enviaremos la notificación a tu correo de Iluméxico.</strong></p>
                        <p><a href="{{ url('/logout') }}"
                                 onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
