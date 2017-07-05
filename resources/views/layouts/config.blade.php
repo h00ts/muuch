@@ -63,6 +63,12 @@
                         <p>Ilucentros</p>
                     </a>
                 </li>
+                <li>
+                    <a href="/config/canales">
+                        <i class="ti-pencil-alt2"></i>
+                        <p>Canales de discución</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

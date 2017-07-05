@@ -57,7 +57,7 @@
     <form action="{{ route('foro.responder', $thread->id) }}" method="POST">
       {{ csrf_field() }}
       <input type="hidden" name="channel_id" value="{{ $thread->channel_id }}">
-
+      <input type="hidden" name="thread_id" value="{{ $thread->id }}">
       <div class="form-group">
         <label for="body">Responder</label>
       <textarea name="body" id="body" rows="5" class="form-control"></textarea>

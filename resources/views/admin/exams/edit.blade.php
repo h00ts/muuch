@@ -1,13 +1,12 @@
 @extends('layouts.config')
+@section('title', 'Editor de Examenes')
+@section('icon', 'school')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Editor de Examenes</h2>
                  <ul class="breadcrumb">
-                  <li><a href="/config">Configuración</a></li>
                   <li><a href="/config/niveles">Capacitación</a></li>
-                  <li><a href="/config/niveles/">Niveles</a></li>
                   <li><a href="/config/niveles/{!! $exam->module->level !!}/edit">Nivel {!! $exam->module->level !!}</a></li>
                   <li class="active">Modulo {!! $exam->module->module !!}</li>
                 </ul>
@@ -18,10 +17,12 @@
         <div class="panel panel-default">
                     <div class="panel-body row">
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Examen</label>
-                                <input type="text" value="{!! $exam->name !!}" class="form-control">
+                            <div class="form-inline">
+                                <label for="examen">Examen</label>
+                                <input type="text" value="{!! $exam->name !!}" class="form-control" id="examen">
+                                  <a href="#" class="btn btn-primary pull-right" data-target="#modal-question-create" data-toggle="modal"><i class="material-icons" style="font-size:16px;">add_circle</i> Crear pregunta</a>
                             </div>
+                            <hr>
                         </div>
                       <div class="col-md-12">   
                     @foreach($exam->questions as $question)
@@ -30,12 +31,20 @@
                         Pregunta ID {!! $question->id !!}
                              <form action="{!! route('pregunta.update', $question->id) !!}" method="POST">                                
                               {!! csrf_field() !!}
+                                <div class="form-group">
                                 <input type="hidden" name="_method" value="PUT">
                                 <input type="text" name="question-{!! $question->id !!}" value="{!! $question->question !!}" class="form-control" style="font-weight:bold">
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}"><i class="material-icons">visibility</i> Respuestas</button>
-                                <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="material-icons">add_circle</i></button>
-                                <button type="submit" class="btn btn-success btn-sm btn-raised pull-right"><i class="material-icons">check_circle</i></button>
-                                <button type="button" class="btn btn-raised btn-sm btn-danger pull-right"><i class="material-icons">delete_forever</i></button> 
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons" style="font-size:16px;">save</i> Guardar</button>
+
+                                <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="material-icons" style="font-size:16px;">add_circle</i> Respuesta</button>
+
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}"><i class="material-icons" style="font-size:16px;">visibility</i> Ver Respuestas</button>
+                                
+                            
+                                <button type="button" class="btn btn-raised btn-sm btn-danger pull-right"><i class="material-icons" style="font-size:16px;">delete_forever</i> Eliminar</button>
+                                </div>
                                         
                             </form>
 
@@ -61,8 +70,8 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                    <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons">check</i></button>
-                                    <button type="button" data-toggle="modal" data-target="#modal-answer-delete" class="btn btn-danger btn-sm btn-raised" onclick="set_delete_answer_modal({!! $answer->id !!}, '{!! $answer->answer !!}')"><i class="material-icons">delete_forever</i></button>
+                                    <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons" style="font-size:16px;">save</i></button>
+                                    <button type="button" data-toggle="modal" data-target="#modal-answer-delete" class="btn btn-danger btn-sm btn-raised" onclick="set_delete_answer_modal({!! $answer->id !!}, '{!! $answer->answer !!}')"><i class="material-icons" style="font-size:16px;">delete_forever</i></button>
                             </div>
                         </div>
     
@@ -84,12 +93,7 @@
 
             </div>
             </div>
-                    <div class="panel-footer">
-                        <a href="#" class="btn btn-primary" data-target="#modal-question-create" data-toggle="modal"><span class="fa fa-plus"></span> Crear pregunta</a>
-                        <a href="#" class="btn btn-link"><i class="glyphicon glyphicon-eye-open"></i> Vista previa</a>
-                    </div>
-
-               
+            
             </div>
         </div>
     </div>

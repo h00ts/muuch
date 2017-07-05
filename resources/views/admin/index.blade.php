@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-2">
-                Bienvenido
+                Reservado para un dashboard... en un futuro cercano.
             </div>
         </div>
     </div>
