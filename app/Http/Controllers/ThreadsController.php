@@ -60,6 +60,7 @@ class ThreadsController extends Controller
      */
     public function show(Thread $thread)
     {
+        Carbon::setLocale('es');
         $user = Auth::user();
         $thread->views++;
         $thread->save();

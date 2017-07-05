@@ -28,64 +28,6 @@
                 </div>
             </div>
             @endforeach
-
-            <!--
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4 bg-primary">
-                                <h4>FORMATOS</h4>
-                            </div>
-                            <div class="col-md-8">
-                                <a href="#" class="btn btn-default btn-block">Campo</a>
-                                <a href="#" class="btn btn-default btn-block">Coordinacion regional</a>
-                                <a href="#" class="btn btn-default btn-block">Institucionales</a>
-                                <a href="#" class="btn btn-default btn-block">Oficinas centrales</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4 bg-primary">
-                                <h4>CULTURA</h4>
-                            </div>
-                            <div class="col-md-8">
-                                    <a href="#" class="btn btn-default btn-block">Publicaciones</a>
-                                    <a href="#" class="btn btn-default btn-block">Prensa</a>
-                                    <a href="#" class="btn btn-default btn-block">Guias de conducta</a>
-                                    <a href="#" class="btn btn-default btn-block">Informacion general</a>
-                                <hr>
-                                    <a href="#" class="btn btn-default btn-block">Pobreza energetica</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4 bg-primary">
-                                <h4>EQUIPO</h4>
-                            </div>
-                            <div class="col-md-8">
-                                    <a href="#" class="btn btn-default btn-block">Personas</a>
-                                    <a href="#" class="btn btn-default btn-block">Sucursales</a>
-                                    <a href="#" class="btn btn-default btn-block">Directorio</a>
-                                    <a href="#" class="btn btn-default btn-block">Canales de comunicacion</a>
-                                    <a href="#" class="btn btn-default btn-block">Quejas y sugerencias</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        -->
     </div>
 
 @endsection
