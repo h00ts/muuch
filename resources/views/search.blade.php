@@ -16,10 +16,25 @@
                 </div>
                 </form>
             </div>
-            <div class="col-lg-12">
-                @foreach($results as $result)
-                    <h2><a href="{{ $result->id }}">{{ $result->name }}</a></h2>
+            <div class="col-lg-6 col-md-12">
+                <h3>Secciones</h3>
+                @if(count($pages))
+                @foreach($pages as $page)
+                    <h4><a href="/muuch/{{ $page->id }}">{{ $page->name }}</a></h4>
                 @endforeach
+                @else
+                <h3>:(</h3>
+                @endif
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <h3>Recursos</h3>
+                @if(count($contents))
+                    @foreach($contents as $content)
+                        <h4><a href="{{ $content->file }}" target="_blank">{{ $content->name }}</a></h4>
+                    @endforeach
+                @else
+                <h3>:(</h3>
+                @endif
             </div>
     </div>
 

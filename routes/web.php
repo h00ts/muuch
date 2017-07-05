@@ -36,8 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('/inicio', 'HomeController@index');
     Route::get('/buscar', function (Request $request) {
-        $q = App\Page::search($request->q)->get();
-        return view('search')->withResults($q);
+        $pages = App\Page::search($request->q)->get();
+        $content = App\Content::search($request->q)->get();
+        return view('search')->withPages($pages)->withContents($content);
     });
     Route::get('/capacitacion', 'LevelsController@index');
     Route::get('/capacitacion/inscribir', 'LevelsController@signUp');
