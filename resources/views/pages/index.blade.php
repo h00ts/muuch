@@ -22,6 +22,9 @@
                                 @foreach($categories->where('parent_id', $category->id) as $subcategory)
                                     <a href="/muuch/cat/{{ $subcategory->id }}" class="btn btn-default btn-block">{{ $subcategory->name }}</a>
                                 @endforeach
+                                @foreach($category->pages as $page)
+                                    <a href="/muuch/{{ $page->id }}" class="btn btn-default btn-block">{{ $page->name }}</a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
