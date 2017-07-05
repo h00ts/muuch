@@ -3,6 +3,9 @@
 <div class="container">
 	  <div class="row">
     <div class="col-lg-12">
+    	<a href="/foro" class="btn btn-default pull-right">
+                        <i class="material-icons">arrow_left</i> Regresar
+                    </a> 
       <h2><a href="/foro"><i class="material-icons">forum</i> Foro</a> <i class="material-icons">chevron_right</i> Nueva discución </h2>
       <hr>
     </div>
@@ -33,11 +36,11 @@
 		<form action="{{ route('foro.store') }}" method="POST">
 			{{ csrf_field() }}
 			<div class="form-group">
-				<label for="category_id">Tema</label>
-				<select name="category_id" id="category_id" class="form-control">
-						<option value="0">Selecciona un tema</option>
-						@foreach($cats as $cat)
-							<option value="{{ $cat->id }}">{{ $cat->name }}</option>
+				<label for="channel_id">Canal</label>
+				<select name="channel_id" id="channel_id" class="form-control">
+						<option value="0">Selecciona un canal</option>
+						@foreach($channels as $channel)
+							<option value="{{ $channel->id }}">{{ $channel->name }}</option>
 						@endforeach
 				</select>
 			</div>

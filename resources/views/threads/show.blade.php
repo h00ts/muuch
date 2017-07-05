@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2><a href="/foro"><i class="material-icons">forum</i> Foro</a> <i class="material-icons">chevron_right</i> <a href="/foro/cat/{{ $thread->id }}">{{ $thread->category->name }}</a> <i class="material-icons">chevron_right</i> {{ $thread->title }} </h2>
+      <h2><a href="/foro"><i class="material-icons">forum</i> Foro</a> <i class="material-icons">chevron_right</i> <a href="/foro/canal/{{ $thread->id }}">{{ $thread->channel->name }}</a> <i class="material-icons">chevron_right</i> {{ $thread->title }} </h2>
       <hr>
     </div>
   </div>
@@ -56,7 +56,7 @@
     @endforeach
     <form action="{{ route('foro.responder', $thread->id) }}" method="POST">
       {{ csrf_field() }}
-      <input type="hidden" name="cat" value="{{ $thread->category_id }}">
+      <input type="hidden" name="channel_id" value="{{ $thread->channel_id }}">
 
       <div class="form-group">
         <label for="body">Responder</label>

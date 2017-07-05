@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Thread;
-use App\Category;
+use App\Channel;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -34,8 +34,8 @@ class ThreadsController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $cats = Category::where('parent_id', null)->get();
-        return view('threads.create')->withCats($cats)->withUser($user);
+        $channels = Channel::all();
+        return view('threads.create')->withChannels($channels)->withUser($user);
     }
 
     /**

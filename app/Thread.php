@@ -9,7 +9,7 @@ class Thread extends Model
 {
     use Searchable;
 
-	protected $fillable = ['title', 'body', 'user_id', 'category_id'];
+	protected $fillable = ['title', 'body', 'user_id', 'channel_id'];
 
     public function user()
     {
@@ -24,5 +24,10 @@ class Thread extends Model
     public function category()
     {
     	return $this->belongsTo('App\Category');
+    }
+
+    public function channel()
+    {
+        return $this->belongsTo('App\Channel');
     }
 }
