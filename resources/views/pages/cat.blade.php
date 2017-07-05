@@ -3,10 +3,11 @@
     <div class="container">
         <div class="row">
                 <div class="col-md-12">
-                     <a href="/muuch" class="btn btn-default pull-right">
+                     <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                         <i class="material-icons">arrow_left</i> Regresar
                     </a> 
-                    <h2><strong>MUUCH</strong> {{ $name }}</h2>
+                    <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i> {{ $name }}</h3>
+                    <hr>
                 </div>
             <div class="col-lg-4">
                 <div class="panel panel-primary">

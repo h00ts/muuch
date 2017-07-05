@@ -6,7 +6,7 @@
       <a href="/" class="btn btn-default pull-right">
                         <i class="material-icons">arrow_left</i> Regresar
                     </a> 
-      <h2><a href="/capacitacion"><i class="material-icons">school</i> Capacitación</a></h2>
+      <h3><a href="/capacitacion"><i class="material-icons">school</i> Capacitación</a></h3>
       <hr>
     </div>
   </div>

@@ -2,18 +2,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h2><strong>MUUCH</strong> {{ $name }}
-            <a href="/muuch" class="btn btn-default pull-right">
+        <div class="col-lg-12">
+             <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                 <i class="material-icons">arrow_left</i> Regresar
             </a> 
-            </h2>
+            <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i> <a href="/muuch/cat/{{ $page->category->id }}">{{ $page->category->name }}</a> <i class="material-icons">chevron_right</i> {{ $name }}
+            </h3>
+            <hr>
         </div>
         <div class="col-lg-8">
             <div class="panel panel-default display--page">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><a href="/muuch/cat/{{ $page->category->id }}">{{ $page->category->name }}</a></h3>
-                </div>
                 <div class="panel-body">
                     {{ $markdown }}
                     <h3>{{ count($page->contents) ? 'Recursos' : '' }}</h3>  

@@ -3,7 +3,10 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2><a href="/foro"><i class="material-icons">forum</i> Foro</a> <i class="material-icons">chevron_right</i> <a href="/foro/canal/{{ $thread->id }}">{{ $thread->channel->name }}</a> <i class="material-icons">chevron_right</i> {{ $thread->title }} </h2>
+      <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
+                        <i class="material-icons">arrow_left</i> Regresar
+                    </a> 
+      <h3><a href="/foro"><i class="material-icons">forum</i> Foro</a> <i class="material-icons">chevron_right</i> <a href="/foro/canal/{{ $thread->id }}">{{ $thread->channel->name }}</a> <i class="material-icons">chevron_right</i> {{ $thread->title }} </h3>
       <hr>
     </div>
   </div>
