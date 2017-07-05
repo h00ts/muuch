@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/foro', 'ThreadsController', ['except' => 'show']);
     Route::get('/foro/{thread}', 'ThreadsController@show');
     Route::get('/foro/responder/{id}', 'RepliesController@create');
-    Route::post('/foro/responder/{id}', 'RepliesController@store');
+    Route::post('/foro/responder/{id}', 'RepliesController@store')->name('foro.responder');
 });
 
 Route::group([

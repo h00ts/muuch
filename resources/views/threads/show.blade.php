@@ -32,7 +32,7 @@
     <div class="col-md-8">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h2 class="panel-title">{{ $thread->user->name }} <span class="label label-primary">({{ $thread->user->roles->first()->display_name }})</span> <small>Hace {{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans(\Carbon\Carbon::now(), true) }}</small> </h2>
+          <h2 class="panel-title">{{ $thread->user->name }} <span class="label label-primary">({{ $thread->user->roles->first()->display_name }})</span> <small>{{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small> </h2>
         </div>
         <div class="panel-body">
           <div class="col-sm-2">
@@ -44,7 +44,7 @@
     @foreach($thread->replies as $reply)
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2 class="panel-title">{{ $reply->user->name }} <span class="label label-primary">({{ $reply->user->roles->first()->display_name }})</span> <small>Hace {{ \Carbon\Carbon::parse($reply->created_at)->diffForHumans(\Carbon\Carbon::now(), true) }}</small> </h2>
+          <h2 class="panel-title">{{ $reply->user->name }} <span class="label label-primary">({{ $reply->user->roles->first()->display_name }})</span> <small>{{ \Carbon\Carbon::now()->parse($reply->created_at)->diffForHumans() }}</small> </h2>
         </div>
         <div class="panel-body">
           <div class="col-sm-2">
@@ -54,8 +54,10 @@
         </div>
       </div>
     @endforeach
-    <form action="{{ route('foro.store') }}" method="POST">
+    <form action="{{ route('foro.responder', $thread->id) }}" method="POST">
       {{ csrf_field() }}
+      <input type="hidden" name="cat" value="{{ $thread->category_id }}">
+
       <div class="form-group">
         <label for="body">Responder</label>
       <textarea name="body" id="body" rows="5" class="form-control"></textarea>

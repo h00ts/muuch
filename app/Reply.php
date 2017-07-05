@@ -8,6 +8,8 @@ use Laravel\Scout\Searchable;
 class Reply extends Model
 {
 	use Searchable;
+
+	protected $fillable = ['body', 'thread_id'];
     
     public function user()
     {

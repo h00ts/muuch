@@ -8,9 +8,11 @@ use App\Content;
 use App\Thread;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -28,6 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('es');
         $user = Auth::user();
         $modules = Module::where('level', $user->level)->get();
         $content_count = 0;
@@ -35,6 +38,7 @@ class HomeController extends Controller
             $content_count += count($module->contents);
         }
         ($content_count == 0) ? $content_count = 1 : $content_count;
+        $user_content = isset($user->content) ? count($user->content->where('module.level', $user->level)) : 0;
         $threads = Thread::paginate(5);
         $categories = Category::all();
 
@@ -43,6 +47,7 @@ class HomeController extends Controller
             ->withModules($modules)
             ->withThreads($threads)
             ->withCategories($categories)
-            ->withContentCount($content_count);
+            ->withContentCount($content_count)
+            ->withUserContent($user_content);
     }
 }

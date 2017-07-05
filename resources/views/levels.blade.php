@@ -33,32 +33,33 @@
                             <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                             <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                         @else
-                            <a href="/capacitacion" class="btn btn-danger btn-lg btn-block">
-                            Mi Capacitación
-                            </a>
-                            <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</span></h4>
+                            <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
                             <div class="progress progress-striped active">
-                              <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
-                                {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
+                              <div class="progress-bar {!! ($user_content == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar"
+                                style="width: {!! ($user_content) ? ($user_content / $content_count * 100).'%' : '0%' !!};"
+                                aria-valuenow="{!! ($user_content) ? number_format($user_content / $content_count * 100, 2, '.', ',')  : '0' !!}"
+                                aria-valuemin="0"
+                                aria-valuemax="100">
+                                {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                               </div>
                             </div>
-                            @if(count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at && count($user->content) == $content_count)
+                            @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
                                 <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                                 <p>Toma el examen para pasar al siguiente nivel.</p>
-                            @elseif(!count($user->scores) && count($user->content) == $content_count)
-                                <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
+                            @elseif($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
+                                 <p class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente. Aprovecha para repasar el contenido de tu capacitación.</p>
+                            @elseif($user_content == $content_count && !count($user->scores))
+                                  <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                                 <p>Toma el examen para pasar al siguiente nivel.</p>
-                            @elseif(count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
-                                 <h4 class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente.</h4>
                             @endif
                         @endif
                     </div>
                 </div>
+                @include('admin.partials.alerts')
             </div>
             <div class="col-md-8">
-                @include('admin.partials.alerts')
                 @foreach($modules as $module)
                     <div class="panel panel-primary">
                         <div class="panel-heading">

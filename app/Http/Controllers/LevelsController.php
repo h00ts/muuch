@@ -33,6 +33,7 @@ class LevelsController extends Controller
             $content_count += count($module->contents);
         }
         ($content_count == 0) ? $content_count = 1 : $content_count;
+        $user_content = isset($user->content) ? count($user->content->where('module.level', $user->level)) : 0;
 
         /*
         $modules = Module::whereDoesntHave('users', function ($q) use ($user) {
@@ -46,14 +47,15 @@ class LevelsController extends Controller
         return view('levels')
             ->withUser($user)
             ->withModules($modules)
-            ->withContentCount($content_count);
+            ->withContentCount($content_count)
+            ->withUserContent($user_content);
     }
 
     public function signUp()
     {
         $user = Auth::user();
         if($user->level || $user->level != 0){
-            return redirect()->back()->withErrors('Ya estas inscrito');
+            return redirect()->back()->withErrors('Ya estas inscrito.');
         }
 
         $user->level = 1;
@@ -68,6 +70,6 @@ class LevelsController extends Controller
         $user->content()->attach($id);
         $user->save();
 
-        return redirect('/capacitacion')->withSuccess('Muy bien! Completaste el bloque.');
+        return redirect('/capacitacion')->withSuccess('¡Muy bien! Completaste el bloque.');
     }
 }

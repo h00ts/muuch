@@ -20,6 +20,11 @@ class Answer extends Model
     	return $this->belongsTo('App\Question'); 
     }
 
+    public function exam()
+    {
+        return $this->question->exam;
+    }
+
     public function users()
     {
     	return $this->belongsToMany('App\User');

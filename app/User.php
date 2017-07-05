@@ -59,6 +59,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Thread');
     }
 
+    public function replies()
+    {
+        return $this->hasMany('App\Reply');
+    }
+
     public function ilucentro()
     {
         return $this->belongsTo('App\Ilucentro');

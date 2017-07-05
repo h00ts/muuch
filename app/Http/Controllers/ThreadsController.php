@@ -6,6 +6,7 @@ use Auth;
 use App\Thread;
 use App\Category;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ThreadsController extends Controller
 {
@@ -17,6 +18,7 @@ class ThreadsController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('es');
         $threads = Thread::paginate(5);
         $user = Auth::user();
 
@@ -59,6 +61,9 @@ class ThreadsController extends Controller
     public function show(Thread $thread)
     {
         $user = Auth::user();
+        $thread->views++;
+        $thread->save();
+
         return view('threads.show', compact('thread'))->withUser($user);
     }
 

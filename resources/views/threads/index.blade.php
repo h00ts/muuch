@@ -3,6 +3,9 @@
 <div class="container">
 	  <div class="row">
     <div class="col-lg-12">
+      <a href="/" class="btn btn-default pull-right">
+                        <i class="material-icons">arrow_left</i> Regresar
+                    </a> 
       <h2><a href="/foro"><i class="material-icons">forum</i> Foro</a></h2>
       <hr>
     </div>
@@ -47,9 +50,9 @@
                   @foreach($threads as $thread)
                   <tr>
                     <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }}</small></td>
-                    <td><span class="label">{!! count($thread->replies) ? $thread->replies->count() : '0' !!}</span></td>
-                    <td><span class="label">0</span></td>
-                    <td>{!! count($thread->replies) ? $thread->replies->last()->user->name : '-' !!}</td>
+                    <td><span class="label">{{ ($thread->views) ? $thread->views : '0' }}</span></td>
+                    <td><span class="label">{{ count($thread->replies) ? $thread->replies->count() : '0' }}</span></td>
+                    <td>{{ count($thread->replies) ? $thread->replies->last()->user->name : '-' }}</td>
                   </tr>
                   @endforeach
                 </table>

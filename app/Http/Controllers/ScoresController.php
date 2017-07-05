@@ -17,9 +17,6 @@ class ScoresController extends Controller
 		$user = Auth::user();
 		$data = $request->except('_token');
 
-		/*****
-		ALGORITHM FOR FINDING THE OVERALL LIVE SCORE OF AN EXAM
-		******/
 		$keys = array_keys($data);
 		$values = array_values($data);
 		$user->answers()->attach($values);
@@ -37,35 +34,39 @@ class ScoresController extends Controller
 			{
 				if($answer->correct){$ra++;}
 			}
+			// not sure why I thought of this, but I'll let it sit here just in case ¯\_(ツ)_/¯
+
 			foreach($values as $value)
 			{
 				$answer = Answer::findOrFail($value);
-				if($answer->question->id == $test->id) {
-					if($answer->correct){$ua++; $ts++;}
+				if($answer->exam()->id == $test->id) {
+					if($answer->correct){$ua++; ++$ts;}
 				}
 			}
+
 			$score = Score::create([
 				'score' => $ua,
 				'level' => $user->level,
 				'user_id' => $user->id,
 				'exam_id' => $test->id
 			]);
-
-			//$score->user()->attach($user);
-			//$score->exam()->attach($test);
 		}
 
-		return $ts;
-		/*****
-		END ALGORITHM
-		******/
+		$scores = $user->scores->where('level', $user->level);
+		$avg = array();
+		foreach($scores as $score)
+		{
+			$avg[] = $score->exam->min_score;
+		}
+		$avg = (array_sum($avg) / count($avg));
+		$total = ($ts) ? number_format((($ts / $ra) * 100),0) : '0';
+		if($total >= $avg)
+		{
+			$user->level++;
+			$user->save();
+		}
 
-		/*****
-		ALGORITHM FOR FINDING EACH EXAM SCORE (of a level?)
-		******/
-		Score::where('exam.level', $level);
-
-		
+		return view('exams.graded')->withScores($scores)->withGrade($ts)->withPossible($ra)->withUser($user)->withAvg($avg)->withTotal($total);
 	}
 
 	public function get_numerics ($str) {

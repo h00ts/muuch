@@ -30,19 +30,23 @@
                             <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                             <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                         @else
-                            <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!}</span></h4>
+                            <h4 class="text-success">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
                             <div class="progress progress-striped active">
-                              <div class="progress-bar {!! (count($user->content) == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar" aria-valuenow="{!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 2, '.', ',')  : '0' !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! isset($user->content) ? count($user->content) / $content_count * 100 . '%' : '0%' !!};">
-                                {!! isset($user->content) ? number_format(count($user->content) / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
+                              <div class="progress-bar {!! ($user_content == $content_count) ? 'progress-bar-success' : 'progress-bar-warning' !!}" role="progressbar"
+                                style="width: {!! ($user_content) ? ($user_content / $content_count * 100).'%' : '0%' !!};"
+                                aria-valuenow="{!! ($user_content) ? number_format($user_content / $content_count * 100, 2, '.', ',')  : '0' !!}"
+                                aria-valuemin="0"
+                                aria-valuemax="100">
+                                {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                               </div>
                             </div>
-                            @if(count($user->content) == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
+                            @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
                                 <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                                 <p>Toma el examen para pasar al siguiente nivel.</p>
-                            @elseif(count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
-                                 <h4 class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente. Aprovecha para repasar el contenido de tu capacitación.</h4>
-                            @elseif(count($user->content) == $content_count && !count($user->scores))
+                            @elseif($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
+                                 <p class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente. Aprovecha para repasar el contenido de tu capacitación.</p>
+                            @elseif($user_content == $content_count && !count($user->scores))
                                   <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                                 <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                                 <p>Toma el examen para pasar al siguiente nivel.</p>
@@ -78,8 +82,22 @@
                                   @foreach($categories->where('parent_id', $category->id) as $subcategory)
                                     <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab"><i class="material-icons" style="font-size:18px">folder_open</i> {!! $subcategory->name !!}</a>
                                   @endforeach
+                                  
+                                   <div id="muuch" class="tab-content">
+                                    @foreach($categories->where('parent_id', '>', 0) as $subcategory)
+                                      <div class="tab-pane fade in" id="{!! str_slug($subcategory->name) !!}" data-tabs="tabs">
+                                        <ul class="nav nav-pill">
+                                          @foreach($subcategory->pages as $page)
+                                          <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i> {!! $page->name !!}</a></li>
+                                          @endforeach
+                                        </ul>
+                                      </div>
+                                    @endforeach
+                                  </div>
+
                                   <ul class="nav nav-pill">
                                   @foreach($category->pages as $page)
+                                  <li><hr></li>
                                     <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i>  {!! $page->name !!}</a></li>
                                   @endforeach
                                    </ul>
@@ -88,18 +106,7 @@
                             </div>
                             
 
-                            <div id="muuch" class="tab-content">
-                              @foreach($categories->where('parent_id', '>', 0) as $subcategory)
-                                <div class="tab-pane fade in" id="{!! str_slug($subcategory->name) !!}" data-tabs="tabs">
-                                  <hr>
-                                  <ul class="nav nav-pill">
-                                    @foreach($subcategory->pages as $page)
-                                    <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i> {!! $page->name !!}</a></li>
-                                    @endforeach
-                                  </ul>
-                                </div>
-                              @endforeach
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -112,16 +119,18 @@
                 <table class="table table-hover">
                     <tr>
                       <th>Discusión</th>
-                      <th><i class="material-icons" style="font-size:18px" title="Vistas" data-toggle="tooltip" data-placement="left">remove_red_eye</i></th>
-                      <th><i class="material-icons" style="font-size:18px" title="Respuestas" data-toggle="tooltip" data-placement="left">comment</i></th>
-                      <th><i class="material-icons" style="font-size:18px" title="Respuesta más reciente" data-toggle="tooltip" data-placement="left">access_time</i></th>
+                      <th class="text-center"><i class="material-icons" style="font-size:18px" title="Vistas" data-toggle="tooltip" data-placement="left">remove_red_eye</i></th>
+                      <th class="text-center"><i class="material-icons" style="font-size:18px" title="Respuestas" data-toggle="tooltip" data-placement="left">comment</i></th>
+                      <th class="text-center"><i class="material-icons" style="font-size:18px" title="Actividad más reciente" data-toggle="tooltip" data-placement="left">access_time</i></th>
                   </tr>
                   @foreach($threads as $thread)
                   <tr>
-                    <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }}</small></td>
-                    <td><span class="label">{!! count($thread->replies) ? $thread->replies->count() : '0' !!}</span></td>
-                    <td><span class="label">0</span></td>
-                    <td>{{ \Carbon\Carbon::parse($thread->updated_at)->diffForHumans(\Carbon\Carbon::today()) }}</td>
+                    <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small>Creado por {{ $thread->user->name }} {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small></td>
+                    <td class="text-center" style="line-height:45px">{{ ($thread->views) ? $thread->views : '0' }}</td>
+                    <td class="text-center" style="line-height:45px">{{ count($thread->replies) ? $thread->replies->count() : '0' }}</td>
+                    <td class="text-right">
+                      <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ (count($thread->replies)) ? $thread->replies->last()->user->name : $thread->user->name }} <br> {{ (count($thread->replies)) ? \Carbon\Carbon::now()->parse($thread->replies->last()->created_at)->diffForHumans() : 'No hay respuestas :(' }}</small>
+                    </td>
                   </tr>
                   @endforeach
                 </table>
