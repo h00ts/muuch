@@ -97,7 +97,6 @@
 
                                   <ul class="nav nav-pill">
                                   @foreach($category->pages as $page)
-                                  <li><hr></li>
                                     <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i>  {!! $page->name !!}</a></li>
                                   @endforeach
                                    </ul>
