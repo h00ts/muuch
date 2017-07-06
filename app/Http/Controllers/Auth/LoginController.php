@@ -41,12 +41,15 @@ class LoginController extends Controller
         $this->activationRepo = $activationRepo;
     }
 
-
-    protected function getCredentials(Request $request)
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(\Illuminate\Http\Request $request)
     {
-        $crendentials = $request->only($this->loginUsername(), 'password');
-        $crendentials['active']=1;
-        return $crendentials;
+        return ['email' => $request->email, 'password' => $request->password, 'active' => 1];
     }
 
     public function activateUser($token)
