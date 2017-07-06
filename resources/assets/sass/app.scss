@@ -44,8 +44,8 @@ body {
   transition: all 0.2s ease;
 }
 
-.action-secondary:hover {
-  transform:scale(2);
+.action-secondary .label:hover {
+  cursor:pointer;
 }
 
 h3.visuallyhidden {

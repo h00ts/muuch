@@ -63,7 +63,7 @@
                 @foreach($modules as $module)
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
+                            <h3 class="panel-title">Nivel {!! $module->level !!}, Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
                         </div>
                         <div class="panel-body">
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
@@ -92,8 +92,8 @@
                                         </a>
                                     </div>
                                     <div class="row-content">
-                                        <div class="action-secondary" data-toggle="tooltip" data-placement="left" title="Completar">
-                                            <i class="material-icons" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')">radio_button_unchecked</i>
+                                        <div class="action-secondary">
+                                            <span class="label label-success" data-target="#modal-complete" data-toggle="modal" onclick="set_content_modal({!! $content->id !!}, '{!! $content->name !!}')">Completar</span>
                                         </div>
                                         <h4 class="list-group-item-heading">
                                             <a href="{{ ($content->markdown != null) ? '/capacitacion/ver/'.$content->id : $content->file }}" {{ ($content->markdown == null) ? 'target="_blank"' : '' }}>
