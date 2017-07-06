@@ -17,6 +17,7 @@
                                 <tr>
                                     <th>Modulo</th>
                                     <th>Contenido</th>
+
                                     <th>Evaluaciónes</th>
                                 </tr>
                             </thead>

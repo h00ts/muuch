@@ -25,7 +25,7 @@ class AddPageIdToContentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::table('contents', function (Blueprint $table) {
             $table->dropColumn('page_id');
         });
     }

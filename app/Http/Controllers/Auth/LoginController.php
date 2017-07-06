@@ -41,6 +41,14 @@ class LoginController extends Controller
         $this->activationRepo = $activationRepo;
     }
 
+
+    protected function getCredentials(Request $request)
+    {
+        $crendentials = $request->only($this->loginUsername(), 'password');
+        $crendentials['active']=1;
+        return $crendentials;
+    }
+
     public function activateUser($token)
     {
         $activation = $this->activationRepo->getActivationByToken($token);

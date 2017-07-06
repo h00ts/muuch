@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddChannelsToThreadsTable extends Migration
+class AddPassedStatusToScoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddChannelsToThreadsTable extends Migration
      */
     public function up()
     {
-        Schema::table('threads', function (Blueprint $table) {
-            $table->dropColumn('category_id');
-            $table->unsignedInteger('channel_id');
+        Schema::table('scores', function (Blueprint $table) {
+            $table->boolean('passed');
+            $table->boolean('status');
         });
     }
 
@@ -26,9 +26,9 @@ class AddChannelsToThreadsTable extends Migration
      */
     public function down()
     {
-        Schema::table('threads', function (Blueprint $table) {
-            $table->dropColumn('channel_id');
-            $table->integer('category_id');
+        Schema::table('scores', function (Blueprint $table) {
+            $table->dropColumn('passed');
+            $table->dropColumn('status');
         });
     }
 }

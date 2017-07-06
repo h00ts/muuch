@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Cache;
 
 class User extends Authenticatable
 {
@@ -72,5 +73,10 @@ class User extends Authenticatable
     public function activation()
     {
         return $this->hasOne('App\Activation');
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 }
