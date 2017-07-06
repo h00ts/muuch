@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <strong>Accesos rápidos:</strong> <a href="http://mail.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">mail_outline</i> Correo</a> <a href="http://sf.ilumexico.mx" class="btn btn-defult btn-sm btn-primary" style="margin:0"><i class="material-icons">backup</i> Salesforce</a> <a href="http://tinyurl.com/TWAPK440" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">phone_android</i> Descarga TARO</a> <a href="http://vbx.ilumexico.mx" class="btn btn-default btn-sm btn-primary" style="margin:0" title="vbx@ilumexico.mx - prometeo1" data-toggle="tooltip" data-placement="bottom"><i class="material-icons">sms</i> SMS</a>
+      <strong>Accesos rápidos:</strong> <a href="http://mail.ilumexico.mx" target="_blank" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">mail_outline</i> Correo</a> <a href="http://sf.ilumexico.mx" target="_blank" class="btn btn-defult btn-sm btn-primary" style="margin:0"><i class="material-icons">backup</i> Salesforce</a> <a href="http://tinyurl.com/TWAPK440" target="_blank" class="btn btn-default btn-sm btn-primary" style="margin:0"><i class="material-icons">phone_android</i> Descarga TARO</a> <a href="http://vbx.ilumexico.mx" target="_blank" class="btn btn-default btn-sm btn-primary" style="margin:0" title="vbx@ilumexico.mx - prometeo1" data-toggle="tooltip" data-placement="bottom"><i class="material-icons">sms</i> SMS</a>
       <hr>
     </div>
   </div>
@@ -18,7 +18,7 @@
                             </div>
                             <div class="row-content">
                               <h4 class="list-group-item-heading"><small>
-                                @php($hola = collect(["¡Hola!", "¡Pekarij abi!", "¡Ma'alob K'iin!", "¡Kwali Tlanextili!", "¡Sak Osil!", "¡A Va'a ntuu ni!", "¡Ketémáúbo'Kích'ahrín!",  "¡Najneajay larraw!", "¡Cualtsin Tlanextilistli!", "¡Guun Xta'a Güii!"]))
+                                @php($hola = collect(["¡Hola!", "¡Pekarij abi! (Matlatzinca)", "¡Ma'alob K'iin! (Maya)", "¡Kwali Tlanextili! (Náhuatl)", "¡Sak Osil! (Tsotsil)", "¡A Va'a ntuu ni! (Mixteco)", "¡Ketémáúbo'Kích'ahrín! (Chichimeco)",  "¡Najneajay larraw! (Huave)", "¡Cualtsin Tlanextilistli! (Náhuatl)", "¡Guun Xta'a Güii! (Triqui)"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
                               <p class="list-group-item-text"><strong>{{ $user->roles->first()->display_name }}</strong></p>

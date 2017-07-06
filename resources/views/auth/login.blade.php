@@ -48,7 +48,7 @@
                                 </button>
 
                                 <a class="btn btn-link btn-sm" href="{{ url('/recuperar/correo') }}">
-                                    Olvide mi contraseña
+                                    Recuperar contraseña
                                 </a>
                             </div>
                         </div>

@@ -29,7 +29,7 @@
                                 @endif
                             <div class="row-content">
                               <div class="action-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Modificado el {{ $content->updated_at->format('d/m/Y') }} {{ ($content->module_id) ? '| Modulo '.$content->module->module : '' }}"><i class="material-icons">info</i></div>
-                              <h4 class="list-group-item-heading"><a href="{{ $content->file }}">{{ $content->name }}</a></h4>
+                              <h4 class="list-group-item-heading"><a href="{{ $content->file }}" target="_blank">{{ $content->name }}</a></h4>
                               <p class="list-group-item-text">{{ $content->description }}</p>
                             </div>
                         </div>
