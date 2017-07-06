@@ -45,14 +45,14 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-Regards,<br>{{ config('app.name') }}
+Saludos,<br>{{ config('app.name') }}
 @endif
 
 <!-- Subcopy -->
 @if (isset($actionText))
 @component('mail::subcopy')
-If you’re having trouble clicking the "{{ $actionText }}" button, copy and paste the URL below
-into your web browser: [{{ $actionUrl }}]({{ $actionUrl }})
+Si no puedes hacer clic en el botón "{{ $actionText }}", copia y pega la siguiente direccion
+en tu navegador: [{{ $actionUrl }}]({{ $actionUrl }})
 @endcomponent
 @endif
 @endcomponent

@@ -21,7 +21,7 @@
                                 @php($hola = collect(["¡Hola!", "¡Pekarij abi!", "¡Ma'alob K'iin!", "¡Kwali Tlanextili!", "¡Sak Osil!", "¡A Va'a ntuu ni!", "¡Ketémáúbo'Kích'ahrín!",  "¡Najneajay larraw!", "¡Cualtsin Tlanextilistli!", "¡Guun Xta'a Güii!"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
-                              <p class="list-group-item-text"><strong>Administrador</strong></p>
+                              <p class="list-group-item-text"><strong>{{ $user->roles->first()->display_name }}</strong></p>
                               <p>{!! $user->email !!}</p>
                             </div>
                           </div>
@@ -112,7 +112,7 @@
             </div>
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discuciónes</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
+                <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
               </div>
               <div class="panel-body">
                 <table class="table table-hover">
