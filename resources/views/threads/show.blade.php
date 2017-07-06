@@ -63,7 +63,7 @@
       <input type="hidden" name="thread_id" value="{{ $thread->id }}">
       <div class="form-group">
         <label for="body">Responder</label>
-      <textarea name="body" id="body" rows="5" class="form-control"></textarea>
+      <textarea name="body" id="body" rows="5" class="form-control" required></textarea>
       </div>
       <input type="submit" class="btn btn-block btn-primary btn-raised" value="RESPONDER">
     </form>
