@@ -41,7 +41,7 @@
           <div class="col-sm-2">
             <img class="circle" src="/img/default_avatar.png" alt="icon" style="width:100%; max-width: 100px;">
           </div>
-          <div class="col-sm-10"><p>{{ $thread->body }}</p></div>
+          <div class="col-sm-10"><p>{!! nl2br(e($thread->body)) !!}</p></div>
         </div>
       </div>
     @foreach($thread->replies as $reply)
@@ -53,7 +53,7 @@
           <div class="col-sm-2">
             <img class="circle" src="/img/default_avatar.png" alt="icon" style="width:100%; max-width: 100px;">
           </div>
-          <div class="col-sm-10"><p>{{ $reply->body }}</p></div>
+          <div class="col-sm-10"><p>{!! nl2br(e($reply->body)) !!}</p></div>
         </div>
       </div>
     @endforeach
