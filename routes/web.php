@@ -20,9 +20,10 @@ Route::get('/', function () {
 Route::get('ingresar', 'Auth\LoginController@showLoginForm');
 Route::post('ingresar', 'Auth\LoginController@login');
 Route::post('salir', 'Auth\LoginController@logout');
-Route::post('recuperar/enviar', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.reset');
+Route::post('recuperar/enviar', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 Route::get('recuperar/correo', 'Auth\ForgotPasswordController@showLinkRequestForm');
-Route::get('recuperar/contra/{token}', 'Auth\ForgotPasswordController@showResetForm');
+Route::get('recuperar/contra/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('recuperar/cambiar', 'Auth\ResetPasswordController@reset');
 Route::get('registro', 'Auth\RegisterController@showRegistrationForm');
 Route::post('registro', 'Auth\RegisterController@register');
 Route::get('registro/nuevo', function(){
