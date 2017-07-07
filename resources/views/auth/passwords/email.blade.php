@@ -17,6 +17,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <p class="text-center">Te enviaremos un correo para que restalescas tu contraseña.</p>
                             <label for="email" class="col-md-4 control-label">Correo Electrónico</label>
 
                             <div class="col-md-6">
@@ -33,7 +34,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Envíame mi contraseña
+                                    Envíame el correo
                                 </button>
                             </div>
                         </div>

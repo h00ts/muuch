@@ -46,7 +46,7 @@ class ResetPassword extends Notification
             ->subject('Restablecer Contraseña')
             ->greeting('¡Hola!')
             ->line('Estas recibiendo este correo porque solicitaste restablecer tu contraseña de MUUCH.')
-            ->action('Cambiar mi contraseña', url(config('app.url').route('password.reset', $this->token, false)))
+            ->action('Cambiar mi contraseña', url(route('password.reset', $this->token, false)))
             ->line('Si no hiciste esta solicitud, puedes ingnorar este mensaje.');
     }
 
