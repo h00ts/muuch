@@ -36,6 +36,10 @@
                 <h3>:(</h3>
                 @endif
             </div>
+            <div class="col-sm-12">
+                <br><br>
+                <img src="/img/search-by-algolia.png" alt="Algolia" style="width:150px">
+            </div>
     </div>
 
 @endsection
