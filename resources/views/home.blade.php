@@ -18,7 +18,7 @@
                             </div>
                             <div class="row-content">
                               <h4 class="list-group-item-heading"><small>
-                                @php($hola = collect(["¡Hola!", "¡Pekarij abi! (Matlatzinca)", "¡Ma'alob K'iin! (Maya)", "¡Kwali Tlanextili! (Náhuatl)", "¡Sak Osil! (Tsotsil)", "¡A Va'a ntuu ni! (Mixteco)", "¡Ketémáúbo'Kích'ahrín! (Chichimeco)",  "¡Najneajay larraw! (Huave)", "¡Cualtsin Tlanextilistli! (Náhuatl)", "¡Guun Xta'a Güii! (Triqui)"]))
+                                @php($hola = collect(["¡Hola!", "¡Pekarij abi! <small>(Matlatzinca)</small>", "¡Ma'alob K'iin! <small>(Maya)</small>", "¡Kwali Tlanextili! <small>(Náhuatl)</small>", "¡Sak Osil! <small>(Tsotsil)</small>", "¡A Va'a ntuu ni! <small>(Mixteco)</small>", "¡Ketémáúbo'Kích'ahrín! <small>(Chichimeco)</small>",  "¡Najneajay larraw! <small>(Huave)</small>", "¡Cualtsin Tlanextilistli! <small>(Náhuatl)</small>", "¡Guun Xta'a Güii! <small>(Triqui)</small>"]))
                                 {!! $hola->random() !!}
                               </small><br>{!! $user->name !!}</h4>
                               <p class="list-group-item-text"><strong>{{ $user->roles->first()->display_name }}</strong></p>
@@ -86,7 +86,7 @@
                             <div id="subcategorias" class="tab-content">
                               @foreach($categories->where('parent_id', 0) as $category)
                                 <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->name !!}" data-tabs="tabs">
-                                  @foreach($categories->where('parent_id', $category->id) as $subcategory)
+                                  @foreach($categories->where('parent_id', $category->id)->sortBy('name') as $subcategory)
                                     <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab"><i class="material-icons" style="font-size:18px">folder_open</i> {!! $subcategory->name !!}</a>
                                   @endforeach
                                   
@@ -94,7 +94,7 @@
                                     @foreach($categories->where('parent_id', '>', 0) as $subcategory)
                                       <div class="tab-pane fade in" id="{!! str_slug($subcategory->name) !!}" data-tabs="tabs">
                                         <ul class="nav nav-pill">
-                                          @foreach($subcategory->pages as $page)
+                                          @foreach($subcategory->pages->sortBy('name') as $page)
                                           <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i> {!! $page->name !!}</a></li>
                                           @endforeach
                                         </ul>
@@ -103,7 +103,7 @@
                                   </div>
 
                                   <ul class="nav nav-pill">
-                                  @foreach($category->pages as $page)
+                                  @foreach($category->pages->sortBy('name') as $page)
                                     <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i>  {!! $page->name !!}</a></li>
                                   @endforeach
                                    </ul>
