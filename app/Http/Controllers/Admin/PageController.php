@@ -13,7 +13,7 @@ class PageController extends Controller
     public function index()
     {
     	$categories = Category::all();
-    	$pages = Page::all();
+    	$pages = Page::orderBy('updated_at')->paginate(10);
 
         return view('admin.pages.index')
         	->withCategories($categories)

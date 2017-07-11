@@ -65,6 +65,13 @@
               </div>
                 <div class="panel-body">
                     <div class="row">
+                      <div class="col-sm-12">
+                      <form action="/buscar" method="GET">
+                          <div class="form-group" style="margin-top:0;">
+                          <input type="text" class="form-control input-lg" placeholder="Buscar..." name="q">
+                          </div>
+                      </form>
+                      </div>
                         <div class="col-sm-12">
                             <div class="nav-tabs-navigation">
                               <div class="nav-tabs-wrapper">

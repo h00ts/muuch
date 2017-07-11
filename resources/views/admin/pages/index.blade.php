@@ -5,17 +5,48 @@
     <div class="container-fluid">
         <div class="row">
              <div class="col-lg-12">
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pageModal"><i class="glyphicon glyphicon-plus"></i> Página</a>
+                <hr>
+                @include('admin.partials.alerts')
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                     <div class="header">
+                        <h4 class="title">Páginas</h4>
+                    </div>
+                    <div class="content">
+                            <table class="table table-responsive text-default">
+                                <tr>
+                                    <th>Página</th>
+                                    <th>Categoría</th>
+                                    <th>Creación</th>
+                                    <th>Última modificación</th>
+                                </tr>
+                                @foreach($pages as $page)
+                                <tr>
+                                    <td><a href="{!! route('muuch.edit', $page->id) !!}">{!! $page->name !!}</a></td>
+                                    <td><a href="{!! route('categoria.edit', $page->category->id) !!}">{!! $page->category->name !!}</a></td>
+                                    <td>{{ $page->created_at->format('H:i d/m/y') }}</td>
+                                    <td>{{ $page->updated_at->format('H:i d/m/y') }}</td>
+                                </tr>
+                                @endforeach
+                            </table>
+                            {{ $pages->links() }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <hr>
                 <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#categoryModal">
                     <i class="glyphicon glyphicon-plus"></i> Categoría
                 </a>
                 <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#subcategoryModal">
                     <i class="glyphicon glyphicon-plus"></i> Subcategoría
                 </a>
-                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pageModal"><i class="glyphicon glyphicon-plus"></i> Página</a>
                 <hr>
                 @include('admin.partials.alerts')
             </div>
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Categorías</h4>
@@ -33,27 +64,6 @@
                     </div>
                 </div>
                 
-            </div>
-            <div class="col-md-8">
-                <div class="card">
-                     <div class="header">
-                        <h4 class="title">Páginas</h4>
-                    </div>
-                    <div class="content">
-                            <table class="table table-responsive">
-                                <tr>
-                                    <th>Página</th>
-                                    <th>Categoría</th>
-                                </tr>
-                                @foreach($pages as $page)
-                                <tr>
-                                    <td><a href="{!! route('muuch.edit', $page->id) !!}">{!! $page->name !!}</a></td>
-                                    <td><a href="{!! route('categoria.edit', $page->category->id) !!}">{!! $page->category->name !!}</a></td>
-                                </tr>
-                                @endforeach
-                            </table>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
