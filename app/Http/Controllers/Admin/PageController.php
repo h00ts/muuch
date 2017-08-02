@@ -23,12 +23,14 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $data = $request->input();
+        $slug = str_slug($data['name'], '-');
         $page = Page::create([
             'name' => $data['name'],
             'category_id' => 0,
             'icon' => '',
             'image' => '',
-            'markdown' => ''
+            'markdown' => '',
+            'slug' => $slug
         ]);
         $category = Category::find($data['category_id']);
         $category->pages()->save($page);

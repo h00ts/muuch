@@ -15,7 +15,7 @@ class Page extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id', 'name', 'markdown', 'icon', 'image',
+        'category_id', 'name', 'markdown', 'icon', 'image', 'slug'
     ];
 
     public function category()

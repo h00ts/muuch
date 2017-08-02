@@ -77,7 +77,7 @@
                               <div class="nav-tabs-wrapper">
                                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                                   @foreach($categories->where('parent_id', 0) as $category)
-                                    <li><a href="#{!! $category->name !!}" data-toggle="tab">{!! $category->name !!}</a></li>
+                                    <li><a href="#{!! $category->slug !!}" data-toggle="tab">{!! $category->name !!}</a></li>
                                   @endforeach
                                 </ul>
                               </div>

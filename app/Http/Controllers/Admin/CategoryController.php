@@ -36,7 +36,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = Category::create($request->all());
+        $slug = str_slug($request->input('name'), '-');
+        $category = Category::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'slug' => $slug
+        ]);
 
         return redirect()->route('categoria.edit', $category)->withSuccess('Creaste la categoria '.$category->name);
     }
