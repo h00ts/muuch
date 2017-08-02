@@ -21,9 +21,11 @@ mix.combine(['vendor/creativetimofficial/paper-kit/assets/js/*'], 'resources/ass
 
 		*/
 		
-	mix.js(['resources/assets/js/app.js',
-		'node_modules/bootstrap-material-design/dist/js/material.min.js',
-		'node_modules/bootstrap-material-design/dist/js/ripples.min.js'
-		], 'public/js/config.min.js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .sass('resources/assets/sass/config.scss', 'public/css');
+mix.js(['resources/assets/js/app.js',
+	'node_modules/bootstrap-material-design/dist/js/material.min.js',
+	'node_modules/bootstrap-material-design/dist/js/ripples.min.js',
+	'node_modules/selectize/dist/js/selectize.min.js'
+	], 'public/js/config.min.js')
+.sass('resources/assets/sass/app.scss', 'public/css')
+.sass('resources/assets/sass/config.scss', 'public/css')
+.less('node_modules/selectize/dist/css/selectize.boostrap3.css', 'public/css');

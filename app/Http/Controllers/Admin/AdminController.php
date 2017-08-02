@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Role;
 
 class AdminController extends Controller
 {
@@ -14,7 +16,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $new_users = User::where('active',false)->get();
+        $roles = Role::all();
+
+        return view('admin.index')->withUsers($new_users)->withRoles($roles);
     }
 
     /**

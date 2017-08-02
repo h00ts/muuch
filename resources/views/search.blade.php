@@ -17,7 +17,7 @@
                 </form>
             </div>
             <div class="col-lg-6 col-md-12">
-                <h3>Secciones</h3>
+                <h3>Páginas</h3>
                 @if(count($pages))
                 @foreach($pages as $page)
                     <h4><a href="/muuch/{{ $page->id }}">{{ $page->name }}</a></h4>

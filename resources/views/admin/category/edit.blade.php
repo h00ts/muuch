@@ -1,7 +1,9 @@
 @extends('layouts.config')
-
+@section('title', 'Editar Categoria')
+@section('slug', 'accesibility')
+@section('slug', 'muuch')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb">

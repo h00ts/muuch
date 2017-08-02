@@ -1,5 +1,6 @@
 @extends('layouts.config')
-
+@section('titulo', 'Crear Pagina')
+@section('slug', 'muuch')
 @section('content')
     <div class="container">
         <div class="row">

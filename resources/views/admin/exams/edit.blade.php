@@ -1,6 +1,7 @@
 @extends('layouts.config')
 @section('title', 'Editor de Examenes')
 @section('icon', 'school')
+@section('slug', 'capacitacion')
 @section('content')
     <div class="container">
         <div class="row">

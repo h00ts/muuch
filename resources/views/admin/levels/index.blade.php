@@ -1,6 +1,7 @@
 @extends('layouts.config')
 @section('title', 'Capacitación')
 @section('icon', 'school')
+@section('slug', 'capacitacion')
 @section('content')
     <div class="container-fluid">
         <div class="row">

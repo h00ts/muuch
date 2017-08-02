@@ -1,5 +1,6 @@
 @extends('layouts.config')
 @section('title', 'Editar Nivel de Capacitación')
+@section('slug', 'capacitacion')
 @section('content')
     <div class="container-fluid">
         <div class="row">

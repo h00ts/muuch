@@ -1,6 +1,7 @@
 @extends('layouts.config')
 @section('title', 'Canales de discución')
 @section('icon', 'forum')
+@section('slug', 'canales')
 @section('content')
     <div class="container-fluid">
         <div class="row">

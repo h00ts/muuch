@@ -51,11 +51,11 @@
                         <div class="content">
                             <table class="table table-striped">
                                 <thead>
-                                <td>ID</td>
+                                <tr><td>ID</td>
                                 <td>Nombre</td>
                                 <td>Correo</td>
                                 <td>ILUCentro</td>
-                                <td>Asigna su rol</td>
+                                <td>Asigna su rol</td></tr>
                                 </thead>
                                 @foreach($users->where('active', null) as $user)
                                     <tr>

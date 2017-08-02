@@ -10,7 +10,8 @@
 
     <title>Iluméxico : {{ config('app.name', 'MUUCH') }}</title>
 
-    <link href="/css/config.css" rel="stylesheet">
+    <link href="/css/config.css" rel="stylesheet" type="text/css">
+    <link href="/css/config.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -33,37 +34,37 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li id="configuracion" class="active">
                     <a href="/config">
                         <i class="ti-panel"></i>
                         <p>Configuración</p>
                     </a>
                 </li>
-                <li>
+                <li id="usuarios">
                     <a href="/config/usuarios">
                         <i class="ti-user"></i>
                         <p>Usuarios</p>
                     </a>
                 </li>
-                <li>
+                <li id="capacitacion">
                     <a href="/config/niveles">
                         <i class="ti-view-list-alt"></i>
                         <p>Capacitación</p>
                     </a>
                 </li>
-                <li>
+                <li id="muuch">
                     <a href="/config/muuch">
                         <i class="ti-text"></i>
                         <p>MUUCH</p>
                     </a>
                 </li>
-                <li>
+                <li id="ilucentros">
                     <a href="/config/ilucentros">
                         <i class="ti-pencil-alt2"></i>
                         <p>Ilucentros</p>
                     </a>
                 </li>
-                <li>
+                <li id="canales">
                     <a href="/config/canales">
                         <i class="ti-pencil-alt2"></i>
                         <p>Canales de discución</p>
@@ -149,7 +150,13 @@
     @yield('modals')
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="/js/config.min.js"></script>
+    <script>
+    $(document).ready(function () {
+      $(".nav li").removeClass("active");
+      $("#@yield('slug')").addClass("active");
+    });
+    </script>
 
     @yield('scripts')
 
