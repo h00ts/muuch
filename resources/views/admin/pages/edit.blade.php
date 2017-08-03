@@ -27,10 +27,8 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12 form-group">
-                                <label for="contents">Descripción</label>
-                                <textarea name="contents" id="contents" cols="30" rows="10" class="form-control border-input">
-
-                                </textarea>
+                                <label for="markdown">Descripción</label>
+                                <textarea name="markdown" id="markdown" cols="30" rows="10" class="form-control border-input" required>{{ isset($markdown) ? $markdown : '' }}</textarea>
                             </div>
                         </div>
                        <div class="row">
