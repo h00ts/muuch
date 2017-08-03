@@ -39,7 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buscar', function (Request $request) {
         $pages = App\Page::search($request->q)->get();
         $content = App\Content::search($request->q)->get();
-        return view('search')->withPages($pages)->withContents($content);
+        $count = count($pages);
+        $count += count($content);
+        return view('search')->withPages($pages)->withContents($content)->withQuery($request->q)->withCount($count);
     });
     Route::get('/capacitacion', 'LevelsController@index');
     Route::get('/capacitacion/inscribir', 'LevelsController@signUp');
