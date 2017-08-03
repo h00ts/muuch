@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Page;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +59,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/foro/{thread}', 'ThreadsController@show');
     Route::get('/foro/responder/{id}', 'RepliesController@create');
     Route::post('/foro/responder/{id}', 'RepliesController@store')->name('foro.responder');
+    Route::get('/herramientas', function(){
+        $page = Page::where('slug', 'herramientas')->first();
+        $categories = Category::all();
+        $markdown = Markdown::convertToHtml($page->markdown);
+
+        return view('pages.show', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+    });
 });
 
 Route::group([

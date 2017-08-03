@@ -16,6 +16,7 @@
                         <div class="form-group">
                             <label for="cat">Categoría</label>
                             <select name="category_id" id="cat" class="form-control border-input">
+                                <option value="0">Ninguna</option>
                                 @foreach($cat as $category)
                                     <option value="{{ $category->id }}" {{ ($category_id == $category->id) ? 'selected' : '' }}>{{ ($category->parent_id) ? $cat->where('id', $category->parent_id)->first()->name.' > '.$category->name : $category->name }}</option>
                                 @endforeach

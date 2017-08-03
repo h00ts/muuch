@@ -57,6 +57,9 @@
                 <a href="/capacitacion" class="btn btn-primary btn-raised btn-lg btn-block">
                             <i class="material-icons">school</i> Mi Capacitación
                             </a>
+            <a href="/herramientas" class="btn btn-primary btn-raised btn-lg btn-block">
+                <i class="material-icons">lightbulb_outline</i> Herramientas
+            </a>
         </div>
         <div class="col-md-8">
             <div class="panel panel-primary">
