@@ -14,7 +14,7 @@
         <div class="col-lg-8">
             <div class="panel panel-default display--page">
                 <div class="panel-body">
-                    {{ $markdown }}
+                    {!! $markdown !!}
                     <h3>{{ count($page->contents) ? 'Recursos' : '' }}</h3>  
                     <div class="list-group">
                     @foreach($page->contents as $content)

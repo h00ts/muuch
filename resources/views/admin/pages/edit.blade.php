@@ -27,7 +27,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12 form-group">
-                                <label for="markdown">Descripción</label>
+                                <label for="markdown">Markdown</label>
                                 <textarea name="markdown" id="markdown" cols="30" rows="10" class="form-control border-input" required>{{ isset($markdown) ? $markdown : '' }}</textarea>
                             </div>
                         </div>

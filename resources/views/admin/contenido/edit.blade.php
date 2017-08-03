@@ -39,9 +39,19 @@
                             <input type="text" name="name" class="form-control border-input input-lg" value="{!! $content->name !!}">
                         </div>
                        
-                       <div class="form-group">
-                           <label for="markdown">Markdown</label>
-                           <textarea name="markdown" class="form-control border-input" id="markdown" cols="30" rows="10">{!! $content->markdown !!}</textarea>
+                       <div class="row">
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <label for="description">Descripción</label>
+                                   <textarea name="description" class="form-control border-input" id="description" cols="30" rows="10">{!! $content->description !!}</textarea>
+                               </div>
+                           </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <label for="markdown">Markdown</label>
+                                   <textarea name="markdown" class="form-control border-input" id="markdown" cols="30" rows="10">{!! $content->markdown !!}</textarea>
+                               </div>
+                           </div>
                        </div>
                         <div class="form-group">
                             <label for="file">Descargable</label>

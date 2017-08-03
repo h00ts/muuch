@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Page;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class PagesController extends Controller
 {
@@ -28,7 +29,9 @@ class PagesController extends Controller
     public function show(Page $page)
     {
         $categories = Category::all();
-        return view('pages.show', $page)->withPage($page)->withCategories($categories);
+        $markdown = Markdown::convertToHtml($page->markdown);
+
+        return view('pages.show', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
     }
 
     public function getCat($id)
