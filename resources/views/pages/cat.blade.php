@@ -15,7 +15,9 @@
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
                             @foreach($categories->where('parent_id', null) as $category)
+                                @permission('category-'.$category->slug)
                                 <li><a href="/muuch/cat/{{ $category->id }}">{{ $category->name }}</a></li>
+                                @endpermission
                             @endforeach
                             </ul>
                     </div>
@@ -25,11 +27,14 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                             @foreach($cat->pages as $page)
-                            <a href="/muuch/{{ $page->id }}" class="btn btn-lg btn-block">{{ $page->name }}</a>
+                                @permission('page-'.$page->slug)
+                                    <a href="/muuch/{{ $page->id }}" class="btn btn-lg btn-block">{{ $page->name }}</a>
+                                @pendpermission
                             @endforeach
-
                             @foreach($categories->where('parent_id', $cat->id) as $category)
-                            <a href="/muuch/cat/{{ $category->id }}" class="btn btn-lg btn-block">{{ $category->name }}</a>
+                                @permission('category-'.$category->slug)
+                                    <a href="/muuch/cat/{{ $category->id }}" class="btn btn-lg btn-block">{{ $category->name }}</a>
+                                @endpermission
                             @endforeach
                     </div>
                 </div>

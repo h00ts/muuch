@@ -77,7 +77,9 @@
                               <div class="nav-tabs-wrapper">
                                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                                   @foreach($categories->where('parent_id', 0) as $category)
+                                     @permission('category-'.$category->slug)
                                     <li><a href="#{!! $category->slug !!}" data-toggle="tab">{!! $category->name !!}</a></li>
+                                      @endpermission
                                   @endforeach
                                 </ul>
                               </div>
@@ -85,6 +87,7 @@
                      
                             <div id="subcategorias" class="tab-content">
                               @foreach($categories->where('parent_id', 0) as $category)
+                                  @permission('category-'.$category->slug)
                                 <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->slug !!}" data-tabs="tabs">
                                   @foreach($categories->where('parent_id', $category->id)->sortBy('name') as $subcategory)
                                     <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab"><i class="material-icons" style="font-size:18px">folder_open</i> {!! $subcategory->name !!}</a>
@@ -108,6 +111,7 @@
                                   @endforeach
                                    </ul>
                                 </div>
+                                  @endpermission
                               @endforeach
                             </div>
                             
