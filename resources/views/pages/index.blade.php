@@ -27,10 +27,10 @@
                                 </div>
                                 <div class="col-md-8">
                                     @foreach($categories->where('parent_id', $category->id) as $subcategory)
-                                        <a href="/muuch/cat/{{ $subcategory->id }}" class="btn btn-default btn-block">{{ $subcategory->name }}</a>
+                                        <a href="/muuch/cat/{{ $subcategory->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">folder_open</i> {{ $subcategory->name }}</a>
                                     @endforeach
                                     @foreach($category->pages as $page)
-                                        <a href="/muuch/{{ $page->id }}" class="btn btn-default btn-block">{{ $page->name }}</a>
+                                        <a href="/muuch/{{ $page->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
                                     @endforeach
                                 </div>
                             </div>
