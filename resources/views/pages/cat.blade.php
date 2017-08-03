@@ -6,7 +6,9 @@
                      <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                         <i class="material-icons">arrow_left</i> Regresar
                     </a> 
-                    <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i> {{ $name }}</h3>
+                    <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i>
+                        {!! isset($parent_id) ? '<a href="/muuch/cat/'.$categories->where('id', $parent_id)->first()->id.'">'.$categories->where('id', $parent_id)->first()->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!}
+                        {{ $name }}</h3>
                     <hr>
                 </div>
             <div class="col-lg-4">
