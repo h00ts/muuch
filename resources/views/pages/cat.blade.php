@@ -29,7 +29,7 @@
                             @foreach($cat->pages as $page)
                                 @permission('page-'.$page->slug)
                                     <a href="/muuch/{{ $page->id }}" class="btn btn-lg btn-block">{{ $page->name }}</a>
-                                @pendpermission
+                                @endpermission
                             @endforeach
                             @foreach($categories->where('parent_id', $cat->id) as $category)
                                 @permission('category-'.$category->slug)
@@ -39,6 +39,7 @@
                     </div>
                 </div>
             </div>
+    </div>
     </div>
 
 @endsection

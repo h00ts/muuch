@@ -45,6 +45,15 @@ class CategoryController extends Controller
             'slug' => $slug
         ]);
 
+        $permission = Permission::create([
+            'name' => 'category-'.$slug,
+            'display_name' => 'Ver '.$category->name,
+            'description' => 'Permiso para ver la página '.$category->name
+        ]);
+
+        $admin = Role::findOrFail(1);
+        $admin->attachPermission($permission);
+
         return redirect()->route('categoria.edit', $category)->withSuccess('Creaste la categoria '.$category->name);
     }
 
