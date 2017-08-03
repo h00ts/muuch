@@ -12,7 +12,6 @@
     <link href="/css/app.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
       <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
     <script>
         window.Laravel = {!! json_encode([
@@ -84,12 +83,6 @@
     <script type="text/javascript">
         $(function () {
             $.material.init();
-
-            $('.masonry').masonry({
-                // options
-                itemSelector: '.yah',
-                columnWidth: 200
-            });
         });
     </script>
 

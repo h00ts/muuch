@@ -61,39 +61,42 @@
         <div class="col-md-8">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><a href="/muuch" class="link"><i class="material-icons">accessibility</i> <strong>MUUCH</strong> <i class="material-icons pull-right">arrow_right</i> </a></h3>
+                <h3 class="panel-title"><a href="/muuch" class="link"><i class="material-icons">accessibility</i> <strong>MUUCH</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>
               </div>
                 <div class="panel-body">
                     <div class="row">
                       <div class="col-sm-12">
                       <form action="/buscar" method="GET">
                           <div class="form-group" style="margin-top:0;">
-                          <input type="text" class="form-control input-lg" placeholder="Buscar..." name="q">
+                          <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
                           </div>
                       </form>
                       </div>
                         <div class="col-sm-12">
+                            <small>Menu rápido</small>
                             <div class="nav-tabs-navigation">
                               <div class="nav-tabs-wrapper">
                                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                                   @foreach($categories->where('parent_id', 0) as $category)
                                      @permission('category-'.$category->slug)
-                                    <li><a href="#{!! $category->slug !!}" data-toggle="tab">{!! $category->name !!}</a></li>
+                                        <li{{ ($category->id == 1) ? ' class=active' : '' }}><a href="#{!! $category->slug !!}" data-toggle="tab">{!! $category->name !!}</a></li>
                                       @endpermission
                                   @endforeach
                                 </ul>
                               </div>
                             </div>
+
                      
                             <div id="subcategorias" class="tab-content">
                               @foreach($categories->where('parent_id', 0) as $category)
-                                <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->slug !!}" data-tabs="tabs">
+                                <div class="nav tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->slug !!}" data-tabs="tabs">
+                                    <ul class="nav nav-pills">
                                   @foreach($categories->where('parent_id', $category->id)->sortBy('name') as $subcategory)
                                         @permission('category-'.$subcategory->slug)
-                                    <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab"><i class="material-icons" style="font-size:18px">folder_open</i> {!! $subcategory->name !!}</a>
+                                        <li><a href="#{!! str_slug($subcategory->name) !!}" data-toggle="tab"><i class="material-icons" style="font-size:18px">folder_open</i> {!! $subcategory->name !!}</a></li>
                                       @endpermission
                                   @endforeach
-                                  
+                                    </ul>
                                    <div id="muuch" class="tab-content">
                                     @foreach($categories->where('parent_id', '>', 0) as $subcategory)
                                       <div class="tab-pane fade in" id="{!! $subcategory->slug !!}" data-tabs="tabs">
@@ -127,7 +130,7 @@
             </div>
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> </a></h2>
+                <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
               </div>
               <div class="panel-body">
                 <table class="table table-hover">

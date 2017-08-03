@@ -50,8 +50,8 @@
                     <table class="table table-responsive">
                         <thead>
                         <tr>
+                            <td>Contenido</td>
                             <td>Página</td>
-                            <td>Categoría</td>
                         </tr>
                         </thead>
                     @foreach($contents as $content)
