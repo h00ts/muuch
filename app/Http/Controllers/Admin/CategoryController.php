@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Role;
+use App\Permission;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -68,8 +69,9 @@ class CategoryController extends Controller
     {
         $parents = Category::where('parent_id', null)->get();
         $roles = Role::all();
+        $perm = Permission::where('name', 'category-' . $category->slug)->first();
 
-        return view('admin.category.edit', $category->toArray())->withParents($parents)->withRoles($roles);
+        return view('admin.category.edit', $category->toArray())->withParents($parents)->withRoles($roles)->withPerm($perm);
     }
 
     /**
@@ -81,7 +83,41 @@ class CategoryController extends Controller
      */
     public function update(Category $category, Request $request)
     {
-        $category->update($request->all());
+        $data = $request->all();
+        $data['slug'] = str_slug($data['name']);
+        $category->update($data);
+
+        $permission = Permission::where('name', 'category-' . $data['slug'])->first();
+
+        if(! count($permission)){
+            $permission = Permission::create([
+                'name' => 'category-'.$data['slug'],
+                'display_name' => 'Ver '.$data['name'],
+                'description' => 'Permiso para ver la categoria '.$data['name']
+            ]);
+        }
+
+        $oficina = Role::findOrFail(2);
+        $cooreg = Role::findOrFail(3);
+        $ingcom = Role::findOrFail(4);
+
+        if($request->input('rol-oficina') && ! $oficina->hasPermission($permission->name)){
+            $oficina->attachPermission($permission);
+        } elseif(! $request->input('rol-oficina')) {
+            $oficina->detachPermission($permission);
+        }
+
+        if($request->input('rol-cooreg') && ! $cooreg->hasPermission($permission->name)){
+            $cooreg->attachPermission($permission);
+        } elseif(! $request->input('rol-cooreg')) {
+            $cooreg->detachPermission($permission);
+        }
+
+        if($request->input('rol-ingcom')&& ! $ingcom->hasPermission($permission->name)){
+            $ingcom->attachPermission($permission);
+        } elseif(! $request->input('rol-ingcom')) {
+            $ingcom->detachPermission($permission);
+        }
 
         return back()->withSuccess('Categoria actualizada.');
     }

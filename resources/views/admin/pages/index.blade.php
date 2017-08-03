@@ -27,8 +27,8 @@
                                 <tr>
                                     <td><a href="{!! route('muuch.edit', $page->id) !!}">{!! $page->name !!}</a></td>
                                     <td><a href="{!! route('categoria.edit', $page->category->id) !!}">{!! $page->category->name !!}</a></td>
-                                    <td>{{ $page->created_at->format('H:i d/m/y') }}</td>
-                                    <td>{{ $page->updated_at->format('H:i d/m/y') }}</td>
+                                    <td>{{ $page->created_at->format('d M Y H:i ') }}</td>
+                                    <td>{{ $page->updated_at->format('d M Y H:i') }}</td>
                                 </tr>
                                 @endforeach
                             </table>

@@ -14,7 +14,7 @@ class PageController extends Controller
     public function index()
     {
     	$categories = Category::all();
-    	$pages = Page::orderBy('updated_at')->paginate(10);
+    	$pages = Page::orderByDesc('updated_at')->paginate(10);
 
         return view('admin.pages.index')
         	->withCategories($categories)
@@ -41,6 +41,9 @@ class PageController extends Controller
             'display_name' => 'Ver '.$data['name'],
             'description' => 'Permiso para ver la página '.$data['name']
         ]);
+
+        $admin = Role::findOrFail(1);
+        $admin->attachPermission($permission);
 
         return redirect()->back()->withSuccess('Página creada con exito.');
     }

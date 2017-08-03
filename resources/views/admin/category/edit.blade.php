@@ -37,16 +37,18 @@
                                 @endforeach
                             </select>
                         </div>
+                        @if(count($perm))
                         <div class="form-group">
                             <strong>Mostrar a </strong>
                             <div class="btn-group" data-toggle="buttons">
-                                @foreach($roles as $role)
-                                    <label class="btn btn-default active">
-                                        <input type="checkbox" autocomplete="off"> {{ $role->display_name }}
+                                @foreach($roles->slice(1) as $role)
+                                    <label class="btn btn-primary {{ ($role->hasPermission($perm->name)) ? 'active' : '' }}">
+                                        <input type="checkbox" name="rol-{{ $role->name }}" autocomplete="off" value="{{ $role->id }}" {{ ($role->hasPermission($perm->name)) ? 'checked' : '' }}> {{ $role->display_name }}
                                     </label>
                                 @endforeach
                             </div>
                         </div>
+                        @endif
                         <button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
 
                         <button type="button" id="button--show-box" class="btn btn-danger pull-right"><i class="material-icons">delete</i></button>

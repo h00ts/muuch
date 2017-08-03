@@ -5,5 +5,6 @@
   "/js/config.js": "/js/config.js",
   "/js/config.min.js": "/js/config.min.js",
   "resources/assets/js/paper.js": "resources/assets/js/paper.js",
-  "/css/selectize.css": "/css/selectize.css"
+  "/css/selectize.css": "/css/selectize.css",
+  "/css/selectize.bootstrap3.css": "/css/selectize.bootstrap3.css"
 }
