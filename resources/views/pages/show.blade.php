@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @permission('page-'.$page->slug)
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -53,6 +54,7 @@
         </div>
     </div>
 </div>
+    @endpermission
 @endsection
 
 @section('modals')

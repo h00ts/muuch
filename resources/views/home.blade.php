@@ -85,14 +85,14 @@
                      
                             <div id="subcategorias" class="tab-content">
                               @foreach($categories->where('parent_id', 0) as $category)
-                                <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->name !!}" data-tabs="tabs">
+                                <div class="tab-pane {!! ($categories->first()->id == $category->id) ? 'active' : 'fade' !!}" id="{!! $category->slug !!}" data-tabs="tabs">
                                   @foreach($categories->where('parent_id', $category->id)->sortBy('name') as $subcategory)
                                     <a href="#{!! str_slug($subcategory->name) !!}" class="btn btn-sm btn-primary" data-toggle="tab"><i class="material-icons" style="font-size:18px">folder_open</i> {!! $subcategory->name !!}</a>
                                   @endforeach
                                   
                                    <div id="muuch" class="tab-content">
                                     @foreach($categories->where('parent_id', '>', 0) as $subcategory)
-                                      <div class="tab-pane fade in" id="{!! str_slug($subcategory->name) !!}" data-tabs="tabs">
+                                      <div class="tab-pane fade in" id="{!! $subcategory->slug !!}" data-tabs="tabs">
                                         <ul class="nav nav-pill">
                                           @foreach($subcategory->pages->sortBy('name') as $page)
                                           <li><a href="/muuch/{!! $page->id !!}"><i class="material-icons" style="font-size:18px">chevron_right </i> {!! $page->name !!}</a></li>
