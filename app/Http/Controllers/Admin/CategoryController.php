@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -66,8 +67,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $parents = Category::where('parent_id', null)->get();
+        $roles = Role::all();
 
-        return view('admin.category.edit', $category->toArray())->withParents($parents);
+        return view('admin.category.edit', $category->toArray())->withParents($parents)->withRoles($roles);
     }
 
     /**

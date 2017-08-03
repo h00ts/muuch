@@ -7,6 +7,7 @@ use App\Page;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\Permission;
 
 class PageController extends Controller
 {
@@ -35,7 +36,13 @@ class PageController extends Controller
         $category = Category::find($data['category_id']);
         $category->pages()->save($page);
 
-        return redirect()->back()->withSuccess('Pagina creada con exito.');
+        $permission = Permission::create([
+            'name' => 'page-'.$slug,
+            'display_name' => 'Ver '.$data['name'],
+            'description' => 'Permiso para ver la página '.$data['name']
+        ]);
+
+        return redirect()->back()->withSuccess('Página creada con exito.');
     }
 
     /**
@@ -49,8 +56,9 @@ class PageController extends Controller
         $contents = Page::find($page->id);
         $roles = Role::all();
         $cat = Category::all();
+        $perm = Permission::where('name', 'page-' . $page->slug)->first();
 
-        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles)->withCat($cat);
+        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles)->withCat($cat)->withPerm($perm);
     }
 
     /**
@@ -61,9 +69,43 @@ class PageController extends Controller
      */
     public function update(Page $page, Request $request)
     {
-        $page->update($request->only(['name', 'image', 'markdown', 'category_id']));
-        $contents = Page::find($page->id);
-        $roles = Role::all();
+        $data = $request->only(['name', 'image', 'markdown', 'category_id']);
+        $data['slug'] = str_slug($data['name']);
+        $page->update($data);
+        //$contents = Page::find($page->id);
+        //$roles = Role::all();
+
+        $permission = Permission::where('name', 'page-' . $data['slug'])->first();
+
+        if(! count($permission)){
+            $permission = Permission::create([
+                'name' => 'page-'.$data['slug'],
+                'display_name' => 'Ver '.$data['name'],
+                'description' => 'Permiso para ver la página '.$data['name']
+            ]);
+        }
+
+        $oficina = Role::findOrFail(2);
+        $cooreg = Role::findOrFail(3);
+        $ingcom = Role::findOrFail(4);
+        
+        if($request->input('rol-oficina') && ! $oficina->hasPermission($permission->name)){
+            $oficina->attachPermission($permission);
+        } elseif(! $request->input('rol-oficina')) {
+            $oficina->detachPermission($permission);
+        }
+
+        if($request->input('rol-cooreg') && ! $cooreg->hasPermission($permission->name)){
+            $cooreg->attachPermission($permission);
+        } elseif(! $request->input('rol-cooreg')) {
+            $cooreg->detachPermission($permission);
+        }
+
+        if($request->input('rol-ingcom')&& ! $ingcom->hasPermission($permission->name)){
+            $ingcom->attachPermission($permission);
+        } elseif(! $request->input('rol-ingcom')) {
+            $ingcom->detachPermission($permission);
+        }
 
         return redirect()->back()->withSuccess('Pagina guardada.');
     }

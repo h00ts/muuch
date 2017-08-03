@@ -240,7 +240,9 @@ return [
          */
         'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        'EmailDomainValidation' => TPWeb\EmailDomainValidation\EmailDomainFacade::class,
+        'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
     ],
 

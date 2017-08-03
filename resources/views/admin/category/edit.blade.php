@@ -40,15 +40,11 @@
                         <div class="form-group">
                             <strong>Mostrar a </strong>
                             <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default active">
-                                    <input type="checkbox" autocomplete="off" checked> Ingenieros Comunitarios
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="checkbox" autocomplete="off"> Coordinadores Regionales
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="checkbox" autocomplete="off"> Administradores
-                                </label>
+                                @foreach($roles as $role)
+                                    <label class="btn btn-default active">
+                                        <input type="checkbox" autocomplete="off"> {{ $role->display_name }}
+                                    </label>
+                                @endforeach
                             </div>
                         </div>
                         <button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
