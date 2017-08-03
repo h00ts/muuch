@@ -15,8 +15,9 @@
         <div class="col-lg-8">
             <div class="panel panel-default display--page">
                 <div class="panel-body">
+                    {!! ($markdown == "" && ! count($page->contents)) ? 'Todavía no hemos tenido la oportunidad de llenar este espacio. Puedes revisar el foro y abrir una nueva discución al respecto si lo crees necesario.' : '' !!}
                     {!! $markdown !!}
-                    <h3>{{ count($page->contents) ? 'Recursos' : '' }}</h3>  
+                    <h3>{{ count($page->contents) ? 'Recursos' : '' }}</h3>
                     <div class="list-group">
                     @foreach($page->contents as $content)
                         <div class="list-group-item">
