@@ -7,7 +7,8 @@
              <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                 <i class="material-icons">arrow_left</i> Regresar
             </a> 
-            <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i> <a href="/muuch/cat/{{ $page->category->id }}">{{ $page->category->name }}</a> <i class="material-icons">chevron_right</i> {{ $name }}
+            <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i>
+                {!! isset($page->category) ? '<a href="/muuch/cat/'.$page->category->id.'">'.$page->category->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!} {{ $name }}
             </h3>
             <hr>
         </div>
