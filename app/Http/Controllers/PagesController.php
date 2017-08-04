@@ -7,6 +7,7 @@ use App\Page;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Yajra\Datatables\Datatables;
 
 class PagesController extends Controller
 {
@@ -26,10 +27,15 @@ class PagesController extends Controller
         return view('pages.index')->withCategories($categories);
     }
 
-    public function show(Page $page)
+    public function show(Page $page, Datatables $datatable)
     {
         $categories = Category::all();
-        $markdown = Markdown::convertToHtml($page->markdown);
+        if(substr($page->markdown, 0, 1 ) === "["){
+            $markdown = $page->markdown;
+        } else {
+            $markdown = Markdown::convertToHtml($page->markdown);
+        }
+
 
         return view('pages.show', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
     }

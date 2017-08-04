@@ -66,6 +66,20 @@ Route::group(['middleware' => 'auth'], function () {
 
         return view('pages.show', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
     });
+    Route::get('/sucursales', function(){
+        $page = Page::where('slug', 'sucursales')->first();
+        $categories = Category::all();
+
+        return view('pages.sucursales', $page)->withPage($page)->withCategories($categories);
+    });
+    Route::get('/equipo', function(){
+        $page = Page::where('slug', 'equipo')->first();
+        $categories = Category::all();
+        $markdown = Markdown::convertToHtml($page->markdown);
+
+        return view('pages.equipo', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+    });
+    Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
 });
 
 Route::group([

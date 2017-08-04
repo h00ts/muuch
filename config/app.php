@@ -185,6 +185,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         MadeITBelgium\EmailDomainValidation\EmailDomainServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
 

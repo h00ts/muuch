@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <form action="/buscar" method="GET">
                     <div class="form-group">
-                    <input type="text" class="form-control input-lg" placeholder="Buscar..." name="q">
+                    <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
                 </div>
                 </form>
             </div>

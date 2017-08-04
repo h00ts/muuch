@@ -11,6 +11,7 @@
 @import "node_modules/bootstrap-material-design/sass/bootstrap-material-design.scss";
 @import "node_modules/bootstrap-material-design/sass/ripples.scss";
 //@import "vendor/creativetimofficial/paper-kit/assets/sass/ct-paper.scss";
+@import url('http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css');
 
 html {
   background:$body-bg; //linear-gradient(320deg, #FF5F00, #fef8cc); //$body-bg;

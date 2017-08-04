@@ -12,12 +12,19 @@
             </h3>
             <hr>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-md-8">
             <div class="panel panel-default display--page">
                 <div class="panel-body">
                     {!! ($markdown == "" && ! count($page->contents)) ? 'Todavía no hemos tenido la oportunidad de llenar este espacio. Puedes revisar el foro y abrir una nueva discución al respecto si lo crees necesario.' : '' !!}
+                    @if($markdown === "['sucursales']")
+                        SUKU
+                    @elseif($markdown == "['directorio']")
+                        @yield('directorio')
+                    @elseif($markdown == "['personas']")
+                        @yield('personas')
+                    @else
                     {!! $markdown !!}
-                    <h3>{{ count($page->contents) ? 'Recursos' : '' }}</h3>
+                    <h4>{{ count($page->contents) ? 'Recursos' : '' }}</h4>
                     <div class="list-group">
                     @foreach($page->contents as $content)
                         <div class="list-group-item">
@@ -38,11 +45,12 @@
                         </div>
                         <div class="list-group-separator"></div>
                     @endforeach
-                    </div>  
+                    </div>
+                @endif
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">MUUCH</div>
                 <div class="panel-body">
@@ -63,5 +71,8 @@
 @endsection
 
 @section('scripts')
+@endsection
 
+@section('sucursales')
+    SUCURSALES MADAFAKAAAAS
 @endsection
