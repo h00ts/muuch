@@ -48,13 +48,13 @@
                             <li><a href="{{ url('/registrar') }}">Registrate</a></li>
                         @else
 
-                            <li><a href="{{ url('/muuch') }}"><strong>MUUCH</strong></a></li>
-                            <li><a href="{{ url('/capacitacion') }}">Capacitación</a></li>
-                            <li><a href="{{ url('/foro') }}">Foro</a></li>
+                            <li class="text-primary"><a href="{{ url('/muuch') }}"><strong>MUUCH</strong></a></li>
+                            <li class="text-primary"><a href="{{ url('/capacitacion') }}">Capacitación</a></li>
+                            <li class="text-primary"><a href="{{ url('/foro') }}">Foro</a></li>
                             @ability('admin', '')
-                            <li><a href="/config"><i class="material-icons">settings</i> </a></li>
+                            <li class="text-primary"><a href="/config"><i class="material-icons">settings</i> </a></li>
                             @endability
-                            <li>
+                            <li class="text-danger">
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
