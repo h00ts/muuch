@@ -80,6 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('pages.equipo', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
     });
     Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
+    Route::get('/datatables/equipo', 'DatatablesController@getEquipo');
 });
 
 Route::group([

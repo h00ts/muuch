@@ -13,7 +13,7 @@ class AddSlugToPagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function($table){
+        Schema::table('pages', function(Blueprint $table){
            $table->string('slug');
         });
     }

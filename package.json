@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "bootstrap-material-design": "^0.5.10",
+    "datatables": "^1.10.13",
+    "datatables.net": "^2.1.1",
     "findup-sync": "^1.0.0"
   }
 }

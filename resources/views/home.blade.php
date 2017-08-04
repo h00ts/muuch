@@ -26,39 +26,19 @@
                             </div>
                           </div>
                         </div>
-                        @if($user->level === null)
-                            <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
-                            <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
-                        @else
-                            <h4 class="text-success">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
-                            <div class="progress progress-striped active">
-                              <div class="progress-bar {!! ($user_content == $content_count) ? 'progress-bar-success' : 'progress-bar-warning' !!}" role="progressbar"
-                                style="width: {!! ($user_content) ? ($user_content / $content_count * 100).'%' : '0%' !!};"
-                                aria-valuenow="{!! ($user_content) ? number_format($user_content / $content_count * 100, 2, '.', ',')  : '0' !!}"
-                                aria-valuemin="0"
-                                aria-valuemax="100">
-                                {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
-                              </div>
-                            </div>
-                            @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
-                                <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
-                                <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
-                                <p>Toma el examen para pasar al siguiente nivel.</p>
-                            @elseif($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
-                                 <p class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente. Aprovecha para repasar el contenido de tu capacitación.</p>
-                            @elseif($user_content == $content_count && !count($user->scores))
-                                  <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
-                                <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
-                                <p>Toma el examen para pasar al siguiente nivel.</p>
-                            @endif
-                        @endif
                     </div>
                 </div>
                 <a href="/capacitacion" class="btn btn-primary btn-raised btn-lg btn-block">
-                            <i class="material-icons">school</i> Mi Capacitación
+                            <i class="material-icons">school</i> Capacitación
                             </a>
             <a href="/herramientas" class="btn btn-primary btn-raised btn-lg btn-block">
                 <i class="material-icons">lightbulb_outline</i> Herramientas
+            </a>
+            <a href="/equipo" class="btn btn-primary btn-raised btn-lg btn-block">
+                <i class="material-icons">people</i> Equipo
+            </a>
+            <a href="/sucursales" class="btn btn-primary btn-raised btn-lg btn-block">
+                <i class="material-icons">store</i> Sucursales
             </a>
         </div>
         <div class="col-md-8">

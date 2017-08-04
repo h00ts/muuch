@@ -16,7 +16,9 @@
         "laravel/tinker": "~1.0",
         "laravelista/sherlock": "^0.5.3",
         "madeitbelgium/laravel-email-domain-validation": "1.*",
+        "spatie/laravel-medialibrary": "^5.0.0",
         "tymon/jwt-auth": "0.5.*",
+        "yajra/laravel-datatables-html": "^2.0",
         "yajra/laravel-datatables-oracle": "^7.5",
         "zizaco/entrust": "1.9.0-beta1"
     },

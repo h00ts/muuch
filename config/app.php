@@ -186,6 +186,7 @@ return [
         MadeITBelgium\EmailDomainValidation\EmailDomainServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
 
     ],
 
