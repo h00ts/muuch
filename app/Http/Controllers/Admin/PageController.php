@@ -8,6 +8,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\Permission;
+use App\Content;
 
 class PageController extends Controller
 {
@@ -59,9 +60,10 @@ class PageController extends Controller
         $contents = Page::find($page->id);
         $roles = Role::all();
         $cat = Category::all();
+        $all_contents = Content::all();
         $perm = Permission::where('name', 'page-' . $page->slug)->first();
 
-        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles)->withCat($cat)->withPerm($perm);
+        return view('admin.pages.edit', $page->toArray())->withPage($contents)->withRoles($roles)->withCat($cat)->withPerm($perm)->withAllContents($all_contents);
     }
 
     /**

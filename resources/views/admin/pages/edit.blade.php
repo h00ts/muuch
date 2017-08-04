@@ -146,28 +146,25 @@
      aria-labelledby="contentModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{!! route('contenido.store') !!}" method="POST">
+            <form action="{!! route('contenido.update', null) !!}" method="POST" id="form-content-assign">
             {!! csrf_field() !!}
-            <input type="hidden" name="page_id">
+            <input type="hidden" name="page_id" value="{{ $id }}">
+                <input type="hidden" name="_method" value="PUT">
             <div class="modal-header">
                 <button type="button" class="close"
                         data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Crear contenido</h4>
+                <h4 class="modal-title">Asignar contenido</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="name">Titulo</label>
-                    <input type="text" name="name" id="content-name" class="form-control border-input input-lg" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="file">Archivo</label>
-                    <input type="text" name="file" id="content-file" class="form-control border-input input-md" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="cover">Carátula</label>
-                    <input type="text" name="cover" id="content-file" class="form-control border-input input-md" value="/img/content_default.png" required="required">
+                    <label for="name">Contenido</label>
+                    <select name="id" id="content-assign" class="form-control border-input">
+                        @foreach($all_contents as $content)
+                            <option value="{{ $content->id }}">{{ $content->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
@@ -218,6 +215,12 @@
                     }
                 });
             });
+
+            $( "#content-assign" ).change(function(e) {
+                var val = '/config/contenido/' + $(this).val();
+                $('#form-content-assign').attr('action', val);
+            });
+
         });
     </script>
 @endsection

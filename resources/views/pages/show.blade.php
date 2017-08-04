@@ -24,7 +24,7 @@
                         @yield('personas')
                     @else
                     {!! $markdown !!}
-                    <h4>{{ count($page->contents) ? 'Recursos' : '' }}</h4>
+                    {!! count($page->contents) ? '<hr>' : '' !!}
                     <div class="list-group">
                     @foreach($page->contents as $content)
                         <div class="list-group-item">
