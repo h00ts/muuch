@@ -38,7 +38,7 @@
                         <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                         <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                     @else
-                        <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
+                        <h4 class="text-default">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
                         <div class="progress progress-striped active">
                             <div class="progress-bar {!! ($user_content == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar"
                                  style="width: {!! ($user_content) ? ($user_content / $content_count * 100).'%' : '0%' !!};"
@@ -62,13 +62,13 @@
                     @endif
                 </div>
             </div>
-            <a href="/herramientas" class="btn btn-primary btn-raised btn-lg btn-block">
+            <a href="/herramientas" class="btn btn-success btn-lg btn-block">
                 <i class="material-icons">lightbulb_outline</i> Herramientas
             </a>
-            <a href="/equipo" class="btn btn-primary btn-raised btn-lg btn-block">
+            <a href="/equipo" class="btn btn-success btn-lg btn-block">
                 <i class="material-icons">people</i> Equipo
             </a>
-            <a href="/sucursales" class="btn btn-primary btn-raised btn-lg btn-block">
+            <a href="/sucursales" class="btn btn-success btn-lg btn-block">
                 <i class="material-icons">store</i> Sucursales
             </a>
         </div>
@@ -156,7 +156,7 @@
                   </tr>
                   @foreach($threads as $thread)
                   <tr>
-                    <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small></td>
+                    <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block" class="text-info"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small></td>
                     <td class="text-center" style="line-height:45px">{{ ($thread->views) ? $thread->views : '0' }}</td>
                     <td class="text-center" style="line-height:45px">{{ count($thread->replies) ? $thread->replies->count() : '0' }}</td>
                     <td class="text-right">
