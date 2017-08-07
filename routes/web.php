@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Category;
 use App\Page;
+use App\Ilucentro;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
 /*
@@ -68,9 +69,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('/sucursales', function(){
         $page = Page::where('slug', 'sucursales')->first();
-        $categories = Category::all();
+        $sucursales = Ilucentro::all();
 
-        return view('pages.sucursales', $page)->withPage($page)->withCategories($categories);
+        return view('pages.sucursales', $page)->withPage($page)->withSucursales($sucursales);
     });
     Route::get('/equipo', function(){
         $page = Page::where('slug', 'equipo')->first();

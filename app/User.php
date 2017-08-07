@@ -7,9 +7,12 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cache;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
+    use HasMediaTrait;
     use Notifiable;
     use EntrustUserTrait;
 

@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
-class Page extends Model
+class Page extends Model implements HasMedia
 {
     use Searchable;
+    use HasMediaTrait;
 
     /**
      * The attributes that are mass assignable.

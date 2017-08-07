@@ -100,6 +100,13 @@ class UserController extends Controller
 
             return redirect()->back()->withSuccess('Has activado a '.$user->email);
         }
+
+        $data = $request->all();
+        $user = User::findOrFail($id);
+        $user->update($data);
+
+        return redirect()->back()->withSuccess('Has actualizado al usuario '.$user->email);
+
     }
 
     /**

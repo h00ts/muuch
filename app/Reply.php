@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
-class Reply extends Model
+class Reply extends Model implements HasMedia
 {
 	use Searchable;
+    use HasMediaTrait;
 
 	protected $fillable = ['body', 'thread_id'];
     

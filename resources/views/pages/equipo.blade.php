@@ -37,15 +37,17 @@
     <script>
         $(function () {
             $('#equipo').DataTable({
-                "infoCallback": '',
+                "infoCallback": function (settings, start, end, total) {
+                    return "Somos " + total + " en total.";
+                },
                 language: {
-                    search: "Buscar..."
+                    search: "Filtrar: "
                 },
                 serverSide: true,
                 processing: true,
                 ordering: true,
-                paging: false,
-                pageLength: 25,
+                paging: true,
+                pageLength: 5,
                 ajax: '/datatables/equipo',
                 columns: [
                     {data: 'name', orderable: true, searchable: true},

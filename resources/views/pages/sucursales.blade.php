@@ -28,6 +28,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="map" style="width:100%;height:500px;"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
     @endpermission
@@ -39,19 +46,19 @@
         $(function () {
             $('#ilucentros').DataTable({
                 "infoCallback": function (settings, start, end, total) {
-                    return "Mostrando " + total + " Ilucentros";
+                    return "Somos " + total + " ILUCentros en total.";
                 },
                 language: {
-                    search: "Buscar..."
+                    search: "Filtrar: "
                 },
                 serverSide: true,
                 processing: true,
-                ordering: true,
+                ordering: false,
                 paging: false,
-                pageLength: 25,
+                pageLength: 11,
                 ajax: '/datatables/sucursales',
                 columns: [
-                    {data: 'short_name', orderable: true, searchable: true},
+                    {data: 'short_name', searchable: true},
                     {data: 'name'},
                     {data: 'direccion'},
                     {data: 'municipio'},
@@ -59,6 +66,44 @@
                 ]
             });
         });
+    </script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: {lat: 19.3806279, lng: -99.17068319},
+                scrollwheel: false,
+            });
+            var labels = 'ABCDEFGHIJKL';
+
+            // Add some markers to the map.
+            // Note: The code uses the JavaScript Array.prototype.map() method to
+            // create an array of markers based on a given "locations" array.
+            // The map() method here has nothing to do with the Google Maps API.
+            var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                    position: location,
+                    label: titles[i % titles.length]
+                });
+            });
+            var markerCluster = new MarkerClusterer(map, markers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        }
+        var locations = [
+            @foreach($sucursales as $sucursal)
+            {!! '{'.$sucursal->coordinates."}," !!}
+            @endforeach
+        ];
+        var titles = [
+            @foreach($sucursales as $sucursal)
+            "{!! $sucursal->short_name !!}",
+            @endforeach
+        ];
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJAYRzEUoq_Ej0zurPfId1mw58Cu7I2FU&callback=initMap">
     </script>
 @endsection
 

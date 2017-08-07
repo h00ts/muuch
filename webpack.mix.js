@@ -22,4 +22,4 @@ mix.js(['resources/assets/js/app.js',
 ], 'public/js/app.js')
 .sass('resources/assets/sass/app.scss', 'public/css')
 .sass('resources/assets/sass/config.scss', 'public/css')
-.less('node_modules/selectize/dist/css/selectize.bootstrap3.css', 'public/css');
+.combine(['public/css/app.css','node_modules/datatables/css/jquery.dataTables.min.css', 'node_modules/selectize/dist/css/selectize.bootstrap3.css'], 'public/css/app.css');

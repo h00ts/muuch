@@ -51,6 +51,9 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4">
+            @permission('edit-muuch')
+                <a href="/config/muuch/{{ $id }}/edit" class="btn btn-default btn-block"><i class="material-icons">mode_edit</i> Editar pagina</a>
+            @endpermission
             <div class="panel panel-primary">
                 <div class="panel-heading">MUUCH</div>
                 <div class="panel-body">

@@ -7,6 +7,7 @@
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
+
                 <div class="panel panel-default">
                     <form action="{!! route('muuch.update', $id) !!}" method="POST">
                     {!! csrf_field() !!}
@@ -89,7 +90,8 @@
 
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
+                        <button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar página </button>
+                        <a href="/muuch/{{ $id }}" class="btn btn-default pull-right">Visitar pagina</a>
                     </div>
                     </form>
                 </div>
