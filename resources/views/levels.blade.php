@@ -12,30 +12,7 @@
   </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="list-group">
-                          <div class="list-group-item">
-                            <div class="row-picture">
-                              <img class="circle" src="/img/default_avatar.png" alt="icon">
-                            </div>
-                            <div class="row-content">
-                              <h4 class="list-group-item-heading"><small>
-                                @php($hola = collect(["¡Hola!", "¡Pekarij abi! <small>(Matlatzinca)</small>", "¡Ma'alob K'iin! <small>(Maya)</small>", "¡Kwali Tlanextili! <small>(Náhuatl)</small>", "¡Sak Osil! <small>(Tsotsil)</small>", "¡A Va'a ntuu ni! <small>(Mixteco)</small>", "¡Ketémáúbo Kích'ahrín! <small>(Chichimeco)</small>",  "¡Najneajay larraw! <small>(Huave)</small>", "¡Cualtsin Tlanextilistli! <small>(Náhuatl)</small>", "¡Guun Xta'a Güii! <small>(Triqui)</small>"]))
-                                {!! $hola->random() !!}
-                              </small><br>{!! $user->name !!}</h4>
-                              <p class="list-group-item-text"><strong>{{ $user->roles->first()->display_name }}</strong></p>
-                                <p class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!}</p>
-                            </div>
-                          </div>
-                        </div>
-
-
-                    </div>
-
-
-
-                </div>
+                @include('layouts.profile')
                 @if($user->level === null)
                     <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                     <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>

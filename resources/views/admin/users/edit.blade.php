@@ -12,13 +12,20 @@
                            <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
                                {!! csrf_field() !!}
                                <input type="hidden" name="_method" value="PATCH">
-                               <div class="form-group">
+                               <div class="row">
+                                <div class="col-lg-2">
+                                  <img src="http://muuch.dev/img/default_avatar.png" alt="" class="img-responsive" class="border-radius:100%" data-container="body" data-toggle="popover" data-placement="top" data-content="Cargar imagen...">
+                                </div>
+                                 <div class="col-lg-10">
+                                   <div class="form-group">
                                     <label for="name">Nombre</label>
                                    <input type="text" class="form-control border-input" name="name" value="{!! $user->name !!}">
-                               </div>
-                               <div class="form-group">
+                                  </div>
+                                    <div class="form-group">
                                     <label for="email">Email</label>
                                    <input type="text" class="form-control border-input" name="email" value="{!! $user->email !!}">
+                               </div>
+                                 </div>
                                </div>
                                <div class="form-group row">
                                     <div class="col-md-6">

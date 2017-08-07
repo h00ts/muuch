@@ -1,33 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <strong class="small">Accesos rápidos:</strong> <a href="http://mail.ilumexico.mx" target="_blank" class="btn btn-default btn-sm" style="margin:0"><i class="material-icons" style="font-size:16px">mail_outline</i> Correo</a> <a href="http://sf.ilumexico.mx" target="_blank" class="btn btn-defult btn-sm" style="margin:0"><i class="material-icons" style="font-size:16px">backup</i> Salesforce</a> <a href="http://tinyurl.com/TWAPK440" target="_blank" class="btn btn-default btn-sm" style="margin:0"><i class="material-icons" style="font-size:16px">phone_android</i> Descarga TARO</a> <!-- <a href="http://vbx.ilumexico.mx" target="_blank" class="btn btn-default btn-sm btn-primary" style="margin:0" title="vbx@ilumexico.mx - prometeo1" data-toggle="tooltip" data-placement="bottom"><i class="material-icons">sms</i> SMS</a> -->
-      <hr>
-    </div>
-  </div>
     <div class="row">
         <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="list-group">
-                          <div class="list-group-item">
-                            <div class="row-picture">
-                              <img class="circle" src="/img/default_avatar.png" alt="icon">
-                            </div>
-                            <div class="row-content">
-                              <h4 class="list-group-item-heading"><small>
-                                @php($hola = collect(["¡Hola!", "¡Pekarij abi! <small>(Matlatzinca)</small>", "¡Ma'alob K'iin! <small>(Maya)</small>", "¡Kwali Tlanextili! <small>(Náhuatl)</small>", "¡Sak Osil! <small>(Tsotsil)</small>", "¡A Va'a ntuu ni! <small>(Mixteco)</small>", "¡Ketémáúbo'Kích'ahrín! <small>(Chichimeco)</small>",  "¡Najneajay larraw! <small>(Huave)</small>", "¡Cualtsin Tlanextilistli! <small>(Náhuatl)</small>", "¡Guun Xta'a Güii! <small>(Triqui)</small>"]))
-                                {!! $hola->random() !!}
-                              </small><br>{!! $user->name !!}</h4>
-                              <p class="list-group-item-text"><strong>{{ $user->roles->first()->display_name }}</strong></p>
-                              <p>{!! $user->email !!}</p>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
+          @include('layouts.profile')
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title"><a href="/capacitacion" class="link"><i class="material-icons">school</i> <strong>Capacitación</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>
@@ -171,15 +146,7 @@
               </div>
             </div>
         </div>
-        
-        <div class="col-lg-12 text-center">
-            <h2><i class="material-icons">accessibility</i></h2>
-            <h4>La palabra MUUCH proviene del maya y significa "juntos". </h4>
-            <p>
-Esta plataforma fué creada con la intención de acercarnos y ayudarnos a construir un mejor ILUMÉXICO JUNTOS.<br> Te invitamos a explorar la plataforma, así como a enviarnos todos tus comentarios para enriquecerla.</p>
-        </div>
     </div>
-</div>
 @endsection
 @section('scripts')
 <script type="text/javascript">
