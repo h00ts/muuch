@@ -76,19 +76,11 @@ class PageController extends Controller
     {
         $data = $request->only(['name', 'image', 'markdown', 'category_id']);
         $data['slug'] = str_slug($data['name']);
+        $permission = Permission::where('name', 'page-'.$page->slug)->first();
         $page->update($data);
-        //$contents = Page::find($page->id);
-        //$roles = Role::all();
-
-        $permission = Permission::where('name', 'page-' . $data['slug'])->first();
-
-        if(! count($permission)){
-            $permission = Permission::create([
-                'name' => 'page-'.$data['slug'],
-                'display_name' => 'Ver '.$data['name'],
-                'description' => 'Permiso para ver la página '.$data['name']
-            ]);
-        }
+        $permission->name = 'page-'.$page->slug;
+        $permission->display_name = 'Ver '.$page->name;
+        $permission->save();
 
         $oficina = Role::findOrFail(2);
         $cooreg = Role::findOrFail(3);

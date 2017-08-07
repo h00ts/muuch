@@ -12,25 +12,7 @@
   </div>
 	<div class="row">
 		<div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="list-group">
-                  <div class="list-group-item">
-                    <div class="row-picture">
-                      <img class="circle" src="/img/default_avatar.png" alt="icon">
-                    </div>
-                    <div class="row-content">
-                      <h4 class="list-group-item-heading"><small>
-                        @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "Pribet!", "Konnichiwa",  "Hallo!", "Ciao!"]))
-                        {!! $hola->random() !!}
-                      </small><br>{!! $user->name !!}</h4>
-                      <p class="list-group-item-text"><strong>Administrador</strong></p>
-                      <p>{!! $user->email !!}</p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
+        @include('layouts.profile')
         <a href="/foro/create" class="btn btn-primary btn-raised btn-block"><i class="material-icons">chat</i> Nueva Discusión</a>
         
         <!--<a href="#" class="btn btn-primary btn-raised btn-block"><i class="material-icons">chat</i> Nueva Pregunta</a>-->

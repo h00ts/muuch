@@ -6,7 +6,7 @@
                  <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                     <i class="material-icons">arrow_left</i> Regresar
                 </a> 
-                <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a></h3>
+                <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a></h3>
                 
             </div>
             <div class="col-lg-12">
@@ -29,12 +29,12 @@
                                 <div class="col-md-8">
                                     @foreach($categories->where('parent_id', $category->id) as $subcategory)
                                         @permission('category-'.$subcategory->slug)
-                                        <a href="/muuch/cat/{{ $subcategory->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">folder_open</i> {{ $subcategory->name }}</a>
+                                        <a href="/consulta/cat/{{ $subcategory->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">folder_open</i> {{ $subcategory->name }}</a>
                                         @endpermission
                                     @endforeach
                                     @foreach($category->pages as $page)
                                         @permission('page-'.$page->slug)
-                                        <a href="/muuch/{{ $page->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
+                                        <a href="/consulta/{{ $page->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
                                         @endpermission
                                     @endforeach
                                 </div>

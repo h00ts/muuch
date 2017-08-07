@@ -7,8 +7,8 @@
              <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                 <i class="material-icons">arrow_left</i> Regresar
             </a> 
-            <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i>
-                {!! isset($page->category) ? '<a href="/muuch/cat/'.$page->category->id.'">'.$page->category->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!} {{ $name }}
+            <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a> <i class="material-icons">chevron_right</i>
+                {!! isset($page->category) ? '<a href="/consulta/cat/'.$page->category->id.'">'.$page->category->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!} {{ $name }}
             </h3>
             <hr>
         </div>
@@ -55,11 +55,11 @@
                 <a href="/config/muuch/{{ $id }}/edit" class="btn btn-default btn-block"><i class="material-icons">mode_edit</i> Editar pagina</a>
             @endpermission
             <div class="panel panel-primary">
-                <div class="panel-heading">MUUCH</div>
+                <div class="panel-heading">Consulta</div>
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked">
                         @foreach($categories->where('parent_id', null) as $category)
-                            <li><a href="/muuch/cat/{{ $category->id }}">{{ $category->name }}</a></li>
+                            <li><a href="/consulta/cat/{{ $category->id }}">{{ $category->name }}</a></li>
                         @endforeach
                         </ul>
                 </div>
@@ -68,14 +68,4 @@
     </div>
 </div>
     @endpermission
-@endsection
-
-@section('modals')
-@endsection
-
-@section('scripts')
-@endsection
-
-@section('sucursales')
-    SUCURSALES MADAFAKAAAAS
 @endsection

@@ -70,7 +70,7 @@
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 5,
+                zoom: 6,
                 center: {lat: 19.3806279, lng: -99.17068319},
                 scrollwheel: false,
             });

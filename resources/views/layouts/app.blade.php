@@ -34,8 +34,8 @@
 
                     <!-- Branding Image -->
                     <a href="{{ url('/') }}" class="navbar-brand">
+                        <span class="pull-right text-primary" style="padding:.32em;"><strong>MUUCH</strong></span>
                     <img src="/img/logo_h.png" alt="Iluméxico" style="height:35px;padding:3px;">
-                        <h3 class="visuallyhidden">{{ config('app.name', 'MUUCH') }}</h3>
                     </a>
                 </div>
 
@@ -47,10 +47,6 @@
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
                             <li><a href="{{ url('/registrar') }}">Registrate</a></li>
                         @else
-
-                            <li class="text-primary"><a href="{{ url('/muuch') }}"><strong>MUUCH</strong></a></li>
-                            <li class="text-primary"><a href="{{ url('/capacitacion') }}">Capacitación</a></li>
-                            <li class="text-primary"><a href="{{ url('/foro') }}">Foro</a></li>
                             @ability('admin', '')
                             <li class="text-primary"><a href="/config"><i class="material-icons">settings</i> </a></li>
                             @endability
@@ -70,17 +66,16 @@
 
         <div class="container">
 
-        @ability('admin,oficina,cooreg,ingcom', '')
+
 
             @yield('content')
 
-        @endability
 
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2><i class="material-icons">accessibility</i></h2>
                     <h4>La palabra MUUCH proviene del maya y significa "juntos". </h4>
-                    <p>
+                    <p class="small">
                     Esta plataforma fué creada con la intención de acercarnos y ayudarnos a construir un mejor ILUMÉXICO JUNTOS.<br> Te invitamos a explorar la plataforma, así como a enviarnos todos tus comentarios para enriquecerla.</p>
                 </div>
                 <div class="col-md-12">
