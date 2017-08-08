@@ -97,17 +97,11 @@ class CategoryController extends Controller
     {
         $data = $request->all();
         $data['slug'] = str_slug($data['name']);
+        $permission = Permission::where('name', 'category-' . $category->slug)->first();
         $category->update($data);
-
-        $permission = Permission::where('name', 'category-' . $data['slug'])->first();
-
-        if(! count($permission)){
-            $permission = Permission::create([
-                'name' => 'category-'.$data['slug'],
-                'display_name' => 'Ver '.$data['name'],
-                'description' => 'Permiso para ver la categoria '.$data['name']
-            ]);
-        }
+        $permission->name = 'category-'.$category->slug;
+        $permission->display_name = 'Ver '.$category->name;
+        $permission->save();
 
         $oficina = Role::findOrFail(2);
         $cooreg = Role::findOrFail(3);
