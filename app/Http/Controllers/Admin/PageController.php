@@ -107,4 +107,17 @@ class PageController extends Controller
         return redirect()->back()->withSuccess('Pagina guardada.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Page $page)
+    {
+        $page->delete();
+
+        return redirect()->route('muuch.index');
+    }
+
 }
