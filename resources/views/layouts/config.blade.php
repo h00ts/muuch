@@ -36,25 +36,38 @@
                 <li id="configuracion" class="active">
                     <a href="/config">
                         <i class="ti-panel"></i>
-                        <p>Configuración</p>
+                        <p>Inicio</p>
                     </a>
                 </li>
-                <li id="usuarios">
-                    <a href="/config/usuarios">
-                        <i class="ti-user"></i>
-                        <p>Usuarios</p>
-                    </a>
-                </li>
+
                 <li id="capacitacion">
                     <a href="/config/niveles">
                         <i class="ti-view-list-alt"></i>
                         <p>Capacitación</p>
                     </a>
                 </li>
-                <li id="muuch">
+                <li id="categorias">
+                    <a href="/config/categoria">
+                        <i class="ti-text"></i>
+                        <p>Categorias</p>
+                    </a>
+                </li>
+                <li id="consulta">
                     <a href="/config/muuch">
                         <i class="ti-text"></i>
-                        <p>MUUCH</p>
+                        <p>Paginas</p>
+                    </a>
+                </li>
+                <li id="contenido">
+                    <a href="/config/contenido">
+                        <i class="ti-text"></i>
+                        <p>Contenido</p>
+                    </a>
+                </li>
+                <li id="canales">
+                    <a href="/config/canales">
+                        <i class="ti-pencil-alt2"></i>
+                        <p>Canales de discución</p>
                     </a>
                 </li>
                 <li id="ilucentros">
@@ -63,10 +76,10 @@
                         <p>Ilucentros</p>
                     </a>
                 </li>
-                <li id="canales">
-                    <a href="/config/canales">
-                        <i class="ti-pencil-alt2"></i>
-                        <p>Canales de discución</p>
+                <li id="usuarios">
+                    <a href="/config/usuarios">
+                        <i class="ti-user"></i>
+                        <p>Usuarios</p>
                     </a>
                 </li>
             </ul>

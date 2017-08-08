@@ -18,7 +18,7 @@ class Page extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'category_id', 'name', 'markdown', 'icon', 'image', 'slug'
+        'category_id', 'name', 'markdown', 'icon', 'image', 'slug', 'menu'
     ];
 
     public function category()

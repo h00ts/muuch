@@ -8,7 +8,7 @@
                 <i class="material-icons">arrow_left</i> Regresar
             </a> 
             <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a> <i class="material-icons">chevron_right</i>
-                {!! isset($page->category) ? '<a href="/consulta/cat/'.$page->category->id.'">'.$page->category->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!} {{ $name }}
+                {!! isset($page->category) ? '<a href="/categoria/'.$page->category->id.'">'.$page->category->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!} {{ $name }}
             </h3>
             <hr>
         </div>
@@ -59,7 +59,7 @@
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked">
                         @foreach($categories->where('parent_id', null) as $category)
-                            <li><a href="/consulta/cat/{{ $category->id }}">{{ $category->name }}</a></li>
+                            <li><a href="/categoria/{{ $category->id }}">{{ $category->name }}</a></li>
                         @endforeach
                         </ul>
                 </div>

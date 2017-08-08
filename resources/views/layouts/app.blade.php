@@ -66,15 +66,12 @@
 
         <div class="container">
 
-
-
             @yield('content')
-
 
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2><i class="material-icons">accessibility</i></h2>
-                    <h4>La palabra MUUCH proviene del maya y significa "juntos". </h4>
+                    <h4>La palabra MUUCH proviene del maya y significa "juntos".</h4>
                     <p class="small">
                     Esta plataforma fué creada con la intención de acercarnos y ayudarnos a construir un mejor ILUMÉXICO JUNTOS.<br> Te invitamos a explorar la plataforma, así como a enviarnos todos tus comentarios para enriquecerla.</p>
                 </div>

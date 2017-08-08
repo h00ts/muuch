@@ -27,7 +27,7 @@ class PagesController extends Controller
         return view('pages.index')->withCategories($categories);
     }
 
-    public function show(Page $page, Datatables $datatable)
+    public function show(Page $page)
     {
         $categories = Category::all();
         if(substr($page->markdown, 0, 1 ) === "["){

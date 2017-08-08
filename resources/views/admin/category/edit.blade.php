@@ -1,16 +1,10 @@
 @extends('layouts.config')
 @section('title', 'Editar Categoria')
-@section('slug', 'accesibility')
-@section('slug', 'muuch')
+@section('icon', 'accessibility')
+@section('slug', 'categorias')
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <ul class="breadcrumb">
-                  <li><a href="javascript:void(0)">Configuraión</a></li>
-                  <li class="active">Categorías</li>
-                </ul>
-            </div>
             <div class="col-lg-12">
                 <div class="card">
                     <form action="{!! route('categoria.update', $id) !!}" method="POST">
@@ -49,14 +43,38 @@
                             </div>
                         </div>
                         @endif
-                        <button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
+                        <hr>
+                        <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
 
-                        <button type="button" id="button--show-box" class="btn btn-danger pull-right"><i class="material-icons">delete</i></button>
+                        <button type="button" id="button--show-box" class="btn btn-danger pull-right btn-sm"><i class="material-icons">delete</i></button>
                         <div class="pull-right hidden" id="box--confirm"><button type="button" id="button--confirm" class="btn btn-danger"><i class="material-icons">warning</i> Si, borrar para siempre</button>
                         <button type="button" id="button--dismiss"><i class="material-icons">close</i> ¡No, esperate!</button>
                         </div>
                     </div>
                     </form>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Páginas</h4>
+                    </div>
+                    <div class="content">
+                        <table class="table table-responsive text-default">
+                            <tr>
+                                <th>Página</th>
+                                <th>Categoría</th>
+                                <th>Última modificación</th>
+                            </tr>
+                            @foreach($category->pages as $page)
+                                <tr>
+                                    <td><a href="{!! route('muuch.edit', $page->id) !!}">{!! $page->name !!}</a></td>
+                                    <td><a href="{!! isset($page->category) ? route('categoria.edit', $page->category->id) : '#' !!}">{!! isset($page->category) ? $page->category->name : 'Ninguno' !!}</a></td>
+                                    <td>{{ $page->updated_at->format('d M Y H:i') }}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

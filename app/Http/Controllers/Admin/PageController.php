@@ -15,7 +15,7 @@ class PageController extends Controller
     public function index()
     {
     	$categories = Category::all();
-    	$pages = Page::orderByDesc('updated_at')->paginate(10);
+    	$pages = Page::orderByDesc('updated_at')->paginate(25);
 
         return view('admin.pages.index')
         	->withCategories($categories)
@@ -74,7 +74,7 @@ class PageController extends Controller
      */
     public function update(Page $page, Request $request)
     {
-        $data = $request->only(['name', 'image', 'markdown', 'category_id']);
+        $data = $request->only(['name', 'image', 'markdown', 'category_id', 'menu']);
         $data['slug'] = str_slug($data['name']);
         $permission = Permission::where('name', 'page-'.$page->slug)->first();
         $page->update($data);

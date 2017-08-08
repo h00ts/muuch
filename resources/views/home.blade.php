@@ -65,24 +65,26 @@
                             <small>Menu rápido</small>
                             <div class="panel-group" id="menu-rapido" role="tablist" aria-multiselectable="true">
                                 @foreach($categories->where('parent_id', 0) as $category)
-                                    @permission('category-'.$category->slug)
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="{{ 'heading-'.$category->slug }}">
-                                            <h4 class="panel-title text-primary">
-                                                <a role="button" class="btn btn-block btn-primary" style="margin:0;text-align:left" data-toggle="collapse" data-parent="#menu-rapido" href="#{!! $category->slug !!}" aria-expanded="false" aria-controls="{!! $category->slug !!}"> <i class="material-icons">folder_open</i> {!! $category->name !!} </a>
-                                            </h4>
+                                    @if(count($category->pages->where('menu', 1)))
+                                        @permission('category-'.$category->slug)
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="{{ 'heading-'.$category->slug }}" style="background-color: #FFF">
+                                                <h4 class="panel-title text-primary">
+                                                    <a role="button" class="btn btn-block btn-primary" style="margin:0;text-align:left" data-toggle="collapse" data-parent="#menu-rapido" href="#{!! $category->slug !!}" aria-expanded="false" aria-controls="{!! $category->slug !!}"> <i class="material-icons">folder_open</i> {!! $category->name !!} </a>
+                                                </h4>
+                                            </div>
+                                            <div id="{!! $category->slug !!}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ $category->slug }}">
+                                                <ul class="list-group">
+                                                    @foreach($category->pages->where('menu', 1) as $page)
+                                                        <li class="list-group-item">
+                                                            <a href="/consulta/{{ $page->id }}" class="btn btn-block btn-link btn-primary" style="text-align:left;margin:0 1px;padding:10px;"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div id="{!! $category->slug !!}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ $category->slug }}">
-                                            <ul class="list-group">
-                                                @foreach($category->pages as $page)
-                                                    <li class="list-group-item">
-                                                        <a href="/consulta/{{ $page->id }}" class="btn btn-block btn-link btn-primary" style="text-align:left;margin:0 1px;padding:10px;"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    @endpermission
+                                        @endpermission
+                                    @endif
                                 @endforeach
                             </div>
                         </div>

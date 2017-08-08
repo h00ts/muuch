@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/examen', 'ExamsController@index');
     Route::post('/examen/entrega', 'ScoresController@store');
     Route::resource('/consulta', 'PagesController');
-    Route::get('/consulta/cat/{id}', 'PagesController@getCat');
+    Route::get('/categoria/{id}', 'PagesController@getCat');
     Route::resource('/foro', 'ThreadsController', ['except' => 'show']);
     Route::get('/foro/{thread}', 'ThreadsController@show');
     Route::get('/foro/responder/{id}', 'RepliesController@create');
@@ -96,7 +96,7 @@ Route::group([
     Route::resource('examen', 'ExamController');
     Route::resource('pregunta', 'QuestionController');
     Route::resource('respuesta', 'AnswerController');
-    Route::resource('contenido', 'ContentController', ['except' => ['show', 'index']]);
+    Route::resource('contenido', 'ContentController', ['except' => ['show']]);
     Route::get('contenido/create/{module_id}', 'ContentController@create');
     Route::resource('muuch', 'PageController');
     Route::resource('categoria', 'CategoryController');

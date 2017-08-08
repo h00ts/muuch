@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::model('categorium', Category::class);
+        Route::model('consultum', Page::class);
         Route::model('muuch', Page::class);
 
     }

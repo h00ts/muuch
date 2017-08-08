@@ -1,9 +1,10 @@
 @extends('layouts.config')
-
+@section('title', 'Editor de Contenido')
+@section('icon', 'accessibility')
+@section('slug', 'contenido')
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12"><h3>Editor de contenido</h3></div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <form action="{!! route('contenido.update', $content->id) !!}" method="POST">

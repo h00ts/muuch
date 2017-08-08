@@ -6,19 +6,19 @@
                      <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                         <i class="material-icons">arrow_left</i> Regresar
                     </a> 
-                    <h3><a href="/consulta"><i class="material-icons">accessibility</i> MUUCH</a> <i class="material-icons">chevron_right</i>
-                        {!! isset($parent_id) ? '<a href="/consulta/cat/'.$categories->where('id', $parent_id)->first()->id.'">'.$categories->where('id', $parent_id)->first()->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!}
+                    <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a> <i class="material-icons">chevron_right</i>
+                        {!! isset($parent_id) ? '<a href="/categoria/'.$categories->where('id', $parent_id)->first()->id.'">'.$categories->where('id', $parent_id)->first()->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!}
                         {{ $name }}</h3>
                     <hr>
                 </div>
             <div class="col-lg-4">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">MUUCH</div>
+                    <div class="panel-heading">Consulta</div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
                             @foreach($categories->where('parent_id', null) as $category)
                                 @permission('category-'.$category->slug)
-                                <li><a href="/consulta/cat/{{ $category->id }}">{{ $category->name }}</a></li>
+                                <li{!! ($category->id == $id) ? ' class="active"' : '' !!}><a href="/categoria/{{ $category->id }}">{{ $category->name }}</a></li>
                                 @endpermission
                             @endforeach
                             </ul>
@@ -35,7 +35,7 @@
                             @endforeach
                             @foreach($categories->where('parent_id', $cat->id) as $category)
                                 @permission('category-'.$category->slug)
-                                    <a href="/consulta/cat/{{ $category->id }}" class="btn btn-lg btn-block" style="text-align:left"><i class="material-icons">folder_open</i>{{ $category->name }}</a>
+                                    <a href="/categoria/{{ $category->id }}" class="btn btn-lg btn-block" style="text-align:left"><i class="material-icons">folder_open</i>{{ $category->name }}</a>
                                 @endpermission
                             @endforeach
                     </div>

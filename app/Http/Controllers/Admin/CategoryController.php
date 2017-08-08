@@ -17,7 +17,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.category.index', $categories)
+            ->withCategories($categories);
     }
 
     /**
@@ -80,7 +83,7 @@ class CategoryController extends Controller
         $roles = Role::all();
         $perm = Permission::where('name', 'category-' . $category->slug)->first();
 
-        return view('admin.category.edit', $category->toArray())->withParents($parents)->withRoles($roles)->withPerm($perm);
+        return view('admin.category.edit', $category->toArray())->withParents($parents)->withRoles($roles)->withPerm($perm)->withCategory($category);
     }
 
     /**

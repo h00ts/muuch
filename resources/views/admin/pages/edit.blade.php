@@ -42,7 +42,7 @@
                                            <th><label>Contenido</label> | <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newContentModal">Crear contenido</a>
                                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#contentModal">Asignar contenido</a></th></th>
                                            <th>Descargable</th>
-                                           <th>Modulo</th>
+                                           <th>Capacitación</th>
                                            <th></th>
                                        </tr>
                                        </thead>
@@ -56,7 +56,7 @@
                                                    No
                                                    @endif
                                                </td>
-                                               <td>{{ isset($content->module) ? 'N-'.$content->module->level.' M-'.$content->module->module.' :: '.$content->module->name : 'No' }}</td>
+                                               <td>{{ isset($content->module) ? 'Nivel '.$content->module->level.' Modulo '.$content->module->module : 'No' }}</td>
                                                <td><a href="#" class="btn btn-danger btn-sm pull-right">Desasociar</a></td>
                                            </tr>
                                        @endforeach
@@ -85,6 +85,9 @@
                                     </label>
                                 @endforeach
                             </div>
+                            <label for="menu">
+                                <input type="checkbox" value="1" name="menu" id="menu"{{ ($menu) ? 'checked' : '' }}> En el menu rapido?
+                            </label>
                         </div>
                             @endif
 

@@ -29,7 +29,7 @@
                                 <div class="col-md-8">
                                     @foreach($categories->where('parent_id', $category->id) as $subcategory)
                                         @permission('category-'.$subcategory->slug)
-                                        <a href="/consulta/cat/{{ $subcategory->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">folder_open</i> {{ $subcategory->name }}</a>
+                                        <a href="/categoria/{{ $subcategory->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">folder_open</i> {{ $subcategory->name }}</a>
                                         @endpermission
                                     @endforeach
                                     @foreach($category->pages as $page)
