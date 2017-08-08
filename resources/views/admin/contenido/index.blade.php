@@ -29,7 +29,7 @@
                             @foreach($contents as $content)
                                 <tr>
                                     <td>
-                                        <a href="/config/contenido/{{ $content->id }}/edit">{{ $content->name }}</a>
+                                        <strong><a href="/config/contenido/{{ $content->id }}/edit"><i class="material-icons" style="font-size:18px">description</i> {{ $content->name }}</a></strong>
                                     </td>
                                     <td>
                                         @if(isset($content->file))

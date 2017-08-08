@@ -37,7 +37,24 @@
                     @endif
                 </div>
             </div>
-
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Discusión más reciente</th>
+                        </tr>
+                            <tr>
+                                <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block" class="text-info"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small></td>
+                            </tr>
+                    </table>
+                    <div class="text-right">
+                        <a href="/foro/create" class="btn btn-primary btn-raised btn-sm"><i class="material-icons">chat</i> Nueva Discusión</a>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <div class="col-md-8">
@@ -77,6 +94,15 @@
                                             </div>
                                         </div>
                                         @endpermission
+                                    @endif
+                                    @if($category->slug == "formatos")
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id=heading-formatos" style="background-color: #FFF">
+                                                <h4 class="panel-title text-primary">
+                                                    <a href="/formatos" class="btn btn-block btn-primary" style="margin:0;text-align:left"> <i class="material-icons">folder_open</i> Formatos </a>
+                                                </h4>
+                                            </div>
+                                        </div>
                                     @endif
                                 @endforeach
                             </div>

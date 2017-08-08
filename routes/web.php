@@ -65,20 +65,26 @@ Route::group(['middleware' => 'auth'], function () {
         $categories = Category::all();
         $markdown = Markdown::convertToHtml($page->markdown);
 
-        return view('pages.show', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+        return view('pages.show', $page->toArray())->withPage($page)->withCategories($categories)->withMarkdown($markdown);
     });
     Route::get('/sucursales', function(){
         $page = Page::where('slug', 'sucursales')->first();
         $sucursales = Ilucentro::all();
 
-        return view('pages.sucursales', $page)->withPage($page)->withSucursales($sucursales);
+        return view('pages.sucursales', $page->toArray())->withPage($page)->withSucursales($sucursales);
     });
     Route::get('/personas', function(){
         $page = Page::where('slug', 'personas')->first();
         $categories = Category::all();
         $markdown = Markdown::convertToHtml($page->markdown);
 
-        return view('pages.equipo', $page)->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+        return view('pages.equipo', $page->toArray())->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+    });
+    Route::get('/formatos', function(){
+        $category = Category::where('slug', 'formatos')->first();
+        $categories = Category::all();
+
+        return view('pages.cat', $category->toArray())->withCat($category)->withCategories($categories);
     });
     Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
     Route::get('/datatables/equipo', 'DatatablesController@getEquipo');
