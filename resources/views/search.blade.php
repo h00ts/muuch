@@ -6,7 +6,7 @@
                  <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                     <i class="material-icons">arrow_left</i> Regresar
                 </a> 
-                <h3><a href="/muuch"><i class="material-icons">accessibility</i> MUUCH</a></h3>
+                <h3><a href="/muuch"><i class="material-icons">accessibility</i> Consulta</a></h3>
                 
             </div>
             <div class="col-lg-12">
@@ -31,7 +31,7 @@
                             </thead>
                             @foreach($pages as $page)
                                <tr>
-                                   <td> <a href="/muuch/{{ $page->id }}"><i class="material-icons">chevron_right</i> {{ $page->name }}</a></td>
+                                   <td> <a href="/consulta/{{ $page->id }}"><i class="material-icons">chevron_right</i> {{ $page->name }}</a></td>
                                    <td>{{ isset($page->category) ? $page->category->name : '-' }}</td>
                                </tr>
                             @endforeach
