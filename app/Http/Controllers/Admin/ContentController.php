@@ -49,6 +49,8 @@ class ContentController extends Controller
         } else if($request->input('page_id')) {
             $page = Page::find($request->input('page_id'));
             $page->contents()->create($request->all());
+        } else {
+            $content = Content::create($request->all());
         }
 
         return redirect()->back()->withSuccess('Contenido creado con exito.');
