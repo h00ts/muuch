@@ -25,13 +25,20 @@
                         <table class="table table-responsive">
                             <thead>
                             <tr>
-                                <td>Página</td>
-                                <td>Categoría</td>
+                                <th>Página</th>
+                                @ability('admin', '')
+                                <th></th>
+                                @endability
+                                <th>Categoría</th>
                             </tr>
                             </thead>
                             @foreach($pages as $page)
                                <tr>
-                                   <td> <a href="/consulta/{{ $page->id }}"><i class="material-icons">chevron_right</i> {{ $page->name }}</a></td>
+                                   <td> <a href="/consulta/{{ $page->id }}"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
+                                   </td>
+                                   @ability('admin', '')
+                                   <td> <a href="/config/muuch/{{ $page->id }}/edit"><i class="material-icons">settings</i></a></td>
+                                   @endability
                                    <td>{{ isset($page->category) ? $page->category->name : '-' }}</td>
                                </tr>
                             @endforeach
@@ -50,13 +57,20 @@
                     <table class="table table-responsive">
                         <thead>
                         <tr>
-                            <td>Contenido</td>
-                            <td>Página</td>
+                            <th>Contenido</th>
+                            @ability('admin', '')
+                            <th></th>
+                            @endability
+                            <th>Página</th>
                         </tr>
                         </thead>
                     @foreach($contents as $content)
                             <tr>
-                                <td> <a href="{{ isset($content->file) ? $content->file : '' }}" target="_blank"><i class="material-icons">insert_drive_file</i> {{ $content->name }}</a></td>
+                                <td> <a href="{{ isset($content->file) ? $content->file : '' }}" target="_blank"><i class="material-icons">description</i> {{ $content->name }}</a>
+                                </td>
+                                @ability('admin', '')
+                               <td> <a href="/config/contenido/{{ $content->id }}/edit"><i class="material-icons">settings</i></a></td>
+                                @endability
                                 <td>{{ isset($content->page) ? $content->page->name : '-' }}</td>
                             </tr>
                     @endforeach
