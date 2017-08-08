@@ -24,8 +24,8 @@
                                 </tr>
                                 @foreach($pages as $page)
                                 <tr>
-                                    <td><a href="{!! route('muuch.edit', $page->id) !!}">{!! $page->name !!}</a></td>
-                                    <td><a href="{!! isset($page->category) ? route('categoria.edit', $page->category->id) : '#' !!}">{!! isset($page->category) ? $page->category->name : 'Ninguno' !!}</a></td>
+                                    <td> <strong><a href="{!! route('muuch.edit', $page->id) !!}"><i class="material-icons" style="font-size: 16px;">chevron_right</i> {!! $page->name !!}</a></strong></td>
+                                    <td><a href="{!! isset($page->category) ? route('categoria.edit', $page->category->id) : '#' !!}">{!! isset($page->category) ? $page->category->name : '-' !!}</a></td>
                                     <td>{{ $page->updated_at->format('d M Y H:i') }}</td>
                                 </tr>
                                 @endforeach
