@@ -16,7 +16,7 @@ class Content extends Model
      * @var array
      */
     protected $fillable = [
-    	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file', 'page_id', 'module_id', 'description'
+    	'name', 'html', 'css', 'js', 'markdown', 'cover', 'file', 'page_id', 'module_id', 'description', 'folio'
     ];
 
     public function module()

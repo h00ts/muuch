@@ -61,6 +61,7 @@
                 <div class="form-group">
                     <label for="description">Categoría</label>
                     <select name="category_id" id="categories" class="form-control">
+                        <option value="0">Ninguna</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ ($category->parent_id) ? $category->where('id', $category->parent_id)->first()->name.' > '.$category->name : $category->name }}</option>
                         @endforeach
