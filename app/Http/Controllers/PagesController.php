@@ -32,7 +32,7 @@ class PagesController extends Controller
         $categories = Category::all();
         if(substr($page->markdown, 0, 1 ) === "{"){
             preg_match('#\{(.*?)\}#', $page->markdown, $match);
-            return redirect("/".$match);
+            return redirect("/".$match[1]);
         } else {
             $markdown = Markdown::convertToHtml($page->markdown);
         }
