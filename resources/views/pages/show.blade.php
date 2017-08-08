@@ -59,7 +59,7 @@
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked">
                         @foreach($categories->where('parent_id', null) as $category)
-                            <li><a href="/categoria/{{ $category->id }}">{{ $category->name }}</a></li>
+                            <li{!! ($category->id == $category_id || $category->parent_id == $category_id) ? ' class="active"' : '' !!}><a href="/categoria/{{ $category->id }}">{{ $category->name }}</a></li>
                         @endforeach
                         </ul>
                 </div>

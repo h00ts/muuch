@@ -73,8 +73,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         return view('pages.sucursales', $page)->withPage($page)->withSucursales($sucursales);
     });
-    Route::get('/equipo', function(){
-        $page = Page::where('slug', 'equipo')->first();
+    Route::get('/personas', function(){
+        $page = Page::where('slug', 'personas')->first();
         $categories = Category::all();
         $markdown = Markdown::convertToHtml($page->markdown);
 

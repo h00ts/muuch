@@ -94,7 +94,7 @@
                     </div>
                     <div class="panel-footer">
                         <button class="btn btn-success btn-lg" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar página </button>
-                        <a href="/muuch/{{ $id }}" class="btn btn-default pull-right">Visitar pagina</a>
+                        <a href="/consulta/{{ $id }}" class="btn btn-default pull-right">Visitar pagina</a>
                     </div>
                     </form>
                 </div>

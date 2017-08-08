@@ -30,8 +30,9 @@ class PagesController extends Controller
     public function show(Page $page)
     {
         $categories = Category::all();
-        if(substr($page->markdown, 0, 1 ) === "["){
-            $markdown = $page->markdown;
+        if(substr($page->markdown, 0, 1 ) === "{"){
+            preg_match('#\{(.*?)\}#', $page->markdown, $match);
+            return redirect("/".$match);
         } else {
             $markdown = Markdown::convertToHtml($page->markdown);
         }
