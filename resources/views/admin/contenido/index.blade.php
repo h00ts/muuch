@@ -19,26 +19,26 @@
                         <table class="table table-responsive">
                             <thead>
                             <tr>
-                                <th><label>Contenido</label>
-                                <th>Descargable</th>
-                                <th>Capacitacion</th>
-                                <th>Página</th>
+                                <th>Contenido</th>
                                 <th></th>
+                                <th>Modulo</th>
+                                <th>Página</th>
+                                <th>Categoria</th>
                             </tr>
                             </thead>
                             @foreach($contents as $content)
                                 <tr>
-                                    <td><a href="/config/contenido/{{ $content->id }}/edit">{{ $content->name }}</a></td>
+                                    <td>
+                                        <a href="/config/contenido/{{ $content->id }}/edit">{{ $content->name }}</a>
+                                    </td>
                                     <td>
                                         @if(isset($content->file))
-                                            <a href="{{  $content->file }}">Ver Archivo</a>
-                                        @else
-                                            No
+                                            <a href="{{  $content->file }}" target="_blank"><i class="material-icons">link</i></a>
                                         @endif
                                     </td>
-                                    <td>{{ isset($content->module) ? 'Nivel '.$content->module->level.' Modulo '.$content->module->module : 'No' }}</td>
-                                    <td>{{ isset($content->page) ? $content->page->name : '' }}</td>
-                                    <td></td>
+                                    <td>{!! isset($content->module) ? '<a href="/config/niveles/'.$content->module->level.'/edit">'.$content->module->level.' - '.$content->module->module.'</a>' : '-' !!}</td>
+                                    <td>{!! isset($content->page) ? '<a href="/config/muuch/'.$content->page->id.'/edit">'.$content->page->name.'</a>' : '-' !!}</td>
+                                    <td>{!! isset($content->page) ? '<a href="/config/categoria/'.$content->page->category->id.'/edit">'.$content->page->category->name.'</a>' : '-' !!}</td>
                                 </tr>
                             @endforeach
                         </table>
