@@ -6,7 +6,7 @@
                 <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                     <i class="material-icons">arrow_left</i> Regresar
                 </a>
-                <h3><a href="/foro"><i class="material-icons">forum</i> Foro</a> > # {{ $name }}</h3>
+                <h3><a href="/foro"><i class="material-icons">forum</i> Foro</a> # {{ $name }}</h3>
                 <hr>
             </div>
         </div>
@@ -14,13 +14,11 @@
             <div class="col-md-4">
                 @include('layouts.profile')
                 <a href="/foro/create" class="btn btn-primary btn-raised btn-block"><i class="material-icons">chat</i> Nueva Discusión</a>
-
-                <!--<a href="#" class="btn btn-primary btn-raised btn-block"><i class="material-icons">chat</i> Nueva Pregunta</a>-->
             </div>
             <div class="col-md-8">
                 <div class="panel panel-primary">
                     <div class="panel-body">
-                        <p class="text-muted"><i class="material-icons">forum</i> {{ $description }}</p>
+                        <p class="text-muted"><i class="material-icons">forum</i> <strong>{{ $name }}</strong>: {{ $description }}</p>
                         <table class="table table-hover">
                             <tr>
                                 <th>Discusión</th>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use App\Activation;
+use App\Ilucentro;
 use App\Permission;
 use App\Mail\UserActivated;
 use Illuminate\Support\Facades\Mail;
@@ -46,8 +47,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
-
         return redirect()->back();
     }
 
@@ -68,12 +67,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
         $roles = Role::all();
+        $ilucentros = Ilucentro::all();
 
-        return view('admin.users.edit')->withUser($user)->withRoles($roles);
+        return view('admin.users.edit', $user->toArray())->withUser($user)->withRoles($roles)->withIlucentros($ilucentros);
     }
 
     /**
@@ -83,11 +82,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user, Request $request)
     {
         $activate = $request->input('activate');
         if($activate){
-            $user = User::findOrFail($id);
             $user->active = 1;
             $user->attachRole($request->input('user_role'));
             $activation = $user->activation()->create([
@@ -102,7 +100,6 @@ class UserController extends Controller
         }
 
         $data = $request->all();
-        $user = User::findOrFail($id);
         $user->update($data);
 
         return redirect()->back()->withSuccess('Has actualizado al usuario '.$user->email);
@@ -115,8 +112,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->active = 0;
+        $user->save();
+        $user->delete();
+
+        return redirect()->back()->withSuccess('El usuario '.$user->email.' ha sido desactivado y no podra ingresar a MUUCH.');
     }
 }

@@ -9,12 +9,21 @@ use Cache;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements HasMedia
 {
     use HasMediaTrait;
     use Notifiable;
-    use EntrustUserTrait;
+    use EntrustUserTrait { restore as private restoreA; }
+    use SoftDeletes { restore as private restoreB; }
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +31,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'ilucentro_id'
+        'name', 'email', 'password', 'ilucentro_id', 'phone', 'extension', 'descripcion', 'posicion'
     ];
 
     /**
@@ -93,5 +102,11 @@ class User extends Authenticatable implements HasMedia
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function restore()
+    {
+        $this->restoreA();
+        $this->restoreB();
     }
 }

@@ -21,7 +21,7 @@
 			@foreach($channels as $channel)
                 <div class="panel panel-primary">
                     <div class="panel-body">
-                        <a href="/canal/{{ $channel->id }}"><h1># {{ $channel->name }} <span class="pull-right label label-primary"><i class="material-icons">forum</i> {{ $channel->threads->count() }}</span></h1></a>
+                        <a href="/canal/{{ $channel->id }}"><h2># {{ $channel->name }} <span class="pull-right label label-primary"><i class="material-icons">forum</i> {{ $channel->threads->count() }}</span></h2></a>
                         <p class="text-right"><span class="small label"><i class="material-icons" style="font-size: 14px;">remove_red_eye</i> {{ $channel->threads->sum('views') }} vistas</span> <span class="small label"><i class="material-icons" style="font-size: 14px;">reply</i> {{ count($channel->replies) }} respuestas</span></p>
                       {{--  <hr>
                         <table class="table table-hover">
