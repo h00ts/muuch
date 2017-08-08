@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Route;
 use App\Category;
 use App\Page;
+use App\Channel;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -31,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('categorium', Category::class);
         Route::model('consultum', Page::class);
         Route::model('muuch', Page::class);
+        Route::model('canal', Channel::class);
 
     }
 

@@ -37,22 +37,18 @@
                     @endif
                 </div>
             </div>
+
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
+                    <h3 class="panel-title text-white"><a href="#" class="link"><i class="material-icons">markunread_mailbox</i> <strong>Quejas y Sugerencias</strong></a> </h3>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-hover">
-                        <tr>
-                            <th>Discusión más reciente</th>
-                        </tr>
-                            <tr>
-                                <td><a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block" class="text-info"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small></td>
-                            </tr>
-                    </table>
-                    <div class="text-right">
-                        <a href="/foro/create" class="btn btn-primary btn-raised btn-sm"><i class="material-icons">chat</i> Nueva Discusión</a>
+                    <span>Este es el buzon de quejas y sugerencias.</span>
+                    <div class="form-group">
+                        <label for="mailbox">Escribenos...</label>
+                        <textarea name="mailbox" id="mailbox" rows="5" class="form-control border-input"></textarea>
                     </div>
+                    <button class="btn btn-default btn-raised btn-block">Dejar en el Buzón</button>
                 </div>
             </div>
 
@@ -95,15 +91,18 @@
                                         </div>
                                         @endpermission
                                     @endif
-                                    @if($category->slug == "formatos")
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id=heading-formatos" style="background-color: #FFF">
-                                                <h4 class="panel-title text-primary">
-                                                    <a href="/formatos" class="btn btn-block btn-primary" style="margin:0;text-align:left"> <i class="material-icons">folder_open</i> Formatos </a>
-                                                </h4>
+
+                                @endforeach
+                                @foreach($categories->where('parent_id', 0) as $category)
+                                        @if($category->slug == "formatos")
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id=heading-formatos" style="background-color: #FFF">
+                                                    <h4 class="panel-title text-primary">
+                                                        <a href="/formatos" class="btn btn-block btn-primary" style="margin:0;text-align:left"> <i class="material-icons">folder_open</i> Formatos </a>
+                                                    </h4>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endif
+                                        @endif
                                 @endforeach
                             </div>
                         </div>
@@ -112,6 +111,22 @@
 
                         </div>
                     </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Discusión más reciente</th>
+                        </tr>
+                        <tr>
+                            <td><a href="/canal/{{ $thread->channel->id }}" class="pull-right" style="line-height: 50px;"># {{ $thread->channel->name }}</a> <a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block" class="text-info"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small> </td>
+                        </tr>
+                        <tr><td><a href="/foro" class="btn btn-sm btn-block btn-link">Ver todos los canales en el foro</a></td></tr>
+                    </table>
+                </div>
+            </div>
 
 {{-- -
             <div class="panel panel-primary">

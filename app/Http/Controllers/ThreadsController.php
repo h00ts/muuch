@@ -19,11 +19,10 @@ class ThreadsController extends Controller
     public function index()
     {
         Carbon::setLocale('es');
-        $threads = Thread::paginate(5);
+        $channels = Channel::all();
         $user = Auth::user();
 
-        return view('threads.index')
-        ->withThreads($threads)->withUser($user);
+        return view('threads.index')->withChannels($channels)->withUser($user);
     }
 
     /**

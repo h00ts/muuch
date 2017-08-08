@@ -10,6 +10,11 @@ class Channel extends Model
 
     public function threads()
     {
-    	$this->hasMany('App\Threads');
+    	return $this->hasMany('App\Thread');
+    }
+
+    public function replies()
+    {
+        return $this->hasManyThrough('App\Reply', 'App\Thread');
     }
 }

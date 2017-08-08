@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/consulta', 'PagesController');
     Route::get('/categoria/{id}', 'PagesController@getCat');
     Route::resource('/foro', 'ThreadsController', ['except' => 'show']);
+    Route::resource('/canal', 'ChannelController', ['only' => 'show']);
     Route::get('/foro/{thread}', 'ThreadsController@show');
     Route::get('/foro/responder/{id}', 'RepliesController@create');
     Route::post('/foro/responder/{id}', 'RepliesController@store')->name('foro.responder');

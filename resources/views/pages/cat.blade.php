@@ -30,12 +30,12 @@
                     <div class="panel-body">
                             @foreach($cat->pages as $page)
                                 @permission('page-'.$page->slug)
-                                    <a href="/consulta/{{ $page->id }}" class="btn btn-lg btn-block" style="text-align:left"><i class="material-icons">chevron_right</i>{{ $page->name }}</a>
+                                    <a href="/consulta/{{ $page->id }}" class="btn btn-lg btn-block" style="text-align:left"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
                                 @endpermission
                             @endforeach
                             @foreach($categories->where('parent_id', $cat->id) as $category)
                                 @permission('category-'.$category->slug)
-                                    <a href="/categoria/{{ $category->id }}" class="btn btn-lg btn-block" style="text-align:left"><i class="material-icons">folder_open</i>{{ $category->name }}</a>
+                                    <a href="/categoria/{{ $category->id }}" class="btn btn-lg btn-block" style="text-align:left"><i class="material-icons">folder_open</i> {{ $category->name }}</a>
                                 @endpermission
                             @endforeach
                     </div>
