@@ -34,8 +34,11 @@ class PageController extends Controller
             'markdown' => '',
             'slug' => $slug
         ]);
-        $category = Category::find($data['category_id']);
-        $category->pages()->save($page);
+        if($data['category_id'])
+        {
+            $category = Category::find($data['category_id']);
+            $category->pages()->save($page);
+        }
 
         $permission = Permission::create([
             'name' => 'page-'.$slug,
