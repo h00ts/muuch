@@ -37,15 +37,8 @@
                     @endif
                 </div>
             </div>
-            <a href="/herramientas" class="btn btn-success btn-lg btn-block">
-                <i class="material-icons">lightbulb_outline</i> Herramientas
-            </a>
-            <a href="/equipo" class="btn btn-success btn-lg btn-block">
-                <i class="material-icons">people</i> Equipo
-            </a>
-            <a href="/sucursales" class="btn btn-success btn-lg btn-block">
-                <i class="material-icons">store</i> Sucursales
-            </a>
+
+
         </div>
         <div class="col-md-8">
             <div class="panel panel-primary">
@@ -94,7 +87,7 @@
                         </div>
                     </div>
 
-
+{{-- -
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
@@ -123,6 +116,8 @@
                 </div>
               </div>
             </div>
+
+            --}}
         </div>
     </div>
 @endsection

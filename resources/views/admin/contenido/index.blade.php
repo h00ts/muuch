@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <a href="#" class="btn btn-primar" data-toggle="modal" data-target="#newContentModal"><i class="glyphicon glyphicon-plus"></i> Contenido</a>
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#newContentModal"><i class="glyphicon glyphicon-plus"></i> Contenido</a>
                 <hr>
                 @include('admin.partials.alerts')
             </div>

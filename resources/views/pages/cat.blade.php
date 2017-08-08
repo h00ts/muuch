@@ -18,7 +18,7 @@
                         <ul class="nav nav-pills nav-stacked">
                             @foreach($categories->where('parent_id', null) as $category)
                                 @permission('category-'.$category->slug)
-                                <li{!! ($category->id == $id) ? ' class="active"' : '' !!}><a href="/categoria/{{ $category->id }}">{{ $category->name }}</a></li>
+                                <li{!! ($category->id == $id && $category->id == $parent_id) ? ' class="active"' : '' !!}><a href="/categoria/{{ $category->id }}">{{ $category->name }}</a></li>
                                 @endpermission
                             @endforeach
                             </ul>
