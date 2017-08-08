@@ -74,7 +74,7 @@
 
                 <button type="button" id="button--show-box" class="btn btn-danger pull-right btn-sm"><i class="material-icons">delete</i></button>
                 <div class="pull-right hidden" id="box--confirm">
-                    <form action="{{ route('categoria.destroy', $id) }}">
+                    <form action="{{ route('categoria.destroy', $id) }}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger"><i class="material-icons">warning</i> Si, borrar para siempre</button>
