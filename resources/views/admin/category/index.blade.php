@@ -22,14 +22,12 @@
                     </div>
                     <div class="content table-responsive">
                         @foreach($categories->where('parent_id', 0) as $category)
-                            <a href="/config/categoria/{!! $category->id !!}/edit" class="h4"> <i class="material-icons">folder_open</i> {!! $category->name !!}</a>
-                        @if(count($categories->where('parent_id', $category->id))) <small>/</small> @endif
-                            <ul>
-                                @foreach($categories->where('parent_id', $category->id) as $subcategory)
-                                    <li><a href="/config/categoria/{!! $subcategory->id !!}/edit" class="">{!! $subcategory->name !!}</a></li>
-                                @endforeach
-                            </ul>
+                            <h4><a href="/config/categoria/{!! $category->id !!}/edit" class="h4 text-info"> <i class="material-icons">folder_open</i> {!! $category->name !!}</a></h4>
                             <hr>
+                                @foreach($categories->where('parent_id', $category->id) as $subcategory)
+                                    <h5> <a href="/config/categoria/{!! $subcategory->id !!}/edit" class="h5 text-info"><i class="material-icons" style="font-size:16px">folder</i> {!! $subcategory->name !!}</a></h5>
+                                <hr>
+                                @endforeach
                         @endforeach
                     </div>
                 </div>
