@@ -45,16 +45,6 @@
                         @endif
                         <hr>
                         <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
-
-                        <button type="button" id="button--show-box" class="btn btn-danger pull-right btn-sm"><i class="material-icons">delete</i></button>
-                        <div class="pull-right hidden" id="box--confirm">
-                            <form action="{{ route('categoria.destroy', $id) }}">
-                                <input type="hidden" name="_method" value="DELETE">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger"><i class="material-icons">warning</i> Si, borrar para siempre</button>
-                            </form>
-                        <button type="button" id="button--dismiss" class="btn btn-sm btn-default"> ¡No, esperate!</button>
-                        </div>
                     </div>
                     </form>
                 </div>
@@ -80,6 +70,16 @@
                             @endforeach
                         </table>
                     </div>
+                </div>
+
+                <button type="button" id="button--show-box" class="btn btn-danger pull-right btn-sm"><i class="material-icons">delete</i></button>
+                <div class="pull-right hidden" id="box--confirm">
+                    <form action="{{ route('categoria.destroy', $id) }}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-danger"><i class="material-icons">warning</i> Si, borrar para siempre</button>
+                    </form>
+                    <button type="button" id="button--dismiss" class="btn btn-sm btn-default"> ¡No, esperate!</button>
                 </div>
             </div>
         </div>
