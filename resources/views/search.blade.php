@@ -32,7 +32,7 @@
                             @foreach($pages as $page)
                                <tr>
                                    <td> <a href="/muuch/{{ $page->id }}"><i class="material-icons">chevron_right</i> {{ $page->name }}</a></td>
-                                   <td>{{ $page->category->name }}</td>
+                                   <td>{{ isset($page->category) ? $page->category->name : '-' }}</td>
                                </tr>
                             @endforeach
                         </table>
@@ -57,7 +57,7 @@
                     @foreach($contents as $content)
                             <tr>
                                 <td> <a href="{{ isset($content->file) ? $content->file : '' }}" target="_blank"><i class="material-icons">insert_drive_file</i> {{ $content->name }}</a></td>
-                                <td>{{ $content->page->name }}</td>
+                                <td>{{ isset($content->page) ? $content->page->name : '-' }}</td>
                             </tr>
                     @endforeach
                     </table>
