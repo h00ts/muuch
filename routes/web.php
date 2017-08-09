@@ -76,17 +76,17 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('/personas', function(){
         $page = Page::where('slug', 'personas')->first();
-        $categories = Category::all();
+        $users = User::all();
         $markdown = Markdown::convertToHtml($page->markdown);
 
-        return view('pages.equipo', $page->toArray())->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+        return view('pages.equipo', $page->toArray())->withPage($page)->withUsers($users)->withMarkdown($markdown);
     });
     Route::get('/directorio', function(){
         $page = Page::where('slug', 'directorio')->first();
-        $categories = Category::all();
+        $personas = User::all();
         $markdown = Markdown::convertToHtml($page->markdown);
 
-        return view('pages.directorio', $page->toArray())->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+        return view('pages.directorio', $page->toArray())->withPage($page)->withPersonas($personas)->withMarkdown($markdown);
     });
     Route::get('/formatos', function(){
         $category = Category::where('slug', 'formatos')->first();
