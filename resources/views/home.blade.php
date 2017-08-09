@@ -7,7 +7,6 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><a href="/capacitacion" class="link"><i class="material-icons">school</i> <strong>Capacitación</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>
                 </div>
-
                 <div class="panel-body">
                     @if($user->level === null)
                         <p>Inscríbete a nuestra plataforma de capacitación para subir al nivel 1.</p>
@@ -45,7 +44,7 @@
                 <div class="panel-body">
                     <p><small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar.</small></p> <small>Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.
                     <div class="form-group">
-                        <label for="mailbox">Escribenos...</label>
+                        <label for="mailbox">Escríbenos...</label>
                         <textarea name="mailbox" id="mailbox" rows="5" class="form-control border-input"></textarea>
                     </div>
                     <button class="btn btn-primary btn-block">Dejar en el Buzón</button>
@@ -54,8 +53,10 @@
 
         </div>
         <div class="col-md-8">
-            <div class="panel">
-                <div class="bienvenida"></div>
+            <div class="panel panel-bienvenida" style="color:#FFF;height:230px; background-image:url('https://s3-us-west-2.amazonaws.com/ilu-muuch/bienvenida.jpg');background-size:cover; background-position: bottom center;">
+                <div class="panel-body">
+
+                </div>
             </div>
             <div class="panel panel-primary">
               <div class="panel-heading">
@@ -71,7 +72,7 @@
                       </form>
                       </div>
                         <div class="col-sm-12">
-                            <p><strong>¡Bienvenid@ al nuevo MUUCH!</strong> En esta sección podrás consultar todo el material existente en ILUMÉXICO. Encontrarás guías, manuales, formatos, directorios, informes y muchas cosas más.</p> <p>Utiliza la barra superior para buscar algo específico o <a href="/consulta">ingresa a la sección de "Consulta"</a> para buscarlo a través de categorías.</p>
+                            <p><strong>Bienvenido al nuevo MUUCH.</strong> En esta sección podrás consultar todo el material existente en ILUMÉXICO. Encontrarás guías, manuales, formatos, directorios, informes y muchas cosas más.</p> <p>Utiliza la barra superior para buscar algo específico o <a href="/consulta">ingresa a la sección de "Consulta"</a> para buscarlo a través de categorías.</p>
                             <a href="/consulta" class="btn btn-primary btn-raised">¡Empieza a consultar!</a>
                         </div>
                         {{--
