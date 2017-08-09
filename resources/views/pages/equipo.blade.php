@@ -11,14 +11,18 @@
                 </h3>
                 <hr>
             </div>
-            <div class="col-lg-12 col-md-12">
-                @foreach($users as $user)
-                    {{ $user->getMedia() }}
-                    <h3>{{ $user->name }}</h3>
-                    <strong>{{ $user->puesto }}</strong>
-
-                @endforeach
-            </div>
+        </div>
+        <div class="personas">
+            @foreach($users as $user)
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                            <img src="{{ (count($user->getMedia('profile'))) ? $user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="" class="img-responsive circle">
+                            <h4>{{ $user->name }} <small>{{ $user->ilucentro->name }}</small></h4>
+                            <strong>{{ $user->posicion }}</strong>
+                            <p>{{ $user->descripcion }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
     @endpermission

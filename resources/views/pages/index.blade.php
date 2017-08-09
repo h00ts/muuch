@@ -17,7 +17,7 @@
                 </form>
             </div>
         </div>
-            <div style="column-count: 2; column-gap: 25px; ">
+            <div style="column-count: 2; column-gap: 25px;">
             @foreach($categories->where('parent_id', null) as $category)
                 @permission('category-'.$category->slug)
                     <div class="panel panel-default" style="display: inline-block; margin: 10px auto; width: 100%;">

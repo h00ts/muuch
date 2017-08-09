@@ -52,7 +52,10 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt('prometeo');
         $user = User::create($data);
-        $user->addMediaFromRequest('image')->toMediaCollection('user', 's3');
+        if($request->file('image'))
+        {
+            $user->addMediaFromRequest('image')->toMediaCollection('user', 's3');
+        }
         $user->active = 1;
         $user->attachRole($request->input('user_role'));
         $activation = $user->activation()->create([
@@ -118,7 +121,10 @@ class UserController extends Controller
 
         $data = $request->all();
         $user->update($data);
-        $user->addMediaFromRequest('image')->toMediaCollection('profile');
+        if($request->file('image'))
+        {
+            $user->addMediaFromRequest('image')->toMediaCollection('profile');
+        }
 
         return redirect()->back()->withSuccess('Has actualizado al usuario '.$user->email);
 
