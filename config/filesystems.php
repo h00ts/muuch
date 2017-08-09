@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 's3',
 
     /*
     |--------------------------------------------------------------------------
@@ -61,11 +61,7 @@ return [
             'secret' => env('AWS_SECRET', 'doFz6fWswAI970ggxPOpmhINn7Ptv3meDrcJMHyI'),
             'region' => env('AWS_REGION', 'us-west-2'),
             'bucket' => env('AWS_BUCKET', 'ilu-muuch'),
-        ],
-
-        'media' => [
-            'driver' => 'local',
-            'root'   => public_path('media'),
+            'visibility' => 'public'
         ],
 
     ],
