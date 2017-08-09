@@ -12,14 +12,14 @@
                         <p>Inscríbete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                         <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                     @else
-                        <h4 class="text-default">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
+                        <h4 class="text-default">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? number_format($user_content / $content_count * 100) . '%' : '0%' !!}</span></h4>
                         <div class="progress progress-striped active">
                             <div class="progress-bar {!! ($user_content == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar"
                                  style="width: {!! ($user_content) ? ($user_content / $content_count * 100).'%' : '0%' !!};"
                                  aria-valuenow="{!! ($user_content) ? number_format($user_content / $content_count * 100, 2, '.', '')  : '0' !!}"
                                  aria-valuemin="0"
                                  aria-valuemax="100">
-                                {!! ($user_content) ? number_format((float)($user_content / $content_count * 100)) . '%' : '0%' !!}
+                                {!! ($user_content) ? number_format(($user_content / $content_count * 100), 0) . '%' : '0%' !!}
                             </div>
                         </div>
                         @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
@@ -53,7 +53,7 @@
 
         </div>
         <div class="col-md-8">
-            <div class="panel panel-bienvenida" style="color:#FFF;height:230px; background-image:url('https://s3-us-west-2.amazonaws.com/ilu-muuch/bienvenida.jpg');background-size:cover; background-position: bottom center;">
+            <div class="panel panel-bienvenida">
                 <div class="panel-body">
 
                 </div>

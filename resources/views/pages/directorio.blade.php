@@ -38,15 +38,15 @@
         $(function () {
             $('#equipo').DataTable({
                 "infoCallback": function (settings, start, end, total) {
-                    return "Somos " + total + " en total.";
+                    return "Somos una familia de " + total + " en total.";
                 },
                 language: {
                     search: "Filtrar: "
                 },
                 serverSide: true,
                 processing: true,
-                ordering: true,
-                paging: true,
+                ordering: false,
+                paging: false,
                 pageLength: 5,
                 ajax: '/datatables/equipo',
                 columns: [
