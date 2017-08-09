@@ -43,12 +43,12 @@
                     <h3 class="panel-title text-white"><a href="#" class="link"><i class="material-icons">markunread_mailbox</i> <strong>Quejas y Sugerencias</strong></a> </h3>
                 </div>
                 <div class="panel-body">
-                    <small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar. Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.</small>
+                    <p><small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar.</small></p> <small>Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.
                     <div class="form-group">
                         <label for="mailbox">Escribenos...</label>
                         <textarea name="mailbox" id="mailbox" rows="5" class="form-control border-input"></textarea>
                     </div>
-                    <button class="btn btn-default btn-raised btn-block">Dejar en el Buzón</button>
+                    <button class="btn btn-primary btn-block">Dejar en el Buzón</button>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                       </form>
                       </div>
                         <div class="col-sm-12">
-                            <p>¡Bienvenido al nuevo MUUCH! En esta sección podrás consultar todo el material existente en ILUMÉXICO. Encontrarás guías, manuales, formatos, directorios, informes y muchas cosas más. Utiliza la barra superior para buscar algo específico o <a href="/consulta">ingresa a la sección de "Consulta"</a> para buscarlo a través de categorías.</p>
+                            <p><strong>¡Bienvenid@ al nuevo MUUCH!</strong> En esta sección podrás consultar todo el material existente en ILUMÉXICO. Encontrarás guías, manuales, formatos, directorios, informes y muchas cosas más.</p> <p>Utiliza la barra superior para buscar algo específico o <a href="/consulta">ingresa a la sección de "Consulta"</a> para buscarlo a través de categorías.</p>
                             <a href="/consulta" class="btn btn-primary btn-raised">¡Empieza a consultar!</a>
                         </div>
                         {{--
