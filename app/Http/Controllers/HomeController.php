@@ -50,4 +50,5 @@ class HomeController extends Controller
             ->withContentCount($content_count)
             ->withUserContent($user_content);
     }
+
 }

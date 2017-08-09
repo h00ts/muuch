@@ -43,11 +43,14 @@
                 </div>
                 <div class="panel-body">
                     <p><small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar.</small></p> <small>Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.
-                    <div class="form-group">
+                    <form action="/enviar/bsq" method="POST">
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                        <div class="form-group">
                         <label for="mailbox">Escríbenos...</label>
-                        <textarea name="mailbox" id="mailbox" rows="5" class="form-control border-input"></textarea>
+                        <textarea name="message" id="mailbox" rows="5" class="form-control border-input"></textarea>
                     </div>
-                    <button class="btn btn-primary btn-block">Dejar en el Buzón</button>
+                    <button type="submit" class="btn btn-primary btn-block">Dejar en el Buzón</button>
+                    </form>
                 </div>
             </div>
 

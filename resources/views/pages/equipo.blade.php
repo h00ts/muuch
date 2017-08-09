@@ -12,16 +12,18 @@
                 <hr>
             </div>
         </div>
-        <div class="personas">
+        <div class="row personas">
             @foreach($users as $user)
+            <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                            <img src="{{ (count($user->getMedia('profile'))) ? $user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="" class="img-responsive circle">
-                            <h4>{{ $user->name }} <br><small>{{ $user->ilucentro->name }}</small></h4>
-                            <strong>{{ $user->posicion }}</strong>
-                            <p>{{ $user->descripcion }}</p>
+                        <img src="{{ (count($user->getMedia('profile'))) ? $user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="" class="img-responsive circle">
+                        <h4>{{ $user->name }} <br><small>{{ $user->ilucentro->name }}</small></h4>
+                        <strong>{{ $user->posicion }}</strong>
+                        <p>{{ $user->descripcion }}</p>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
     </div>

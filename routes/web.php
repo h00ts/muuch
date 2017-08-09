@@ -62,6 +62,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/foro/{thread}', 'ThreadsController@show');
     Route::get('/foro/responder/{id}', 'RepliesController@create');
     Route::post('/foro/responder/{id}', 'RepliesController@store')->name('foro.responder');
+    Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
+    Route::get('/datatables/equipo', 'DatatablesController@getEquipo');
+    Route::post('/enviar/bsq', 'EmailsController@postBuzon');
+
+
+    /****************************************************
+     *  STATIC PAGES
+     ****************************************************/
+
     Route::get('/herramientas', function(){
         $page = Page::where('slug', 'herramientas')->first();
         $categories = Category::all();
@@ -75,6 +84,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         return view('pages.sucursales', $page->toArray())->withPage($page)->withSucursales($sucursales);
     });
+
     Route::get('/personas', function(){
         $page = Page::where('slug', 'personas')->first();
         $users = User::orderBy('name', 'asc')->get();
@@ -95,8 +105,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         return view('pages.cat', $category->toArray())->withCat($category)->withCategories($categories);
     });
-    Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
-    Route::get('/datatables/equipo', 'DatatablesController@getEquipo');
+
+    /***
+     * END STATIC PAGES
+     */
+
+
 });
 
 Route::group([

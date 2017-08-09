@@ -309,23 +309,15 @@ h3.visuallyhidden {
 
 
 .panel-bienvenida {
-  color:#FFF;height:230px; background-image:url('https://s3-us-west-2.amazonaws.com/ilu-muuch/bienvenida.jpg');background-size:cover; background-position: bottom center;
-}
-
-.personas {
-  column-count: 2;
-  column-gap: 25px;
-  width:100%;
-}
-
-.personas .panel {
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-  break-inside: avoid;
+  color:#FFF;
+  height:230px;
+  background-image:url('https://s3-us-west-2.amazonaws.com/ilu-muuch/bienvenida.jpg');
+  background-size:cover;
+  background-position: bottom center;
 }
 
 .personas .panel-body {
-  position:relative;
+  text-align:center;
 }
 
 .panel-bienvenida a {
@@ -357,10 +349,4 @@ h3.visuallyhidden {
   border-radius:100%;
   width:50%;
   margin:.5em auto;
-}
-
-@media screen and (min-width:720px){
-  .personas {
-    column-count: 3; column-gap: 25px;
-  }
 }
