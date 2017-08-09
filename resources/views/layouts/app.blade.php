@@ -45,7 +45,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
-                            <li><a href="{{ url('/registrar') }}">Registrate</a></li>
+                            <li><a href="{{ url('/registrar') }}">Regístrate</a></li>
                         @else
                             @ability('admin', '')
                             <li class="text-primary"><a href="/config"><i class="material-icons">settings</i> </a></li>

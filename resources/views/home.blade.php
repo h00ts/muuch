@@ -10,7 +10,7 @@
 
                 <div class="panel-body">
                     @if($user->level === null)
-                        <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
+                        <p>Inscríbete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                         <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                     @else
                         <h4 class="text-default">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
@@ -43,7 +43,7 @@
                     <h3 class="panel-title text-white"><a href="#" class="link"><i class="material-icons">markunread_mailbox</i> <strong>Quejas y Sugerencias</strong></a> </h3>
                 </div>
                 <div class="panel-body">
-                    <span>Este es el buzon de quejas y sugerencias.</span>
+                    <span>Este es el buzón de quejas y sugerencias.</span>
                     <div class="form-group">
                         <label for="mailbox">Escribenos...</label>
                         <textarea name="mailbox" id="mailbox" rows="5" class="form-control border-input"></textarea>
@@ -67,6 +67,11 @@
                           </div>
                       </form>
                       </div>
+                        <div class="col-sm-12">
+                            <p>Bienvenido al MUUCH, en esta sección puedes consultar todo el material contenido en el MUUCH. Utiliza la barra superior para buscar algo en especifico, o <a href="">ingresa a la seccion de consulta</a> para ver el desglose.</p>
+                            <a href="/consulta" class="btn btn-primary btn-raised">Empieza a consultar</a>
+                        </div>
+                        {{--
                         <div class="col-sm-12">
                             <small>Menu rápido</small>
                             <div class="panel-group" id="menu-rapido" role="tablist" aria-multiselectable="true">
@@ -105,7 +110,7 @@
                                         @endif
                                 @endforeach
                             </div>
-                        </div>
+                        </div> --}}
 
                         </div>
 

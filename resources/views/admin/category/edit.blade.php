@@ -6,6 +6,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
+                @include('admin.partials.alerts')
+            </div>
+            <div class="col-lg-12">
                 <div class="card">
                     <form action="{!! route('categoria.update', $id) !!}" method="POST">
                     {!! csrf_field() !!}

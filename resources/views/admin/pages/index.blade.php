@@ -10,6 +10,13 @@
                 <hr>
                 @include('admin.partials.alerts')
             </div>
+            <div class="col-lg-12">
+                <form action="/config/contenido/buscar" method="GET">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="Buscar..." name="q">
+                    </div>
+                </form>
+            </div>
             <div class="col-md-12">
                 <div class="card">
                      <div class="header">

@@ -121,4 +121,9 @@ Route::group([
         $count = count($content);
         return view('admin.contenido.search')->withContents($content)->withQuery($request->q)->withCount($count);
     });
+    Route::get('muuch/buscar', function (Request $request) {
+        $pagina = App\Pagina::search($request->q)->get();
+        $count = count($pagina);
+        return view('admin.pages.search')->withPaginas($pagina)->withQuery($request->q)->withCount($count);
+    });
 });

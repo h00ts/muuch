@@ -6,6 +6,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                @include('admin.partials.alerts')
+            </div>
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <form action="{!! route('contenido.update', $content->id) !!}" method="POST">
                     {!! csrf_field() !!}

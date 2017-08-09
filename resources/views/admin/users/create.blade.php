@@ -9,12 +9,12 @@
                 @include('admin.partials.alerts')
                 <div class="panel panel-default">
                     <div class="panel-body">
-                            <form action="{{ route('usuarios.store') }}" method="POST">
+                            <form action="{{ route('usuarios.store') }}" method="POST" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <img src="http://muuch.dev/img/default_avatar.png" alt="" class="img-responsive" class="border-radius:100%" data-container="body" data-toggle="popover" data-placement="top" data-content="Cargar imagen..." id="img--upload">
-                                        <input type="file" name="image" id="image--file" style="display: none;" data>
+                                        <input type="file" name="image" id="image--file" style="display: none;" accept="image/*">
                                     </div>
                                     <div class="col-lg-9">
                                         <div class="form-group">

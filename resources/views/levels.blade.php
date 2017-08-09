@@ -14,7 +14,7 @@
             <div class="col-md-4">
                 @include('layouts.profile')
                 @if($user->level === null)
-                    <p>Inscribete a nuestra plataforma de capacitación para subir al nivel 1.</p>
+                    <p>Inscríbete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                     <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                 @else
                     <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
