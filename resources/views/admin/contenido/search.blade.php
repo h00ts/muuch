@@ -11,11 +11,12 @@
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
-                <form action="/config/contenido/buscar" method="GET">
+                <form action="/buscar" method="GET">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" placeholder="Buscar..." name="q">
+                        <input type="text" class="form-control input-lg" placeholder="Buscar..." name="q" value="{{ $query }}">
                     </div>
                 </form>
+                <h5>Se encontraron {{ $count }} resultados relacionados a "{{ $query }}"</h5> <br>
             </div>
             <div class="col-md-12">
                 <div class="card">
@@ -49,7 +50,6 @@
                                 </tr>
                             @endforeach
                         </table>
-                        {{ $contents->links() }}
                     </div>
                 </div>
             </div>

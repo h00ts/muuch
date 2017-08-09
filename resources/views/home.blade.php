@@ -17,10 +17,10 @@
                         <div class="progress progress-striped active">
                             <div class="progress-bar {!! ($user_content == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar"
                                  style="width: {!! ($user_content) ? ($user_content / $content_count * 100).'%' : '0%' !!};"
-                                 aria-valuenow="{!! ($user_content) ? number_format($user_content / $content_count * 100, 2, '.', ',')  : '0' !!}"
+                                 aria-valuenow="{!! ($user_content) ? number_format($user_content / $content_count * 100, 2, '.', '')  : '0' !!}"
                                  aria-valuemin="0"
                                  aria-valuemax="100">
-                                {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
+                                {!! ($user_content) ? number_format((float)($user_content / $content_count * 100)) . '%' : '0%' !!}
                             </div>
                         </div>
                         @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
@@ -164,8 +164,8 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-    $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-    })
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 </script>
 @endsection

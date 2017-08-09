@@ -33,6 +33,30 @@
 @endsection
 
 @section('scripts')
-
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function () {
+            $('#equipo').DataTable({
+                "infoCallback": function (settings, start, end, total) {
+                    return "Somos " + total + " en total.";
+                },
+                language: {
+                    search: "Filtrar: "
+                },
+                serverSide: true,
+                processing: true,
+                ordering: true,
+                paging: true,
+                pageLength: 5,
+                ajax: '/datatables/equipo',
+                columns: [
+                    {data: 'name', orderable: true, searchable: true},
+                    {data: 'email'},
+                    {data: 'level'},
+                    {data: 'ilucentro_id'}
+                ]
+            });
+        });
+    </script>
 @endsection
 

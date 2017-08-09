@@ -8,7 +8,7 @@
                 @include('admin.partials.alerts')
             </div>
             <div class="col-lg-12">
-                            <button class="btn btn-primary" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> Crear Usuario</button>
+                <a class="btn btn-primary" href="/config/usuarios/create"><i class="glyphicon glyphicon-plus"></i> Crear Usuario</a>
            <hr>
                 <div class="card">
                     <div class="header">

@@ -36,7 +36,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        $ilucentros = Ilucentro::all();
+        return view('admin.users.create')->withRoles($roles)->withIlucentros($ilucentros);
     }
 
     /**
@@ -47,7 +49,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->back();
+        $data = $request->all();
+        $data['password'] = bcrypt('prometeo');
+        $user = User::create($data);
+        $user->addMediaFromRequest('image')->toMediaCollection('profile');
+        $user->active = 1;
+        $user->attachRole($request->input('user_role'));
+        $activation = $user->activation()->create([
+            'token' => hash_hmac('sha256', str_random(40), config('app.key')),
+            'completed' => 0
+        ]);
+        $user->save();
+
+        Mail::to($user->email)->send(new UserActivated($activation, $user));
+
+        return redirect()->back()->withSuccess('Has activado a '.$user->email);
     }
 
     /**

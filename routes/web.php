@@ -81,6 +81,13 @@ Route::group(['middleware' => 'auth'], function () {
 
         return view('pages.equipo', $page->toArray())->withPage($page)->withCategories($categories)->withMarkdown($markdown);
     });
+    Route::get('/directorio', function(){
+        $page = Page::where('slug', 'directorio')->first();
+        $categories = Category::all();
+        $markdown = Markdown::convertToHtml($page->markdown);
+
+        return view('pages.directorio', $page->toArray())->withPage($page)->withCategories($categories)->withMarkdown($markdown);
+    });
     Route::get('/formatos', function(){
         $category = Category::where('slug', 'formatos')->first();
         $categories = Category::all();
@@ -109,4 +116,9 @@ Route::group([
     Route::resource('categoria', 'CategoryController');
     Route::resource('canales', 'ChannelController');
     Route::resource('ilucentros', 'IlucentroController');
+    Route::get('contenido/buscar', function (Request $request) {
+        $content = App\Content::search($request->q)->get();
+        $count = count($content);
+        return view('admin.contenido.search')->withContents($content)->withQuery($request->q)->withCount($count);
+    });
 });

@@ -1,5 +1,5 @@
 @extends('layouts.config')
-@section('title', 'Canales de discución')
+@section('title', 'Canales de discusión')
 @section('icon', 'forum')
 @section('slug', 'canales')
 @section('content')
