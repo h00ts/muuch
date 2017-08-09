@@ -14,7 +14,7 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <img src="http://muuch.dev/img/default_avatar.png" alt="" class="img-responsive" class="border-radius:100%" data-container="body" data-toggle="popover" data-placement="top" data-content="Cargar imagen..." id="img--upload">
-                                        <input type="file" name="image" id="image--file" style="display: none;">
+                                        <input type="file" name="image" id="image--file" style="display: none;" data>
                                     </div>
                                     <div class="col-lg-9">
                                         <div class="form-group">
