@@ -336,9 +336,7 @@ h3.visuallyhidden {
   height:100%;
   text-align: center;
   text-decoration: none;
-  position:absolute;
-  bottom: 10px;
-  left: 10px;
+  position:relative;
 }
 
 .panel-bienvenida a:hover {
@@ -346,6 +344,9 @@ h3.visuallyhidden {
   color:rgba(255,255,255,1);
   text-decoration: none;
   font-weight:800;
+  position:absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
 .panel-bienvenida a span {

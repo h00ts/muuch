@@ -77,7 +77,7 @@ class PageController extends Controller
      */
     public function update(Page $page, Request $request)
     {
-        $data = $request->only(['name', 'image', 'markdown', 'category_id', 'menu']);
+        $data = $request->only(['name', 'image', 'markdown', 'category_id', 'menu', 'order']);
         $data['slug'] = str_slug($data['name']);
         $permission = Permission::where('name', 'page-'.$page->slug)->first();
         $page->update($data);

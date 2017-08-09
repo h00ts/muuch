@@ -85,11 +85,16 @@
                                     </label>
                                 @endforeach
                             </div>
+                        </div>
+                            @endif
+
+                        <div class="form-group">
+                            <label for="order">Orden</label>
+                            <input type="number" class="input" name="order" value="{{ isset($order) ? $order : '' }}">
                             <label for="menu">
                                 <input type="checkbox" value="1" name="menu" id="menu"{{ ($menu) ? 'checked' : '' }}> En el menu rapido?
                             </label>
                         </div>
-                            @endif
 
                     </div>
                     <div class="panel-footer">

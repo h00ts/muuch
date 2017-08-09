@@ -46,9 +46,15 @@
                             </div>
                         </div>
                         @endif
+                        <div class="form-group">
+                            <label for="order">Orden</label>
+                            <input type="text" class="input" name="order" value="{{ isset($order) ? $order : '' }}">
+
+                        </div>
                         <hr>
                         <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
                     </div>
+
                     </form>
                 </div>
             </div>

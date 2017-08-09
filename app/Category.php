@@ -12,7 +12,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'parent_id', 'slug'
+        'name', 'description', 'parent_id', 'slug', 'order'
     ];
 
     public function pages()

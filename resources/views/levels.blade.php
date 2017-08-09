@@ -17,7 +17,7 @@
                     <p>Inscríbete a nuestra plataforma de capacitación para subir al nivel 1.</p>
                     <a href="/capacitacion/inscribir" class="btn btn-default btn-raised btn-block"><i class="material-icons">school</i>  Inscribirme</a>
                 @else
-                    <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? $user_content / $content_count * 100 . '%' : '0%' !!}</span></h4>
+                    <h4 class="text-info">Nivel {!! ($user->level) ? $user->level : '0' !!} <span class="label pull-right">{!! isset($user_content) ? number_format($user_content / $content_count * 100) . '%' : '0%' !!}</span></h4>
                     <div class="progress progress-striped active">
                         <div class="progress-bar {!! ($user_content == $content_count) ? 'progress-bar-primary' : 'progress-bar-warning' !!}" role="progressbar"
                              style="width: {!! ($user_content) ? ($user_content / $content_count * 100).'%' : '0%' !!};"

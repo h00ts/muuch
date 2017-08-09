@@ -27,12 +27,12 @@
                                     <h4>{{ $category->name }}</h4>
                                 </div>
                                 <div class="col-md-8">
-                                    @foreach($categories->where('parent_id', $category->id) as $subcategory)
+                                    @foreach($categories->where('parent_id', $category->id)->sortByDesc('order') as $subcategory)
                                         @permission('category-'.$subcategory->slug)
                                         <a href="/categoria/{{ $subcategory->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">folder_open</i> {{ $subcategory->name }}</a>
                                         @endpermission
                                     @endforeach
-                                    @foreach($category->pages as $page)
+                                    @foreach($category->pages->sortByDesc('order') as $page)
                                         @permission('page-'.$page->slug)
                                         <a href="/consulta/{{ $page->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
                                         @endpermission
