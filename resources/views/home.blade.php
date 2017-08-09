@@ -54,6 +54,9 @@
 
         </div>
         <div class="col-md-8">
+            <div class="panel">
+                <div class="bienvenida"></div>
+            </div>
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h3 class="panel-title"><a href="/consulta" class="link"><i class="material-icons">accessibility</i> <strong>Consulta</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>
