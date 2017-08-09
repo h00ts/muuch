@@ -52,7 +52,7 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt('prometeo');
         $user = User::create($data);
-        $user->addMediaFromRequest('image')->toMediaCollection('profile');
+        $user->addMediaFromRequest('image')->toMediaCollection('user', 's3');
         $user->active = 1;
         $user->attachRole($request->input('user_role'));
         $activation = $user->activation()->create([

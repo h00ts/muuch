@@ -45,7 +45,7 @@
                 @foreach($modules as $module)
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Nivel {!! $module->level !!}, Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
+                            <h3 class="panel-title">Nivel {!! $module->level !!}, Módulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
                         </div>
                         <div class="panel-body">
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
