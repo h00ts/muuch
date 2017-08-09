@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Page;
 use App\Ilucentro;
+use App\User;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
 /*
