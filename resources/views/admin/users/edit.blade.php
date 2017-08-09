@@ -10,12 +10,13 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                       @if($user->active)
-                           <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
+                           <form action="{{ route('usuarios.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                                {!! csrf_field() !!}
                                <input type="hidden" name="_method" value="PUT">
                                <div class="row">
                                 <div class="col-lg-3">
                                   <img src="http://muuch.dev/img/default_avatar.png" alt="" class="img-responsive" class="border-radius:100%" data-container="body" data-toggle="popover" data-placement="top" data-content="Cargar imagen...">
+                                    <input type="file" name="image" id="image--file" style="display: none;" accept="image/*">
                                 </div>
                                  <div class="col-lg-9">
                                    <div class="form-group">
@@ -96,4 +97,31 @@
 
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(function(){
+            $("#img--upload").on("click", function(){
+                $("#image--file").click();
+            });
+        });
+
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $("#img--upload").attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#image--file").change(function(){
+            readURL(this);
+        });
+    </script>
 @endsection

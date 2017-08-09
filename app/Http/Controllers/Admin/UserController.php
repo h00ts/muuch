@@ -117,6 +117,7 @@ class UserController extends Controller
 
         $data = $request->all();
         $user->update($data);
+        $user->addMediaFromRequest('image')->toMediaCollection('user', 's3');
 
         return redirect()->back()->withSuccess('Has actualizado al usuario '.$user->email);
 
