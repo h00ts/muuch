@@ -10,6 +10,8 @@ ACTIVA TU CUENTA
 
 Podras ingresar usando tu correo {{ $userEmail }} desde tu computadora o telefono móvil, entrando a la página <a href="http://muuch.ilumexico.mx">muuch.ilumexico.mx</a>.
 
-Tu contraseña temporal es: prometeo
+@component('mail::panel')
+    Tu contraseña temporal es: prometeo
+@endcomponent
 
 @endcomponent

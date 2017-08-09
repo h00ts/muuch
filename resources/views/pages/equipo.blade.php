@@ -12,20 +12,12 @@
                 <hr>
             </div>
             <div class="col-lg-12 col-md-12">
-                <div class="panel panel-default display--page">
-                    <div class="panel-body">
-                        <table id="equipo" class="table table-responsive table-striped">
-                            <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Telefono</th>
-                                <th>ILUCentro</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
+                @foreach($users as $user)
+
+                    <h3>{{ $user->name }}</h3>
+                    <strong>{{ $user->puesto }}</strong>
+
+                @endforeach
             </div>
         </div>
     </div>

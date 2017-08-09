@@ -49,13 +49,13 @@
                 <li id="categorias">
                     <a href="/config/categoria">
                         <i class="ti-text"></i>
-                        <p>Categorias</p>
+                        <p>Categorías</p>
                     </a>
                 </li>
                 <li id="consulta">
                     <a href="/config/muuch">
                         <i class="ti-text"></i>
-                        <p>Paginas</p>
+                        <p>Páginas</p>
                     </a>
                 </li>
                 <li id="contenido">
@@ -67,7 +67,7 @@
                 <li id="canales">
                     <a href="/config/canales">
                         <i class="ti-pencil-alt2"></i>
-                        <p>Canales de discución</p>
+                        <p>Canales de discusión</p>
                     </a>
                 </li>
                 <li id="ilucentros">

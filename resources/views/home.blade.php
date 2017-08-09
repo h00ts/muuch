@@ -113,7 +113,7 @@
                     </div>
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiónes</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
+                    <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiones</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover">

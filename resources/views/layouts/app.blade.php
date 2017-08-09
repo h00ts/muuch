@@ -73,7 +73,7 @@
                     <h2><i class="material-icons">accessibility</i></h2>
                     <h4>La palabra MUUCH proviene del maya y significa "juntos".</h4>
                     <p class="small">
-                    Esta plataforma fué creada con la intención de acercarnos y ayudarnos a construir un mejor ILUMÉXICO JUNTOS.<br> Te invitamos a explorar la plataforma, así como a enviarnos todos tus comentarios para enriquecerla.</p>
+                    Esta plataforma fue creada con la intención de acercarnos y ayudarnos a construir un mejor ILUMÉXICO JUNTOS.<br> Te invitamos a explorar la plataforma, así como a enviarnos todos tus comentarios para enriquecerla.</p>
                 </div>
                 <div class="col-md-12">
                     <hr>
