@@ -87,8 +87,9 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $ilucentros = Ilucentro::all();
+        $media = $user->getMedia();
 
-        return view('admin.users.edit', $user->toArray())->withUser($user)->withRoles($roles)->withIlucentros($ilucentros);
+        return view('admin.users.edit', $user->toArray())->withUser($user)->withRoles($roles)->withIlucentros($ilucentros)->withMedia($media);
     }
 
     /**
