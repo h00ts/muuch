@@ -13,7 +13,7 @@
             </div>
             <div class="col-lg-12 col-md-12">
                 @foreach($users as $user)
-
+                    {{ $user->getMedia() }}
                     <h3>{{ $user->name }}</h3>
                     <strong>{{ $user->puesto }}</strong>
 
