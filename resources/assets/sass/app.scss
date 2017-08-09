@@ -315,6 +315,13 @@ h3.visuallyhidden {
 .personas {
   column-count: 2;
   column-gap: 25px;
+  width:100%;
+}
+
+.personas .panel {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .personas .panel-body {
