@@ -55,7 +55,9 @@
         <div class="col-md-8">
             <div class="panel panel-bienvenida">
                 <div class="panel-body">
-
+                    <a href="/personas">
+                        <span>EQUIPO</span>
+                    </a>
                 </div>
             </div>
             <div class="panel panel-primary">

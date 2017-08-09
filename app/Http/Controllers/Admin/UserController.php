@@ -121,6 +121,8 @@ class UserController extends Controller
 
         $data = $request->all();
         $user->update($data);
+        $user->roles()->detach();
+        $user->attachRole($request->input('role_user'));
         if($request->file('image'))
         {
             $user->addMediaFromRequest('image')->toMediaCollection('profile');

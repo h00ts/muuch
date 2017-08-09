@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('/personas', function(){
         $page = Page::where('slug', 'personas')->first();
-        $users = User::all();
+        $users = User::orderBy('name', 'asc')->get();
         $markdown = Markdown::convertToHtml($page->markdown);
 
         return view('pages.equipo', $page->toArray())->withPage($page)->withUsers($users)->withMarkdown($markdown);

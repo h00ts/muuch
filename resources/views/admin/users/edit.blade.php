@@ -40,7 +40,7 @@
                                <div class="form-group row">
                                     <div class="col-md-6">
                                       <label for="role">Rol</label>
-                                      <select name="role_id" id="role" class="form-control border-input" required="required">
+                                      <select name="role_user" id="role" class="form-control border-input" required="required">
                                           @foreach($roles as $role)
                                             <option value="{{ $role->id }}" {{ ($role->id == $user->roles->first()->id) ? 'selected' : '' }}>{{ $role->display_name }}</option>
                                           @endforeach
