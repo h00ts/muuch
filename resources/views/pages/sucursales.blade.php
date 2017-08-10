@@ -31,7 +31,8 @@
         <div class="col-lg-12 col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="map" style="width:100%;height:500px;"></div>
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1KkjfiLO9GOdxYaum3uEMOpdodkE&hl=es-419" border="0" height="480" style="width:100%;height:480px;border:0;"></iframe>
+                    {{--<div id="map" style="width:100%;height:500px;"></div>--}}
                 </div>
             </div>
         </div>
@@ -67,6 +68,7 @@
             });
         });
     </script>
+    {{--
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -105,5 +107,6 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJAYRzEUoq_Ej0zurPfId1mw58Cu7I2FU&callback=initMap">
     </script>
+    --}}
 @endsection
 
