@@ -12,6 +12,8 @@ class InboxSend extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $message;
+
     /**
      * Create a new message instance.
      *
