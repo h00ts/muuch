@@ -307,7 +307,6 @@ h3.visuallyhidden {
   float:right;
 }
 
-
 .panel-bienvenida {
   color:#FFF;
   height:230px;
@@ -349,4 +348,34 @@ h3.visuallyhidden {
   border-radius:100%;
   width:50%;
   margin:.5em auto;
+}
+
+.personas {
+  display:flex;
+}
+
+.personas-col {
+  display: inline-block;
+  width: 50%;
+  padding:0 1em;
+  box-sizing:border-box;
+}
+
+@media screen and (min-width:720px){
+  .personas {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    align-content: flex-end;
+  }
+
+  .personas-col {
+    display: inline-block;
+    width: 33.3%;
+    padding:0 1em;
+    box-sizing:border-box;
+  }
 }

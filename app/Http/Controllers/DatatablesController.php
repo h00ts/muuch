@@ -18,7 +18,7 @@ class DatatablesController extends Controller
 
     public function getEquipo(Datatables $datatables)
     {
-        $user = User::all();
+        $user = User::with('ilucentro')->get();
 
         return Datatables::of($user)->make(true);
     }

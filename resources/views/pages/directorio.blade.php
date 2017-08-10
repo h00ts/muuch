@@ -52,8 +52,8 @@
                 columns: [
                     {data: 'name', orderable: true, searchable: true},
                     {data: 'email'},
-                    {data: 'level'},
-                    {data: 'ilucentro_id'}
+                    {data: 'phone'},
+                    {data: 'ilucentro.name'}
                 ]
             });
         });
