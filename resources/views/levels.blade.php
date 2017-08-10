@@ -105,11 +105,11 @@
                 <button type="button" class="close" data-dismiss="modal">
                     &times;
                 </button>
-                <h4 class="modal-title">Estas completando:</h4>
+                <h4 class="modal-title">Estás completando:</h4>
             </div>
             <div class="modal-body">
                 <p class="text-center h3" id="content_name"></p>
-                <p>Asegurate de haber leido y entendido el contenido dentro de este bloque antes de completarlo.</p>
+                <p>Asegúrate de haber leído y entendido el contenido dentro de este bloque antes de completarlo.</p>
             </div>
             <div class="modal-footer">
                     <form action="/capacitacion/completar/" method="POST" id="complete_content">

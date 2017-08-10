@@ -17,7 +17,7 @@
                 </form>
             </div>
         </div>
-            <div style="column-count: 2; column-gap: 25px;">
+            <div class="consulta">
             @foreach($categories->where('parent_id', null)->sortByDesc('order') as $category)
                 @permission('category-'.$category->slug)
                     <div class="panel panel-default" style="display: inline-block; margin: 10px auto; width: 100%;">
@@ -34,7 +34,7 @@
                                     @endforeach
                                     @foreach($category->pages->sortByDesc('order') as $page)
                                         @permission('page-'.$page->slug)
-                                        <a href="/consulta/{{ $page->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
+        <a href="/consulta/{{ $page->id }}" class="btn btn-default btn-block" style="text-align:left"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
                                         @endpermission
                                     @endforeach
                                 </div>
@@ -43,6 +43,9 @@
                     </div>
                 @endpermission
             @endforeach
+                <div class="panel panel-default" style="display: inline-block; margin: 10px auto; width: 100%; height:300px; background-image:url('https://s3-us-west-2.amazonaws.com/ilu-muuch/static/consulta.jpg'); background-size:cover; background-position: bottom center;">
+                    <div class="panel-body"></div>
+                </div>
             </div>
         </div>
 @endsection

@@ -24,6 +24,10 @@
                             </ul>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <img src="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/sidebar1.jpg" alt="Consulta" class="img-responsive">
+                </div>
+                
             </div>
             <div class="col-md-8">
                 <div class="panel panel-default">

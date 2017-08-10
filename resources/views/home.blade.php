@@ -37,6 +37,12 @@
                 </div>
             </div>
 
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding:0">
+                    <a href="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/impacto.png" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/impacto.png" alt="impacto" class="img-responsive"></a>
+                </div>
+            </div>
+
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title text-white"><a href="#" class="link"><i class="material-icons">markunread_mailbox</i> <strong>Quejas y Sugerencias</strong></a> </h3>
