@@ -17,7 +17,7 @@ class EmailsController extends Controller
     {
         $message = $request->input('message');
         $user = User::findOrFail($request->input('user_id'));
-        Mail::to('ruslan@ilumexico.mx')->send(new InboxSend($user, $message));
+        Mail::to('fernanda@ilumexico.mx')->send(new InboxSend($user, $message));
 
         return redirect()->back();
     }
