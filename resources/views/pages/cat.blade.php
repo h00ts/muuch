@@ -24,8 +24,18 @@
                             </ul>
                     </div>
                 </div>
+                <form action="/buscar" method="GET">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons">search</i></div>
+                            <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
+                        </div>
+                    </div>
+                </form>
                 <div class="panel panel-default">
-                    <img src="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/sidebar1.jpg" alt="Consulta" class="img-responsive">
+                    <div class="panel-body">
+                        <img src="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/sidebar1.jpg" alt="Consulta" class="img-responsive">
+                    </div>
                 </div>
                 
             </div>

@@ -78,7 +78,6 @@
                                               <button type="submit" class="btn btn-success">Activar</button>
                                             </form>
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </table>
@@ -87,10 +86,10 @@
                 </div>
             @endif
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Roles</h3>
+                        <h3 class="panel-title">Usuarios Desactivados</h3>
                     </div>
                     <div class="panel-body">
                         @foreach($roles as $role)
@@ -100,18 +99,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Permisos</h3>
-                    </div>
-                    <div class="panel-body">
-                        @foreach($permissions as $permission)
-                        {{ $permission->display_name }} <br>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+
             
         </div>
     </div>

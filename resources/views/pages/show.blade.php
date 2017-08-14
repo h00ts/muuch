@@ -61,9 +61,17 @@
                         @foreach($categories->where('parent_id', null) as $category)
                             <li{!! ($category->id == $category_id || $category->parent_id == $category_id) ? ' class="active"' : '' !!}><a href="/categoria/{{ $category->id }}">{{ $category->name }}</a></li>
                         @endforeach
-                        </ul>
+                    </ul>
                 </div>
             </div>
+            <form action="/buscar" method="GET">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="material-icons">search</i></div>
+                        <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

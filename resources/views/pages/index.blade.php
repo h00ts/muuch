@@ -7,13 +7,15 @@
                     <i class="material-icons">arrow_left</i> Regresar
                 </a> 
                 <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a></h3>
-                
             </div>
             <div class="col-lg-12">
                 <form action="/buscar" method="GET">
                     <div class="form-group">
-                    <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
-                </div>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons">search</i></div>
+                            <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -44,7 +46,8 @@
                 @endpermission
             @endforeach
                 <div class="panel panel-default" style="display: inline-block; margin: 10px auto; width: 100%; height:300px; background-image:url('https://s3-us-west-2.amazonaws.com/ilu-muuch/static/consulta.jpg'); background-size:cover; background-position: bottom center;">
-                    <div class="panel-body"></div>
+                    <div class="panel-body">
+                    </div>
                 </div>
             </div>
         </div>
