@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
     Route::get('/datatables/equipo', 'DatatablesController@getEquipo');
     Route::post('/enviar/bsq', 'EmailsController@postBuzon');
+    Route::resource('/perfil', 'UserController', ['only' => ['update']]);
 
 
     /****************************************************
@@ -94,10 +95,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('/directorio', function(){
         $page = Page::where('slug', 'directorio')->first();
-        $personas = User::all();
         $markdown = Markdown::convertToHtml($page->markdown);
 
-        return view('pages.directorio', $page->toArray())->withPage($page)->withPersonas($personas)->withMarkdown($markdown);
+        return view('pages.directorio', $page->toArray())->withPage($page)->withMarkdown($markdown);
     });
     Route::get('/formatos', function(){
         $category = Category::where('slug', 'formatos')->first();

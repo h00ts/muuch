@@ -78,7 +78,6 @@
                 <div class="col-md-12">
                     <hr>
                     <strong class="small">Accesos rápidos:</strong> <a href="http://mail.ilumexico.mx" target="_blank" class="btn btn-default btn-sm" style="margin:0"><i class="material-icons" style="font-size:16px">mail_outline</i> Correo</a> <a href="http://sf.ilumexico.mx" target="_blank" class="btn btn-defult btn-sm" style="margin:0"><i class="material-icons" style="font-size:16px">backup</i> Salesforce</a> <a href="http://tinyurl.com/TWAPK440" target="_blank" class="btn btn-default btn-sm" style="margin:0"><i class="material-icons" style="font-size:16px">phone_android</i> Descarga TARO</a> <!-- <a href="http://vbx.ilumexico.mx" target="_blank" class="btn btn-default btn-sm btn-primary" style="margin:0" title="vbx@ilumexico.mx - prometeo1" data-toggle="tooltip" data-placement="bottom"><i class="material-icons">sms</i> SMS</a> -->
-                    <a href="#" class="pull-right">soporte@ilumexico.mx</a>
                     <hr>
                     <p class="text-center">&copy; 2017 Iluméxico</p>
                 </div>

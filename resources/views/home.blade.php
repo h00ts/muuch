@@ -1,6 +1,21 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
+        @if(! isset($user->phone))
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <form id="actualiza-celular" class="form-inline form-success">
+                        <i class="material-icons pull-left" style="line-height:40px">warning</i>
+                            <div class="form-group" style="margin:0;padding:0">
+                                <label for="phone" style="color:#FFF"> &nbsp; Ayudanos a mantener nuestra información actualizada. Recuerdanos tu número de celular: </label>
+                                <input type="text" name="phone" class="form-control" style="color:#FFF;margin-left:1em; margin-bottom:0;">
+                                <button type="submit" class="btn btn-default btn-raised" style="margin:0">Actualizar</button>
+                            </div>
+                    </form>
+                    <p id="celular-actualizado" class="text-center lead hidden">¡GRACIAS!</p>
+                </div>
+            </div>
+        @endif
         <div class="col-md-4">
           @include('layouts.profile')
             <div class="panel panel-primary">
@@ -177,7 +192,6 @@
                 </div>
               </div>
             </div>
-
             --}}
         </div>
     </div>
@@ -185,7 +199,48 @@
 @section('scripts')
 <script type="text/javascript">
     $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#actualiza-celular').submit(function(event) {
+
+            var formData = {
+                'phone' : $('input[name=phone]').val(),
+                'id' : {{ $user->id }},
+                '_method' : 'PUT',
+                '_token' : $('meta[name="csrf-token"]').attr('content')
+            };
+
+            $.ajax({
+                type        : 'PUT', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '/perfil/'+formData.id, // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode      : true
+            })
+            // using the done promise callback
+                .done(function(data) {
+
+                    // log data to the console so we can see
+                    console.log(data);
+
+
+                        $('#actualiza-celular').addClass('hidden');
+                        $('#celular-actualizado').removeClass('hidden');
+
+
+                    // here we will handle errors and validation messages
+                });
+
+            // stop the form from submitting the normal way and refreshing the page
+            event.preventDefault();
+        });
+
     });
 </script>
 @endsection
