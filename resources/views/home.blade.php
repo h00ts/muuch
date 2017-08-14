@@ -48,7 +48,7 @@
                     <h3 class="panel-title text-white"><a href="#" class="link"><i class="material-icons">markunread_mailbox</i> <strong>Quejas y Sugerencias</strong></a> </h3>
                 </div>
                 <div class="panel-body">
-                    <p><small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar.</small></p> <small>Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.
+                    <p><small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar.</small></p>
                     <form action="/enviar/bsq" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -57,6 +57,7 @@
                         <textarea name="message" id="mailbox" rows="5" class="form-control border-input"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Dejar en el Buzón</button>
+                        <p class="small text-muted"><small>Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.</small></p>
                     </form>
                 </div>
             </div>
@@ -64,9 +65,7 @@
         </div>
         <div class="col-md-8">
             <div class="panel panel-bienvenida">
-                <div class="panel-body">
-
-                </div>
+                    <a href="/personas">¡Conoce al Equipo!</a>
             </div>
             <div class="panel panel-primary">
               <div class="panel-heading">
@@ -137,11 +136,13 @@
                 <div class="panel-body">
                     <table class="table table-hover">
                         <tr>
-                            <th>Discusión más reciente</th>
+                            <th>Discusiones más recientes</th>
                         </tr>
-                        <tr>
-                            <td><a href="/canal/{{ $thread->channel->id }}" class="pull-right" style="line-height: 50px;"># {{ $thread->channel->name }}</a> <a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block" class="text-info"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small> </td>
-                        </tr>
+                        @foreach($threads as $thread)
+                            <tr>
+                                <td><a href="/canal/{{ $thread->channel->id }}" class="pull-right" style="line-height: 50px;"># {{ $thread->channel->name }}</a> <a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block" class="text-info"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small> </td>
+                            </tr>
+                        @endforeach
                         <tr><td><a href="/foro" class="btn btn-sm btn-block btn-link">Ver todos los canales en el foro</a></td></tr>
                     </table>
                 </div>

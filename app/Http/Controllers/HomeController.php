@@ -39,13 +39,13 @@ class HomeController extends Controller
         }
         ($content_count == 0) ? $content_count = 1 : $content_count;
         $user_content = isset($user->content) ? count($user->content->where('module.level', $user->level)) : 0;
-        $thread = Thread::orderByDesc('updated_at')->first();
+        $threads = Thread::orderByDesc('created_at')->get();
         $categories = Category::all();
 
         return view('home')
             ->withUser($user)
             ->withModules($modules)
-            ->withThread($thread)
+            ->withThreads($threads)
             ->withCategories($categories)
             ->withContentCount($content_count)
             ->withUserContent($user_content);

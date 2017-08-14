@@ -17,7 +17,7 @@
     <div class="col-md-8">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h2 class="panel-title">{{ $thread->user->name }} <span class="label label-primary">({{ $thread->user->roles->first()->display_name }})</span> <small>{{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small> </h2>
+          <h2 class="panel-title">{{ $thread->user->name }} <span class="label label-primary">({{ $thread->user->ilucentro->name }})</span> <small>{{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small> </h2>
         </div>
         <div class="panel-body">
           <div class="col-sm-2">
@@ -29,11 +29,11 @@
     @foreach($thread->replies as $reply)
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2 class="panel-title">{{ $reply->user->name }} <span class="label label-primary">({{ $reply->user->roles->first()->display_name }})</span> <small>{{ \Carbon\Carbon::now()->parse($reply->created_at)->diffForHumans() }}</small> </h2>
+          <h2 class="panel-title">{{ $reply->user->name }} <span class="label label-default">({{ $reply->user->ilucentro->name }})</span> <small>{{ \Carbon\Carbon::now()->parse($reply->created_at)->diffForHumans() }}</small> </h2>
         </div>
         <div class="panel-body">
           <div class="col-sm-2">
-              <img src="{{ (count($reply->user->getMedia('profile'))) ? $reply->user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="avatar" class="img-responsive circle">
+              <img src="{{ (count($reply->user->getMedia('profile'))) ? $reply->user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="avatar" class="circle img-responsive">
           </div>
           <div class="col-sm-10"><p>{!! nl2br(e($reply->body)) !!}</p></div>
         </div>

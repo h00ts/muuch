@@ -319,22 +319,23 @@ h3.visuallyhidden {
   text-align:center;
 }
 
-.panel-bienvenida a {
-  font-size:1em;
-  color:rgba(255,255,255,1);
+.panel-bienvenida > a {
+  font-size:0.6em;
+  color:transparent;
   display:block;
   width:100%;
   height:100%;
   text-align: center;
   text-decoration: none;
+  line-height:230px;
+  transition: all 0.2s;
 }
 
 .panel-bienvenida a:hover {
   text-decoration: none;
-}
-
-.panel-bienvenida a span {
-  background:#f25f00;
+  background:rgba(255,255,255,.8);
+  color:#f25f00;
+  font-size: 1.8em;
 }
 
 .personas img {

@@ -7,7 +7,7 @@
                 <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                     <i class="material-icons">arrow_left</i> Regresar
                 </a>
-                <h3><i class="material-icons">store</i> {{ $name }}
+                <h3><i class="material-icons">people</i> {{ $name }}
                 </h3>
                 <hr>
             </div>

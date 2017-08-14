@@ -40,6 +40,7 @@
                     @endif
                 @endif
                 @include('admin.partials.alerts')
+                <p><strong>¡Bienvenido a la capacitación MUUCH!</strong></p> <p>Aquí te guiaremos por el material que necesitas conocer para subir al siguente nivel. </p> <p> Marca el material que hayas leído y entendido con el botón verde que dice "Completar". </p> <p> Una vez completado el material de un modulo, podrás tomar el examen para evaluar tu entendimiento de los temas del modulo.</p>
             </div>
             <div class="col-md-8">
                 @foreach($modules as $module)
