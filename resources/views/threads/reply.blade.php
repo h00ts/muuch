@@ -18,7 +18,7 @@
         </div>
         <div class="panel-body">
           <div class="col-sm-2">
-            <img class="circle" src="/img/default_avatar.png" alt="icon" style="width:100%; max-width: 100px;">
+              <img src="{{ (count($thread->user->getMedia('profile'))) ? $thread->user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="avatar" class="img-responsive circle">
           </div>
           <div class="col-sm-10"><p>{{ $thread->body }}</p></div>
         </div>

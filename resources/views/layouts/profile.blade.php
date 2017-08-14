@@ -6,7 +6,7 @@
                         <div class="list-group">
                           <div class="list-group-item">
                             <div class="row-picture">
-                              <img class="circle" src="/img/default_avatar.png" alt="icon">
+                                <img src="{{ (count($user->getMedia('profile'))) ? $user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="avatar" class="img-responsive circle">
                             </div>
                             <div class="row-content">
                               <h4 class="list-group-item-heading">{!! $user->name !!}</h4>

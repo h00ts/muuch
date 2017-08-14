@@ -12,25 +12,7 @@
   </div>
 <div class="row">
     <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="list-group">
-                  <div class="list-group-item">
-                    <div class="row-picture">
-                      <img class="circle" src="/img/default_avatar.png" alt="icon">
-                    </div>
-                    <div class="row-content">
-                      <h4 class="list-group-item-heading"><small>
-                        @php($hola = collect(["¡Hola!", "Namaste", "Ní Haô!", "Shalom!", "Olá!", "Pribet!", "Konnichiwa",  "Hallo!", "Ciao!"]))
-                        {!! $hola->random() !!}
-                      </small><br>{!! $user->name !!}</h4>
-                      <p class="list-group-item-text"><strong>Administrador</strong></p>
-                      <p>{!! $user->email !!}</p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
+        @include('layouts.profile')
     </div>
     <div class="col-md-8">
       <div class="panel panel-primary">
@@ -39,7 +21,7 @@
         </div>
         <div class="panel-body">
           <div class="col-sm-2">
-            <img class="circle" src="/img/default_avatar.png" alt="icon" style="width:100%; max-width: 100px;">
+              <img src="{{ (count($thread->user->getMedia('profile'))) ? $thread->user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="avatar" class="img-responsive circle">
           </div>
           <div class="col-sm-10"><p>{!! nl2br(e($thread->body)) !!}</p></div>
         </div>
@@ -51,7 +33,7 @@
         </div>
         <div class="panel-body">
           <div class="col-sm-2">
-            <img class="circle" src="/img/default_avatar.png" alt="icon" style="width:100%; max-width: 100px;">
+              <img src="{{ (count($reply->user->getMedia('profile'))) ? $reply->user->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="avatar" class="img-responsive circle">
           </div>
           <div class="col-sm-10"><p>{!! nl2br(e($reply->body)) !!}</p></div>
         </div>
