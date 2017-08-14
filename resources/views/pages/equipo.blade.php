@@ -10,6 +10,9 @@
                 <h3><i class="material-icons">people</i> {{ $name }}
                 </h3>
                 <hr>
+                <p class="small"><i class="material-icons" style="font-size: 15px;">info</i> ¿Buscas información de contacto? La encontrarás en el
+                    <a href="/directorio">directorio</a>.</p>
+                <hr>
             </div>
         </div>
         <div class="personas">
