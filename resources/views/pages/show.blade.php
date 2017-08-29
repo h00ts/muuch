@@ -39,7 +39,7 @@
                                 @endif
                             <div class="row-content">
                               <div class="action-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Modificado el {{ $content->updated_at->format('d/m/Y') }} {{ ($content->module_id) ? '| Modulo '.$content->module->module : '' }}"><i class="material-icons">info</i></div>
-                              <h4 class="list-group-item-heading"><a href="{{ $content->file }}" target="_blank">{{ $content->name }}</a></h4>
+                              <h4 class="list-group-item-heading"><a href="/contenido/ver/{{ $content->id }}" target="_blank" class="external_link">{{ $content->name }}</a></h4>
                               <p class="list-group-item-text">{{ $content->description }}</p>
                             </div>
                         </div>
@@ -77,3 +77,23 @@
 </div>
     @endpermission
 @endsection
+
+{{--
+@section('scripts')
+    <script type="text/javascript">
+        $('.external_link').on('click', function(e) {
+            e.preventDefault();
+            var content = $(this).attr('href');
+            $.ajax({
+                method: post,
+                url: content,
+                data: {
+                    href: content
+                }
+            });
+        }).done(function(url) { // pass the url back to the client after you incremented it
+            window.location = url;
+        });
+    </script>
+@endsection
+--}}

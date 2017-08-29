@@ -86,15 +86,36 @@
                 </div>
             @endif
 
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Usuarios Desactivados</h3>
                     </div>
                     <div class="panel-body">
-                        @foreach($roles as $role)
-                        {{ $role->display_name }} <br>
-                        @endforeach
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th></th>
+                                <th></th>
+                            </thead>
+                            @foreach($trashed as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="PATCH">
+                                            <input type="hidden" name="restore" value="1">
+                                            <input type="hidden" name="id" value="{{ $user->id }}">
+                                            <button type="submit" class="btn btn-success btn-sm"><i class="material-icons">thumb_up</i></button>
+                                        </form>
+                                    </td>
+                                    <td><button class="btn btn-danger btn-sm"><i class="material-icons">delete_forever</i></button></td>
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
             </div>

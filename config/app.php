@@ -187,6 +187,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+        Spatie\Activitylog\ActivitylogServiceProvider::class,
 
     ],
 

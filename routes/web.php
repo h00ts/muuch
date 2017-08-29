@@ -64,8 +64,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/foro/responder/{id}', 'RepliesController@store')->name('foro.responder');
     Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
     Route::get('/datatables/equipo', 'DatatablesController@getEquipo');
+    Route::get('/datatables/activity', 'DatatablesController@getActivity');
     Route::post('/enviar/bsq', 'EmailsController@postBuzon');
     Route::resource('/perfil', 'UserController', ['only' => ['update']]);
+    Route::get('/contenido/ver/{id}', 'ContentController@track');
 
 
     /****************************************************
@@ -122,6 +124,7 @@ Route::group([
     Route::resource('niveles', 'LevelController');
     Route::resource('modulos', 'ModuleController');
     Route::resource('usuarios', 'UserController');
+    Route::put('usuarios/{id}/restore', 'UserController@restore');
     Route::resource('examen', 'ExamController');
     Route::resource('pregunta', 'QuestionController');
     Route::resource('respuesta', 'AnswerController');

@@ -45,8 +45,8 @@
                 },
                 serverSide: true,
                 processing: true,
-                ordering: false,
-                paging: false,
+                ordering: true,
+                paging: true,
                 pageLength: 5,
                 ajax: '/datatables/equipo',
                 columns: [

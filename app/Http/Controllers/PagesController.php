@@ -8,6 +8,7 @@ use App\Category;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Yajra\Datatables\Datatables;
+use App\Events\PageView;
 
 class PagesController extends Controller
 {
@@ -29,6 +30,9 @@ class PagesController extends Controller
 
     public function show(Page $page)
     {
+        $user = Auth::user();
+        event(new PageView($page,$user));
+
         $categories = Category::all();
         if(substr($page->markdown, 0, 1 ) === "{"){
             preg_match('#\{(.*?)\}#', $page->markdown, $match);

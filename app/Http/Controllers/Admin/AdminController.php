@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Content;
+use App\Page;
+use Spatie\Activitylog\Models\Activity;
 
 class AdminController extends Controller
 {
@@ -18,8 +21,11 @@ class AdminController extends Controller
     {
         $new_users = User::where('active',false)->get();
         $roles = Role::all();
+        $activities = Activity::orderBy("created_at", 'desc')->paginate(20);
+        $contents = Content::orderBy('id', 'desc')->take(5)->get();
+        $pages = Page::orderBy('id', 'desc')->take(5)->get();
 
-        return view('admin.index')->withUsers($new_users)->withRoles($roles);
+        return view('admin.index')->withUsers($new_users)->withRoles($roles)->withActivities($activities)->withContents($contents)->withPages($pages);
     }
 
     /**

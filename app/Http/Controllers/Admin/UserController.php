@@ -25,8 +25,9 @@ class UserController extends Controller
         $users = User::all();
         $roles = Role::all();
         $permissions = Permission::all();
+        $trashed = User::onlyTrashed()->get();
 
-        return view('admin.users.index')->withUsers($users)->withRoles($roles)->withPermissions($permissions);
+        return view('admin.users.index')->withUsers($users)->withRoles($roles)->withPermissions($permissions)->withTrashed($trashed);
     }
 
     /**
@@ -145,5 +146,14 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->back()->withSuccess('El usuario '.$user->email.' ha sido desactivado y no podra ingresar a MUUCH.');
+    }
+
+    public function restore(Request $request)
+    {
+        if($restore){
+            $user = User::withTrashed()->where('id', $request->input('id'))->first();
+            $user->restore();
+            return redirect()->back()->withSuccess('Reactivaste a '.$user->email);
+        }
     }
 }

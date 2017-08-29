@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Ilucentro;
 use App\User;
+use Spatie\Activitylog\Models\Activity;
 
 class DatatablesController extends Controller
 {
@@ -21,6 +22,13 @@ class DatatablesController extends Controller
         $user = User::orderBy('name')->with('ilucentro')->get();
 
         return Datatables::of($user)->make(true);
+    }
+
+    public function getActivity(Datatables $datatables)
+    {
+        $activities = Activity::orderBy("created_at", 'desc')->with('subject')->with('causer')->get();
+
+        return Datatables::of($activities)->make(true);
     }
         /**
         return $datatables->eloquent($ilucentros)

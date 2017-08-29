@@ -12,66 +12,89 @@
 					<option value="w">whats this</option>
 				</select>
         	</div> -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Paginas Recientes</h4>
+                    </div>
+                    <div class="content">
+                        <table class="table table-responsive text-default">
+                            <tr>
+                                <th>Página</th>
+                                <th>Categoría</th>
+                                <th>Última modificación</th>
+                            </tr>
+                            @foreach($pages as $page)
+                                <tr>
+                                    <td> <strong><a href="{!! route('muuch.edit', $page->id) !!}"><i class="material-icons" style="font-size: 16px;">chevron_right</i> {!! $page->name !!}</a></strong></td>
+                                    <td><a href="{!! isset($page->category) ? route('categoria.edit', $page->category->id) : '#' !!}">{!! isset($page->category) ? $page->category->name : '-' !!}</a></td>
+                                    <td>{{ $page->updated_at->format('d M Y H:i') }}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Contenido Recientes</h4>
+                    </div>
+                    <div class="content">
+                        <table class="table table-responsive">
+                            <tr>
+                                <th>Contenido</th>
+                                <th></th>
+                                <th>Modulo</th>
+                                <th>Página</th>
+                                <th>Categoria</th>
+                            </tr>
+
+                            @foreach($contents as $content)
+                                <tr>
+                                    <td>
+                                        <strong><a href="/config/contenido/{{ $content->id }}/edit"><i class="material-icons" style="font-size:18px">description</i> {{ $content->name }}</a></strong>
+                                    </td>
+                                    <td>
+                                        @if(isset($content->file))
+                                            <a href="{{  $content->file }}" target="_blank"><i class="material-icons">link</i></a>
+                                        @endif
+                                    </td>
+                                    <td>{!! isset($content->module) ? '<a href="/config/niveles/'.$content->module->level.'/edit">'.$content->module->level.' - '.$content->module->module.'</a>' : '-' !!}</td>
+                                    <td>{!! isset($content->page) ? '<a href="/config/muuch/'.$content->page->id.'/edit">'.$content->page->name.'</a>' : '-' !!}</td>
+                                    <td>{!! isset($content->page->category) ? '<a href="/config/categoria/'.$content->page->category->id.'/edit">'.$content->page->category->name.'</a>' : '-' !!}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+            </div>
                  <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h4 class="title">Usuarios en Espera</h4>
+                            <h4 class="title">Actividad de Usuarios</h4>
                         </div>
                         <div class="content">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr><td>ID</td>
-                                <td>Nombre</td>
-                                <td>Correo</td>
-                                <td>ILUCentro</td>
-                                <td>Rol del usuario</td>
-                            </tr>
-                                </thead>
-                                @foreach($users as $user)
-                                    <tr>
-                                        <td>{!! $user->id !!}</td>
-                                        <td>{!! $user->name !!}</td>
-                                        <td>{!! $user->email !!}</td>
-                                        <td>{{ (count($user->ilucentro)) ? $user->ilucentro->name : '-' }}</td>
-                                        
-                                            <form action="{{ route('usuarios.update', $user->id) }}" method="POST" class="form-inline">
-                                            	<td>
-                                            <input type="hidden" name="_method" value="PATCH">
-                                            {{ csrf_field() }}
-                                            <select name="user_role" id="role" class="form-control" required="required">
-                                                <option value="" disabled selected>Selecciona uno:</option>
-                                                @foreach($roles as $role)
-                                                  <option value="{{ $role->id }}" required>{{ $role->display_name }}</option>
-                                                @endforeach
-                                            </select>
-                                            <input type="hidden" name="activate" value="TRUE">
-                                              </td
-                                              </form>
-                                              <td><button type="submit" class="btn btn-success btn-block">Activar</button></td>
-                                            </form>
-                                        <td><button class="btn btn-danger">Borrar</button></td>
-
-                                    </tr>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                	<div class="card">
-                        <div class="header">
-                            <h4 class="title">Paginas Recientes</h4>
-                        </div>
-                        <div class="content">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                	<div class="card">
-                        <div class="header">
-                            <h4 class="title">Contenido Recientes</h4>
-                        </div>
-                        <div class="content">
+                                <table id="actividad" class="table table-responsive table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Usuario</th>
+                                            <th>Objeto</th>
+                                            <th>Actividad</th>
+                                            <th>Fecha - Hora</th>
+                                        </tr>
+                                        </thead>
+                                    {{--
+                                    @foreach($activities as $activity)
+                                        <tr>
+                                            <td>{!! $activity->causer->email !!}</td>
+                                            <td>{!! $activity->subject->name !!}</td>
+                                            <td>{!! $activity->description !!}</td>
+                                            <td>{{ $activity->created_at->format('d M y - H:i') }}</td>
+                                        </tr>
+                                    @endforeach
+                                    --}}
+                                </table>
                         </div>
                     </div>
                 </div>
@@ -96,5 +119,30 @@
         }
     });
 });
+</script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script>
+    $(function () {
+        $('#actividad').DataTable({
+            "infoCallback": function (settings, start, end, total) {
+                return "Registros de actividad:" + total;
+            },
+            language: {
+                search: "Filtrar: "
+            },
+            serverSide: true,
+            processing: true,
+            ordering: false,
+            paging: false,
+            pageLength: 5,
+            ajax: '/datatables/activity',
+            columns: [
+                {data: 'causer.email', orderable: true, searchable: true},
+                {data: 'subject.name'},
+                {data: 'description'},
+                {data: 'created_at'}
+            ]
+        });
+    });
 </script>
 @endsection
