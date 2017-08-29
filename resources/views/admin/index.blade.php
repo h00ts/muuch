@@ -12,7 +12,7 @@
 					<option value="w">whats this</option>
 				</select>
         	</div> -->
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Paginas Recientes</h4>
@@ -22,23 +22,21 @@
                             <tr>
                                 <th>Página</th>
                                 <th>Categoría</th>
-                                <th>Última modificación</th>
                             </tr>
                             @foreach($pages as $page)
                                 <tr>
                                     <td> <strong><a href="{!! route('muuch.edit', $page->id) !!}"><i class="material-icons" style="font-size: 16px;">chevron_right</i> {!! $page->name !!}</a></strong></td>
                                     <td><a href="{!! isset($page->category) ? route('categoria.edit', $page->category->id) : '#' !!}">{!! isset($page->category) ? $page->category->name : '-' !!}</a></td>
-                                    <td>{{ $page->updated_at->format('d M Y H:i') }}</td>
                                 </tr>
                             @endforeach
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Contenido Recientes</h4>
+                        <h4 class="title">Contenido Reciente</h4>
                     </div>
                     <div class="content">
                         <table class="table table-responsive">
@@ -78,9 +76,9 @@
                                 <table id="actividad" class="table table-responsive table-striped">
                                         <thead>
                                         <tr>
-                                            <th>Usuario</th>
-                                            <th>Objeto</th>
                                             <th>Actividad</th>
+                                            <th>Objeto</th>
+                                            <th>Usuario</th>
                                             <th>Fecha - Hora</th>
                                         </tr>
                                         </thead>
@@ -137,9 +135,9 @@
             pageLength: 5,
             ajax: '/datatables/activity',
             columns: [
-                {data: 'causer.email', orderable: true, searchable: true},
-                {data: 'subject.name'},
                 {data: 'description'},
+                {data: 'subject.name'},
+                {data: 'causer.email', orderable: true, searchable: true},
                 {data: 'created_at'}
             ]
         });
