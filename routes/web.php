@@ -125,6 +125,7 @@ Route::group([
     Route::resource('modulos', 'ModuleController');
     Route::resource('usuarios', 'UserController');
     Route::put('usuarios/{id}/restore', 'UserController@restore');
+    Route::put('usuarios/{user}/reenviar', 'UserController@sendActivation');
     Route::resource('examen', 'ExamController');
     Route::resource('pregunta', 'QuestionController');
     Route::resource('respuesta', 'AnswerController');

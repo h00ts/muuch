@@ -145,7 +145,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/muuch">
+                            <a href="/">
                                MUUCH
                             </a>
                         </li>

@@ -22,12 +22,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::whereHas('activation', function ($query){
+            $query->where('completed', 1);
+        })->get();
+        $inactive = User::whereHas('activation', function ($query){
+            $query->where('completed', 0);
+        })->get();
         $roles = Role::all();
         $permissions = Permission::all();
         $trashed = User::onlyTrashed()->get();
 
-        return view('admin.users.index')->withUsers($users)->withRoles($roles)->withPermissions($permissions)->withTrashed($trashed);
+        return view('admin.users.index')->withUsers($users)->withInactive($inactive)->withRoles($roles)->withPermissions($permissions)->withTrashed($trashed);
     }
 
     /**
@@ -155,5 +160,14 @@ class UserController extends Controller
             $user->restore();
             return redirect()->back()->withSuccess('Reactivaste a '.$user->email);
         }
+    }
+
+    public function sendActivation(User $user)
+    {
+        //dd($user->email);
+        //$activation = Activation::findOrFail($request->input('activation'));
+        Mail::to($user->email)->send(new UserActivated($user->activation, $user));
+
+        return redirect()->back()->withSuccess('Se ha enviado la activación a '.$user->email);
     }
 }
