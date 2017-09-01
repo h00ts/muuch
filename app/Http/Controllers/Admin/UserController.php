@@ -12,6 +12,7 @@ use App\Ilucentro;
 use App\Permission;
 use App\Mail\UserActivated;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -23,7 +24,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::doesntHave('activation')->get();
-        $inactive = User::has('activation')->get();
+        $inactive = User::whereHas('activation', function ($query) {
+            $query->where('updated_at', '<', Carbon::today()->subWeek());
+        })->get();
         $roles = Role::all();
         $permissions = Permission::all();
         $trashed = User::onlyTrashed()->get();
@@ -163,6 +166,7 @@ class UserController extends Controller
         //dd($user->email);
         //$activation = Activation::findOrFail($request->input('activation'));
         Mail::to($user->email)->send(new UserActivated($user->activation, $user));
+        $user->activation->touch();
 
         return redirect()->back()->withSuccess('Se ha enviado la activación a '.$user->email);
     }

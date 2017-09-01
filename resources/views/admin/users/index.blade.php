@@ -46,23 +46,25 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="header">
-                            <h4 class="title">Usuarios en Espera</h4>
+                            <h4 class="title">Correos de Activación</h4>
                         </div>
                         <div class="content">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
                                 <td>Correo</td>
+                                <td>Enviado</td>
                                 <td></td></tr>
                                 </thead>
                                 @foreach($inactive as $user)
                                     <tr>
                                         <td>{!! $user->email !!}</td>
+                                        <td>{{ $user->activation->updated_at->format('d/m/y') }}</td>
                                         <td>
                                             <form action="/config/usuarios/{{ $user->id }}/reenviar" method="POST" class="form-inline">
                                             <input type="hidden" name="_method" value="PUT">
                                             {{ csrf_field() }}
-                                              <button type="submit" class="btn btn-success">Activar</button>
+                                              <button type="submit" class="btn btn-success">Enviar</button>
                                             </form>
                                         </td>
                                     </tr>
