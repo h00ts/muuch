@@ -35,6 +35,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ContentView' => [
             'App\Listeners\LogContentView',
         ],
+
+        'App\Events\ContentCompleted' => [
+            'App\Listeners\LogContentCompleted',
+        ],
     ];
 
     /**
