@@ -73,7 +73,7 @@ class LevelsController extends Controller
 
         $content = Content::findOrFail($id);
 
-        event(new ContentView($content,$user));
+        event(new ContentCompleted($content,$user));
 
         return redirect('/capacitacion')->withSuccess('¡Muy bien! Completaste el bloque.');
     }
