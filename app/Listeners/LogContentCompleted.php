@@ -7,7 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Spatie\Activitylog\Models\Activity;
 
-class LogContentView
+class LogContentCompleted
 {
 
     /**
