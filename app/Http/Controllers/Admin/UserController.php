@@ -27,6 +27,9 @@ class UserController extends Controller
         $inactive = User::whereHas('activation', function ($query) {
             $query->where('updated_at', '<', Carbon::today()->subWeek());
         })->get();
+        $inactive = User::whereHas('activation', function ($query) {
+            $query->where('updated_at', '<', Carbon::today()->subWeek());
+        })->get();
         $roles = Role::all();
         $permissions = Permission::all();
         $trashed = User::onlyTrashed()->get();

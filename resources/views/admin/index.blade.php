@@ -135,9 +135,9 @@
             pageLength: 5,
             ajax: '/datatables/activity',
             columns: [
-                {data: 'description'},
-                {data: 'subject.name'},
-                {data: 'causer.email', orderable: true, searchable: true},
+                {data: 'description', orderable: true, searchable: true},
+                {data: 'subject.name', "defaultContent": "No disponible"},
+                {data: 'causer.email', "defaultContent": "Desactivado"},
                 {data: 'created_at'}
             ]
         });

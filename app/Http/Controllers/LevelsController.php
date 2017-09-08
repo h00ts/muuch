@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Module;
 use App\Content;
 use Illuminate\Support\Facades\Auth;
+use App\Events\ContentCompleted;
 
 class LevelsController extends Controller
 {
@@ -69,6 +70,10 @@ class LevelsController extends Controller
         $user = Auth::user();
         $user->content()->attach($id);
         $user->save();
+
+        $content = Content::findOrFail($id);
+
+        event(new ContentView($content,$user));
 
         return redirect('/capacitacion')->withSuccess('¡Muy bien! Completaste el bloque.');
     }
