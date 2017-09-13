@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="row-content">
                                         <div class="action-secondary">
-                                            <a href="{{ ($content->markdown != null) ? '/capacitacion/ver/'.$content->id : $content->file }}" {{ ($content->markdown == null) ? 'target="_blank"' : '' }}><i class="material-icons">arrow_right</i></a>
+                                            <a href="{{ ($content->markdown != null) ? '/capacitacion/ver/'.$content->id : $content->file }}" {{ ($content->markdown == null) ? 'target="_blank"' : '' }}><span class="label label-info">Consultar</span></a>
                                         </div>
                                         <h4 class="list-group-item-heading">
                                                 <s>{!! $content->name !!}</s>

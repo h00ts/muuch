@@ -28,8 +28,7 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <td><i style="font-size:12px" class="material-icons {{ ($user->isOnline()) ? 'text-success' : 'text-muted' }}">fiber_manual_record</i></td>
-                                        <td>
-                                            {!! $user->name !!}</td>
+                                        <td><a href="/config/usuarios/{!! $user->id !!}">{!! $user->name !!}</a></td>
                                         <td>{!! $user->email !!}</td>
                                         <td>{{ (count($user->roles)) ? $user->roles->first()->display_name : 'ERROR' }}</td>
                                         <td>{{ (count($user->ilucentro)) ? $user->ilucentro->short_name : '-' }}</td>

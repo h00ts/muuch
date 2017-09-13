@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use App\Activation;
+use Spatie\Activitylog\Models\Activity;
 use App\Ilucentro;
 use App\Permission;
 use App\Mail\UserActivated;
@@ -83,9 +84,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        $activities = Activity::orderBy("created_at", 'desc')->where("causer_id", $user->id)->get();
+        $media = $user->getMedia();
+
+        return view('admin.users.show', $user->toArray())->withActivities($activities)->withUser($user)->withMedia($media);
     }
 
     /**
@@ -136,7 +140,7 @@ class UserController extends Controller
             $user->addMediaFromRequest('image')->toMediaCollection('profile');
         }
 
-        return redirect()->back()->withSuccess('Has actualizado al usuario '.$user->email);
+        return redirect()->route('usuarios.show',$user)->withSuccess('Has actualizado la información del usuario correctamente.');
 
     }
 
