@@ -38,7 +38,7 @@
                                     <span class="input-group-addon"></span>
                                 </div>
                                         
-                            </form>
+
 
                 <div class="row panel-collapse collapse" id="answers-{!! $question->id !!}">
                     <div class="col-xs-12">
@@ -48,6 +48,7 @@
                             <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="material-icons" style="font-size:16px;">add_circle</i> Agregar Respuesta</button>
 
                             <button type="button" class="btn btn-raised btn-sm btn-danger pull-right"><i class="material-icons" style="font-size:16px;">delete_forever</i> Eliminar</button>
+                             </form>
                             <hr>
                         </div>
                 @foreach($question->answers as $answer) 
