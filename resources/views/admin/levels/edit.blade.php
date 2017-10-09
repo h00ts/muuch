@@ -6,6 +6,13 @@
         <div class="row">
              <div class="col-lg-12">
                 @include('admin.partials.alerts')
+                 <a href="#" class="btn btn-inverse btn-raised" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> Modulo</a>
+                 @if(count($modules))
+                     <a href="{!! route('contenido.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Contenido</a>
+                     <a href="{!! route('examen.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Examen</a>
+                 @endif
+                 <hr>
+
             </div>
             <div class="col-lg-12">
                 <div class="card">
@@ -13,27 +20,30 @@
                         <h4 class="title">Nivel {{ $level }}</h4>
                     </div>
                     <div class="content">
+                        <div id="box--confirm" class="hidden">
+                            Crear un nuevo modulo? <button id="button--confirm" class="btn btn-primary">Si, crear</button> <button id="button--dismiss" class="btn btn-default">Cancelar</button>
+                            <div class="hidden" id="state--loading"><i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Creando...</div>
+                        </div>
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th>Modulo</th>
                                     <th>Contenido</th>
-
                                     <th>Evaluaciónes</th>
                                 </tr>
                             </thead>
                             @foreach($modules as $module)
                                 <tr>
                                     <td>
-                                    <p class="lead">Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!} <br>
-                                        <small>{!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!} <small>{!! $module->description !!}</small></small>
-                                     <a class="btn btn-link btn-sm" href="#" 
-                                       data-toggle="modal"
-                                       data-id="{!! $module->id !!}"
-                                       data-num="{!! ($module->module > 9) ? $module->module : '0'.$module->module !!}"
-                                       data-title="{!! $module->name !!}"
-                                       data-description="{!! $module->description !!}"
-                                       data-target="#moduleModal"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <p>Modulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!} <br>
+                                        <a class="link" href="#"
+                                           data-toggle="modal"
+                                           data-id="{!! $module->id !!}"
+                                           data-num="{!! ($module->module > 9) ? $module->module : '0'.$module->module !!}"
+                                           data-title="{!! $module->name !!}"
+                                           data-description="{!! $module->description !!}"
+                                           data-target="#moduleModal">
+                                        <small>{!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!} <small>{!! $module->description !!}</small></small></a>
                                         </p>
                                     </td>
                                     <td>
@@ -50,7 +60,7 @@
                                         @if(count($module->exams))
                                         <div class="list-group">
                                             @foreach($module->exams as $exam)
-                                                <a href="{!! route('examen.edit', $exam->id) !!}" class="list-group-item">{!! $exam->name !!}</a>
+                                                <a href="{!! route('examen.edit', $exam->id) !!}" class="list-group-item text-center">{!! $exam->name !!}</a>
                                             @endforeach
                                         </div>  
                                         @endif
@@ -61,17 +71,6 @@
                     </div>
                 </div>
 
-                    <div id="box--confirm" class="hidden">
-                            Crear un nuevo modulo? <button id="button--confirm" class="btn btn-primary">Si, crear</button> <button id="button--dismiss" class="btn btn-default">Cancelar</button>
-                        <div class="hidden" id="state--loading"><i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Creando...</div>
-                    </div>
-               
-                <a href="#" class="btn btn-inverse btn-raised" id="button--show-box"><i class="glyphicon glyphicon-plus"></i> MODULO</a>
-                 @if(count($modules))
-                 <a href="{!! route('contenido.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Contenido</a>
-                 <a href="{!! route('examen.create') !!}" class="btn btn-inverse btn-raised"><i class="glyphicon glyphicon-plus"></i> Examen</a>
-                 @endif
-                 <hr>
             </div>
         </div>
     </div>

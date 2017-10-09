@@ -50,6 +50,9 @@
                         </div>
                         <div class="panel-body">
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
+                            @if(count($module->contents) == count($user->content->where('module_id', $module->id)))
+                                <a href="/examen/{{ $module->id }}" class="btn btn-info btn-lg btn-raised btn-block">Toma el Exámen del Módulo {{ '0'.$module->module }}</a> <hr>
+                            @endif
                 <div class="list-group">
                 @foreach($module->contents as $content)
                         <div class="list-group-item">

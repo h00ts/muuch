@@ -94,9 +94,7 @@
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script type="text/javascript">
-        $(function () {
             $.material.init();
-        });
     </script>
 
     @yield('scripts')

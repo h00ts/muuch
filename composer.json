@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "h00ts/muuch",
+    "description": "iluméxico muuch",
+    "keywords": ["ilumexico", "muuch"],
+    "license": "private",
     "type": "project",
     "require": {
         "php": ">=5.6.4",
@@ -23,7 +23,8 @@
         "tymon/jwt-auth": "0.5.*",
         "yajra/laravel-datatables-html": "^2.0",
         "yajra/laravel-datatables-oracle": "^7.5",
-        "zizaco/entrust": "1.9.0-beta1"
+        "zizaco/entrust": "1.9.0-beta1",
+        "omniphx/forrest": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

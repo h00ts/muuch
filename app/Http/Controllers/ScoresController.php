@@ -48,7 +48,9 @@ class ScoresController extends Controller
 				'score' => $ua,
 				'level' => $user->level,
 				'user_id' => $user->id,
-				'exam_id' => $test->id
+				'exam_id' => $test->id,
+                'passed' => 0,
+                'status' => 0
 			]);
 		}
 
@@ -62,8 +64,8 @@ class ScoresController extends Controller
 		$total = ($ts) ? number_format((($ts / $ra) * 100),0) : '0';
 		if($total >= $avg)
 		{
-			$user->level++;
-			$user->save();
+			$score->passed = 1;
+			$score->save();
 		}
 
 		return view('exams.graded')->withScores($scores)->withGrade($ts)->withPossible($ra)->withUser($user)->withAvg($avg)->withTotal($total);

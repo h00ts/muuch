@@ -54,6 +54,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-body" style="padding:0">
+
                     <a href="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/impacto.png" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/impacto.png" alt="impacto" class="img-responsive"></a>
                 </div>
             </div>

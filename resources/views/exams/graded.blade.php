@@ -16,11 +16,11 @@
                         <h3 class="text-center">Calificación final:</h3>
                         <p class="text-center h1 strong {{ $total >= $avg ? 'text-success' : 'text-danger' }}">{{ $total }} de 100</p>
                         @if($total >= $avg)
-                        <p class="lead text-center">¡Felicidades! Has subido al nivel {{ $user->level }}.</p>
-                        <a href="/" class="btn btn-default btn-raised">Continuar...</a>
+                        <p class="lead text-center">¡Felicidades! Pasaste el examen.</p>
+                        <a href="/capacitacion" class="btn btn-default btn-raised">Continuar...</a>
                         @else
-                        <p class="lead text-center">Tu calificación no es suficiente para subir de nivel :/</p>
-                        <a href="/" class="btn btn-default btn-raised">Continuar...</a>
+                        <p class="lead text-center">Lo sentimos, no pasaste el examen./</p>
+                        <a href="/capacitacion" class="btn btn-default btn-raised">Continuar...</a>
                         @endif
                 </div>
             </div>
