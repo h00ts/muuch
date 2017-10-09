@@ -43,7 +43,7 @@
                                            data-title="{!! $module->name !!}"
                                            data-description="{!! $module->description !!}"
                                            data-target="#moduleModal">
-                                        <small>{!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!} <small>{!! $module->description !!}</small></small></a>
+                                        <small>{!! ($module->name != ' ') ? $module->name : 'Sin titulo' !!}</small></a>
                                         </p>
                                     </td>
                                     <td>
