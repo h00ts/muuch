@@ -31,10 +31,10 @@
                         @php($qn++)
                              <form action="{!! route('pregunta.update', $question->id) !!}" method="POST">
                               {!! csrf_field() !!}
-                                <div class="input-group border-input">
+                                <div class="input-group border-input" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}">
                                     <span class="input-group-addon">{{ $qn.'.' }}</span>
                                 <input type="hidden" name="_method" value="PUT">
-                                <input type="text" name="question-{!! $question->id !!}" value="{!! $question->question !!}" class="form-control border-input" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}" style="font-weight:bold">
+                                <input type="text" name="question-{!! $question->id !!}" value="{!! $question->question !!}" class="form-control border-input"  style="font-weight:bold">
                                     <span class="input-group-addon"></span>
                                 </div>
                                         
@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons" style="font-size:16px;">save</i> Guardar</button>
 
-                            <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"/><i class="material-icons" style="font-size:16px;">add_circle</i> Agregar Respuesta</button>
+                            <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"><i class="material-icons" style="font-size:16px;">add_circle</i> Agregar Respuesta</button>
 
                             <button type="button" class="btn btn-raised btn-sm btn-danger pull-right"><i class="material-icons" style="font-size:16px;">delete_forever</i> Eliminar</button>
                              </form>
@@ -80,6 +80,7 @@
 
 
                 @endforeach
+                        <hr>
                     </div>
                 </div>
 
@@ -259,6 +260,7 @@
             $("#" + clone.id).find("input[type=text]").attr("id", "answer_answer_" + i).attr("name", "answer_answer_" + i);
             $("#" + clone.id).find("input[type=checkbox]").attr("id", "answer_correct_" + i).attr("name", "answer_correct_" + i);
         });
+
     });
 </script>
 @endsection

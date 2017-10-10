@@ -34,17 +34,17 @@
                                     <small>Selecciona todas las que aplíquen.</small>
                                     @php($qan=1)
                                     @foreach($question->answers->shuffle() as $answer)
-                                     <div class="checkbox checkbox-primary">
-                                        <label>
-                                            <input type="checkbox" name="e{{ $exam->id }}-q{{ $question->id }}-a{!! $answer->id !!}" id="e{{ $exam->id }}-q{{ $question->id }}-a{{ $answer->id }}" value="{!! $answer->id !!}"> {!! $answer->answer !!}
+                                     <div class="checkbox">
+                                        <label class="validate-question">
+                                            <input type="checkbox" name="e{{ $exam->id }}-q{{ $question->id }}-a{!! $answer->id !!}" id="e{{ $exam->id }}-q{{ $question->id }}-a{{ $answer->id }}" value="{!! $answer->id !!}" required="required"> {!! $answer->answer !!}
                                         </label> 
                                        </div>
                                      @endforeach
                                 @else
                                     <small>Selecciona solo una.</small>
                                     @foreach($question->answers->shuffle() as $answer)
-                                        <div class="radio radio-primary">
-                                            <label>
+                                        <div class="radio">
+                                            <label class="validate-question">
                                                 <input type="radio" name="e{{ $exam->id }}-q{!! $question->id !!}" value="{!! $answer->id !!}" required="required"> {!! $answer->answer !!}
                                             </label>
                                         </div>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="col-md-10 col-md-offset-1">
-            <button type="submit" class="btn btn-lg btn-inverse btn-raised pull-right"><span class="text-success">TERMINAR <i class="material-icons">arrow_right</i></span></button>
+            <button type="submit" class="btn btn-lg btn-inverse btn-raised pull-right" ><span class="text-success">TERMINAR <i class="material-icons">arrow_right</i></span></button>
             <div class="list-group">
               <div class="list-group-item">
                 <div class="row-picture">
@@ -80,5 +80,16 @@
 @endsection
 
 @section('scripts')
+    <script type="text/javascript">
+        function formcheck() {
+            var fields = $(".validate-question")
+                .find("input").serializeArray();
 
+            $.each(fields, function(i, field) {
+                if (!field.value)
+                    alert(field.name + ' is required');
+            });
+            console.log(fields);
+        }
+    </script>
 @endsection

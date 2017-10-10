@@ -27,6 +27,7 @@
                             {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                         </div>
                     </div>
+                {{--
                     @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
                         <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
                         <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
@@ -38,6 +39,7 @@
                         <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
                         <p>Toma el examen para pasar al siguiente nivel.</p>
                     @endif
+                    --}}
                 @endif
                 @include('admin.partials.alerts')
                 <p><strong>¡Bienvenido a la capacitación MUUCH!</strong></p> <p>Aquí te guiaremos por el material que necesitas conocer para subir al siguente nivel. </p> <p> Marca el material que hayas leído y entendido con el botón verde que dice "Completar". </p> <p> Una vez completado el material de un modulo, podrás tomar el examen para evaluar tu entendimiento de los temas del modulo.</p>
