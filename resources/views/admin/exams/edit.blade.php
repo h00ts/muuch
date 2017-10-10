@@ -166,25 +166,32 @@
                 <button type="button" class="close" data-dismiss="modal">
                     &times;
                 </button>
-                <h4 class="modal-title">Respuesta</h4>
+                <h4 class="modal-title">Respuestas</h4>
             </div>
             <div class="modal-body">
-                <div class="row form-group">
-                <div class="col-lg-12">
-                    <h4 id="question_answer"></h4>
-                </div>
+                <div class="row">
                     <div class="col-lg-12">
                         <form action="{!! route('respuesta.store') !!}" method="POST">
                         {!! csrf_field() !!}
-                        <input type="hidden" id="question_id" name="question_id" value="0">
-                        <input type="text" class="form-control" name="answer">
+                            <label for="question_id">Pregunta</label>
+                        <select name="question_id" id="question_id" class="form-control border-input">
+                            @foreach($exam->questions as $question)
+                                <option value="{{ $question->id }}" selected="false">{{ $question->question }}</option>
+                            @endforeach
+                        </select> <hr>
+                        <div class="form-group" id="question_answer_1">
+                            <input type="text" class="form-control border-input" id="answer_answer_1" name="answer_answer_1">
+                            <label for="answer-correct">Es correcta?</label>
+                            <input type="checkbox" name="answer_correct_1" id="answer_correct_1">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <div class="col-lg-4 col-lg-offset-8">
-                        <button type="submit" class="btn btn-success btn-block">Crear Respuesta</button>
+                    <div class="col-lg-12">
+                        <a id="btnCrearRespuesta" class="btn btn-link pull-left" href="#">Agregar Respuesta</a>
+                        <button type="submit" class="btn btn-success">Crear Respuesta</button>
                     </div>
                 </div>
                 </form>
@@ -234,14 +241,25 @@
     $.material.init();
 
                 function set_question(id, question) {
-                $("#question_answer").html(question);
-                $("#question_id").attr("value", id);
+                    $('#question_id option[value='+id+']').prop("selected", true);
                 }
 
                 function set_delete_answer_modal(id, name) {
                     $("#delete_answer").attr("action", "/config/respuesta/"+id);
                     $("#answer_name").html(name);
                 }
+
+    $(function() {
+        var i = 1;
+        $("#modal-answer-create").on("click", "#btnCrearRespuesta", function (e) {
+            var original = document.getElementById("question_answer_1");
+            var clone = original.cloneNode(true);
+            clone.id = "question_answer_" + ++i;
+            original.parentNode.appendChild(clone);
+            $("#" + clone.id).find("input[type=text]").attr("id", "answer_answer_" + i).attr("name", "answer_answer_" + i);
+            $("#" + clone.id).find("input[type=checkbox]").attr("id", "answer_correct_" + i).attr("name", "answer_correct_" + i);
+        });
+    });
 </script>
 @endsection
 

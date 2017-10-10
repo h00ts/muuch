@@ -22,4 +22,9 @@ class Score extends Model
     {
     	return $this->hasManyThrough('App\Answers', 'App\Exam');
     }
+
+    public function module()
+    {
+        return $this->belongsTo();
+    }
 }

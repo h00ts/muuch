@@ -33,7 +33,7 @@
                                 @if($question->answers->sum('correct') > 1)
                                     <small>Selecciona todas las que aplíquen.</small>
                                     @php($qan=1)
-                                    @foreach($question->answers as $answer)
+                                    @foreach($question->answers->shuffle() as $answer)
                                      <div class="checkbox checkbox-primary">
                                         <label>
                                             <input type="checkbox" name="e{{ $exam->id }}-q{{ $question->id }}-a{!! $answer->id !!}" id="e{{ $exam->id }}-q{{ $question->id }}-a{{ $answer->id }}" value="{!! $answer->id !!}"> {!! $answer->answer !!}
@@ -42,7 +42,7 @@
                                      @endforeach
                                 @else
                                     <small>Selecciona solo una.</small>
-                                    @foreach($question->answers as $answer)
+                                    @foreach($question->answers->shuffle() as $answer)
                                         <div class="radio radio-primary">
                                             <label>
                                                 <input type="radio" name="e{{ $exam->id }}-q{!! $question->id !!}" value="{!! $answer->id !!}" required="required"> {!! $answer->answer !!}

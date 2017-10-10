@@ -37,11 +37,14 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        $question = Question::findOrFail($request->input('question_id'));
-        $question->answers()->create(['answer' => $request->input('answer'), 'correct' => 0]);
+        $data = $request->all();
+        $question = Question::findOrFail($data['question_id']);
+        for($i=1;array_key_exists('answer_answer_'.$i, $data);++$i){
+            $question->answers()->create(['answer' => $data['answer_answer_'.$i], 'correct' => (array_key_exists('answer_correct_'.$i, $data)) ? 1 : 0]);
+        }
 
         return redirect()
-            ->back();
+            ->back()->withSuccess('Respuestas creadas correctamente: '.$i-1);
     }
 
     /**
