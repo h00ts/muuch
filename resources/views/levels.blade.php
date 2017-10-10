@@ -26,7 +26,7 @@
                              aria-valuemax="100">
                             {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                         </div>
-                    </div>a
+                    </div>
                 {{--
                     @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
                         <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
@@ -54,6 +54,15 @@
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
                             @if(count($module->contents) == count($user->content->where('module_id', $module->id)) && !count($user->scores->where('exam.module_id', $module->id)))
                                 <a href="/examen/{{ $module->id }}" class="btn btn-info btn-lg btn-raised btn-block">Toma el Exámen del Módulo {{ '0'.$module->module }}</a> <hr>
+                            @elseif(count($user->scores->where('exam.module_id', $module->id)) && $user->scores->where('exam.module_id', $module->id)->first()->passed)
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    <strong><i class="glyphicon glyphicon-check text-success"></i></strong> ¡Felicidades! Completaste el modulo con una calificación de {{ $user->scores->where('exam.module_id', $module->id)->first()->percent.'/100' }}.
+                                </div>
+                            @elseif(count($user->scores->where('exam.module_id', $module->id)) && !$user->scores->where('exam.module_id', $module->id)->first()->passed)
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong><i class="glyphicon glyphicon-close text-danger"></i></strong> Espera 2 semanas para volver a tomar el examen.
+                                </div>
                             @endif
                 <div class="list-group">
                 @foreach($module->contents as $content)

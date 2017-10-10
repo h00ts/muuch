@@ -50,7 +50,8 @@ class ScoresController extends Controller
 				'user_id' => $user->id,
 				'exam_id' => $test->id,
                 'passed' => 0,
-                'status' => 0
+                'status' => 0,
+                'percent' => 0
 			]);
 		}
 
@@ -62,6 +63,7 @@ class ScoresController extends Controller
 		}
 		$avg = (array_sum($avg) / count($avg));
 		$total = ($ts) ? number_format((($ts / $ra) * 100),0) : '0';
+		$score->percent = $total;
 		if($total >= $avg)
 		{
 			$score->passed = 1;

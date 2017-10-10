@@ -10,11 +10,11 @@
                 <div class="list-group">
                     <div class="list-group-item">
                         <div class="row-picture">
-                            <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                            <img class="circle" src="{{ (count(Auth::user()->getMedia('profile'))) ? Auth::user()->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="icon">
                         </div>
                         <div class="row-content">
                             <h4>{!! Auth::user()->name !!}</h4>
-                            <p class="list-group-item-text"><strong>Nivel {!! (Auth::user()->level) ? Auth::user()->level : '0' !!}</strong> | Ingeniero comunitario</p>
+                            <p class="list-group-item-text"><strong>Nivel {!! (Auth::user()->level) ? Auth::user()->level : '0' !!}</strong> | {{ Auth::user()->roles->first()->display_name }}</p>
                         </div>
                     </div>
                 </div>
@@ -61,11 +61,11 @@
             <div class="list-group">
               <div class="list-group-item">
                 <div class="row-picture">
-                  <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                  <img class="circle" src="{{ (count(Auth::user()->getMedia('profile'))) ? Auth::user()->getMedia('profile')->first()->getUrl() : '/img/default_avatar.png' }}" alt="icon">
                 </div>
                 <div class="row-content">
                   <h4>{!! Auth::user()->name !!}</h4>
-                  <p class="list-group-item-text"><strong>Nivel {!! (Auth::user()->level) ? Auth::user()->level : '0' !!}</strong> | Ingeniero comunitario</p>
+                  <p class="list-group-item-text"><strong>Nivel {!! (Auth::user()->level) ? Auth::user()->level : '0' !!}</strong> | {{ Auth::user()->roles->first()->display_name }}</p>
                 </div>
               </div>
             </div>
