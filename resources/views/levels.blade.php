@@ -26,7 +26,7 @@
                              aria-valuemax="100">
                             {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                         </div>
-                    </div>
+                    </div>a
                 {{--
                     @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
                         <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>

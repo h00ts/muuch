@@ -36,7 +36,7 @@
                                     @foreach($question->answers->shuffle() as $answer)
                                      <div class="checkbox">
                                         <label class="validate-question">
-                                            <input type="checkbox" name="e{{ $exam->id }}-q{{ $question->id }}-a{!! $answer->id !!}" id="e{{ $exam->id }}-q{{ $question->id }}-a{{ $answer->id }}" value="{!! $answer->id !!}" required="required"> {!! $answer->answer !!}
+                                            <input type="checkbox" name="e{{ $exam->id }}-q{{ $question->id }}-a{!! $answer->id !!}" id="e{{ $exam->id }}-q{{ $question->id }}-a{{ $answer->id }}" value="{!! $answer->id !!}"> {!! $answer->answer !!}
                                         </label> 
                                        </div>
                                      @endforeach
