@@ -44,7 +44,7 @@ class AnswerController extends Controller
         }
 
         return redirect()
-            ->back()->withSuccess('Respuestas creadas correctamente: '.$i-1);
+            ->back()->withSuccess('Respuestas creadas correctamente');
     }
 
     /**
