@@ -84,10 +84,8 @@
                     </div>
                 </div>
 
-
-
                 @endforeach
-
+                <hr> <p>Hay {{ count($exam->answers->where('correct', 1)) }} respuestas correctas de {{ count($exam->answers) }} posibles.</p>
             </div>
             </div>
             
