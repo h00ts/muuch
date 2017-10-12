@@ -25,7 +25,7 @@
                                 <td>Opciones</td>
                                 <td></td>
                                 </thead>
-                                @foreach($users as $user)
+                                @foreach($users->sortBy('name') as $user)
                                     <tr>
                                         <td><i style="font-size:12px" class="material-icons {{ ($user->isOnline()) ? 'text-success' : 'text-muted' }}">fiber_manual_record</i></td>
                                         <td><a href="/config/usuarios/{!! $user->id !!}">{!! $user->name !!}</a></td>
@@ -57,7 +57,7 @@
                                 </thead>
                                 @foreach($inactive as $user)
                                     <tr>
-                                        <td>{!! $user->email !!}</td>
+                                        <td><a href="/config/usuarios/{{ $user->id }}">{{ $user->email }}</a></td>
                                         <td>{{ $user->activation->updated_at->format('d/m/y') }}</td>
                                         <td>
                                             <form action="/config/usuarios/{{ $user->id }}/reenviar" method="POST" class="form-inline">
@@ -68,6 +68,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
                             </table>
                         </div>
                     </div>

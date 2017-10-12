@@ -88,6 +88,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne('App\Activation');
     }
 
+    public function activity()
+    {
+        return $this->hasMany('Spatie\Activitylog\Models\Activity', 'causer_id');
+    }
+
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);

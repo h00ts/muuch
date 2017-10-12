@@ -24,13 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::doesntHave('activation')->get();
-        $inactive = User::whereHas('activation', function ($query) {
-            $query->where('updated_at', '<', Carbon::today()->subWeek());
-        })->get();
-        $inactive = User::whereHas('activation', function ($query) {
-            $query->where('updated_at', '<', Carbon::today()->subWeek());
-        })->get();
+        $users = User::has('activity')->get();
+        $inactive = User::doesntHave('activity')->has('activation')->get();
         $roles = Role::all();
         $permissions = Permission::all();
         $trashed = User::onlyTrashed()->get();

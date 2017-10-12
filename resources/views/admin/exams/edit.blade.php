@@ -19,9 +19,16 @@
                     <div class="panel-body row">
                         <div class="col-md-12">
                             <div class="form-inline">
-                                <label for="examen">Examen</label>
-                                <input type="text" value="{!! $exam->name !!}" class="form-control border-input" id="examen">
-                                  <a href="#" class="btn btn-primary pull-right" data-target="#modal-question-create" data-toggle="modal"><i class="material-icons" style="font-size:16px;">add_circle</i> Crear pregunta</a>
+                                <form action="/config/examen/{{ $exam->id }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <label for="examen">Examen</label>
+                                    <input type="text" value="{!! $exam->name !!}" name="exam_name" class="form-control border-input" id="examen">
+                                    <label for="examen">Cal. Mín.</label>
+                                    <input type="text" value="{!! $exam->min_score !!}" name="min_score" class="form-control border-input input-sm" id="min_score" style="width: 50px;">
+                                    <button type="submit" class="btn btn-primary"><i class="material-icons" style="font-size:16px;">save</i></button>
+                                    <a href="#" class="btn btn-info pull-right" data-target="#modal-question-create" data-toggle="modal"><i class="material-icons" style="font-size:16px;">add_circle</i> Crear pregunta</a>
+                                </form>
                             </div>
                             <hr>
                         </div>
@@ -31,11 +38,11 @@
                         @php($qn++)
                              <form action="{!! route('pregunta.update', $question->id) !!}" method="POST">
                               {!! csrf_field() !!}
-                                <div class="input-group border-input" data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}">
+                                <div class="input-group border-input">
                                     <span class="input-group-addon">{{ $qn.'.' }}</span>
                                 <input type="hidden" name="_method" value="PUT">
                                 <input type="text" name="question-{!! $question->id !!}" value="{!! $question->question !!}" class="form-control border-input"  style="font-weight:bold">
-                                    <span class="input-group-addon"></span>
+                                    <span class="input-group-addon text-info"><a data-toggle="collapse" data-target="#answers-{!! $question->id !!}" aria-expanded="false" aria-controls="answers-{!! $question->id !!}" href="#"><i class="material-icons">arrow_drop_down</i></a></span>
                                 </div>
                                         
 
@@ -45,7 +52,7 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons" style="font-size:16px;">save</i> Guardar</button>
 
-                            <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"><i class="material-icons" style="font-size:16px;">add_circle</i> Agregar Respuesta</button>
+                            <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"><i class="material-icons" style="font-size:16px;">add_circle</i> Agregar Respuestas</button>
 
                             <button type="button" class="btn btn-raised btn-sm btn-danger pull-right"><i class="material-icons" style="font-size:16px;">delete_forever</i> Eliminar</button>
                              </form>
@@ -58,8 +65,8 @@
                         <input type="hidden" name="_method" value="PUT">
                   
                         <div class="row">
-                            <div class="col-md-9 form-group form-group-sm">
-                                <div class="input-group border-input">
+                            <div class="col-md-10 form-group form-group-sm" style="margin-bottom:0">
+                                <div class="input-group border-input"  style="margin-bottom:8px">
                                         <div class="input-group-addon">
                                                 <label style="margin:0">
                                                     <input type="checkbox" name="correct" value="1"{!! ($answer->correct) ? ' checked' : ' ' !!}>
@@ -68,7 +75,7 @@
                                             <input type="text" name="answer-{!! $answer->id !!}" value="{!! $answer->answer !!}" class="form-control border-input">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                     <button type="submit" class="btn btn-success btn-sm btn-raised"><i class="material-icons" style="font-size:16px;">save</i></button>
                                     <button type="button" data-toggle="modal" data-target="#modal-answer-delete" class="btn btn-danger btn-sm btn-raised" onclick="set_delete_answer_modal({!! $answer->id !!}, '{!! $answer->answer !!}')"><i class="material-icons" style="font-size:16px;">delete_forever</i></button>
                             </div>
@@ -180,7 +187,7 @@
                         </select> <hr>
                         <div class="form-group" id="question_answer_1">
                             <input type="text" class="form-control border-input" id="answer_answer_1" name="answer_answer_1">
-                            <label for="answer-correct">Es correcta?</label>
+                            <label for="answer-correct">¿Es correcta?</label>
                             <input type="checkbox" name="answer_correct_1" id="answer_correct_1">
                         </div>
                     </div>
@@ -190,7 +197,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <a id="btnCrearRespuesta" class="btn btn-link pull-left" href="#">Agregar Respuesta</a>
-                        <button type="submit" class="btn btn-success">Crear Respuesta</button>
+                        <button type="submit" class="btn btn-success">Crear Respuesta(s)</button>
                     </div>
                 </div>
                 </form>

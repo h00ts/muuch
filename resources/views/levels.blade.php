@@ -52,17 +52,21 @@
                         </div>
                         <div class="panel-body">
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
-                            @if(count($module->contents) == count($user->content->where('module_id', $module->id)) && !count($user->scores->where('exam.module_id', $module->id)))
-                                <a href="/examen/{{ $module->id }}" class="btn btn-info btn-lg btn-raised btn-block">Toma el Exámen del Módulo {{ '0'.$module->module }}</a> <hr>
-                            @elseif(count($user->scores->where('exam.module_id', $module->id)) && $user->scores->where('exam.module_id', $module->id)->first()->passed)
-                                <div class="alert alert-success alert-dismissible" role="alert">
-                                    <strong><i class="glyphicon glyphicon-check text-success"></i></strong> ¡Felicidades! Completaste el modulo con una calificación de {{ $user->scores->where('exam.module_id', $module->id)->first()->percent.'/100' }}.
-                                </div>
-                            @elseif(count($user->scores->where('exam.module_id', $module->id)) && !$user->scores->where('exam.module_id', $module->id)->first()->passed)
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <strong><i class="glyphicon glyphicon-close text-danger"></i></strong> Espera 2 semanas para volver a tomar el examen.
-                                </div>
+                            @if(count($module->contents) <= count($user->content->where('module_id', $module->id)))
+                                @foreach($module->exams as $exam)
+                                    @if(!count($user->scores->where('exam_id', $exam->id)->last()) || count($user->scores->where('exam_id', $exam->id)->last()) && $user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
+                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-raised btn-block">Toma el Exámen de: {{ $exam->name }}</a> <hr>
+                                    @elseif($user->scores->where('exam_id', $exam->id)->last() && $user->scores->where('exam_id', $exam->id)->last()->passed)
+                                        <div class="alert alert-success alert-dismissible" role="alert">
+                                            <strong><i class="glyphicon glyphicon-check text-success"></i></strong> ¡Felicidades! pasaste {{ $exam->name }} con un puntaje de {{ $user->scores->where('exam.module_id', $module->id)->first()->percent.' de 100' }}.
+                                        </div>
+                                    @elseif($user->scores->where('exam_id', $exam->id)->last() && !$user->scores->where('exam_id', $exam->id)->last()->passed)
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <strong><i class="glyphicon glyphicon-close text-danger"></i></strong> Espera {{ Carbon\Carbon::today()->subWeeks(2)->diffInDays($user->scores->where('exam_id', $exam->id)->last()->created_at) }} días para volver a tomar el examen de {{ $exam->name }} ({{ $user->scores->where('exam.module_id', $module->id)->last()->percent.'/100' }}).
+                                        </div>
+                                    @endif
+                                @endforeach
                             @endif
                 <div class="list-group">
                 @foreach($module->contents as $content)
@@ -144,7 +148,10 @@
         $("#content_name").html(name);
     }
     $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="tooltip"]').tooltip();
+
+      $('#complete_content').preventDoubleSubmission();
+
     })
 </script>
 @endsection

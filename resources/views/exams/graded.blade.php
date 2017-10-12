@@ -6,22 +6,19 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                        <h1 class="text-center">Terminaste tu Evaluación</h1>
-                        <p class="text-center lead">Estos son tus resultados:</p>
-                        @foreach($scores as $score)
-                            <h4 class="text-center"><strong>Modulo {{ $score->exam->module->module.': '.$score->exam->module->name }}</strong></h4>
-                            <p class="text-center lead">{{ $score->score }} de {{ count($score->exam->answers->where('correct', 1)) }} ({{ ($score->score) ? number_format(($score->score / count($score->exam->answers->where('correct', 1)) * 100),0).'%' : '0%' }})</p>
+                        <h2 class="text-center">Evaluación - Modulo {{ '0'.$score->exam->module->module.': '.$score->exam->name }} </h2>
+                        <p class="text-center lead">Contestaste:</p>
+                            <p class="text-center lead text-success">{{ $score->score }} de {{ $possible }} correctas ({{ number_format(($score->score / $possible) * 100).'%' }})</p>
+                            <p class="text-center lead text-danger">{{ $incorrect }} incorrectas</p>
                             <hr>
-                        @endforeach
-                        <h3 class="text-center">Calificación final:</h3>
-                        <p class="text-center h1 strong {{ $total >= $avg ? 'text-success' : 'text-danger' }}">{{ $total }} de 100</p>
-                        @if($total >= $avg)
-                        <p class="lead text-center">¡Felicidades! Pasaste el examen.</p>
-                        <a href="/capacitacion" class="btn btn-default btn-raised">Continuar...</a>
-                        @else
-                        <p class="lead text-center">Lo sentimos, no pasaste el examen./</p>
-                        <a href="/capacitacion" class="btn btn-default btn-raised">Continuar...</a>
-                        @endif
+                    <div class="panel {{ ($score->passed) ? 'panel-success' : 'panel-danger' }}">
+                        <div class="panel-heading">{{ ($score->passed) ? '¡Felicidades! Pasaste la evaluación' : 'Lo sentimos, no pasaste la evaluación' }}</div>
+                        <div class="panel-body">
+                            <h3 class="{{ ($score->passed) ? 'text-success' : 'text-danger' }}">{{ $grade }}</h3>
+                            <p class="panel-text">de 100%</p>
+                        </div>
+                    </div>
+                    <a href="/capacitacion" class="btn btn-primary btn-raised btn-block">Continuar...</a>
                 </div>
             </div>
         </div>

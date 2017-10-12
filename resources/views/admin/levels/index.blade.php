@@ -32,6 +32,34 @@
                         @endif
                    </div></div>
             </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="content">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Usuario</td>
+                                    <td>Nivel | Modulo</td>
+                                    <td>Examen</td>
+                                    <td>Calificación</td>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                            @foreach($scores as $score)
+                                <tr>
+                                    <td><a href="/config/usuarios/{{ $score->user->id }}">{{ $score->user->name }}</a></td>
+                                    <td>{{ $score->exam->module->level.' | 0'.$score->exam->module->module }}</td>
+                                    <td>{{ $score->exam->name }}</td>
+                                    <td>{{ $score->percent }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

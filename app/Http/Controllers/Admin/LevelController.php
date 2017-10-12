@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Module;
+use App\Score;
 
 class LevelController extends Controller
 {
@@ -16,8 +17,9 @@ class LevelController extends Controller
     public function index()
     {
         $levels = Module::all()->groupBy('level');
+        $scores = Score::all();
 
-        return view('admin.levels.index')->withLevels($levels);
+        return view('admin.levels.index')->withLevels($levels)->withScores($scores);
     }
 
     /**

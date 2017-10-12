@@ -85,7 +85,13 @@ class ExamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+
+        $exam->name = $request->input('exam_name');
+        $exam->min_score = $request->input('min_score');
+        $exam->save();
+
+        return redirect()->back()->withSuccess('El examen ahora se llama: '.$exam->name.' y se necesita un '.$exam->min_score.'% para pasar.');
     }
 
     /**

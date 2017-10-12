@@ -12,10 +12,25 @@
 					<option value="w">whats this</option>
 				</select>
         	</div> -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="content">
+                        @foreach($activities->where('subject_type', 'App\Page') as $page)
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="content">
+
+                    </div>
+                </div>
+            </div>
             <div class="col-md-5">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Paginas Recientes</h4>
+                        <h4 class="title">Últimas Páginas</h4>
                     </div>
                     <div class="content">
                         <table class="table table-responsive text-default">
@@ -24,7 +39,7 @@
                                 <th>Categoría</th>
                             </tr>
                             @foreach($pages as $page)
-                                <tr>
+                                <tr class="small">
                                     <td> <strong><a href="{!! route('muuch.edit', $page->id) !!}"><i class="material-icons" style="font-size: 16px;">chevron_right</i> {!! $page->name !!}</a></strong></td>
                                     <td><a href="{!! isset($page->category) ? route('categoria.edit', $page->category->id) : '#' !!}">{!! isset($page->category) ? $page->category->name : '-' !!}</a></td>
                                 </tr>
@@ -36,7 +51,7 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Contenido Reciente</h4>
+                        <h4 class="title">Últimos Documentos</h4>
                     </div>
                     <div class="content">
                         <table class="table table-responsive">
@@ -49,7 +64,7 @@
                             </tr>
 
                             @foreach($contents as $content)
-                                <tr>
+                                <tr class="small">
                                     <td>
                                         <strong><a href="/config/contenido/{{ $content->id }}/edit"><i class="material-icons" style="font-size:18px">description</i> {{ $content->name }}</a></strong>
                                     </td>
@@ -64,6 +79,7 @@
                                 </tr>
                             @endforeach
                         </table>
+
                     </div>
                 </div>
             </div>

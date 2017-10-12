@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
-	protected $fillable = ['score', 'level', 'exam_id', 'user_id', 'passed', 'status', 'percent'];
+	protected $fillable = ['score', 'level', 'exam_id', 'user_id', 'passed', 'status', 'percent', 'top'];
 
     public function exam()
     {

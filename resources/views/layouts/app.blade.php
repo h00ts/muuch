@@ -95,6 +95,18 @@
     <script src="/js/app.js"></script>
     <script type="text/javascript">
             $.material.init();
+
+            jQuery.fn.preventDoubleSubmission = function() {
+                $(this).on('submit',function(e){
+                    var $form = $(this);
+                    if ($form.data('submitted') === true) {
+                        e.preventDefault();
+                    } else {
+                        $form.data('submitted', true);
+                    }
+                });
+                return this;
+            };
     </script>
 
     @yield('scripts')

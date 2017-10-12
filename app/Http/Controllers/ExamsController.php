@@ -36,14 +36,11 @@ class ExamsController extends Controller
 		return view('exam')->withExams($exams)->withLevel($level);
 	}
 
-	public function show($module)
+	public function show(Exam $exam)
     {
         $level = Auth::user()->level;
-        $module = Module::find($module);
-        $exams = array();
-        ($module->exams->first()) ? array_push($exams, $module->exams->random()) : null;
 
-        return view('exam')->withExams($exams)->withLevel($level);
+        return view('exam')->withExam($exam)->withLevel($level);
     }
 
 }

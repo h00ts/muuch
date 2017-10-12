@@ -7,9 +7,13 @@ use App\Module;
 use App\Content;
 use Illuminate\Support\Facades\Auth;
 use App\Events\ContentCompleted;
+use Carbon\Carbon;
+
+Carbon::setLocale('es');
 
 class LevelsController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
