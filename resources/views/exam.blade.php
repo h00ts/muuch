@@ -92,11 +92,13 @@
 @section('styles')
     <style type="text/css">
         .control-label img {
-            max-height: 150px;
+            max-height: 250px;
+            vertical-align:middle;
+            float:left;
         }
 
         .radio img, .checkbox img {
-            max-height: 50px;
+            max-height: 30px;
         }
     </style>
 @endsection
