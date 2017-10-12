@@ -42,16 +42,18 @@
                                     <td>Nivel | Modulo</td>
                                     <td>Examen</td>
                                     <td>Calificación</td>
+                                    <td>Fecha</td>
                                 </tr>
 
                             </thead>
                             <tbody>
-                            @foreach($scores as $score)
+                            @foreach($scores->sortByDesc('created_at') as $score)
                                 <tr>
                                     <td><a href="/config/usuarios/{{ $score->user->id }}">{{ $score->user->name }}</a></td>
                                     <td>{{ $score->exam->module->level.' | 0'.$score->exam->module->module }}</td>
                                     <td>{{ $score->exam->name }}</td>
                                     <td>{{ $score->percent }}</td>
+                                    <td>{{ $score->created_at->format('d/m/y H:i') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

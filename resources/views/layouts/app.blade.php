@@ -13,6 +13,8 @@
       <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
       <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
+    @yield('styles')
+
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),

@@ -41,9 +41,8 @@ class ScoresController extends Controller
         }
 
         $incorrect = $user_answers - $user_correct;
-
         $percent = ($user_correct) ? number_format((($user_correct / $correct) * 100),0) : 0;
-        $percent = $percent - $incorrect;
+        $percent = $percent - ($incorrect / 2);
         ($percent >= $exam->min_score) ? $passed = 1 : $passed = 0;
         /*
          * Create the score

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -34,7 +33,7 @@
                                 <h4 class="control-label" style="line-height:1.5"><span class="label label-primary">{{ $qn++ }}</span> {!! $question->question !!}</h4>
                                 @if($question->answers->sum('correct') > 1)
                                     <small>Selecciona todas las que aplíquen.</small>
-                                    @foreach($question->answers->shuffle()->take(4) as $answer)
+                                    @foreach($question->answers->shuffle()->take(5) as $answer)
                                      <div class="checkbox">
                                         <label class="validate-question">
                                             <input type="checkbox" name="a{!! $answer->id !!}" id="a{!! $answer->id !!}" value="{!! $answer->id !!}"> {!! $answer->answer !!}
@@ -88,4 +87,16 @@
             $('form').preventDoubleSubmission();
         });
     </script>
+@endsection
+
+@section('styles')
+    <style type="text/css">
+        .control-label img {
+            max-height: 150px;
+        }
+
+        .radio img, .checkbox img {
+            max-height: 50px;
+        }
+    </style>
 @endsection
