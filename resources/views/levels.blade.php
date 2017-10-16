@@ -52,10 +52,11 @@
                         </div>
                         <div class="panel-body">
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
+                            <hr>
                             @if(count($module->contents) <= count($user->content->where('module_id', $module->id)))
                                 @foreach($module->exams as $exam)
                                     @if(!count($user->scores->where('exam_id', $exam->id)->last()) || count($user->scores->where('exam_id', $exam->id)->last()) && $user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
-                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-raised btn-block">Toma el Exámen de: {{ $exam->name }}</a> <hr>
+                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a> <hr>
                                     @elseif($user->scores->where('exam_id', $exam->id)->last() && $user->scores->where('exam_id', $exam->id)->last()->passed)
                                         <div class="alert alert-success alert-dismissible" role="alert">
                                             <strong><i class="glyphicon glyphicon-check text-success"></i></strong> ¡Felicidades! pasaste {{ $exam->name }} con un puntaje de {{ $user->scores->where('exam.module_id', $module->id)->first()->percent.' de 100' }}.

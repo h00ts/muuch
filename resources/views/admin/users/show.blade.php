@@ -60,6 +60,7 @@
                                 </div>
                                 <hr>
                         <a href="/config/usuarios/{!! $id !!}/edit" class="btn btn-success">Editar usuario</a>
+                        <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST" class="pull-right"><input type="hidden" name="_method" value="DELETE"> {{ csrf_field() }} <button type="submit" class="btn btn-danger btn-sm pull-right"><i class="material-icons">delete</i></button> </form>
                     </div>
 
                 </div>
