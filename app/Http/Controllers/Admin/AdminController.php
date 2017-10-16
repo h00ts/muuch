@@ -8,6 +8,7 @@ use App\User;
 use App\Role;
 use App\Content;
 use App\Page;
+use App\Score;
 use Spatie\Activitylog\Models\Activity;
 
 class AdminController extends Controller
@@ -23,9 +24,14 @@ class AdminController extends Controller
         $roles = Role::all();
         $activities = Activity::orderBy("created_at", 'desc')->paginate(20);
         $contents = Content::orderBy('id', 'desc')->take(5)->get();
+        $top_contents = Content::with('users')->get()->sortByDesc(function($content)
+        {
+            return $content->users->count();
+        })->take(5);
+        $recent_scores = Score::orderBy('created_at', 'desc')->take(5)->get();
         $pages = Page::orderBy('id', 'desc')->take(5)->get();
 
-        return view('admin.index')->withUsers($new_users)->withRoles($roles)->withActivities($activities)->withContents($contents)->withPages($pages);
+        return view('admin.index')->withUsers($new_users)->withRoles($roles)->withActivities($activities)->withContents($contents)->withPages($pages)->withTopContents($top_contents)->withRecentScores($recent_scores);
     }
 
     /**

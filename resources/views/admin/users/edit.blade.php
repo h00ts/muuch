@@ -90,6 +90,7 @@
                                <button class="btn btn-success"><i class="glyphicon glyphicon-check"></i> ACTIVAR</button>
                            </form>
                       @endif
+                          <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST" class="pull-right"><input type="hidden" name="_method" value="DELETE"> {{ csrf_field() }} <button type="submit" class="btn btn-danger btn-sm pull-right"><i class="material-icons">delete</i></button> </form>
                     </div>
   
                 </div>

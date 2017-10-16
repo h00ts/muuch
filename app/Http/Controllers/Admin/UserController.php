@@ -151,7 +151,7 @@ class UserController extends Controller
         $user->save();
         $user->delete();
 
-        return redirect()->back()->withSuccess('El usuario '.$user->email.' ha sido desactivado y no podra ingresar a MUUCH.');
+        return redirect()->route('usuarios.index')->withSuccess('El usuario '.$user->email.' ha sido desactivado y no podra ingresar a MUUCH.');
     }
 
     public function restore(Request $request)

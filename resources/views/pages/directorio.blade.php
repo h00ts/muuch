@@ -41,13 +41,20 @@
                     return "Somos una familia de " + total + " en total.";
                 },
                 language: {
-                    search: "Filtrar: "
+                    "search": "Filtrar: ",
+                    "paginate": {
+                        "first":      "Primero",
+                        "last":       "Último",
+                        "next":       "Siguiente",
+                        "previous":   "Anterior"
+                    },
+                    "lengthMenu":     "Mostrar _MENU_",
                 },
                 serverSide: true,
                 processing: true,
                 ordering: true,
                 paging: true,
-                pageLength: 5,
+                pageLength: 50,
                 ajax: '/datatables/equipo',
                 columns: [
                     {data: 'name', orderable: true, searchable: true},

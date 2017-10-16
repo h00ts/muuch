@@ -5,28 +5,63 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <!--
-        	<div class="col-md-6">
-				<select name="select" id="select">
-					<option value="d">Dood</option>
-					<option value="w">whats this</option>
-				</select>
-        	</div> -->
             <div class="col-lg-6">
                 <div class="card">
+                    <div class="header">
+                        <h4 class="title">Material de Capacitación</h4>
+                    </div>
                     <div class="content">
-                        @foreach($activities->where('subject_type', 'App\Page') as $page)
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th>
+                                    Contenido
+                                </th>
+                                <th>
+                                    Completado
+                                </th>
+                            </tr>
+                            </thead>
+                        @foreach($top_contents as $content)
+                            <tr>
+                                <td><a href="/config/contenido/{{ $content->id }}/edit">{{ $content->name }}</a></td>
+                                <td>{{ $content->users->count().' veces' }}</td>
+                            </tr>
                         @endforeach
+                        </table>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="card">
+                    <div class="header">
+                        <h4 class="title">Ultimos Exámenes</h4>
+                    </div>
                     <div class="content">
-
+                            <table class="table table-sm">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        Usuario
+                                    </th>
+                                    <th>
+                                        Puntaje
+                                    </th>
+                                </tr>
+                                </thead>
+                                @foreach($recent_scores as $score)
+                                    <tr>
+                                        <td><a href="/config/usuarios/{{ $score->user->id }}">{{ $score->user->name }}</a></td>
+                                        <td>{{ $score->percent.'%' }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
                     </div>
                 </div>
             </div>
+        </div>
+        {{--
+        <div class="row">
             <div class="col-md-5">
                 <div class="card">
                     <div class="header">
@@ -82,7 +117,9 @@
 
                     </div>
                 </div>
+                --}}
             </div>
+
                  <div class="col-md-12">
                     <div class="card">
                         <div class="header">
@@ -109,6 +146,7 @@
                                     @endforeach
                                     --}}
                                 </table>
+
                         </div>
                     </div>
                 </div>
@@ -142,13 +180,20 @@
                 return "Registros de actividad:" + total;
             },
             language: {
-                search: "Filtrar: "
+                search: "Filtrar: ",
+                show: "Mostrar ",
+                "paginate": {
+                    "first":      "Primero",
+                    "last":       "Último",
+                    "next":       "Siguiente",
+                    "previous":   "Anterior"
+                },
             },
             serverSide: true,
             processing: true,
-            ordering: false,
-            paging: false,
-            pageLength: 5,
+            ordering: true,
+            paging: true,
+            pageLength: 25,
             ajax: '/datatables/activity',
             columns: [
                 {data: 'description', orderable: true, searchable: true},
