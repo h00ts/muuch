@@ -49,7 +49,7 @@
                             <li><a href="{{ url('/ingresar') }}">Ingresa</a></li>
                             <li><a href="{{ url('/registrar') }}">Regístrate</a></li>
                         @else
-                            @ability('admin', '')
+                            @role('admin')
                             <li class="text-primary"><a href="/config"><i class="material-icons">settings</i> </a></li>
                             @endability
                             <li class="text-danger">

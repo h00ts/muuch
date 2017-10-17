@@ -26,7 +26,7 @@ class AddPercentToScoresTable extends Migration
     public function down()
     {
         Schema::table('scores', function (Blueprint $table) {
-            //
+            $table->dropColumn('percent');
         });
     }
 }

@@ -18,13 +18,13 @@
         "laravelista/sherlock": "^0.5.3",
         "league/flysystem-aws-s3-v3": "~1.0",
         "madeitbelgium/laravel-email-domain-validation": "1.*",
+        "omniphx/forrest": "2.*",
+        "santigarcor/laratrust": "5.0.*",
         "spatie/laravel-activitylog": "^1.15",
         "spatie/laravel-medialibrary": "^5.0.0",
         "tymon/jwt-auth": "0.5.*",
         "yajra/laravel-datatables-html": "^2.0",
-        "yajra/laravel-datatables-oracle": "^7.5",
-        "zizaco/entrust": "1.9.0-beta1",
-        "omniphx/forrest": "2.*"
+        "yajra/laravel-datatables-oracle": "^7.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

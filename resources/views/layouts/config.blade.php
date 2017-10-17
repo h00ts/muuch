@@ -21,7 +21,7 @@
     </script>
 </head>
 <body>
-    @ability('admin', '')
+    @role('admin')
     <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
         <div class="sidebar-wrapper">
@@ -172,6 +172,6 @@
 
     @yield('scripts')
 
-   @endability
+   @endrole
 </body>
 </html>
