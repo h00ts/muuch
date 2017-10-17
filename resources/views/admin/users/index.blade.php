@@ -90,7 +90,7 @@
                                 <tr>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <form action="/config/usuarios/{{ $id }}/restore" method="POST">
+                                        <form action="/config/usuarios/{{ $user->id }}/restore" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="PUT">
                                             <input type="hidden" name="id" value="{{ $user->id }}">
