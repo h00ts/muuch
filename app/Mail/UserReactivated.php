@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Activation;
 use App\User;
 
-class UserActivated extends Mailable
+class UserRectivated extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,7 +32,7 @@ class UserActivated extends Mailable
      */
     public function build()
     {
-        return $this->subject('Bienvenid@ a de MUUCH.')->markdown('emails.activation')
+        return $this->subject('Bienvenid@ a de MUUCH.')->markdown('emails.reactivation')
                     ->with([
                         'url' => 'http://muuch.ilumexico.mx/',
                         'userName' => $this->user->name,

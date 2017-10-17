@@ -12,6 +12,7 @@ use Spatie\Activitylog\Models\Activity;
 use App\Ilucentro;
 use App\Permission;
 use App\Mail\UserActivated;
+use App\Mail\UserRectivated;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
