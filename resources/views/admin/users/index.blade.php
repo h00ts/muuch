@@ -90,10 +90,9 @@
                                 <tr>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
+                                        <form action="/config/usuarios/{{ $id }}/restore" method="POST">
                                             {{ csrf_field() }}
-                                            <input type="hidden" name="_method" value="PATCH">
-                                            <input type="hidden" name="restore" value="1">
+                                            <input type="hidden" name="_method" value="PUT">
                                             <input type="hidden" name="id" value="{{ $user->id }}">
                                             <button type="submit" class="btn btn-success btn-sm"><i class="material-icons">thumb_up</i></button>
                                         </form>

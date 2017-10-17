@@ -33,9 +33,9 @@ class UserActivated extends Mailable
      */
     public function build()
     {
-        return $this->subject('Activa tu cuenta de MUUCH.')->markdown('emails.activation')
+        return $this->subject('Bienvenid@ a de MUUCH.')->markdown('emails.activation')
                     ->with([
-                        'url' => 'http://muuch.ilumexico.mx/activar/'.$this->activation->token,
+                        'url' => 'http://muuch.ilumexico.mx/',
                         'userName' => $this->user->name,
                         'userEmail' => $this->user->email
                     ]);
