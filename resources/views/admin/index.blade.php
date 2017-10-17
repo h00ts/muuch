@@ -188,10 +188,16 @@
                     "next":       "Siguiente",
                     "previous":   "Anterior"
                 },
+                "zeroRecords":    "No existe actividad con ese criterio",
+                "processing":     "Cargando...",
+                "lengthMenu":     "Mostrar _MENU_",
             },
+            dom: "<'row'<'col-sm-6'f><'col-sm-6'>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-5'p><'col-sm-7'l>>",
             serverSide: true,
             processing: true,
-            ordering: true,
+            ordering: false,
             paging: true,
             pageLength: 25,
             ajax: '/datatables/activity',

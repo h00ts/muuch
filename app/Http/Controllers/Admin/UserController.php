@@ -156,11 +156,9 @@ class UserController extends Controller
 
     public function restore(Request $request)
     {
-        if($restore){
             $user = User::withTrashed()->where('id', $request->input('id'))->first();
             $user->restore();
             return redirect()->back()->withSuccess('Reactivaste a '.$user->email);
-        }
     }
 
     public function sendActivation(User $user)
