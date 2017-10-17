@@ -42,29 +42,35 @@
                 </div>
              </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h4 class="title">Correos de Activación</h4>
+                            <h4 class="title">Usuarios Inactivos</h4>
                         </div>
                         <div class="content">
                             <table class="table table-striped">
                                 <thead>
-                                <tr>
+                                <tr><td>Nombre</td>
                                 <td>Correo</td>
-                                <td>Enviado</td>
-                                <td></td></tr>
+                                <td>Rol</td>
+                                <td>Ilucentro</td>
+                                <td>Opciones</td></tr>
                                 </thead>
-                                @foreach($inactive as $user)
+                                @foreach($inactive->sortBy('name') as $user)
                                     <tr>
-                                        <td><a href="/config/usuarios/{{ $user->id }}">{{ $user->email }}</a></td>
-                                        <td>{{ $user->activation->updated_at->format('d/m/y') }}</td>
+                                        <td><a href="/config/usuarios/{!! $user->id !!}">{!! $user->name !!}</a></td>
+                                        <td>{!! $user->email !!}</td>
+                                        <td>{{ (count($user->roles)) ? $user->roles->first()->display_name : 'ERROR' }}</td>
+                                        <td>{{ (count($user->ilucentro)) ? $user->ilucentro->short_name : '-' }}</td>
                                         <td>
-                                            <form action="/config/usuarios/{{ $user->id }}/reenviar" method="POST" class="form-inline">
-                                            <input type="hidden" name="_method" value="PUT">
-                                            {{ csrf_field() }}
-                                              <button type="submit" class="btn btn-success">Enviar</button>
+                                            <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST" class="pull-right form-inline"><input type="hidden" name="_method" value="DELETE"> {{ csrf_field() }} <button type="submit" class="btn btn-danger btn-sm pull-right"><i class="material-icons">delete</i></button> </form>
+                                            @if(count($user->activation))
+                                            <form action="/config/usuarios/{{ $user->id }}/reenviar" method="POST" class="pull-left form-inline">
+                                                <input type="hidden" name="_method" value="PUT">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-success btn-sm pull-right"><i class="material-icons">mail</i></button>
                                             </form>
+                                                @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -74,7 +80,7 @@
                     </div>
                 </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Usuarios Desactivados</h3>
@@ -82,22 +88,23 @@
                     <div class="panel-body">
                         <table class="table table-striped">
                             <thead>
+                                <th>Nombre</th>
                                 <th>Correo</th>
                                 <th></th>
                                 <th></th>
                             </thead>
-                            @foreach($trashed as $user)
+                            @foreach($trashed->sortBy('name') as $user)
                                 <tr>
+                                    <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <form action="/config/usuarios/{{ $user->id }}/restore" method="POST">
+                                        <form action="/config/usuarios/restore" method="POST">
                                             {{ csrf_field() }}
-                                            <input type="hidden" name="_method" value="PUT">
                                             <input type="hidden" name="id" value="{{ $user->id }}">
-                                            <button type="submit" class="btn btn-success btn-sm"><i class="material-icons">thumb_up</i></button>
+                                            <button type="submit" class="btn btn-success btn-sm"><i class="material-icons">thumb_up</i></button> Reactivar
                                         </form>
                                     </td>
-                                    <td><button class="btn btn-danger btn-sm"><i class="material-icons">delete_forever</i></button></td>
+                                    <td><button class="btn btn-danger btn-sm"><i class="material-icons">delete_forever</i></button> Eliminar para siempre</td>
                                 </tr>
                             @endforeach
                         </table>

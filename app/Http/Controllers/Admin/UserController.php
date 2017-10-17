@@ -25,7 +25,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::has('activity')->get();
-        $inactive = User::doesntHave('activity')->has('activation')->get();
+        $inactive = User::doesntHave('activity')->get();
         $roles = Role::all();
         $permissions = Permission::all();
         $trashed = User::onlyTrashed()->get();
@@ -156,8 +156,12 @@ class UserController extends Controller
 
     public function restore(Request $request)
     {
-            $user = User::withTrashed()->where('id', $request->input('id'))->first();
-            $user->restore();
+        //dd(User::withTrashed()->findOrFail($request->input('id')));
+            User::withTrashed()->findOrFail($request->input('id'))->restoreB();
+            $user = User::findOrFail($request->input('id'));
+            $user->active = 1;
+            $user->save();
+
             return redirect()->back()->withSuccess('Reactivaste a '.$user->email);
     }
 

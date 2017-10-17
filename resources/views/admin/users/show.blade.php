@@ -26,7 +26,7 @@
                                         <div class="form-group">
                                             <label for="ilucentro_id">ILUCENTRO</label>
                                             <select name="ilucentro_id" id="ilucentro" class="form-control border-input" disabled>
-                                                    <option value="0">{{ $user->ilucentro->name }}</option>
+                                                    <option value="0">{{ (count($user->ilucentro)) ? $user->ilucentro->name : '-' }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -35,7 +35,7 @@
                                     <div class="col-md-6">
                                         <label for="role">Rol</label>
                                         <select name="role_user" id="role" class="form-control border-input" required="required" disabled>
-                                                <option value="0">{{ $user->roles->first()->display_name }}</option>
+                                                <option value="0">{{ (count($user->roles)) ? $user->roles->first()->display_name : '-' }}</option>
                                         </select>
 
                                     </div>

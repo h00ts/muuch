@@ -42,7 +42,7 @@
                                       <label for="role">Rol</label>
                                       <select name="role_user" id="role" class="form-control border-input" required="required">
                                           @foreach($roles as $role)
-                                            <option value="{{ $role->id }}" {{ ($role->id == $user->roles->first()->id) ? 'selected' : '' }}>{{ $role->display_name }}</option>
+                                            <option value="{{ $role->id }}" {{ (count($user->roles) && $role->id == $user->roles->first()->id) ? 'selected' : '' }}>{{ $role->display_name }}</option>
                                           @endforeach
                                       </select>
                                 
