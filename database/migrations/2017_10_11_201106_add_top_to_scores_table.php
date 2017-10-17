@@ -26,7 +26,8 @@ class AddTopToScoresTable extends Migration
     public function down()
     {
         Schema::table('scores', function (Blueprint $table) {
-            //
+            $table->dropColumn('top');
+            $table->dropColumn('percent');
         });
     }
 }

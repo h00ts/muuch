@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Zizaco\Entrust\EntrustPermission;
+use Laratrust\Models\LaratrustPermission;
 
-class Permission extends EntrustPermission
+class Permission extends LaratrustPermission
 {
     protected $fillable = ['name', 'display_name', 'description'];
 }

@@ -26,7 +26,6 @@ class RefactorAnswerTextAnswersTable extends Migration
     public function down()
     {
         Schema::table('answers', function (Blueprint $table) {
-            //
         });
     }
 }

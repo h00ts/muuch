@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cache;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
@@ -15,8 +15,8 @@ class User extends Authenticatable implements HasMedia
 {
     use HasMediaTrait;
     use Notifiable;
-    use EntrustUserTrait { restore as private restoreA; }
-    use SoftDeletes { restore as private restoreB; }
+    use LaratrustUserTrait;
+    use SoftDeletes;
 
     /**
      * The attributes that should be mutated to dates.
@@ -108,10 +108,11 @@ class User extends Authenticatable implements HasMedia
     {
         $this->notify(new ResetPasswordNotification($token));
     }
-
+/*
     public function restore()
     {
         $this->restoreA();
         $this->restoreB();
     }
+*/
 }
