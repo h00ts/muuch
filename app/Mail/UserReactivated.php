@@ -20,9 +20,8 @@ class UserActivated extends Mailable
      *
      * @return void
      */
-    public function __construct(Activation $activation, User $user)
+    public function __construct(User $user)
     {
-        $this->activation = $activation;
         $this->user = $user;
     }
 
