@@ -26,9 +26,9 @@
                             <thead>
                             <tr>
                                 <th>Página</th>
-                                @ability('admin', '')
+                                @role('admin', '')
                                 <th></th>
-                                @endability
+                                @endrole
                                 <th>Categoría</th>
                             </tr>
                             </thead>
@@ -36,9 +36,9 @@
                                <tr>
                                    <td> <a href="/consulta/{{ $page->id }}"><i class="material-icons">chevron_right</i> {{ $page->name }}</a>
                                    </td>
-                                   @ability('admin', '')
+                                   @role('admin')
                                    <td> <a href="/config/muuch/{{ $page->id }}/edit"><i class="material-icons">settings</i></a></td>
-                                   @endability
+                                   @endrole
                                    <td>{{ isset($page->category) ? $page->category->name : '-' }}</td>
                                </tr>
                             @endforeach
@@ -58,9 +58,9 @@
                         <thead>
                         <tr>
                             <th>Contenido</th>
-                            @ability('admin', '')
+                            @role('admin')
                             <th></th>
-                            @endability
+                            @endrole
                             <th>Página</th>
                         </tr>
                         </thead>
@@ -68,9 +68,9 @@
                             <tr>
                                 <td> <a href="{{ isset($content->file) ? $content->file : '' }}" target="_blank"><i class="material-icons">description</i> {{ $content->name }}</a>
                                 </td>
-                                @ability('admin', '')
+                                @role('admin')
                                <td> <a href="/config/contenido/{{ $content->id }}/edit"><i class="material-icons">settings</i></a></td>
-                                @endability
+                                @endrole
                                 <td>{{ isset($content->page) ? $content->page->name : '-' }}</td>
                             </tr>
                     @endforeach
