@@ -20,6 +20,7 @@ class ImpactoController extends Controller
     {
         try {
             Forrest::authenticate();
+            Forrest::put('/services/data/v31.0/analytics/dashboards/01Z160000011IMF');
             $params = Forrest::get('/services/data/v31.0/analytics/dashboards/01Z160000011IMF');
         } catch(\Exception $e) {
             return redirect()->back()->withErrors('Falló la conexión con Salesforce');

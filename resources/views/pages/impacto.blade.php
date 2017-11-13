@@ -94,14 +94,20 @@
                     </div>
                 </div>
             </div>
+            @role('admin')
+            <form action="/impacto" method="POST" class="text-center">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-info btn-raised" id="sync"><i class="material-icons fa fa-spin">sync</i> Actualizar Impacto</button>
+            </form>
+            @endrole
         </div>
     </div>
 @endsection
 
 @section('scripts')
 <script type="text/javascript">
-    (function(){
-
+    $(function(){
+        $('#sync').preventDoubleSubmition();
     });
 </script>
 @endsection

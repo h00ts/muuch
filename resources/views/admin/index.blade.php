@@ -8,13 +8,6 @@
             <div class="col-lg-12">
                 @include('admin.partials.alerts')
             </div>
-            <div class="col-md-12">
-                <form action="/impacto" method="POST">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-info btn-raised"><i class="material-icons">sync</i> Sincronizar Impacto</button> <small class="text-danger">(ejecuta antes el informe en SF)</small>
-            </form>
-                <hr>
-            </div>
             <div class="col-lg-6">
                 <div class="card">
                     <div class="header">
@@ -218,6 +211,8 @@
                 {data: 'created_at'}
             ]
         });
+
+        $('#sync').preventDoubleSubmition();
     });
 </script>
 @endsection

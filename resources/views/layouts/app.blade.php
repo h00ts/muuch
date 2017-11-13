@@ -50,7 +50,7 @@
                             <li><a href="{{ url('/registrar') }}">Regístrate</a></li>
                         @else
                             @role('admin')
-                            <li class="text-primary"><a href="/config"><i class="material-icons">settings</i> </a></li>
+                            <li class="text-primary"><a href="/config">Config. <i class="material-icons">settings</i> </a></li>
                             @endability
                             <li class="text-danger">
                                 <a href="{{ url('/logout') }}"

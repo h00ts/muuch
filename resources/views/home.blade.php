@@ -52,39 +52,25 @@
                 </div>
             </div>
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title text-white"><a href="#" class="link"><i class="material-icons">markunread_mailbox</i> <strong>Quejas y Sugerencias</strong></a> </h3>
+                    <h3 class="panel-title text-danger"><strong>Quejas y Sugerencias</strong></h3>
                 </div>
                 <div class="panel-body">
-                    <p><small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar.</small></p>
                     <form action="/enviar/bsq" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
-                        <div class="form-group">
-                        <label for="mailbox">Escríbenos...</label>
-                        <textarea name="message" id="mailbox" rows="5" class="form-control border-input"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Dejar en el Buzón</button>
-                        <p class="small text-muted"><small>Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.</small></p>
+                        <p class="small text-muted"><small>En éste buzón podrás dejar comentarios relativos al funcionamiento de la plataforma o a cualquier otro tema que quisieras abordar. <br> Recuerda que es un buzón privado y sólo tendrá acceso a él el área de Personas.</small></p>
+                        <div class="form-group" style="margin-top:0">
+                            <textarea name="message" id="mailbox" rows="4" class="form-control border-input" placeholder="Escríbenos..."></textarea>
+                         <button type="submit" class="btn btn-primary btn-block"><i class="material-icons">markunread_mailbox</i> Dejar en el Buzón</button>
+                        </div>
                     </form>
                 </div>
             </div>
 
         </div>
         <div class="col-md-8 col-sm-8">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="panel panel-bienvenida panel-equipo">
-                        <a href="/personas">Conoce al Equipo</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="panel panel-bienvenida panel-impacto">
-                        <a href="/impacto">Impacto Acumulado</a>
-                    </div>
-                </div>
-            </div>
 
             <div class="panel panel-primary">
               <div class="panel-heading">
@@ -101,12 +87,23 @@
                       </div>
                         <div class="col-sm-12">
                             <p><strong>Bienvenido al nuevo MUUCH.</strong> En esta sección podrás consultar todo el material existente en ILUMÉXICO. Encontrarás guías, manuales, formatos, directorios, informes y muchas cosas más.</p> <p>Utiliza la barra superior para buscar algo específico o <a href="/consulta">ingresa a la sección de "Consulta"</a> para buscarlo a través de categorías.</p>
-                            <a href="/consulta" class="btn btn-primary btn-raised">¡Empieza a consultar!</a>
                         </div>
                         </div>
 
                         </div>
                     </div>
+                                <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-bienvenida panel-equipo">
+                        <a href="/personas">Conoce al Equipo</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-bienvenida panel-impacto">
+                        <a href="/impacto">Impacto Acumulado</a>
+                    </div>
+                </div>
+            </div>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiones</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
