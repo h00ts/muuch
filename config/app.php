@@ -183,7 +183,6 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         'GrahamCampbell\Markdown\MarkdownServiceProvider',
         Laratrust\LaratrustServiceProvider::class,
-        //Zizaco\Entrust\EntrustServiceProvider::class,
         MadeITBelgium\EmailDomainValidation\EmailDomainServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
@@ -245,10 +244,6 @@ return [
          */
         'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
         'Laratrust'   => Laratrust\LaratrustFacade::class,
-        //'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        //'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
-        //'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
-        //'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'Forrest' => Omniphx\Forrest\Providers\Laravel\Facades\Forrest::class,
 
     ],

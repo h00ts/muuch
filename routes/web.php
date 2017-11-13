@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/enviar/bsq', 'EmailsController@postBuzon');
     Route::resource('/perfil', 'UserController', ['only' => ['update']]);
     Route::get('/contenido/ver/{id}', 'ContentController@track');
+    Route::resource('/contenido', 'ContentController');
+    Route::resource('impacto', 'ImpactoController');
 
 
     /****************************************************
@@ -144,6 +146,6 @@ Route::group([
     Route::get('muuch/buscar', function (Request $request) {
         $pagina = App\Pagina::search($request->q)->get();
         $count = count($pagina);
-        return view('admin.pages.search')->withPaginas($pagina)->withQuery($request->q)->withCount($count);
+        return view('admin.pages.search')->withPaginas($pagina)->withQuery($arequest->q)->withCount($count);
     });
 });

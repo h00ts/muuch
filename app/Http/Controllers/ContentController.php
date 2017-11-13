@@ -10,6 +10,10 @@ use Auth;
 
 class ContentController extends Controller
 {
+    public function show(Content $content)
+    {
+        return view('content.show', $content)->withContent($content);
+    }
     public function track($id)
     {
         $content = Content::find($id);

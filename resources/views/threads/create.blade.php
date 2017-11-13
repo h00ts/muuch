@@ -40,3 +40,11 @@
 </div>
 </div>
 @endsection
+
+@section('scripts')
+	<script type="text/javascript">
+        $(function(){
+            $('input[type="submit"]').preventDoubleSubmission();
+		});
+	</script>
+@endsection

@@ -163,7 +163,7 @@
 
     <!-- Scripts -->
     <script src="/js/config.min.js"></script>
-    <script>
+    <script type="text/javascript">
     $(document).ready(function () {
       $(".nav li").removeClass("active");
       $("#@yield('slug')").addClass("active");
@@ -171,6 +171,20 @@
     </script>
 
     @yield('scripts')
+
+    <script type="text/javascript">
+        jQuery.fn.preventDoubleSubmission = function() {
+            $(this).on('submit',function(e){
+                var $form = $(this);
+                if ($form.data('submitted') === true) {
+                    e.preventDefault();
+                } else {
+                    $form.data('submitted', true);
+                }
+            });
+            return this;
+        };
+    </script>
 
    @endrole
 </body>

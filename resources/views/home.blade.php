@@ -52,13 +52,6 @@
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-body" style="padding:0">
-
-                    <a href="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/impacto.png" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/ilu-muuch/static/impacto.png" alt="impacto" class="img-responsive"></a>
-                </div>
-            </div>
-
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title text-white"><a href="#" class="link"><i class="material-icons">markunread_mailbox</i> <strong>Quejas y Sugerencias</strong></a> </h3>
@@ -80,9 +73,19 @@
 
         </div>
         <div class="col-md-8 col-sm-8">
-            <div class="panel panel-bienvenida">
-                    <a href="/personas">¡Conoce al Equipo!</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-bienvenida panel-equipo">
+                        <a href="/personas">Conoce al Equipo</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-bienvenida panel-impacto">
+                        <a href="/impacto">Impacto Acumulado</a>
+                    </div>
+                </div>
             </div>
+
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h3 class="panel-title"><a href="/consulta" class="link"><i class="material-icons">accessibility</i> <strong>Consulta</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>

@@ -82,13 +82,14 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Content $content)
     {
-        $content = Content::find($id);
+        //$content = Content::findOrFail($id);
         $pages = Page::all();
         $modules = Module::all();
 
-        return view('admin.contenido.edit')->withContent($content)->withPages($pages)->withModules($modules);
+
+        return view('admin.contenido.edit', $content)->withContent($content)->withPages($pages)->withModules($modules);
     }
 
     /**
