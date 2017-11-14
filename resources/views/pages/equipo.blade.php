@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     @permission('page-'.$page->slug)
-    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
@@ -29,7 +28,6 @@
                 </div>
             @endforeach
         </div>
-    </div>
     @endpermission
 @endsection
 

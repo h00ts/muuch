@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
@@ -97,11 +96,10 @@
             @role('admin')
             <form action="/impacto" method="POST" class="text-center">
                 {{ csrf_field() }}
-                <button type="submit" class="btn btn-info btn-raised" id="sync"><i class="material-icons fa fa-spin">sync</i> Actualizar Impacto</button>
+                <button type="submit" class="btn btn-info btn-raised" id="sync">Sincronizar con SalesForce</button>
             </form>
             @endrole
         </div>
-    </div>
 @endsection
 
 @section('scripts')

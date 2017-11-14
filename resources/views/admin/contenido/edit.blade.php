@@ -10,7 +10,7 @@
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <form action="{!! route('contenido.update', $content->id) !!}" method="POST">
+                    <form action="{!! route('contenido.update', $id) !!}" method="POST">
                     {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="PUT">
                     <div class="panel-body">
@@ -40,30 +40,30 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Titulo</label>
-                            <input type="text" name="name" class="form-control border-input input-lg" value="{!! $content->name !!}">
+                            <input type="text" name="name" class="form-control border-input input-lg" value="{!! $name !!}">
                         </div>
                        
                        <div class="row">
                            <div class="col-md-6">
                                <div class="form-group">
                                    <label for="description">Descripción</label>
-                                   <textarea name="description" class="form-control border-input" id="description" cols="30" rows="10">{!! $content->description !!}</textarea>
+                                   <textarea name="description" class="form-control border-input" id="description" cols="30" rows="10">{!! $description !!}</textarea>
                                </div>
                            </div>
                            <div class="col-md-6">
                                <div class="form-group">
                                    <label for="markdown">Markdown</label>
-                                   <textarea name="markdown" class="form-control border-input" id="markdown" cols="30" rows="10">{!! $content->markdown !!}</textarea>
+                                   <textarea name="markdown" class="form-control border-input" id="markdown" cols="30" rows="10">{!! $markdown !!}</textarea>
                                </div>
                            </div>
                        </div>
                         <div class="form-group">
                             <label for="file">Descargable</label>
-                            <input type="text" name="file" class="form-control border-input input-lg" value="{!! $content->file !!}">
+                            <input type="text" name="file" class="form-control border-input input-lg" value="{!! $file !!}">
                         </div>
                         <div class="form-group">
                             <label for="cover">Caratula</label>
-                            <input type="text" name="cover" class="form-control border-input input-lg" value="{!! $content->cover !!}">
+                            <input type="text" name="cover" class="form-control border-input input-lg" value="{!! $cover !!}">
                         </div>
 
                     </div>

@@ -88,7 +88,6 @@ class ContentController extends Controller
         $pages = Page::all();
         $modules = Module::all();
 
-
         return view('admin.contenido.edit', $content)->withContent($content)->withPages($pages)->withModules($modules);
     }
 
@@ -99,12 +98,9 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Content $content, Request $request)
     {
-        $content = Content::findOrFail($id);
-        $data = $request->all();
-        $content->update($data);
-        $content->save();
+        $content->fill($request->all())->save();
 
         return redirect()->route('contenido.edit', $content->id)->withSuccess('Guardado.');
     }

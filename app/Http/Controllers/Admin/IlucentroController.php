@@ -43,6 +43,11 @@ class IlucentroController extends Controller
 
     public function destroy(Ilucentro $ilucentro)
     {
+        dd($ilucentro->users->count());
+        if(count($ilucentro->user))
+        {
+            return redirect()->back()->withError('¡Imposible! Hay personas en este ILUCentro');
+        }
         $ilucentro->delete();
 
         return redirect()->route('ilucentros.index')->withSuccess('ILUCentro eliminado');

@@ -98,6 +98,6 @@ class ThreadsController extends Controller
      */
     public function destroy(Thread $thread)
     {
-        //
+        $thread->delete();
     }
 }

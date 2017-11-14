@@ -12,7 +12,7 @@ class Ilucentro extends Model implements HasMedia
 
     protected $fillable = ['name', 'short_name', 'coordinates', 'direccion', 'municipio', 'estado'];
 
-    public function user()
+    public function users()
     {
     	$this->hasMany('App\User');
     }
