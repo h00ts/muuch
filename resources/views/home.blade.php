@@ -74,7 +74,7 @@
 
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><a href="/consulta" class="link"><i class="material-icons">accessibility</i> <strong>Consulta</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>
+                <h3 class="panel-title"><a href="/consulta" class="link"><i class="material-icons">local_library</i> <strong>Consulta</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>
               </div>
                 <div class="panel-body">
                     <div class="row">
