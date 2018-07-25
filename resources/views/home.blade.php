@@ -73,55 +73,59 @@
         <div class="col-md-8 col-sm-8">
 
             <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title"><a href="/consulta" class="link"><i class="material-icons">local_library</i> <strong>Consulta</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span> </a></h3>
-              </div>
                 <div class="panel-body">
                     <div class="row">
                       <div class="col-sm-12">
-                      <form action="/buscar" method="GET">
-                          <div class="form-group" style="margin-top:0;">
-                          <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
+                      <form action="/buscar" method="GET" class="form-inline">
+                          <div class="form-group" style="margin-top:0;width:100%">
+                            <div class="input-group" style="width:100%">
+                                <div class="input-group-addon" style="max-width:22px;padding-left:0;"><i class="material-icons">search</i></div>
+                                <input type="text" class="form-control input-lg" placeholder="Ingresa tu busqueda..." name="q">
+                            </div>
                           </div>
                       </form>
                       </div>
                         <div class="col-sm-12">
-                            <p><strong>Bienvenido al nuevo MUUCH.</strong> En esta sección podrás consultar todo el material existente en ILUMÉXICO. Encontrarás guías, manuales, formatos, directorios, informes y muchas cosas más.</p> <p>Utiliza la barra superior para buscar algo específico o <a href="/consulta">ingresa a la sección de "Consulta"</a> para buscarlo a través de categorías.</p>
+                            <p><strong>Bienvenido al nuevo MUUCH.</strong> En esta sección podrás consultar todo el material existente en ILUMÉXICO. Encontrarás guías, manuales, formatos, directorios, informes y muchas cosas más.</p>
                         </div>
                         </div>
 
                         </div>
                     </div>
-                                <div class="row">
-                <div class="col-md-6">
-                    <div class="panel panel-bienvenida panel-equipo">
-                        <a href="/personas">Conoce al Equipo</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-bienvenida panel-biblioteca">
+                            <a href="/consulta">Biblioteca <i class="material-icons">local_library</i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-bienvenida panel-capacitacion">
+            
+                            <a href="/capacitacion">Capacitación <i class="material-icons">school</i></a>
+                        
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="panel panel-bienvenida panel-impacto">
-                        <a href="/impacto">Impacto Acumulado</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-bienvenida panel-equipo">
+                            <a href="/personas">Conoce al Equipo</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-bienvenida panel-impacto">
+                            <a href="/impacto">Impacto Acumulado</a>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-bienvenida panel-foro">
+                            <a href="/foro">Foro de Discusiones <i class="material-icons">question_answer</i></a>
+                        </div>
+                    </div>
             </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h2 class="panel-title"><a href="/foro" class="link"><i class="material-icons">question_answer</i> <strong>Foro de Discusiones</strong> <i class="material-icons pull-right">arrow_right</i> <span class="pull-right">Ir</span>  </a></h2>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-hover">
-                        <tr>
-                            <th>Discusiones más recientes</th>
-                        </tr>
-                        @foreach($threads as $thread)
-                            <tr>
-                                <td><a href="/canal/{{ $thread->channel->id }}" class="pull-right" style="line-height: 50px;"># {{ $thread->channel->name }}</a> <a href="/foro/{{ $thread->id }}" style="font-size:16px; display:block" class="text-info"><strong>{!! $thread->title !!}</strong></a> <small><i class="material-icons" style="font-size:12px">account_circle</i> {{ $thread->user->name }} <i class="material-icons" style="font-size:12px">access_time</i> {{ \Carbon\Carbon::now()->parse($thread->created_at)->diffForHumans() }}</small> </td>
-                            </tr>
-                        @endforeach
-                        <tr><td><a href="/foro" class="btn btn-sm btn-block btn-link">Ver todos los canales en el foro</a></td></tr>
-                    </table>
-                </div>
-            </div>
+        
         </div>
     </div>
 @endsection

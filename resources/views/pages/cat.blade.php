@@ -5,14 +5,14 @@
                      <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                         <i class="material-icons">arrow_left</i> Regresar
                     </a> 
-                    <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a> <i class="material-icons">chevron_right</i>
+                    <h3><a href="/consulta"><i class="material-icons">local_library</i> Biblioteca</a> <i class="material-icons">chevron_right</i>
                         {!! isset($parent_id) ? '<a href="/categoria/'.$categories->where('id', $parent_id)->first()->id.'">'.$categories->where('id', $parent_id)->first()->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!}
                         {{ $name }}</h3>
                     <hr>
                 </div>
             <div class="col-lg-4">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Consulta</div>
+                    <div class="panel-heading">Biblioteca</div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
                             @foreach($categories->where('parent_id', null) as $category)

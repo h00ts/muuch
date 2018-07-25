@@ -5,7 +5,7 @@
                  <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                     <i class="material-icons">arrow_left</i> Regresar
                 </a> 
-                <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a></h3>
+                <h3><a href="/consulta"><i class="material-icons">local_library</i> Biblioteca</a></h3>
             </div>
             <div class="col-lg-12">
                 <form action="/buscar" method="GET">

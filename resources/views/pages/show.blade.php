@@ -6,7 +6,7 @@
              <a href="{{ URL::previous() }}" class="btn btn-default pull-right">
                 <i class="material-icons">arrow_left</i> Regresar
             </a> 
-            <h3><a href="/consulta"><i class="material-icons">accessibility</i> Consulta</a> <i class="material-icons">chevron_right</i>
+            <h3><a href="/consulta"><i class="material-icons">local_library</i> Bibilioteca</a> <i class="material-icons">chevron_right</i>
                 {!! isset($page->category) ? '<a href="/categoria/'.$page->category->id.'">'.$page->category->name.'</a> <i class="material-icons">chevron_right</i>' : '' !!} {{ $name }}
             </h3>
             <hr>
