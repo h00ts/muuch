@@ -53,10 +53,12 @@
                         <div class="panel-body">
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
                             <hr>
-                            @if(count($module->contents) <= count($user->content->where('module_id', $module->id)))
-                                @foreach($module->exams as $exam)
-                                    @if(!count($user->scores->where('exam_id', $exam->id)->last()) || count($user->scores->where('exam_id', $exam->id)->last()) && $user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
+                        @foreach($module->exams as $exam)
+                            @if(!$module->contents->isEmpty() && count($module->contents) <= count($user->content->where('module_id', $module->id)))
+                                   @if(!$user->scores->isEmpty() && !count($user->scores->where('exam_id', $exam->id)->last()))
+                                        @if($user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
                                         <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a> <hr>
+                                        @endif
                                     @elseif($user->scores->where('exam_id', $exam->id)->last() && $user->scores->where('exam_id', $exam->id)->last()->passed)
                                         <div class="alert alert-success alert-dismissible" role="alert">
                                             <strong><i class="glyphicon glyphicon-check text-success"></i></strong> ¡Felicidades! pasaste {{ $exam->name }} con un puntaje de {{ $user->scores->where('exam.module_id', $module->id)->first()->percent.' de 100' }}.
@@ -67,8 +69,8 @@
                                             <strong><i class="glyphicon glyphicon-close text-danger"></i></strong> Espera {{ Carbon\Carbon::today()->subWeeks(2)->diffInDays($user->scores->where('exam_id', $exam->id)->last()->created_at) }} días para volver a tomar el examen de {{ $exam->name }} ({{ $user->scores->where('exam.module_id', $module->id)->last()->percent.'/100' }}).
                                         </div>
                                     @endif
-                                @endforeach
                             @endif
+                        @endforeach
                 <div class="list-group">
                 @foreach($module->contents as $content)
                         <div class="list-group-item">
