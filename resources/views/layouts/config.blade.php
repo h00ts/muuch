@@ -134,28 +134,6 @@
                 @yield('content')
             </div>
 
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="http://www.ilumexico.mx">
-                                Iluméxico
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/">
-                               MUUCH
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, hecho por <a href="mailto:ruslan@ilumexico.mx">Ruslan</a> con <a href="http://laravel.com">Laravel</a> & <a href="https://material.io">Material Design</a>
-                </div>
-            </div>
-        </footer>
        </div>
     </div>
 

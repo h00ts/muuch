@@ -35,27 +35,19 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="content">
-                        <table class="table table-responsive table-striped">
+                        <table id="scores" class="table table-responsive table-striped">
                             <thead>
                                 <tr>
                                     <td>Usuario</td>
-                                    <td>Nivel | Modulo</td>
-                                    <td>Examen</td>
-                                    <td>Calificación</td>
+                                    <td>Nivel</td>
+                                    <td>Exámen</td>
+                                    <td>Porcentaje (%)</td>
                                     <td>Fecha</td>
                                 </tr>
 
                             </thead>
                             <tbody>
-                            @foreach($scores->sortByDesc('created_at') as $score)
-                                <tr>
-                                    <td><a href="/config/usuarios/{{ $score->user->id }}">{{ $score->user->name }}</a></td>
-                                    <td>{{ $score->exam->module->level.' | 0'.$score->exam->module->module }}</td>
-                                    <td>{{ $score->exam->name }}</td>
-                                    <td>{{ $score->percent }}</td>
-                                    <td>{{ $score->created_at->format('d/m/y H:i') }}</td>
-                                </tr>
-                            @endforeach
+           
                             </tbody>
 
                         </table>
@@ -66,10 +58,17 @@
     </div>
 @endsection
 @section('scripts')
-    <script type="text/javascript">
-        $(function(){
 
-            $.ajaxSetup({
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script>
+    $(function () {
+
+
+        $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
@@ -101,6 +100,51 @@
                     }
                 });
             });
+
+
+        $('#scores').DataTable({
+            "infoCallback": function (settings, start, end, total) {
+                return "Registros de capacitación:" + total;
+            },
+            language: {
+                search: "Filtrar: ",
+                show: "Mostrar ",
+                "paginate": {
+                    "first":      "Primero",
+                    "last":       "Último",
+                    "next":       "Siguiente",
+                    "previous":   "Anterior"
+                },
+                "zeroRecords":    "No existe resultado con ese criterio",
+                "processing":     "Cargando...",
+                "lengthMenu":     "Mostrar/Descargar _MENU_ resultados",
+            },
+            buttons: [
+                {
+                extend: 'csvHtml5',
+                text: 'Descargar CSV',
+                title: 'MUUCH-capacitacion'
+                },
+            ],
+            dom: "<'row'<'col-sm-4'B><'col-sm-4'l><'col-sm-4'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-md-12'p>>",
+            serverSide: true,
+            processing: true,
+            ordering: false,
+            paging: true,
+            pageLength: 25,
+            ajax: '/datatables/scores',
+            columns: [
+                {data: 'user.name', "defaultContent": "Desactivado"},
+                {data: 'level'},
+                {data: 'exam.name'},
+                {data: 'score', orderable: true, searchable: true},
+                {data: 'created_at'}
+            ]
         });
-    </script>
+
+        $('#sync').preventDoubleSubmition();
+    });
+</script>
 @endsection

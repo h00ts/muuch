@@ -54,7 +54,7 @@
 
                             <button type="button" class="btn btn-inverse btn-sm btn-raised" onclick="set_question('{!! $question->id !!}', '{!! $question->question !!}');" data-target="#modal-answer-create" data-toggle="modal"><i class="material-icons" style="font-size:16px;">add_circle</i> Agregar Respuestas</button>
 
-                            <button type="button" class="btn btn-raised btn-sm btn-danger pull-right"><i class="material-icons" style="font-size:16px;">delete_forever</i> Eliminar</button>
+                            <button type="button" data-toggle="modal" data-target="#modal-answer-delete" class="btn btn-raised btn-sm btn-danger pull-right" onclick="set_delete_question_modal({!! $question->id !!}, '{!! $question->question !!}')"><i class="material-icons" style="font-size:16px;">delete_forever</i> Eliminar</button>
                              </form>
                             <hr>
                         </div>
@@ -252,6 +252,11 @@
 
                 function set_delete_answer_modal(id, name) {
                     $("#delete_answer").attr("action", "/config/respuesta/"+id);
+                    $("#answer_name").html(name);
+                }
+
+                function set_delete_question_modal(id, name) {
+                    $("#delete_answer").attr("action", "/config/pregunta/"+id);
                     $("#answer_name").html(name);
                 }
 

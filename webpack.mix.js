@@ -13,7 +13,7 @@ let mix = require('laravel-mix');
 */
 		
 mix.js(['resources/assets/js/app.js',
-	'node_modules/bootstrap-material-design/dist/js/material.min.js',
+    'node_modules/bootstrap-material-design/dist/js/material.min.js',
 	'node_modules/bootstrap-material-design/dist/js/ripples.min.js'
 	], 'public/js/config.min.js')
     .js(['resources/assets/js/app.js',

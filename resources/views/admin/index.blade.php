@@ -175,8 +175,12 @@
     });
 });
 </script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 <script src="js/jquery.dataTables.min.js"></script>
-<script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script async>
     $(function () {
         $('#actividad').DataTable({
             "infoCallback": function (settings, start, end, total) {
@@ -193,11 +197,18 @@
                 },
                 "zeroRecords":    "No existe actividad con ese criterio",
                 "processing":     "Cargando...",
-                "lengthMenu":     "Mostrar _MENU_",
+                "lengthMenu":     "Mostrar/Descargar _MENU_ resultados",
             },
-            dom: "<'row'<'col-sm-6'f><'col-sm-6'>>" +
+            buttons: [
+                {
+                extend: 'csvHtml5',
+                text: 'Descargar CSV',
+                title: 'MUUCH-actividad-usuarios'
+                },
+            ],
+            dom: "<'row'<'col-sm-4'B><'col-sm-4'l><'col-sm-4'f>>" +
             "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-5'p><'col-sm-7'l>>",
+            "<'row'<'col-md-12'p>>",
             serverSide: true,
             processing: true,
             ordering: false,

@@ -25,6 +25,6 @@ class Score extends Model
 
     public function module()
     {
-        return $this->belongsTo();
+        return $this->belongsTo('App\Module');
     }
 }

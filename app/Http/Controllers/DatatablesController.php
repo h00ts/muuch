@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Ilucentro;
 use App\User;
+use App\Score;
 use Spatie\Activitylog\Models\Activity;
 
 class DatatablesController extends Controller
@@ -30,6 +31,14 @@ class DatatablesController extends Controller
 
         return Datatables::of($activities)->make(true);
     }
+
+    public function getScores(Datatables $datatables)
+    {
+        $scores = Score::orderBy("created_at", 'desc')->with('user')->with('exam')->with('module')->get();
+
+        return Datatables::of($scores)->make(true);
+    }
+
         /**
         return $datatables->eloquent($ilucentros)
             ->editColumn('name', function ($ilucentro) {

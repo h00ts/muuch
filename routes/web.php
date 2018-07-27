@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/datatables/sucursales', 'DatatablesController@getSucursales');
     Route::get('/datatables/equipo', 'DatatablesController@getEquipo');
     Route::get('/datatables/activity', 'DatatablesController@getActivity');
+    Route::get('/datatables/scores', 'DatatablesController@getScores');
     Route::post('/enviar/bsq', 'EmailsController@postBuzon');
     Route::resource('/perfil', 'UserController', ['only' => ['update']]);
     Route::get('/contenido/ver/{id}', 'ContentController@track');
