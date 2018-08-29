@@ -27,19 +27,6 @@
                             {!! ($user_content) ? number_format($user_content / $content_count * 100, 0, '.', ',') . '%' : '0%' !!}
                         </div>
                     </div>
-                {{--
-                    @if($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) > $user->scores->last()->created_at)
-                        <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
-                        <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
-                        <p>Toma el examen para pasar al siguiente nivel.</p>
-                    @elseif($user_content == $content_count && count($user->scores) && \Carbon\Carbon::now()->subWeeks(2) < $user->scores->last()->created_at)
-                        <p class="text-danger">Espera {{ \Carbon\Carbon::parse($user->scores->last()->created_at)->addWeeks(2)->diffInDays(\Carbon\Carbon::now()) }} dias para tomar tu examen nuevamente. Aprovecha para repasar el contenido de tu capacitación.</p>
-                    @elseif($user_content == $content_count && !count($user->scores))
-                        <h4 class="text-success"><i class="material-icons">thumb_up</i> ¡Buen trabajo!</h4>
-                        <a href="/examen" class="btn btn-inverse btn-raised btn-block"><i class="material-icons">trending_up</i> TOMA EL EXAMEN</a>
-                        <p>Toma el examen para pasar al siguiente nivel.</p>
-                    @endif
-                    --}}
                 @endif
                 @include('admin.partials.alerts')
                 <p><strong>¡Bienvenido a la capacitación MUUCH!</strong></p> <p>Aquí te guiaremos por el material que necesitas conocer para subir al siguente nivel. </p> <p> Marca el material que hayas leído y entendido con el botón verde que dice "Completar". </p> <p> Una vez completado el material de un modulo, podrás tomar el examen para evaluar tu entendimiento de los temas del modulo.</p>
@@ -55,7 +42,7 @@
                             <hr>
                         @foreach($module->exams as $exam)
                             @if(!$module->contents->isEmpty() && $user->content->where('module_id', $module->id) && count($module->contents) <= count($user->content->where('module_id', $module->id)))
-                                   @if(!$user->scores->isEmpty() && !count($user->scores->where('exam_id', $exam->id)->last()))
+                                   @if(!$user->scores->isEmpty() && !$user->scores->where('exam_id', $exam->id)->last()))
                                         @if($user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
                                         <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a> <hr>
                                         @endif
@@ -68,6 +55,8 @@
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             <strong><i class="glyphicon glyphicon-close text-danger"></i></strong> Espera {{ Carbon\Carbon::today()->subWeeks(2)->diffInDays($user->scores->where('exam_id', $exam->id)->last()->created_at) }} días para volver a tomar el examen de {{ $exam->name }} ({{ $user->scores->where('exam.module_id', $module->id)->last()->percent.'/100' }}).
                                         </div>
+                                    @elseif($user->scores->isEmpty())
+                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a> <hr>
                                     @endif
                             @endif
                         @endforeach

@@ -14,6 +14,7 @@ class ExamsController extends Controller
 	// }
 	public function index()
 	{
+		return redirect('/capacitacion');
 		$user = Auth::user();
 		$modules = Module::where('level', $user->level)->get();
 		$content_count = 0;
@@ -28,12 +29,12 @@ class ExamsController extends Controller
 
 		$level = Auth::user()->level;
 		$modules = Module::where('level', $level)->with('exams')->get();
-		$exams = array();
+		$exam = array();
 		foreach($modules as $module){
 			($module->exams->first()) ? array_push($exams, $module->exams->random()) : null;
 		}
 
-		return view('exam')->withExams($exams)->withLevel($level);
+		return view('exam')->withExam($exam)->withLevel($level);
 	}
 
 	public function show(Exam $exam)
