@@ -30,8 +30,8 @@
                                         <td><i style="font-size:12px" class="material-icons {{ ($user->isOnline()) ? 'text-success' : 'text-muted' }}">fiber_manual_record</i></td>
                                         <td><a href="/config/usuarios/{!! $user->id !!}">{!! $user->name !!}</a></td>
                                         <td>{!! $user->email !!}</td>
-                                        <td>{{ (count($user->roles)) ? $user->roles->first()->display_name : 'ERROR' }}</td>
-                                        <td>{{ (count($user->ilucentro)) ? $user->ilucentro->short_name : '-' }}</td>
+                                        <td>{{ ($user->roles) ? $user->roles->first()->display_name : 'ERROR' }}</td>
+                                        <td>{{ ($user->ilucentro) ? $user->ilucentro->short_name : '-' }}</td>
                                         <td><a href="/config/usuarios/{!! $user->id !!}/edit" class="btn btn-sm btn-info pull-left"><i class="material-icons">edit</i></a>
                                             <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST" class="pull-right"><input type="hidden" name="_method" value="DELETE"> {{ csrf_field() }} <button type="submit" class="btn btn-danger btn-sm pull-right"><i class="material-icons">delete</i></button> </form></td>
                                         <td></td>
@@ -60,11 +60,11 @@
                                     <tr>
                                         <td><a href="/config/usuarios/{!! $user->id !!}">{!! $user->name !!}</a></td>
                                         <td>{!! $user->email !!}</td>
-                                        <td>{{ (count($user->roles)) ? $user->roles->first()->display_name : 'ERROR' }}</td>
-                                        <td>{{ (count($user->ilucentro)) ? $user->ilucentro->short_name : '-' }}</td>
+                                        <td>{{ ($user->roles) ? $user->roles->first()->display_name : 'ERROR' }}</td>
+                                        <td>{{ ($user->ilucentro) ? $user->ilucentro->short_name : '-' }}</td>
                                         <td>
                                             <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST" class="pull-right form-inline"><input type="hidden" name="_method" value="DELETE"> {{ csrf_field() }} <button type="submit" class="btn btn-danger btn-sm pull-right"><i class="material-icons">delete</i></button> </form>
-                                            @if(count($user->activation))
+                                            @if($user->activation)
                                             <form action="/config/usuarios/{{ $user->id }}/reenviar" method="POST" class="pull-left form-inline">
                                                 <input type="hidden" name="_method" value="PUT">
                                                 {{ csrf_field() }}

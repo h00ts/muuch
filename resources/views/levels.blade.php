@@ -54,7 +54,7 @@
                     <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
                             <hr>
                         @foreach($module->exams as $exam)
-                            @if(!$module->contents->isEmpty() && count($module->contents) <= count($user->content->where('module_id', $module->id)))
+                            @if(!$module->contents->isEmpty() && $user->content->where('module_id', $module->id) && count($module->contents) <= count($user->content->where('module_id', $module->id)))
                                    @if(!$user->scores->isEmpty() && !count($user->scores->where('exam_id', $exam->id)->last()))
                                         @if($user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
                                         <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a> <hr>
