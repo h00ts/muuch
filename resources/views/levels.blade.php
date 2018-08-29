@@ -38,13 +38,12 @@
                             <h3 class="panel-title">Nivel {!! $module->level !!}, Módulo {!! ($module->module > 9) ? $module->module : '0'.$module->module !!}</h3>
                         </div>
                         <div class="panel-body">
-                    <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
-                            <hr>
+    
                         @foreach($module->exams as $exam)
                             @if(!$module->contents->isEmpty() && $user->content->where('module_id', $module->id) && count($module->contents) <= count($user->content->where('module_id', $module->id)))
-                                   @if(!$user->scores->isEmpty() && !$user->scores->where('exam_id', $exam->id)->last()))
-                                        @if($user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
-                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a> <hr>
+                                   @if(!$user->scores->isEmpty() && !$user->scores->where('exam_id', $exam->id)->last())
+                                        @if(!$user->scores->where('exam_id', $exam->id)->last() || $user->scores->where('exam_id', $exam->id)->last() && $user->scores->where('exam_id', $exam->id)->last()->created_at < Carbon\Carbon::today()->subWeek())
+                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a>
                                         @endif
                                     @elseif($user->scores->where('exam_id', $exam->id)->last() && $user->scores->where('exam_id', $exam->id)->last()->passed)
                                         <div class="alert alert-success alert-dismissible" role="alert">
@@ -56,10 +55,13 @@
                                             <strong><i class="glyphicon glyphicon-close text-danger"></i></strong> Espera {{ Carbon\Carbon::today()->subWeeks(2)->diffInDays($user->scores->where('exam_id', $exam->id)->last()->created_at) }} días para volver a tomar el examen de {{ $exam->name }} ({{ $user->scores->where('exam.module_id', $module->id)->last()->percent.'/100' }}).
                                         </div>
                                     @elseif($user->scores->isEmpty())
-                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a> <hr>
+                                        <a href="/examen/{{ $exam->id }}" class="btn btn-info btn-lg btn-block"><i class="material-icons">check_box</i> Toma el Exámen de: {{ $exam->name }}</a>
                                     @endif
                             @endif
                         @endforeach
+                        <hr>
+                        <p>{!! isset($module->description) ? $module->description : ' ' !!}</p>
+                            <hr>
                 <div class="list-group">
                 @foreach($module->contents as $content)
                         <div class="list-group-item">
